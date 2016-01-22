@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{5B695232-F1CD-485F-BF56-3BA21302BCB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{EC911A77-A3C7-424C-9DFC-642BD8D166AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{48F2E270-892F-48E3-B76C-FD4CC97AB13A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", "{A9639EA3-4698-48A3-A02C-E7E1E4056E04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{92F27D3E-F1DC-4273-BD76-A76D57B68E24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{15FD6402-5676-47E0-AE9B-39213A1E5507}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Logic", "Core\GalaxyStorm.Logic\GalaxyStorm.Logic.csproj", "{00083C36-31E1-43BA-874F-9DDFCFA486E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Constants", "Core\GalaxyStorm.Constants\GalaxyStorm.Constants.csproj", "{3972CE75-763A-4900-B5EF-26DA01E93F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Data", "Data\GalaxyStorm.Data\GalaxyStorm.Data.csproj", "{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Data.Models", "Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj", "{55085A4D-FF06-4E40-948B-C40D07452B52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Services.Data", "Services\GalaxyStorm.Services.Data\GalaxyStorm.Services.Data.csproj", "{56FB94A5-977D-4A90-8A3A-80BF5007BE1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Tests", "Tests\GalaxyStorm.Tests\GalaxyStorm.Tests.csproj", "{0BD57CAC-7986-4F24-ADDB-24BC28F7F47F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.ViewModels", "GalaxyStorm.ViewModels\GalaxyStorm.ViewModels.csproj", "{9FF2D76A-24CF-422E-A344-F70027D459F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Web", "Web\GalaxyStorm.Web\GalaxyStorm.Web.csproj", "{2FB5DC75-2CCC-4C7F-9528-A9EA57524DD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00083C36-31E1-43BA-874F-9DDFCFA486E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00083C36-31E1-43BA-874F-9DDFCFA486E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00083C36-31E1-43BA-874F-9DDFCFA486E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00083C36-31E1-43BA-874F-9DDFCFA486E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3972CE75-763A-4900-B5EF-26DA01E93F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3972CE75-763A-4900-B5EF-26DA01E93F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3972CE75-763A-4900-B5EF-26DA01E93F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3972CE75-763A-4900-B5EF-26DA01E93F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55085A4D-FF06-4E40-948B-C40D07452B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55085A4D-FF06-4E40-948B-C40D07452B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55085A4D-FF06-4E40-948B-C40D07452B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55085A4D-FF06-4E40-948B-C40D07452B52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FB94A5-977D-4A90-8A3A-80BF5007BE1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FB94A5-977D-4A90-8A3A-80BF5007BE1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FB94A5-977D-4A90-8A3A-80BF5007BE1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FB94A5-977D-4A90-8A3A-80BF5007BE1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD57CAC-7986-4F24-ADDB-24BC28F7F47F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD57CAC-7986-4F24-ADDB-24BC28F7F47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD57CAC-7986-4F24-ADDB-24BC28F7F47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD57CAC-7986-4F24-ADDB-24BC28F7F47F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF2D76A-24CF-422E-A344-F70027D459F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF2D76A-24CF-422E-A344-F70027D459F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF2D76A-24CF-422E-A344-F70027D459F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF2D76A-24CF-422E-A344-F70027D459F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB5DC75-2CCC-4C7F-9528-A9EA57524DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB5DC75-2CCC-4C7F-9528-A9EA57524DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB5DC75-2CCC-4C7F-9528-A9EA57524DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB5DC75-2CCC-4C7F-9528-A9EA57524DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00083C36-31E1-43BA-874F-9DDFCFA486E3} = {48F2E270-892F-48E3-B76C-FD4CC97AB13A}
+		{3972CE75-763A-4900-B5EF-26DA01E93F5B} = {48F2E270-892F-48E3-B76C-FD4CC97AB13A}
+		{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5} = {5B695232-F1CD-485F-BF56-3BA21302BCB4}
+		{55085A4D-FF06-4E40-948B-C40D07452B52} = {5B695232-F1CD-485F-BF56-3BA21302BCB4}
+		{56FB94A5-977D-4A90-8A3A-80BF5007BE1F} = {92F27D3E-F1DC-4273-BD76-A76D57B68E24}
+		{0BD57CAC-7986-4F24-ADDB-24BC28F7F47F} = {15FD6402-5676-47E0-AE9B-39213A1E5507}
+		{9FF2D76A-24CF-422E-A344-F70027D459F9} = {A9639EA3-4698-48A3-A02C-E7E1E4056E04}
+		{2FB5DC75-2CCC-4C7F-9528-A9EA57524DD1} = {EC911A77-A3C7-424C-9DFC-642BD8D166AD}
+	EndGlobalSection
+EndGlobal
