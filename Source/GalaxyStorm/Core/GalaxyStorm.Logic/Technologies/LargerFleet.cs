@@ -2,31 +2,28 @@
 {
     using System;
 
-    public class CheaperFleet : ITechnology
+    public class LargerFleet : ITechnology
     {
-        public string Name
-        {
-            get { return "Cheaper Fleet"; }
-        }
+        public string Name { get { return "Larger Fleet"; } }
 
         public string Description
         {
-            get { return "Build more ships with fewer resources."; }
+            get { return "Increase fleet size when attacking."; }
         }
 
         public int MaxLevel
         {
-            get { return 3; }
+            get { return 5; }
         }
 
         public double[] Modifier
         {
-            get { return new[] { 0.05, 0.1, 0.2 }; }
+            get { return new[] { 100.0, 150.0, 350.0, 500.0, 1500.0 }; }
         }
 
         public int Prerequisite
         {
-            get { return 2; }
+            get { return 3; }
         }
 
         public TimeSpan[] ResearchTime { get; private set; }

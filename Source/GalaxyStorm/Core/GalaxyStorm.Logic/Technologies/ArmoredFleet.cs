@@ -2,17 +2,14 @@
 {
     using System;
 
-    public class CheaperFleet : ITechnology
+    public class ArmoredFleet : ITechnology
     {
         public string Name
         {
-            get { return "Cheaper Fleet"; }
+            get { return "Armored Fleet"; }
         }
 
-        public string Description
-        {
-            get { return "Build more ships with fewer resources."; }
-        }
+        public string Description { get; private set; }
 
         public int MaxLevel
         {
@@ -21,7 +18,7 @@
 
         public double[] Modifier
         {
-            get { return new[] { 0.05, 0.1, 0.2 }; }
+            get { return new[] { 0.1, 0.15, 0.3 }; }
         }
 
         public int Prerequisite
@@ -30,7 +27,7 @@
         }
 
         public TimeSpan[] ResearchTime { get; private set; }
-        
+
         public int[] GetRequiredResources(int level)
         {
             throw new NotImplementedException();

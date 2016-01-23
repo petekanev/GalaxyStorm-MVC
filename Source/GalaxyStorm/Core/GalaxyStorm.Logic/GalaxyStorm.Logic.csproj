@@ -49,7 +49,15 @@
     <Compile Include="Buildings\SolarCollector.cs" />
     <Compile Include="CombatResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Techniques\ITechnique.cs" />
+    <Compile Include="Ships\Carrier.cs" />
+    <Compile Include="Ships\IShip.cs" />
+    <Compile Include="Ships\Scout.cs" />
+    <Compile Include="Technologies\ArmoredFleet.cs" />
+    <Compile Include="Technologies\CheaperFleet.cs" />
+    <Compile Include="Technologies\FasterConstruction.cs" />
+    <Compile Include="Technologies\ITechnology.cs" />
+    <Compile Include="Technologies\LargerFleet.cs" />
+    <Compile Include="Technologies\MoreResources.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

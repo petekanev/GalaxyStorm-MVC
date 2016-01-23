@@ -16,7 +16,10 @@
             get { return 3; }
         }
 
-        public double[] Modifier { get; private set; }
+        public double[] Modifier
+        {
+            get { return new[] { 0.25, 0.50, 1 }; }
+        }
 
         public int Prerequisite
         {
