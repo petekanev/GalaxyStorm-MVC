@@ -1,4 +1,4 @@
-﻿namespace GalaxyStorm.Logic.Buildings
+namespace GalaxyStorm.Logic.Core.Buildings
 {
     using System;
 

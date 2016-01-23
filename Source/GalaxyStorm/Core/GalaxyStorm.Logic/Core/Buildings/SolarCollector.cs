@@ -1,16 +1,16 @@
-﻿namespace GalaxyStorm.Logic.Buildings
+namespace GalaxyStorm.Logic.Core.Buildings
 {
     using System;
 
-    public class MetalScrapper : ResourceBuilding
+    public class SolarCollector : ResourceBuilding
     {
-        private const double EnergyCoeff = 2;
-        private const double CrystalCoeff = 1.4;
-        private const double MetalCoeff = 1;
+        private const double EnergyCoeff = 1;
+        private const double CrystalCoeff = 2;
+        private const double MetalCoeff = 1.4;
 
         public override string Name
         {
-            get { return "Metal Scrapper"; }
+            get { return "Solar Collector"; }
         }
 
         public override string Description

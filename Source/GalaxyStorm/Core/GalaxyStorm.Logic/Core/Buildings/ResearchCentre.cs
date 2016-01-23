@@ -1,17 +1,17 @@
-﻿namespace GalaxyStorm.Logic.Buildings
+namespace GalaxyStorm.Logic.Core.Buildings
 {
     using System;
 
-    public class Barracks : IBuilding
+    public class ResearchCentre : IBuilding
     {
         private const double BuildTimeCoeff = 1;
-        private const double EnergyCoeff = 1.75;
-        private const double CrystalCoeff = 2.45;
-        private const double MetalCoeff = 2;
+        private const double EnergyCoeff = 2.05;
+        private const double CrystalCoeff = 3.33;
+        private const double MetalCoeff = 2.15;
 
         public string Name
         {
-            get { return "Barracks"; }
+            get { return "Research Centre"; }
         }
 
         public string Description { get; private set; }
@@ -23,7 +23,7 @@
 
         public int Prerequisite
         {
-            get { return 2; }
+            get { return 5; }
         }
 
         public TimeSpan[] BuildTime
@@ -32,11 +32,11 @@
             {
                 return new[]
                 {
-                    TimeSpan.FromMinutes(7*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(19.4*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(42*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(83*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(172*BuildTimeCoeff)
+                    TimeSpan.FromMinutes(26*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(43*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(59*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(88*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(166*BuildTimeCoeff),
                 };
             }
         }
@@ -50,9 +50,9 @@
 
             return new[]
             {
-                (int) ((100 * EnergyCoeff) * (level * 0.75)),
-                (int) ((100 * CrystalCoeff) * (level * 0.75)),
-                (int) ((100 * MetalCoeff) * (level * 0.75))
+                (int) ((100 * EnergyCoeff) * (level * 0.9)),
+                (int) ((100 * CrystalCoeff) * (level * 0.9)),
+                (int) ((100 * MetalCoeff) * (level * 0.9))
             };
         }
     }

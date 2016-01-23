@@ -1,4 +1,4 @@
-﻿namespace GalaxyStorm.Logic.Ships
+﻿namespace GalaxyStorm.Logic.Core.Ships
 {
     using System;
 

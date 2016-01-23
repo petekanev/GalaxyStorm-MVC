@@ -1,12 +1,12 @@
-﻿namespace GalaxyStorm.Logic.Technologies
+﻿namespace GalaxyStorm.Logic.Core.Technologies
 {
     using System;
 
-    public class ArmoredFleet : ITechnology
+    public class FasterConstruction : ITechnology
     {
         public string Name
         {
-            get { return "Armored Fleet"; }
+            get { return "Nimble Workers"; }
         }
 
         public string Description { get; private set; }
@@ -18,16 +18,21 @@
 
         public double[] Modifier
         {
-            get { return new[] { 0.1, 0.15, 0.3 }; }
+            get
+            {
+                return new[] { 0.1, 0.25, 0.33 };
+            }
         }
 
         public int Prerequisite
         {
-            get { return 2; }
+            get { return 1; }
         }
 
+        // TODO:
         public TimeSpan[] ResearchTime { get; private set; }
 
+        // TODO:
         public int[] GetRequiredResources(int level)
         {
             throw new NotImplementedException();

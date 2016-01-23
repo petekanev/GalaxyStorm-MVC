@@ -1,4 +1,4 @@
-﻿namespace GalaxyStorm.Logic.Technologies
+﻿namespace GalaxyStorm.Logic.Core.Technologies
 {
     using System;
 

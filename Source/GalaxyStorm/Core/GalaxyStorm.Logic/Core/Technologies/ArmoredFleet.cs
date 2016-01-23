@@ -1,14 +1,14 @@
-﻿namespace GalaxyStorm.Logic.Technologies
+﻿namespace GalaxyStorm.Logic.Core.Technologies
 {
     using System;
 
-    public class MoreResources : ITechnology
+    public class ArmoredFleet : ITechnology
     {
         public string Name
         {
-            get { return "Bountiful Mines"; }
+            get { return "Armored Fleet"; }
         }
-        
+
         public string Description { get; private set; }
 
         public int MaxLevel
@@ -18,16 +18,16 @@
 
         public double[] Modifier
         {
-            get { return new[] { 0.25, 0.50, 1 }; }
+            get { return new[] { 0.1, 0.15, 0.3 }; }
         }
 
         public int Prerequisite
         {
-            get { return 3; }
+            get { return 2; }
         }
 
         public TimeSpan[] ResearchTime { get; private set; }
-        
+
         public int[] GetRequiredResources(int level)
         {
             throw new NotImplementedException();

@@ -1,29 +1,29 @@
-﻿namespace GalaxyStorm.Logic.Buildings
+namespace GalaxyStorm.Logic.Core.Buildings
 {
     using System;
 
-    public class Headquarters : IBuilding
+    public class Barracks : IBuilding
     {
         private const double BuildTimeCoeff = 1;
-        private const double EnergyCoeff = 3.2;
-        private const double CrystalCoeff = 1.4;
-        private const double MetalCoeff = 2.75;
+        private const double EnergyCoeff = 1.75;
+        private const double CrystalCoeff = 2.45;
+        private const double MetalCoeff = 2;
 
         public string Name
         {
-            get { return "Headquarters"; }
+            get { return "Barracks"; }
         }
 
         public string Description { get; private set; }
 
         public int MaxLevel
         {
-            get { return 10; }
+            get { return 5; }
         }
 
         public int Prerequisite
         {
-            get { return 0; }
+            get { return 2; }
         }
 
         public TimeSpan[] BuildTime
@@ -32,16 +32,11 @@
             {
                 return new[]
                 {
-                    TimeSpan.FromMinutes(1),
-                    TimeSpan.FromMinutes(8.3*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(26*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(43*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(59*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(72*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(121*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(215*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(305*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(465*BuildTimeCoeff)
+                    TimeSpan.FromMinutes(7*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(19.4*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(42*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(83*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(172*BuildTimeCoeff)
                 };
             }
         }

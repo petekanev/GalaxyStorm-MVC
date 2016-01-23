@@ -39,25 +39,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buildings\Barracks.cs" />
-    <Compile Include="Buildings\CrystalExtractor.cs" />
-    <Compile Include="Buildings\Headquarters.cs" />
-    <Compile Include="Buildings\IBuilding.cs" />
-    <Compile Include="Buildings\MetalScrapper.cs" />
-    <Compile Include="Buildings\ResearchCentre.cs" />
-    <Compile Include="Buildings\ResourceBuilding.cs" />
-    <Compile Include="Buildings\SolarCollector.cs" />
-    <Compile Include="CombatResolver.cs" />
+    <Compile Include="Core\Buildings\Barracks.cs" />
+    <Compile Include="Core\Buildings\CrystalExtractor.cs" />
+    <Compile Include="Core\Buildings\Headquarters.cs" />
+    <Compile Include="Core\Buildings\IBuilding.cs" />
+    <Compile Include="Core\Buildings\MetalScrapper.cs" />
+    <Compile Include="Core\Buildings\ResearchCentre.cs" />
+    <Compile Include="Core\Buildings\ResourceBuilding.cs" />
+    <Compile Include="Core\Buildings\SolarCollector.cs" />
+    <Compile Include="Core\Ships\Carrier.cs" />
+    <Compile Include="Core\Ships\IShip.cs" />
+    <Compile Include="Core\Ships\Scout.cs" />
+    <Compile Include="Core\Technologies\ArmoredFleet.cs" />
+    <Compile Include="Core\Technologies\CheaperFleet.cs" />
+    <Compile Include="Core\Technologies\FasterConstruction.cs" />
+    <Compile Include="Core\Technologies\ITechnology.cs" />
+    <Compile Include="Core\Technologies\LargerFleet.cs" />
+    <Compile Include="Core\Technologies\MoreResources.cs" />
+    <Compile Include="Resolvers\CombatResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ships\Carrier.cs" />
-    <Compile Include="Ships\IShip.cs" />
-    <Compile Include="Ships\Scout.cs" />
-    <Compile Include="Technologies\ArmoredFleet.cs" />
-    <Compile Include="Technologies\CheaperFleet.cs" />
-    <Compile Include="Technologies\FasterConstruction.cs" />
-    <Compile Include="Technologies\ITechnology.cs" />
-    <Compile Include="Technologies\LargerFleet.cs" />
-    <Compile Include="Technologies\MoreResources.cs" />
+    <Compile Include="Resolvers\ScoutResolver.cs" />
+    <Compile Include="Shard\ShardAllocator.cs" />
+    <Compile Include="Shard\ShardSize.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

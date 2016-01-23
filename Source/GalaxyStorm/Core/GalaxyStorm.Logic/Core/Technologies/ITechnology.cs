@@ -1,8 +1,8 @@
-﻿namespace GalaxyStorm.Logic.Buildings
+namespace GalaxyStorm.Logic.Core.Technologies
 {
     using System;
 
-    public interface IBuilding
+    public interface ITechnology
     {
         string Name { get; }
 
@@ -10,12 +10,14 @@
 
         int MaxLevel { get; }
 
+        double[] Modifier { get; }
+
         /// <summary>
-        /// Required HQ levels in order to build
+        /// Required Research Centre level in order to build
         /// </summary>
         int Prerequisite { get; }
 
-        TimeSpan[] BuildTime { get; }
+        TimeSpan[] ResearchTime { get; }
 
         /// <summary>
         /// Required resources in the following order: energy -> crystal -> metal => [e, c, m]
