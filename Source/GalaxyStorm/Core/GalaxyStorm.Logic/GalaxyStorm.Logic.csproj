@@ -39,8 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buildings\Barracks.cs" />
+    <Compile Include="Buildings\CrystalExtractor.cs" />
+    <Compile Include="Buildings\Headquarters.cs" />
+    <Compile Include="Buildings\IBuilding.cs" />
+    <Compile Include="Buildings\MetalScrapper.cs" />
+    <Compile Include="Buildings\ResearchCentre.cs" />
+    <Compile Include="Buildings\ResourceBuilding.cs" />
+    <Compile Include="Buildings\SolarCollector.cs" />
+    <Compile Include="CombatResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Techniques\ITechnique.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
