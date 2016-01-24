@@ -47,6 +47,8 @@
     <Compile Include="Core\Buildings\ResearchCentre.cs" />
     <Compile Include="Core\Buildings\ResourceBuilding.cs" />
     <Compile Include="Core\Buildings\SolarCollector.cs" />
+    <Compile Include="Core\Planets\OccupiedBy.cs" />
+    <Compile Include="Core\Planets\Planet.cs" />
     <Compile Include="Core\Ships\Carrier.cs" />
     <Compile Include="Core\Ships\IShip.cs" />
     <Compile Include="Core\Ships\Scout.cs" />
