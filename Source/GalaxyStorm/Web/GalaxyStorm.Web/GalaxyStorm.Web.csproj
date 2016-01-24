@@ -43,6 +43,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -180,7 +186,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutofacConfig.cs" />
+    <Compile Include="App_Start\AutomapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -192,8 +201,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Modules\ServiceModule.cs" />
+    <Compile Include="Modules\EfModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +285,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\GalaxyStorm.Common\GalaxyStorm.Common.csproj">
+      <Project>{58EB223D-5336-4BF0-954C-E38FB4DF2F79}</Project>
+      <Name>GalaxyStorm.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj">
+      <Project>{55085a4d-ff06-4e40-948b-c40d07452b52}</Project>
+      <Name>GalaxyStorm.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GalaxyStorm.Data\GalaxyStorm.Data.csproj">
+      <Project>{6d6dd2ea-f3fa-45e4-8959-3da56889a4c5}</Project>
+      <Name>GalaxyStorm.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GalaxyStorm.ViewModels\GalaxyStorm.ViewModels.csproj">
+      <Project>{9ff2d76a-24cf-422e-a344-f70027d459f9}</Project>
+      <Name>GalaxyStorm.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\GalaxyStorm.Services.Data\GalaxyStorm.Services.Data.csproj">
+      <Project>{56fb94a5-977d-4a90-8a3a-80bf5007be1f}</Project>
+      <Name>GalaxyStorm.Services.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
