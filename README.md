@@ -9,7 +9,7 @@
  - AJAX - N
  - SignalR - N
  - KendoUI ASP.NET MVC Wrappers - N 
- - Ninject / Autofac dependency injection - N
- - Automapper object mapping - N
+ - Dependency Injection with Autofac IoC container - Y
+ - Automapper object mapping - Y
  - log4Net logger - N
  - nUnit and Moq for testing - N
