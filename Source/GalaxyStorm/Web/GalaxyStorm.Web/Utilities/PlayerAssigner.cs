@@ -37,6 +37,7 @@
                 ResearchCentreLevel = 0
             };
 
+            pO.Points = new Points();
             pO.Points.PointsCombat = 0;
             pO.Points.PointsNeutral = 0;
             pO.Points.PointsPlanet = (pO.Buildings.HeadQuartersLevel * 100) 
@@ -44,10 +45,17 @@
                 + (pO.Buildings.CrystalExtractorLevel * 10) 
                 + (pO.Buildings.MetalScrapperLevel * 10);
 
-
+            pO.Resources = new Resources();
             pO.Resources.Energy = 150; 
             pO.Resources.Crystal = 150;
             pO.Resources.Metal = 150;
+
+            pO.Technologies = new Technologies();
+            pO.Technologies.ArmorFleetLevel = 0;
+            pO.Technologies.CheaperFleetLevel = 0;
+            pO.Technologies.FasterConstructionLevel = 0;
+            pO.Technologies.LargerFleetLevel = 0;
+            pO.Technologies.MoreResourcesLevel = 0;
 
             return pO;
         }

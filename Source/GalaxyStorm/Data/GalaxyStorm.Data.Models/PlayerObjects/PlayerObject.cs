@@ -11,7 +11,7 @@
 
         public PlayerObject()
         {
-            this.Id = new Guid();
+            this.Id = Guid.NewGuid();
             this.reports = new HashSet<Report>();
         }
 
@@ -21,6 +21,8 @@
         public Points Points { get; set; }
 
         public Resources Resources { get; set; }
+
+        public Technologies Technologies { get; set; }
 
         public virtual ICollection<Report> Reports { get { return this.reports; } set { this.reports = value; } }
 

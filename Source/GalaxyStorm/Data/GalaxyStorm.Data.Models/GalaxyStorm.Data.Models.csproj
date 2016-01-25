@@ -58,6 +58,7 @@
     <Compile Include="PlayerObjects\Points.cs" />
     <Compile Include="PlayerObjects\Report.cs" />
     <Compile Include="PlayerObjects\Resources.cs" />
+    <Compile Include="PlayerObjects\Technologies.cs" />
     <Compile Include="PlayerObjects\Units.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

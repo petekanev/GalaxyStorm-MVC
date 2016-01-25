@@ -186,11 +186,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ApplicationPreload.cs" />
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\AutomapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\HangfireJobConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -206,6 +208,7 @@
     <Compile Include="Modules\EfModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\HangfireBootstrapper.cs" />
     <Compile Include="Utilities\PlayerAssigner.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +294,10 @@
     <ProjectReference Include="..\..\Core\GalaxyStorm.Common\GalaxyStorm.Common.csproj">
       <Project>{58EB223D-5336-4BF0-954C-E38FB4DF2F79}</Project>
       <Name>GalaxyStorm.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\GalaxyStorm.Logic\GalaxyStorm.Logic.csproj">
+      <Project>{00083c36-31e1-43ba-874f-9ddfcfa486e3}</Project>
+      <Name>GalaxyStorm.Logic</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj">
       <Project>{55085a4d-ff06-4e40-948b-c40d07452b52}</Project>

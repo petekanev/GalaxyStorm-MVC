@@ -70,7 +70,6 @@ namespace GalaxyStorm.Web.Models
         public string Email { get; set; }
 
         [Required]
-        [Range(5, 20)]
         [Display(Name = "Username")]
         public string UserName { get; set; }
 
