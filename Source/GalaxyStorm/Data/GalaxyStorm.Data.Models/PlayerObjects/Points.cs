@@ -7,12 +7,12 @@
     public class Points
     {
         [Column("Combat")]
-        public int Combat { get; set; }
+        public int PointsCombat { get; set; }
 
         [Column("Neutral")]
-        public int Neutral { get; set; }
+        public int PointsNeutral { get; set; }
 
         [Column("Planet")]
-        public int Planet { get; set; }
+        public int PointsPlanet { get; set; }
     }
 }
