@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="PlayerObjects\Buildings.cs" />
+    <Compile Include="PlayerObjects\PlayerObject.cs" />
+    <Compile Include="PlayerObjects\Points.cs" />
+    <Compile Include="PlayerObjects\Report.cs" />
+    <Compile Include="PlayerObjects\Resources.cs" />
+    <Compile Include="PlayerObjects\Units.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -49,8 +49,12 @@
     <Compile Include="Core\Buildings\SolarCollector.cs" />
     <Compile Include="Core\Planets\OccupiedBy.cs" />
     <Compile Include="Core\Planets\Planet.cs" />
+    <Compile Include="Core\Ships\Bomber.cs" />
     <Compile Include="Core\Ships\Carrier.cs" />
+    <Compile Include="Core\Ships\Fighter.cs" />
+    <Compile Include="Core\Ships\Interceptor.cs" />
     <Compile Include="Core\Ships\IShip.cs" />
+    <Compile Include="Core\Ships\Juggernaut.cs" />
     <Compile Include="Core\Ships\Scout.cs" />
     <Compile Include="Core\Technologies\ArmoredFleet.cs" />
     <Compile Include="Core\Technologies\CheaperFleet.cs" />
