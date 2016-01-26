@@ -28,13 +28,13 @@
                 var levelM = pO.Buildings.MetalScrapperLevel;
                 var modifier = TechnologiesBundle.MoreResources.Modifier[pO.Technologies.MoreResourcesLevel];
 
-                var energyGeneration = BuildingsBundle.SolarCollector.ResourceGeneration[levelE] / 60;
-                var crystalGeneration = BuildingsBundle.CrystalExtractor.ResourceGeneration[levelC] / 60;
-                var metalGeneration = BuildingsBundle.MetalScrapper.ResourceGeneration[levelM] / 60;
+                var energyGeneration = (BuildingsBundle.SolarCollector.ResourceGeneration[levelE] * pO.Planet.EnergyModifier) / 60;
+                var crystalGeneration = (BuildingsBundle.CrystalExtractor.ResourceGeneration[levelC] * pO.Planet.CrystalModifier) / 60;
+                var metalGeneration = (BuildingsBundle.MetalScrapper.ResourceGeneration[levelM] * pO.Planet.MetalModifier) / 60;
 
-                pO.Resources.Energy += energyGeneration + (int)(energyGeneration * modifier);
-                pO.Resources.Crystal += crystalGeneration + (int)(crystalGeneration * modifier);
-                pO.Resources.Metal += metalGeneration + (int)(metalGeneration * modifier);
+                pO.Resources.Energy += (int)energyGeneration + (int)(energyGeneration * modifier);
+                pO.Resources.Crystal += (int)crystalGeneration + (int)(crystalGeneration * modifier);
+                pO.Resources.Metal += (int)metalGeneration + (int)(metalGeneration * modifier);
             }
 
             users.SaveChanges();

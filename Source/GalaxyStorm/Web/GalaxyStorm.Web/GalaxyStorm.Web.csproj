@@ -197,14 +197,16 @@
     <Compile Include="App_Start\IntegrityCheck.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\AdmiralsQuarters\AdmiralsQuartersAreaRegistration.cs" />
+    <Compile Include="Areas\Planet\PlanetAreaRegistration.cs" />
+    <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
+    <Compile Include="Areas\Shard\ShardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Modules\EfModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -232,6 +234,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Areas\Planet\Views\web.config" />
+    <Content Include="Areas\AdmiralsQuarters\Views\web.config" />
+    <Content Include="Areas\Public\Views\web.config" />
+    <Content Include="Areas\Shard\Views\web.config" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -288,7 +294,21 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\AdmiralsQuarters\Controllers\" />
+    <Folder Include="Areas\AdmiralsQuarters\Models\" />
+    <Folder Include="Areas\AdmiralsQuarters\Views\Shared\" />
+    <Folder Include="Areas\Planet\Controllers\" />
+    <Folder Include="Areas\Planet\Models\" />
+    <Folder Include="Areas\Planet\Views\Shared\" />
+    <Folder Include="Areas\Profile\" />
+    <Folder Include="Areas\Public\Controllers\" />
+    <Folder Include="Areas\Public\Models\" />
+    <Folder Include="Areas\Public\Views\Shared\" />
+    <Folder Include="Areas\Shard\Controllers\" />
+    <Folder Include="Areas\Shard\Models\" />
+    <Folder Include="Areas\Shard\Views\Shared\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
