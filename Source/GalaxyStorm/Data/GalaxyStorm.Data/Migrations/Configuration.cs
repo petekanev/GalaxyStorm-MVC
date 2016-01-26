@@ -20,8 +20,8 @@ namespace GalaxyStorm.Data.Migrations
             }
 
             var shard = new Shard();
-
-            shard.Title = "Nebula";
+            shard.Title = "Nebula X16";
+            shard.ShardSize = ShardSize.Medium;
 
             context.Shards.Add(shard);
             context.SaveChanges();

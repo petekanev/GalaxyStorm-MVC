@@ -86,46 +86,5 @@
 
             return pO;
         }
-
-        // Check shard integrity and populate shard
-        public static void P()
-        {
-            var shard = new Shard();
-
-            var shardName = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(@"~/App_Data/ShardNames.txt")).OrderBy(x => Guid.NewGuid()).FirstOrDefault();
-            var planetNames = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(@"~/App_Data/PlanetNames.txt")).OrderBy(x => Guid.NewGuid()).ToList();
-
-            shard.Title = shardName;
-
-            var maxRows = 10;
-            var maxCols = 10;
-            var random = new Random();
-
-            for (int i = 0; i < maxRows; i++)
-            {
-                for (int j = 0; j < maxCols; j++)
-                {
-                    if (random.Next(0, 101) <= 50)
-                    {
-                        var planet = new Planet()
-                        {
-                            X = j,
-                            Y = i,
-                            Title = planetNames[random.Next(0, planetNames.Count)],
-                            EnergyModifier = 1,
-                            CrystalModifier = 1,
-                            MetalModifier = 1
-                        };
-
-                        shard.Planets.Add(planet);
-                    }
-                }
-            }
-
-            var shardRepo = new Repository<Shard>(new GalaxyStormDbContext());
-
-            shardRepo.Add(shard);
-            shardRepo.SaveChanges();
-        }
     }
 }
