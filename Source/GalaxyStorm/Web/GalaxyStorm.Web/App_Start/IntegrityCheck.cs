@@ -1,5 +1,6 @@
 ﻿namespace GalaxyStorm.Web.App_Start
 {
+    using System;
     using System.Linq;
     using Data;
     using Data.Models;
@@ -30,10 +31,22 @@
 
             shards.SaveChanges();
 
-            var allUsers = users.All().Select(x => x.PlayerObject).ToList();
+            var allUsers = users.All().Where(x => x.PlayerObjectId == null).ToList();
+            var randomShard = shards.All().OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+
+            foreach (var user in allUsers)
+            {
+                user.PlayerObject = PlayerAssigner.AssignPlayerObject();
+                user.PlayerObject.Shard = randomShard;
+                users.Update(user);
+            }
+
+            users.SaveChanges();
+
+            var playerObjects = users.All().Select(x => x.PlayerObject).ToList();
 
             // check if a building was in building state, refund resources and reverse state
-            foreach (var user in allUsers)
+            foreach (var user in playerObjects)
             {
                 if (user.Buildings.IsUpdatingBarracks)
                 {

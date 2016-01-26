@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\AdmiralsQuarters\AdmiralsQuartersAreaRegistration.cs" />
     <Compile Include="Areas\Planet\PlanetAreaRegistration.cs" />
+    <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Shard\ShardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -222,6 +223,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\theme\theme_dark.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -238,6 +240,7 @@
     <Content Include="Areas\AdmiralsQuarters\Views\web.config" />
     <Content Include="Areas\Public\Views\web.config" />
     <Content Include="Areas\Shard\Views\web.config" />
+    <Content Include="Areas\Profile\Views\web.config" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -301,7 +304,9 @@
     <Folder Include="Areas\Planet\Controllers\" />
     <Folder Include="Areas\Planet\Models\" />
     <Folder Include="Areas\Planet\Views\Shared\" />
-    <Folder Include="Areas\Profile\" />
+    <Folder Include="Areas\Profile\Controllers\" />
+    <Folder Include="Areas\Profile\Models\" />
+    <Folder Include="Areas\Profile\Views\Shared\" />
     <Folder Include="Areas\Public\Controllers\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />

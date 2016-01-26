@@ -10,7 +10,7 @@
 
     public class ApplicationUser : IdentityUser
     {
-        public Guid PlayerObjectId { get; set; }
+        public Guid? PlayerObjectId { get; set; }
 
         [ForeignKey("PlayerObjectId")]
         public PlayerObject PlayerObject { get; set; }
