@@ -21,6 +21,8 @@
             AutofacConfig.Config();
             AutoMapperConfig.RegisterMappings(Assembly.Load("GalaxyStorm.ViewModels"));
 
+            IntegrityCheck.EnsureIntegrity();
+
             HangfireBootstrapper.Instance.Start();
 
             HangfireJobConfig.ConfigureRecurringJobs();
@@ -30,7 +32,5 @@
         {
             HangfireBootstrapper.Instance.Stop();
         }
-
-
     }
 }
