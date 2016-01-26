@@ -1,6 +1,8 @@
 namespace GalaxyStorm.Data.Migrations
 {
     using System.Data.Entity.Migrations;
+    using System.Linq;
+    using Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<GalaxyStormDbContext>
     {
@@ -12,6 +14,17 @@ namespace GalaxyStorm.Data.Migrations
 
         protected override void Seed(GalaxyStormDbContext context)
         {
+            if (context.Shards.Any())
+            {
+                return;
+            }
+
+            var shard = new Shard();
+
+            shard.Title = "Nebula";
+
+            context.Shards.Add(shard);
+            context.SaveChanges();
         }
     }
 }

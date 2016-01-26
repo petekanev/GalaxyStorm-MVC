@@ -212,6 +212,8 @@
     <Compile Include="Utilities\PlayerAssigner.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PlanetNames.txt" />
+    <Content Include="App_Data\ShardNames.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -284,9 +286,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

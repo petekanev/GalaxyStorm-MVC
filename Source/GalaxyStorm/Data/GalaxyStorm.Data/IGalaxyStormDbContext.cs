@@ -20,6 +20,10 @@
 
         IDbSet<PlayerObject> PlayerObjects { get; set; }
 
+        IDbSet<Planet> Planets { get; set; }
+
+        IDbSet<Shard> Shards { get; set; }
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;

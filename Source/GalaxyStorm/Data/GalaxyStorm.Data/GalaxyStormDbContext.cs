@@ -20,6 +20,10 @@
 
         public IDbSet<PlayerObject> PlayerObjects { get; set; }
 
+        public IDbSet<Planet> Planets { get; set; }
+
+        public IDbSet<Shard> Shards { get; set; }
+
         public static GalaxyStormDbContext Create()
         {
             return new GalaxyStormDbContext();

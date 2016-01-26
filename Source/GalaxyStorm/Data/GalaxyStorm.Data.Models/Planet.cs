@@ -1,14 +1,18 @@
-﻿namespace GalaxyStorm.Logic.Core.Planets
+﻿namespace GalaxyStorm.Data.Models
 {
-    using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class Planet
     {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public string Title { get; set; }
+
         public int X { get; set; }
 
         public int Y { get; set; }
-
-        public string Name { get; set; }
 
         /// <summary>
         /// A value from 1 to 0 that amplifies energy resource generation
@@ -25,9 +29,6 @@
         /// </summary>
         public double MetalModifier { get; set; }
 
-        /// <summary>
-        /// Occupant
-        /// </summary>
-        public OccupiedBy OccupiedBy { get; set;}
+        public bool IsPopulated { get; set; }
     }
 }

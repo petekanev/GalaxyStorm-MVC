@@ -35,5 +35,15 @@
 
         [ForeignKey("UnitsId")]
         public virtual Units Units { get; set; }
+
+        public int PlanetId { get; set; }
+
+        [ForeignKey("PlanetId")]
+        public virtual Planet Planet { get; set; }
+
+        public int ShardId { get; set; }
+
+        [ForeignKey("ShardId")]
+        public virtual Shard Shard { get; set; }
     }
 }
