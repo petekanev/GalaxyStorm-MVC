@@ -4,7 +4,7 @@
 
     public class TechnologiesBundle
     {
-        static TechnologiesBundle()
+        public TechnologiesBundle()
         {
             ArmoredFleet = new ArmoredFleet();
             CheaperFleet = new CheaperFleet();
@@ -13,14 +13,14 @@
             MoreResources = new MoreResources();
         }
 
-        public static ArmoredFleet ArmoredFleet { get; set; }
+        public ArmoredFleet ArmoredFleet { get; set; }
 
-        public static CheaperFleet CheaperFleet { get; set; }
+        public CheaperFleet CheaperFleet { get; set; }
 
-        public static FasterConstruction FasterConstruction { get; set; }
+        public FasterConstruction FasterConstruction { get; set; }
 
-        public static LargerFleet LargerFleet { get; set; }
+        public LargerFleet LargerFleet { get; set; }
 
-        public static MoreResources MoreResources { get; set; }
+        public MoreResources MoreResources { get; set; }
     }
 }

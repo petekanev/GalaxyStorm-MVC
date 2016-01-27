@@ -48,6 +48,8 @@
     <Compile Include="Core\Buildings\ResearchCentre.cs" />
     <Compile Include="Core\Buildings\ResourceBuilding.cs" />
     <Compile Include="Core\Buildings\SolarCollector.cs" />
+    <Compile Include="Core\ILogicProvider.cs" />
+    <Compile Include="Core\LogicProvider.cs" />
     <Compile Include="Core\ShipsBundle.cs" />
     <Compile Include="Core\Ships\Bomber.cs" />
     <Compile Include="Core\Ships\Carrier.cs" />

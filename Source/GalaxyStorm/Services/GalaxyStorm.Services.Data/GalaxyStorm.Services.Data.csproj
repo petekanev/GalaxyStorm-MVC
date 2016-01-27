@@ -30,7 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,7 +52,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildingService.cs" />
+    <Compile Include="Contracts\IBuildingsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\GalaxyStorm.Logic\GalaxyStorm.Logic.csproj">
+      <Project>{00083C36-31E1-43BA-874F-9DDFCFA486E3}</Project>
+      <Name>GalaxyStorm.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj">
+      <Project>{55085A4D-FF06-4E40-948B-C40D07452B52}</Project>
+      <Name>GalaxyStorm.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GalaxyStorm.Data\GalaxyStorm.Data.csproj">
+      <Project>{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5}</Project>
+      <Name>GalaxyStorm.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

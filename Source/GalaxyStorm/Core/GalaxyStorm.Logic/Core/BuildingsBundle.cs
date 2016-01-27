@@ -5,26 +5,26 @@
 
     public class BuildingsBundle
     {
-        static BuildingsBundle()
+        public BuildingsBundle()
         {
-            Headquarters = new Headquarters();
-            SolarCollector = new SolarCollector();
-            CrystalExtractor = new CrystalExtractor();
-            MetalScrapper = new MetalScrapper();
-            Barracks = new Barracks();
-            ResearchCentre = new ResearchCentre();
+            this.Headquarters = new Headquarters();
+            this.SolarCollector = new SolarCollector();
+            this.CrystalExtractor = new CrystalExtractor();
+            this.MetalScrapper = new MetalScrapper();
+            this.Barracks = new Barracks();
+            this.ResearchCentre = new ResearchCentre();
         }
 
-        public static Headquarters Headquarters { get; set; }
+        public Headquarters Headquarters { get; set; }
 
-        public static SolarCollector SolarCollector { get; set; }
+        public SolarCollector SolarCollector { get; set; }
 
-        public static CrystalExtractor CrystalExtractor { get; set; }
+        public CrystalExtractor CrystalExtractor { get; set; }
 
-        public static MetalScrapper MetalScrapper { get; set; }
+        public MetalScrapper MetalScrapper { get; set; }
 
-        public static Barracks Barracks { get; set; }
+        public Barracks Barracks { get; set; }
 
-        public static ResearchCentre ResearchCentre { get; set; }
+        public ResearchCentre ResearchCentre { get; set; }
     }
 }

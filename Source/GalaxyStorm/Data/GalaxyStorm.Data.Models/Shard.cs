@@ -22,6 +22,8 @@
 
         public virtual ICollection<Planet> Planets { get { return this.planets; } set { this.planets = value; } }
 
+        public double BuildSpeed { get; set; }
+
         public bool IsLocked { get; set; }
     }
 }

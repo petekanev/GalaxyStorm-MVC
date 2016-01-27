@@ -3,6 +3,7 @@
     using System.Web.Mvc;
     using Autofac;
     using Autofac.Integration.Mvc;
+    using Logic.Core;
     using Modules;
 
     public class AutofacConfig
@@ -16,6 +17,7 @@
 
             builder.RegisterModule(new ServiceModule());
             builder.RegisterModule(new EfModule());
+            builder.RegisterType(typeof (LogicProvider));
 
             var container = builder.Build();
 

@@ -12,6 +12,8 @@
     {
         public static void EnsureIntegrity()
         {
+            var logicProvider = new LogicProvider();
+
             var ctx = new GalaxyStormDbContext();
 
             var shards = new Repository<Shard>(ctx);
@@ -53,13 +55,13 @@
                     user.Buildings.Barracks.IsBuilding = false;
 
                     user.Resources.Energy +=
-                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[0];
+                        logicProvider.Buildings.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[1];
+                        logicProvider.Buildings.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[2];
+                        logicProvider.Buildings.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[2];
                 }
 
                 if (user.Buildings.CrystalExtractor.IsBuilding)
@@ -67,13 +69,13 @@
                     user.Buildings.CrystalExtractor.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[0];
+                        logicProvider.Buildings.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[1];
+                        logicProvider.Buildings.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[2];
+                        logicProvider.Buildings.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[2];
                 }
 
                 if (user.Buildings.HeadQuarters.IsBuilding)
@@ -81,13 +83,13 @@
                     user.Buildings.HeadQuarters.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[0];
+                        logicProvider.Buildings.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[1];
+                        logicProvider.Buildings.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[2];
+                        logicProvider.Buildings.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[2];
                 }
 
                 if (user.Buildings.MetalScrapper.IsBuilding)
@@ -95,13 +97,13 @@
                     user.Buildings.MetalScrapper.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[0];
+                        logicProvider.Buildings.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[1];
+                        logicProvider.Buildings.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[2];
+                        logicProvider.Buildings.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[2];
                 }
 
                 if (user.Buildings.SolarCollector.IsBuilding)
@@ -109,13 +111,13 @@
                     user.Buildings.SolarCollector.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[0];
+                        logicProvider.Buildings.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[1];
+                        logicProvider.Buildings.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[2];
+                        logicProvider.Buildings.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[2];
                 }
 
                 if (user.Buildings.CrystalExtractor.IsBuilding)
@@ -123,13 +125,13 @@
                     user.Buildings.CrystalExtractor.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[0];
+                        logicProvider.Buildings.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[1];
+                        logicProvider.Buildings.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[2];
+                        logicProvider.Buildings.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[2];
                 }
 
                 if (user.Buildings.ResearchCentre.IsBuilding)
@@ -137,13 +139,13 @@
                     user.Buildings.ResearchCentre.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[0];
+                        logicProvider.Buildings.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[1];
+                        logicProvider.Buildings.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[2];
+                        logicProvider.Buildings.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[2];
                 }
             }
         }

@@ -4,7 +4,7 @@
 
     public class ShipsBundle
     {
-        static ShipsBundle()
+        public ShipsBundle()
         {
             Bomber = new Bomber();
             Carrier = new Carrier();
@@ -14,16 +14,16 @@
             Scout = new Scout();
         }
 
-        public static Bomber Bomber { get; set; }
+        public Bomber Bomber { get; set; }
 
-        public static Carrier Carrier { get; set; }
+        public Carrier Carrier { get; set; }
 
-        public static Fighter Fighter { get; set; }
+        public Fighter Fighter { get; set; }
 
-        public static Interceptor Interceptor { get; set; }
+        public Interceptor Interceptor { get; set; }
 
-        public static Juggernaut Juggernaut { get; set; }
+        public Juggernaut Juggernaut { get; set; }
 
-        public static Scout Scout { get; set; }
+        public Scout Scout { get; set; }
     }
 }
