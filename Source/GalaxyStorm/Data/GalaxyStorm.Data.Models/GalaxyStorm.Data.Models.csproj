@@ -55,6 +55,12 @@
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="PlayerObjects\Buildings.cs" />
+    <Compile Include="PlayerObjects\BuildingsComplexTypes\Barracks.cs" />
+    <Compile Include="PlayerObjects\BuildingsComplexTypes\CrystalExtractor.cs" />
+    <Compile Include="PlayerObjects\BuildingsComplexTypes\HeadQuarters.cs" />
+    <Compile Include="PlayerObjects\BuildingsComplexTypes\MetalScrapper.cs" />
+    <Compile Include="PlayerObjects\BuildingsComplexTypes\ResearchCentre.cs" />
+    <Compile Include="PlayerObjects\BuildingsComplexTypes\SolarCollector.cs" />
     <Compile Include="PlayerObjects\PlayerObject.cs" />
     <Compile Include="PlayerObjects\Points.cs" />
     <Compile Include="PlayerObjects\Report.cs" />

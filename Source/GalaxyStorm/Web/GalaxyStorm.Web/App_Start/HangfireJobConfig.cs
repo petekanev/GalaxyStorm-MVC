@@ -23,9 +23,9 @@
 
             foreach (var pO in pOs)
             {
-                var levelE = pO.Buildings.SolarCollectorLevel;
-                var levelC = pO.Buildings.CrystalExtractorLevel;
-                var levelM = pO.Buildings.MetalScrapperLevel;
+                var levelE = pO.Buildings.SolarCollector.Level;
+                var levelC = pO.Buildings.CrystalExtractor.Level;
+                var levelM = pO.Buildings.MetalScrapper.Level;
                 var modifier = TechnologiesBundle.MoreResources.Modifier[pO.Technologies.MoreResourcesLevel];
 
                 var energyGeneration = (BuildingsBundle.SolarCollector.ResourceGeneration[levelE] * pO.Planet.EnergyModifier) / 60;

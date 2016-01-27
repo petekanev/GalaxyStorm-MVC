@@ -7,6 +7,7 @@
     using Data;
     using Data.Models;
     using Data.Models.PlayerObjects;
+    using Data.Models.PlayerObjects.BuildingsComplexTypes;
     using Data.Repositories;
 
     /// <summary>
@@ -34,23 +35,21 @@
                 ScoutsQuantity = 0
             };
 
-            pO.Buildings = new Buildings
-            {
-                HeadQuartersLevel = 1,
-                SolarCollectorLevel = 1,
-                CrystalExtractorLevel = 1,
-                MetalScrapperLevel = 1,
-                BarracksLevel = 0,
-                ResearchCentreLevel = 0
-            };
+            pO.Buildings = new Buildings();
+            pO.Buildings.HeadQuarters = new HeadQuarters {Level = 1};
+            pO.Buildings.Barracks = new Barracks {Level = 0};
+            pO.Buildings.ResearchCentre = new ResearchCentre {Level = 0};
+            pO.Buildings.SolarCollector = new SolarCollector {Level = 1};
+            pO.Buildings.CrystalExtractor = new CrystalExtractor {Level = 1};
+            pO.Buildings.MetalScrapper = new MetalScrapper {Level = 1};
 
             pO.Points = new Points();
             pO.Points.PointsCombat = 0;
             pO.Points.PointsNeutral = 0;
-            pO.Points.PointsPlanet = (pO.Buildings.HeadQuartersLevel * 100)
-                + (pO.Buildings.SolarCollectorLevel * 10)
-                + (pO.Buildings.CrystalExtractorLevel * 10)
-                + (pO.Buildings.MetalScrapperLevel * 10);
+            pO.Points.PointsPlanet = (pO.Buildings.HeadQuarters.Level * 100)
+                + (pO.Buildings.SolarCollector.Level * 10)
+                + (pO.Buildings.CrystalExtractor.Level * 10)
+                + (pO.Buildings.MetalScrapper.Level * 10);
 
             pO.Resources = new Resources();
             pO.Resources.Energy = 350;

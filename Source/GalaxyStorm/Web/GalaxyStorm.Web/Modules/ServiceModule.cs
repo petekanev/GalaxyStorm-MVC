@@ -2,9 +2,8 @@
 {
     using System.Reflection;
     using Autofac;
-    using Module = Autofac.Module;
 
-    public class ServiceModule : Module
+    public class ServiceModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {

@@ -48,102 +48,102 @@
             // check if a building was in building state, refund resources and reverse state
             foreach (var user in playerObjects)
             {
-                if (user.Buildings.IsUpdatingBarracks)
+                if (user.Buildings.Barracks.IsBuilding)
                 {
-                    user.Buildings.IsUpdatingBarracks = false;
+                    user.Buildings.Barracks.IsBuilding = false;
 
                     user.Resources.Energy +=
-                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.BarracksLevel)[0];
+                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.BarracksLevel)[1];
+                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.BarracksLevel)[2];
+                        BuildingsBundle.Barracks.GetRequiredResources(user.Buildings.Barracks.Level)[2];
                 }
 
-                if (user.Buildings.IsUpdatingCrystalExtractor)
+                if (user.Buildings.CrystalExtractor.IsBuilding)
                 {
-                    user.Buildings.IsUpdatingCrystalExtractor = false;
+                    user.Buildings.CrystalExtractor.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractorLevel)[0];
+                       BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractorLevel)[1];
+                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractorLevel)[2];
+                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[2];
                 }
 
-                if (user.Buildings.IsUpdatingHeadQuarters)
+                if (user.Buildings.HeadQuarters.IsBuilding)
                 {
-                    user.Buildings.IsUpdatingHeadQuarters = false;
+                    user.Buildings.HeadQuarters.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuartersLevel)[0];
+                       BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuartersLevel)[1];
+                        BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuartersLevel)[2];
+                        BuildingsBundle.Headquarters.GetRequiredResources(user.Buildings.HeadQuarters.Level)[2];
                 }
 
-                if (user.Buildings.IsUpdatingMetalScrapper)
+                if (user.Buildings.MetalScrapper.IsBuilding)
                 {
-                    user.Buildings.IsUpdatingMetalScrapper = false;
+                    user.Buildings.MetalScrapper.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapperLevel)[0];
+                       BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapperLevel)[1];
+                        BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapperLevel)[2];
+                        BuildingsBundle.MetalScrapper.GetRequiredResources(user.Buildings.MetalScrapper.Level)[2];
                 }
 
-                if (user.Buildings.IsUpdatingSolarCollector)
+                if (user.Buildings.SolarCollector.IsBuilding)
                 {
-                    user.Buildings.IsUpdatingSolarCollector = false;
+                    user.Buildings.SolarCollector.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollectorLevel)[0];
+                       BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollectorLevel)[1];
+                        BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollectorLevel)[2];
+                        BuildingsBundle.SolarCollector.GetRequiredResources(user.Buildings.SolarCollector.Level)[2];
                 }
 
-                if (user.Buildings.IsUpdatingCrystalExtractor)
+                if (user.Buildings.CrystalExtractor.IsBuilding)
                 {
-                    user.Buildings.IsUpdatingCrystalExtractor = false;
+                    user.Buildings.CrystalExtractor.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractorLevel)[0];
+                       BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractorLevel)[1];
+                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractorLevel)[2];
+                        BuildingsBundle.CrystalExtractor.GetRequiredResources(user.Buildings.CrystalExtractor.Level)[2];
                 }
 
-                if (user.Buildings.IsUpdatingResearchCentre)
+                if (user.Buildings.ResearchCentre.IsBuilding)
                 {
-                    user.Buildings.IsUpdatingResearchCentre = false;
+                    user.Buildings.ResearchCentre.IsBuilding = false;
 
                     user.Resources.Energy +=
-                       BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentreLevel)[0];
+                       BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[0];
 
                     user.Resources.Crystal +=
-                        BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentreLevel)[1];
+                        BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[1];
 
                     user.Resources.Metal +=
-                        BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentreLevel)[2];
+                        BuildingsBundle.ResearchCentre.GetRequiredResources(user.Buildings.ResearchCentre.Level)[2];
                 }
             }
         }

@@ -25,6 +25,7 @@ namespace GalaxyStorm.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/theme/theme_dark.css",
                       "~/Content/site.css"));
         }
     }
