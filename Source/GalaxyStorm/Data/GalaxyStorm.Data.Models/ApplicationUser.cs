@@ -15,6 +15,8 @@
         [ForeignKey("PlayerObjectId")]
         public PlayerObject PlayerObject { get; set; }
 
+        public string DisplayName { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
