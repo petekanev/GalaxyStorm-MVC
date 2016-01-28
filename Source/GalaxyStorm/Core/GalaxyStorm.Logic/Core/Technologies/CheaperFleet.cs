@@ -21,7 +21,7 @@
 
         public double[] Modifier
         {
-            get { return new[] { 0.05, 0.1, 0.2 }; }
+            get { return new[] { 0, 0.05, 0.1, 0.2 }; }
         }
 
         public int Prerequisite
