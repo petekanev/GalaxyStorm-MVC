@@ -353,32 +353,110 @@
 
         public void CompleteBuildHeadQuarters(string userId)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                   .All()
+                   .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var player = user.PlayerObject;
+            player.Buildings.HeadQuarters.Level += 1;
+            player.Buildings.HeadQuarters.IsBuilding = false;
+            player.Buildings.HeadQuarters.StartTime = null;
+            player.Buildings.HeadQuarters.EndTime = null;
         }
 
         public void CompleteBuildBarracks(string userId)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                   .All()
+                   .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var player = user.PlayerObject;
+            player.Buildings.Barracks.Level += 1;
+            player.Buildings.Barracks.IsBuilding = false;
+            player.Buildings.Barracks.StartTime = null;
+            player.Buildings.Barracks.EndTime = null;
         }
 
         public void CompleteBuildResearchCentre(string userId)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                   .All()
+                   .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var player = user.PlayerObject;
+            player.Buildings.ResearchCentre.Level += 1;
+            player.Buildings.ResearchCentre.IsBuilding = false;
+            player.Buildings.ResearchCentre.StartTime = null;
+            player.Buildings.ResearchCentre.EndTime = null;
         }
 
         public void CompleteBuildSolarCollector(string userId)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                      .All()
+                      .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var player = user.PlayerObject;
+            player.Buildings.SolarCollector.Level += 1;
+            player.Buildings.SolarCollector.IsBuilding = false;
+            player.Buildings.SolarCollector.StartTime = null;
+            player.Buildings.SolarCollector.EndTime = null;
         }
 
         public void CompleteBuildCrystalExtractor(string userId)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                   .All()
+                   .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var player = user.PlayerObject;
+            player.Buildings.CrystalExtractor.Level += 1;
+            player.Buildings.CrystalExtractor.IsBuilding = false;
+            player.Buildings.CrystalExtractor.StartTime = null;
+            player.Buildings.CrystalExtractor.EndTime = null;
         }
 
         public void CompleteBuildMetalScrapper(string userId)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                   .All()
+                   .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var player = user.PlayerObject;
+            player.Buildings.MetalScrapper.Level += 1;
+            player.Buildings.MetalScrapper.IsBuilding = false;
+            player.Buildings.MetalScrapper.StartTime = null;
+            player.Buildings.MetalScrapper.EndTime = null;
         }
 
         private bool CanBuild(int toLevel, int hqLevel, IBuilding buildingLogic, long energy, long crystal, long metal)
