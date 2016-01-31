@@ -4,6 +4,7 @@
     using System.Linq;
     using Contracts;
     using GalaxyStorm.Data.Models;
+    using GalaxyStorm.Data.Models.PlayerObjects;
     using GalaxyStorm.Data.Repositories;
     using Logic.Core;
     using Logic.Core.Buildings;
@@ -39,10 +40,10 @@
 
             var player = user.PlayerObject;
 
-            var toLevel = player.Buildings.HeadQuarters.Level + 1;
+            var toLevel = player.Buildings.HeadQuartersLevel + 1;
 
             if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuarters.Level,
+                player.Buildings.HeadQuartersLevel,
                 this.logic.Buildings.Headquarters,
                 player.Resources.Energy,
                 player.Resources.Crystal,
@@ -54,20 +55,18 @@
             {
                 var requiredResources = this.logic.Buildings.Headquarters.GetRequiredResources(toLevel);
 
-                player.Resources.Energy -= requiredResources[0];
-                player.Resources.Crystal -= requiredResources[1];
-                player.Resources.Metal -= requiredResources[2];
+                this.SubstractResources(player, requiredResources);
 
                 var timeToBuildBeforeTech =
                     TimeSpan.FromTicks(
-                        (long)(this.logic.Buildings.Headquarters.BuildTime[toLevel].Ticks * player.Shard.BuildSpeed));
+                        (long)(this.logic.Buildings.Headquarters.BuildTime[toLevel].Ticks * player.Planet.Shard.BuildSpeed));
 
                 var timespan =
                     timeToBuildBeforeTech - TimeSpan.FromTicks((long)(timeToBuildBeforeTech.Ticks * this.logic.Technologies.FasterConstruction.Modifier[player.Technologies.FasterConstructionLevel]));
 
-                player.Buildings.HeadQuarters.StartTime = DateTime.Now;
-                player.Buildings.HeadQuarters.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
-                player.Buildings.HeadQuarters.IsBuilding = true;
+                player.Buildings.StartTime = DateTime.Now;
+                player.Buildings.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Buildings.CurrentlyBuilding = CurrentlyBuilding.Headquarters;
 
                 this.users.Update(user);
                 this.users.SaveChanges();
@@ -89,10 +88,10 @@
 
             var player = user.PlayerObject;
 
-            var toLevel = player.Buildings.Barracks.Level + 1;
+            var toLevel = player.Buildings.BarracksLevel + 1;
 
             if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuarters.Level,
+                player.Buildings.HeadQuartersLevel,
                 this.logic.Buildings.Barracks,
                 player.Resources.Energy,
                 player.Resources.Crystal,
@@ -104,25 +103,23 @@
             {
                 var requiredResources = this.logic.Buildings.Barracks.GetRequiredResources(toLevel);
 
-                player.Resources.Energy -= requiredResources[0];
-                player.Resources.Crystal -= requiredResources[1];
-                player.Resources.Metal -= requiredResources[2];
+                this.SubstractResources(player, requiredResources);
 
                 var timeToBuildBeforeTech =
                     TimeSpan.FromTicks(
-                        (long)(this.logic.Buildings.Barracks.BuildTime[toLevel].Ticks * player.Shard.BuildSpeed));
+                        (long)(this.logic.Buildings.Barracks.BuildTime[toLevel].Ticks * player.Planet.Shard.BuildSpeed));
 
                 var timespan =
                     timeToBuildBeforeTech -
                     TimeSpan.FromTicks(
                         (long)
-                            (timeToBuildBeforeTech.Ticks*
+                            (timeToBuildBeforeTech.Ticks *
                              this.logic.Technologies.FasterConstruction.Modifier[
                                  player.Technologies.FasterConstructionLevel]));
 
-                player.Buildings.Barracks.StartTime = DateTime.Now;
-                player.Buildings.Barracks.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
-                player.Buildings.Barracks.IsBuilding = true;
+                player.Buildings.StartTime = DateTime.Now;
+                player.Buildings.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Buildings.CurrentlyBuilding = CurrentlyBuilding.Barracks;
 
                 this.users.Update(user);
                 this.users.SaveChanges();
@@ -144,10 +141,10 @@
 
             var player = user.PlayerObject;
 
-            var toLevel = player.Buildings.ResearchCentre.Level + 1;
+            var toLevel = player.Buildings.ResearchCentreLevel + 1;
 
             if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuarters.Level,
+                player.Buildings.HeadQuartersLevel,
                 this.logic.Buildings.ResearchCentre,
                 player.Resources.Energy,
                 player.Resources.Crystal,
@@ -159,13 +156,11 @@
             {
                 var requiredResources = this.logic.Buildings.ResearchCentre.GetRequiredResources(toLevel);
 
-                player.Resources.Energy -= requiredResources[0];
-                player.Resources.Crystal -= requiredResources[1];
-                player.Resources.Metal -= requiredResources[2];
+                this.SubstractResources(player, requiredResources);
 
                 var timeToBuildBeforeTech =
                     TimeSpan.FromTicks(
-                        (long)(this.logic.Buildings.ResearchCentre.BuildTime[toLevel].Ticks * player.Shard.BuildSpeed));
+                        (long)(this.logic.Buildings.ResearchCentre.BuildTime[toLevel].Ticks * player.Planet.Shard.BuildSpeed));
 
                 var timespan =
                     timeToBuildBeforeTech -
@@ -175,9 +170,9 @@
                              this.logic.Technologies.FasterConstruction.Modifier[
                                  player.Technologies.FasterConstructionLevel]));
 
-                player.Buildings.ResearchCentre.StartTime = DateTime.Now;
-                player.Buildings.ResearchCentre.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
-                player.Buildings.ResearchCentre.IsBuilding = true;
+                player.Buildings.StartTime = DateTime.Now;
+                player.Buildings.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Buildings.CurrentlyBuilding = CurrentlyBuilding.ResearchCentre;
 
                 this.users.Update(user);
                 this.users.SaveChanges();
@@ -199,10 +194,10 @@
 
             var player = user.PlayerObject;
 
-            var toLevel = player.Buildings.SolarCollector.Level + 1;
+            var toLevel = player.Buildings.SolarCollectorLevel + 1;
 
             if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuarters.Level,
+                player.Buildings.HeadQuartersLevel,
                 this.logic.Buildings.SolarCollector,
                 player.Resources.Energy,
                 player.Resources.Crystal,
@@ -214,13 +209,11 @@
             {
                 var requiredResources = this.logic.Buildings.SolarCollector.GetRequiredResources(toLevel);
 
-                player.Resources.Energy -= requiredResources[0];
-                player.Resources.Crystal -= requiredResources[1];
-                player.Resources.Metal -= requiredResources[2];
+                this.SubstractResources(player, requiredResources);
 
                 var timeToBuildBeforeTech =
                     TimeSpan.FromTicks(
-                        (long)(this.logic.Buildings.SolarCollector.BuildTime[toLevel].Ticks * player.Shard.BuildSpeed));
+                        (long)(this.logic.Buildings.SolarCollector.BuildTime[toLevel].Ticks * player.Planet.Shard.BuildSpeed));
 
                 var timespan =
                     timeToBuildBeforeTech -
@@ -230,9 +223,9 @@
                              this.logic.Technologies.FasterConstruction.Modifier[
                                  player.Technologies.FasterConstructionLevel]));
 
-                player.Buildings.SolarCollector.StartTime = DateTime.Now;
-                player.Buildings.SolarCollector.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
-                player.Buildings.SolarCollector.IsBuilding = true;
+                player.Buildings.StartTime = DateTime.Now;
+                player.Buildings.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Buildings.CurrentlyBuilding = CurrentlyBuilding.SolarCollector;
 
                 this.users.Update(user);
                 this.users.SaveChanges();
@@ -254,10 +247,10 @@
 
             var player = user.PlayerObject;
 
-            var toLevel = player.Buildings.CrystalExtractor.Level + 1;
+            var toLevel = player.Buildings.CrystalExtractorLevel + 1;
 
             if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuarters.Level,
+                player.Buildings.HeadQuartersLevel,
                 this.logic.Buildings.CrystalExtractor,
                 player.Resources.Energy,
                 player.Resources.Crystal,
@@ -269,13 +262,11 @@
             {
                 var requiredResources = this.logic.Buildings.CrystalExtractor.GetRequiredResources(toLevel);
 
-                player.Resources.Energy -= requiredResources[0];
-                player.Resources.Crystal -= requiredResources[1];
-                player.Resources.Metal -= requiredResources[2];
+                this.SubstractResources(player, requiredResources);
 
                 var timeToBuildBeforeTech =
                     TimeSpan.FromTicks(
-                        (long)(this.logic.Buildings.CrystalExtractor.BuildTime[toLevel].Ticks * player.Shard.BuildSpeed));
+                        (long)(this.logic.Buildings.CrystalExtractor.BuildTime[toLevel].Ticks * player.Planet.Shard.BuildSpeed));
 
                 var timespan =
                     timeToBuildBeforeTech -
@@ -285,9 +276,9 @@
                              this.logic.Technologies.FasterConstruction.Modifier[
                                  player.Technologies.FasterConstructionLevel]));
 
-                player.Buildings.CrystalExtractor.StartTime = DateTime.Now;
-                player.Buildings.CrystalExtractor.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
-                player.Buildings.CrystalExtractor.IsBuilding = true;
+                player.Buildings.StartTime = DateTime.Now;
+                player.Buildings.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Buildings.CurrentlyBuilding = CurrentlyBuilding.CrystalExtractor;
 
                 this.users.Update(user);
                 this.users.SaveChanges();
@@ -309,10 +300,10 @@
 
             var player = user.PlayerObject;
 
-            var toLevel = player.Buildings.MetalScrapper.Level + 1;
+            var toLevel = player.Buildings.MetalScrapperLevel + 1;
 
             if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuarters.Level,
+                player.Buildings.HeadQuartersLevel,
                 this.logic.Buildings.MetalScrapper,
                 player.Resources.Energy,
                 player.Resources.Crystal,
@@ -324,13 +315,11 @@
             {
                 var requiredResources = this.logic.Buildings.MetalScrapper.GetRequiredResources(toLevel);
 
-                player.Resources.Energy -= requiredResources[0];
-                player.Resources.Crystal -= requiredResources[1];
-                player.Resources.Metal -= requiredResources[2];
+                this.SubstractResources(player, requiredResources);
 
                 var timeToBuildBeforeTech =
                     TimeSpan.FromTicks(
-                        (long)(this.logic.Buildings.MetalScrapper.BuildTime[toLevel].Ticks * player.Shard.BuildSpeed));
+                        (long)(this.logic.Buildings.MetalScrapper.BuildTime[toLevel].Ticks * player.Planet.Shard.BuildSpeed));
 
                 var timespan =
                     timeToBuildBeforeTech -
@@ -340,9 +329,9 @@
                              this.logic.Technologies.FasterConstruction.Modifier[
                                  player.Technologies.FasterConstructionLevel]));
 
-                player.Buildings.MetalScrapper.StartTime = DateTime.Now;
-                player.Buildings.MetalScrapper.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
-                player.Buildings.MetalScrapper.IsBuilding = true;
+                player.Buildings.StartTime = DateTime.Now;
+                player.Buildings.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Buildings.CurrentlyBuilding = CurrentlyBuilding.MetalScrapper;
 
                 this.users.Update(user);
                 this.users.SaveChanges();
@@ -351,7 +340,7 @@
             }
         }
 
-        public void CompleteBuildHeadQuarters(string userId)
+        public void CompleteBuilding(string userId)
         {
             var user = this.users
                    .All()
@@ -363,100 +352,34 @@
             }
 
             var player = user.PlayerObject;
-            player.Buildings.HeadQuarters.Level += 1;
-            player.Buildings.HeadQuarters.IsBuilding = false;
-            player.Buildings.HeadQuarters.StartTime = null;
-            player.Buildings.HeadQuarters.EndTime = null;
-        }
 
-        public void CompleteBuildBarracks(string userId)
-        {
-            var user = this.users
-                   .All()
-                   .FirstOrDefault(u => u.Id == userId);
-
-            if (user == null)
+            switch (player.Buildings.CurrentlyBuilding)
             {
-                return;
+                case CurrentlyBuilding.Headquarters:
+                    player.Buildings.HeadQuartersLevel += 1;
+                    break;
+                case CurrentlyBuilding.Barracks:
+                    player.Buildings.BarracksLevel += 1;
+                    break;
+                case CurrentlyBuilding.ResearchCentre:
+                    player.Buildings.ResearchCentreLevel += 1;
+                    break;
+                case CurrentlyBuilding.SolarCollector:
+                    player.Buildings.SolarCollectorLevel += 1;
+                    break;
+                case CurrentlyBuilding.CrystalExtractor:
+                    player.Buildings.CrystalExtractorLevel += 1;
+                    break;
+                case CurrentlyBuilding.MetalScrapper:
+                    player.Buildings.MetalScrapperLevel += 1;
+                    break;
+                default:
+                    break;
             }
 
-            var player = user.PlayerObject;
-            player.Buildings.Barracks.Level += 1;
-            player.Buildings.Barracks.IsBuilding = false;
-            player.Buildings.Barracks.StartTime = null;
-            player.Buildings.Barracks.EndTime = null;
-        }
-
-        public void CompleteBuildResearchCentre(string userId)
-        {
-            var user = this.users
-                   .All()
-                   .FirstOrDefault(u => u.Id == userId);
-
-            if (user == null)
-            {
-                return;
-            }
-
-            var player = user.PlayerObject;
-            player.Buildings.ResearchCentre.Level += 1;
-            player.Buildings.ResearchCentre.IsBuilding = false;
-            player.Buildings.ResearchCentre.StartTime = null;
-            player.Buildings.ResearchCentre.EndTime = null;
-        }
-
-        public void CompleteBuildSolarCollector(string userId)
-        {
-            var user = this.users
-                      .All()
-                      .FirstOrDefault(u => u.Id == userId);
-
-            if (user == null)
-            {
-                return;
-            }
-
-            var player = user.PlayerObject;
-            player.Buildings.SolarCollector.Level += 1;
-            player.Buildings.SolarCollector.IsBuilding = false;
-            player.Buildings.SolarCollector.StartTime = null;
-            player.Buildings.SolarCollector.EndTime = null;
-        }
-
-        public void CompleteBuildCrystalExtractor(string userId)
-        {
-            var user = this.users
-                   .All()
-                   .FirstOrDefault(u => u.Id == userId);
-
-            if (user == null)
-            {
-                return;
-            }
-
-            var player = user.PlayerObject;
-            player.Buildings.CrystalExtractor.Level += 1;
-            player.Buildings.CrystalExtractor.IsBuilding = false;
-            player.Buildings.CrystalExtractor.StartTime = null;
-            player.Buildings.CrystalExtractor.EndTime = null;
-        }
-
-        public void CompleteBuildMetalScrapper(string userId)
-        {
-            var user = this.users
-                   .All()
-                   .FirstOrDefault(u => u.Id == userId);
-
-            if (user == null)
-            {
-                return;
-            }
-
-            var player = user.PlayerObject;
-            player.Buildings.MetalScrapper.Level += 1;
-            player.Buildings.MetalScrapper.IsBuilding = false;
-            player.Buildings.MetalScrapper.StartTime = null;
-            player.Buildings.MetalScrapper.EndTime = null;
+            player.Buildings.CurrentlyBuilding = CurrentlyBuilding.None;
+            player.Buildings.StartTime = null;
+            player.Buildings.EndTime = null;
         }
 
         private bool CanBuild(int toLevel, int hqLevel, IBuilding buildingLogic, long energy, long crystal, long metal)
@@ -481,6 +404,18 @@
             return energy > requiredResources[0]
                 && crystal > requiredResources[1]
                 && metal > requiredResources[2];
+        }
+
+        private void SubstractResources(PlayerObject pO, int[] resources)
+        {
+            if (resources.Length < 3)
+            {
+                throw new ArgumentException();
+            }
+
+            pO.Resources.Energy -= resources[0];
+            pO.Resources.Crystal -= resources[1];
+            pO.Resources.Metal -= resources[2];
         }
 
     }

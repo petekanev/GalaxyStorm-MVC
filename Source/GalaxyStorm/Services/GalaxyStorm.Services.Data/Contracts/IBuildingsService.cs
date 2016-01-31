@@ -16,16 +16,6 @@
 
         TimeSpan? ScheduleMetalScrapper(string userId);
 
-        void CompleteBuildHeadQuarters(string userId);
-
-        void CompleteBuildBarracks(string userId);
-
-        void CompleteBuildResearchCentre(string userId);
-
-        void CompleteBuildSolarCollector(string userId);
-
-        void CompleteBuildCrystalExtractor(string userId);
-
-        void CompleteBuildMetalScrapper(string userId);
+        void CompleteBuilding(string userId);
     }
 }

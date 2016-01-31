@@ -29,7 +29,7 @@ namespace GalaxyStorm.Data.Migrations
 
             var shard = new Shard();
             shard.Title = "Nebula X16";
-            shard.ShardSize = ShardSize.Medium;
+            shard.ShardSize = ShardSize.Large;
             shard.BuildSpeed = 1;
 
             context.Shards.Add(shard);

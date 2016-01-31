@@ -22,7 +22,6 @@
 
         public Resources Resources { get; set; }
 
-        public Technologies Technologies { get; set; }
 
         public virtual ICollection<Report> Reports { get { return this.reports; } set { this.reports = value; } }
 
@@ -30,6 +29,11 @@
 
         [ForeignKey("BuildingsId")]
         public virtual Buildings Buildings { get; set; }
+
+        public int TechnologiesId { get; set; }
+
+        [ForeignKey("TechnologiesId")]
+        public virtual Technologies Technologies { get; set; }
 
         public int UnitsId { get; set; }
 
@@ -40,10 +44,5 @@
 
         [ForeignKey("PlanetId")]
         public virtual Planet Planet { get; set; }
-
-        public int ShardId { get; set; }
-
-        [ForeignKey("ShardId")]
-        public virtual Shard Shard { get; set; }
     }
 }

@@ -28,5 +28,15 @@
         {
             return new GalaxyStormDbContext();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Planet>()
+                .HasRequired(x => x.Shard)
+                .WithMany(x => x.Planets)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
