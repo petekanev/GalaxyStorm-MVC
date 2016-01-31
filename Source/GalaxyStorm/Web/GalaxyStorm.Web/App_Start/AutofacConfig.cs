@@ -17,7 +17,7 @@
 
             builder.RegisterModule(new ServiceModule());
             builder.RegisterModule(new EfModule());
-            builder.RegisterType(typeof (LogicProvider));
+            builder.RegisterType(typeof(LogicProvider)).As(typeof(ILogicProvider)).InstancePerLifetimeScope();
 
             var container = builder.Build();
 

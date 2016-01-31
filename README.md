@@ -5,7 +5,7 @@
  - ASP.NET - Y
  - SQL Server (with EF) - Y
  - OAuth for facebook login (?) - N
- - HangFire.io background task runner - Y
+ - HangFire.io background worker - Y
  - AJAX - N
  - SignalR - N
  - KendoUI ASP.NET MVC Wrappers - N 
