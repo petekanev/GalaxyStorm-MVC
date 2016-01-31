@@ -7,6 +7,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+    using Services.Data.Contracts;
     using Utilities;
     using ViewModels.Account;
 
@@ -16,14 +17,19 @@
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        private IPlayerService playerService;
+
+        public AccountController(IPlayerService service)
         {
+            this.playerService = service;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IPlayerService service)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
+            this.playerService = service;
         }
 
         public ApplicationSignInManager SignInManager
@@ -105,7 +111,8 @@
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, DisplayName = model.DisplayName };
-                user.PlayerObject = PlayerAssigner.AssignPlayerObject();
+                
+                this.playerService.AssignPlayerObject(user);
 
                 var result = await UserManager.CreateAsync(user, model.Password);
 

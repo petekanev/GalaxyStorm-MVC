@@ -63,25 +63,23 @@
             pO.Technologies.LargerFleetLevel = 0;
             pO.Technologies.MoreResourcesLevel = 0;
 
-            var planetRepo = new Repository<Planet>(new GalaxyStormDbContext());
+            // ensures the planet belongs in the same shard as the player
+            var shards = new Repository<Shard>(new GalaxyStormDbContext());
 
-            var planet = planetRepo
-                .All()
-                .Where(x => !x.IsPopulated)
+            var randomShard = shards.All()
+                    .Where(x => x.Planets.Any(p => !p.IsPopulated))
+                    .OrderBy(x => Guid.NewGuid())
+                    .First();
+
+            pO.ShardId = randomShard.Id;
+
+            var planet = randomShard.Planets.Where(y => !y.IsPopulated)
                 .OrderBy(x => Guid.NewGuid())
                 .FirstOrDefault();
-
-            // ensures the planet belongs in the same shard as the player
-            //var shard = new Repository<Shard>(new GalaxyStormDbContext());
-            //shard.All().FirstOrDefault(x => x.Id == 2).Planets.Where(y => !y.IsPopulated) // get shardId from user
-            //    .OrderBy(x => Guid.NewGuid())
-            //    .FirstOrDefault();
 
             planet.IsPopulated = true;
 
             pO.PlanetId = planet.Id;
-
-            planetRepo.SaveChanges();
 
             return pO;
         }

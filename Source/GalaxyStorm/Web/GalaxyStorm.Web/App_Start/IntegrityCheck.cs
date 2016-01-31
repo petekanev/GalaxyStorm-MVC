@@ -1,6 +1,5 @@
 ﻿namespace GalaxyStorm.Web.App_Start
 {
-    using System;
     using System.Linq;
     using Data;
     using Data.Models;
@@ -34,12 +33,10 @@
             shards.SaveChanges();
 
             var allUsers = users.All().Where(x => x.PlayerObjectId == null).ToList();
-            var randomShard = shards.All().OrderBy(x => Guid.NewGuid()).FirstOrDefault();
 
             foreach (var user in allUsers)
             {
                 user.PlayerObject = PlayerAssigner.AssignPlayerObject();
-                user.PlayerObject.Shard = randomShard;
                 users.Update(user);
             }
 
