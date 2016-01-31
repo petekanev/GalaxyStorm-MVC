@@ -9,7 +9,8 @@ namespace GalaxyStorm.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        //"~/Scripts/jquery-2.1.4.min.js"));
+                        "~/Scripts/jquery-2.2.0.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -24,9 +25,22 @@ namespace GalaxyStorm.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/theme/theme_dark.css",
+                      "~/Content/bootstrap.min.css",
+                //"~/Content/theme/theme_dark.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/public").Include(
+                    "~/Content/public/style.css",
+                    "~/Content/public/color.css",
+                    "~/Content/public/title-size.css",
+                    "~/Content/public/custom.css"
+                //"~/Content/public/vendor.css"
+                    ));
+
+            bundles.Add(new ScriptBundle("~/bundles/public").Include(
+                    "~/Scripts/public/vendor/vendor.js",
+                    "~/Scripts/public/variables.js",
+                    "~/Scripts/public/main.js"));
         }
     }
 }

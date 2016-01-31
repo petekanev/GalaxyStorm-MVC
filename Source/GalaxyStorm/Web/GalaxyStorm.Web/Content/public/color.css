@@ -1,0 +1,168 @@
+/* to change overlay background color, please edit assets/js/variable.js */
+
+/*==============================================================================
+common
+==============================================================================*/
+#site-loader {
+  /* site loader bg */
+  background-color: rgba(255, 255, 255, 0.99);
+}
+.loader {
+  /* loader icon */
+  border-color: rgba(0, 0, 0, 0.1);
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+.is-border #site-wrap {
+  /* border */
+  border-color: rgba(255, 255, 255, 0.99);
+}
+.amaran.bfc-theme .notify {
+  /* subscribe error message background */
+  background-color: rgba(62, 68, 89, 0.99);
+}
+/*======================================
+dark background, light text
+======================================*/
+.dark #menu-toggle {
+  /* form toggle */
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.dark #menu-toggle:after {
+  /* toggle circle effect */
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.dark .section-divider {
+  /* divider line */
+  background-color: rgba(255, 255, 255, 0.99);
+}
+.dark .countdown-period {
+  /* countdown period */
+  background-color: rgba(62, 68, 89, 0.4);
+}
+.dark #form-subscribe .form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.dark #form-subscribe button i {
+  /* button icon */
+  color: rgba(255, 255, 255, 0.5);
+}
+.dark #form-subscribe button:hover i {
+  /* button icon hover */
+  color: rgba(255, 255, 255, 0.99);
+}
+.dark #volume {
+  /* volume bg */
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.dark #volume span {
+  /* volume bar */
+  background-color: rgba(255, 255, 255, 0.99);
+}
+body.dark {
+  /* base */
+  color: rgba(248, 250, 255, 0.99);
+}
+.dark a:not(.btn) {
+  /* link */
+  color: rgba(248, 250, 255, 0.99);
+}
+.dark a:not(.btn):focus {
+  color: rgba(248, 250, 255, 0.99);
+}
+.dark a:not(.btn):hover {
+  color: rgba(248, 250, 255, 0.85);
+}
+.dark .form-control {
+  /* form */
+  color: rgba(248, 250, 255, 0.99);
+  border-color: rgba(248, 250, 255, 0.99);
+}
+.dark .form-control:focus {
+  border-color: rgba(248, 250, 255, 0.99);
+}
+.dark .form-control::-moz-placeholder {
+  color: rgba(248, 250, 255, 0.5);
+  opacity: 1;
+}
+.dark .form-control:-ms-input-placeholder {
+  color: rgba(248, 250, 255, 0.5);
+}
+.dark .form-control::-webkit-input-placeholder {
+  color: rgba(248, 250, 255, 0.5);
+}
+/*======================================
+light background, dark text
+======================================*/
+.light #menu-toggle {
+  /* form toggle */
+  background-color: rgba(62, 68, 89, 0.9);
+  color: rgba(248, 250, 255, 0.99);
+}
+.light #menu-toggle:after {
+  /* toggle circle effect */
+  background-color: rgba(248, 250, 255, 0.5);
+}
+.light .section-divider {
+  /* divider line */
+  background-color: rgba(62, 68, 89, 0.99);
+}
+.light .countdown-period {
+  /* countdown period */
+  background-color: rgba(62, 68, 89, 0.9);
+  color: rgba(248, 250, 255, 0.99);
+}
+.light #form .section-title,
+.light #form .section-subtitle {
+  color: rgba(248, 250, 255, 0.99);
+}
+.light #form-subscribe .form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.light #form-subscribe button i {
+  /* button icon */
+  color: rgba(255, 255, 255, 0.5);
+}
+.light #form-subscribe button:hover i {
+  /* button icon hover */
+  color: rgba(255, 255, 255, 0.99);
+}
+.light #volume {
+  /* volume bg */
+  background-color: rgba(62, 68, 89, 0.9);
+}
+.light #volume span {
+  /* volume bar */
+  background-color: rgba(255, 255, 255, 0.99);
+}
+body.light {
+  /* base */
+  color: rgba(62, 68, 89, 0.99);
+}
+.light a:not(.btn) {
+  /* link */
+  color: rgba(62, 68, 89, 0.99);
+}
+.light a:not(.btn):focus {
+  color: rgba(62, 68, 89, 0.99);
+}
+.light a:not(.btn):hover {
+  color: rgba(62, 68, 89, 0.85);
+}
+.light .form-control {
+  /* form */
+  color: rgba(248, 250, 255, 0.99);
+  border-color: rgba(248, 250, 255, 0.99);
+}
+.light .form-control:focus {
+  border-color: rgba(248, 250, 255, 0.99);
+}
+.light .form-control::-moz-placeholder {
+  color: rgba(248, 250, 255, 0.5);
+  opacity: 1;
+}
+.light .form-control:-ms-input-placeholder {
+  color: rgba(248, 250, 255, 0.5);
+}
+.light .form-control::-webkit-input-placeholder {
+  color: rgba(248, 250, 255, 0.5);
+}

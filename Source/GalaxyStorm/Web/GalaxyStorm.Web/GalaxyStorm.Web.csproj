@@ -233,11 +233,19 @@
   <ItemGroup>
     <Content Include="App_Data\PlanetNames.txt" />
     <Content Include="App_Data\ShardNames.txt" />
+    <Content Include="Content\backgrounds\public\bg-01.jpg" />
+    <Content Include="Content\backgrounds\public\bg-02.jpg" />
+    <Content Include="Content\backgrounds\public\bg-03.jpg" />
+    <Content Include="Content\backgrounds\public\bg-04.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\navbar.png" />
+    <Content Include="Content\public\color.css" />
+    <Content Include="Content\public\custom.css" />
+    <Content Include="Content\public\style.css" />
+    <Content Include="Content\public\title-size.css" />
+    <Content Include="Content\public\vendor.css" />
     <Content Include="Content\theme\theme_dark.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -277,6 +285,7 @@
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -288,6 +297,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\public\main.js" />
+    <Content Include="Scripts\public\variables.js" />
+    <Content Include="Scripts\public\vendor\vendor.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
