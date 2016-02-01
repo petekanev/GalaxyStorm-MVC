@@ -1,6 +1,7 @@
 ﻿namespace GalaxyStorm.Services.Data
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using Contracts;
     using GalaxyStorm.Data.Models;
@@ -31,6 +32,7 @@
         {
             var user = this.users
                 .All()
+                .Include(x => x.PlayerObject)
                 .FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
@@ -42,12 +44,7 @@
 
             var toLevel = player.Buildings.HeadQuartersLevel + 1;
 
-            if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuartersLevel,
-                this.logic.Buildings.Headquarters,
-                player.Resources.Energy,
-                player.Resources.Crystal,
-                player.Resources.Metal))
+            if (!this.CanBuild(player, toLevel, this.logic.Buildings.Headquarters))
             {
                 return null;
             }
@@ -90,12 +87,7 @@
 
             var toLevel = player.Buildings.BarracksLevel + 1;
 
-            if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuartersLevel,
-                this.logic.Buildings.Barracks,
-                player.Resources.Energy,
-                player.Resources.Crystal,
-                player.Resources.Metal))
+            if (!this.CanBuild(player, toLevel, this.logic.Buildings.Barracks))
             {
                 return null;
             }
@@ -143,12 +135,7 @@
 
             var toLevel = player.Buildings.ResearchCentreLevel + 1;
 
-            if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuartersLevel,
-                this.logic.Buildings.ResearchCentre,
-                player.Resources.Energy,
-                player.Resources.Crystal,
-                player.Resources.Metal))
+            if (!this.CanBuild(player, toLevel, this.logic.Buildings.ResearchCentre))
             {
                 return null;
             }
@@ -196,12 +183,7 @@
 
             var toLevel = player.Buildings.SolarCollectorLevel + 1;
 
-            if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuartersLevel,
-                this.logic.Buildings.SolarCollector,
-                player.Resources.Energy,
-                player.Resources.Crystal,
-                player.Resources.Metal))
+            if (!this.CanBuild(player, toLevel, this.logic.Buildings.SolarCollector))
             {
                 return null;
             }
@@ -249,12 +231,7 @@
 
             var toLevel = player.Buildings.CrystalExtractorLevel + 1;
 
-            if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuartersLevel,
-                this.logic.Buildings.CrystalExtractor,
-                player.Resources.Energy,
-                player.Resources.Crystal,
-                player.Resources.Metal))
+            if (!this.CanBuild(player, toLevel, this.logic.Buildings.CrystalExtractor))
             {
                 return null;
             }
@@ -302,12 +279,7 @@
 
             var toLevel = player.Buildings.MetalScrapperLevel + 1;
 
-            if (!this.CanBuild(toLevel,
-                player.Buildings.HeadQuartersLevel,
-                this.logic.Buildings.MetalScrapper,
-                player.Resources.Energy,
-                player.Resources.Crystal,
-                player.Resources.Metal))
+            if (!this.CanBuild(player, toLevel, this.logic.Buildings.MetalScrapper))
             {
                 return null;
             }
@@ -344,6 +316,7 @@
         {
             var user = this.users
                    .All()
+                   .Include(x => x.PlayerObject)
                    .FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
@@ -357,21 +330,27 @@
             {
                 case CurrentlyBuilding.Headquarters:
                     player.Buildings.HeadQuartersLevel += 1;
+                    player.Points.PointsPlanet += player.Buildings.HeadQuartersLevel * 100;
                     break;
                 case CurrentlyBuilding.Barracks:
                     player.Buildings.BarracksLevel += 1;
+                    player.Points.PointsPlanet += player.Buildings.BarracksLevel * 50;
                     break;
                 case CurrentlyBuilding.ResearchCentre:
                     player.Buildings.ResearchCentreLevel += 1;
+                    player.Points.PointsPlanet += player.Buildings.ResearchCentreLevel * 75;
                     break;
                 case CurrentlyBuilding.SolarCollector:
                     player.Buildings.SolarCollectorLevel += 1;
+                    player.Points.PointsPlanet += player.Buildings.SolarCollectorLevel * 10;
                     break;
                 case CurrentlyBuilding.CrystalExtractor:
                     player.Buildings.CrystalExtractorLevel += 1;
+                    player.Points.PointsPlanet += player.Buildings.CrystalExtractorLevel * 10;
                     break;
                 case CurrentlyBuilding.MetalScrapper:
                     player.Buildings.MetalScrapperLevel += 1;
+                    player.Points.PointsPlanet += player.Buildings.MetalScrapperLevel * 10;
                     break;
                 default:
                     break;
@@ -380,10 +359,18 @@
             player.Buildings.CurrentlyBuilding = CurrentlyBuilding.None;
             player.Buildings.StartTime = null;
             player.Buildings.EndTime = null;
+
+            this.users.Update(user);
+            this.users.SaveChanges();
         }
 
-        private bool CanBuild(int toLevel, int hqLevel, IBuilding buildingLogic, long energy, long crystal, long metal)
+        private bool CanBuild(PlayerObject pO, int toLevel, IBuilding buildingLogic)
         {
+            if (pO.Buildings.CurrentlyBuilding != CurrentlyBuilding.None)
+            {
+                return false;
+            }
+
             if (toLevel > buildingLogic.MaxLevel)
             {
                 return false;
@@ -394,16 +381,16 @@
                 return false;
             }
 
-            if (toLevel > hqLevel && buildingLogic.Name != "Headquarters")
+            if (toLevel > pO.Buildings.HeadQuartersLevel && buildingLogic.Name != "Headquarters")
             {
                 return false;
             }
 
             var requiredResources = buildingLogic.GetRequiredResources(toLevel);
 
-            return energy > requiredResources[0]
-                && crystal > requiredResources[1]
-                && metal > requiredResources[2];
+            return pO.Resources.Energy > requiredResources[0]
+                && pO.Resources.Crystal > requiredResources[1]
+                && pO.Resources.Metal > requiredResources[2];
         }
 
         private void SubstractResources(PlayerObject pO, int[] resources)
@@ -417,6 +404,5 @@
             pO.Resources.Crystal -= resources[1];
             pO.Resources.Metal -= resources[2];
         }
-
     }
 }

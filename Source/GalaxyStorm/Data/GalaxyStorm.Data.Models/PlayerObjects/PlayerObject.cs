@@ -22,7 +22,6 @@
 
         public Resources Resources { get; set; }
 
-
         public virtual ICollection<Report> Reports { get { return this.reports; } set { this.reports = value; } }
 
         public int BuildingsId { get; set; }

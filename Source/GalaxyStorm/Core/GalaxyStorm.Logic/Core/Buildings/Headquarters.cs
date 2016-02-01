@@ -55,9 +55,9 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
             return new[]
             {
-                (int) ((100 * EnergyCoeff) * (level * 0.75)),
-                (int) ((100 * CrystalCoeff) * (level * 0.75)),
-                (int) ((100 * MetalCoeff) * (level * 0.75))
+                (int) ((100 * EnergyCoeff) * ((level-1) * 0.75)),
+                (int) ((100 * CrystalCoeff) * ((level-1) * 0.75)),
+                (int) ((100 * MetalCoeff) * ((level-1) * 0.75))
             };
         }
     }

@@ -2,6 +2,7 @@
 {
     using System.Reflection;
     using Autofac;
+    using Hangfire;
 
     public class ServiceModule : Autofac.Module
     {

@@ -58,22 +58,22 @@
                     switch (buildings.CurrentlyBuilding)
                     {
                         case CurrentlyBuilding.Headquarters:
-                            RestoreResources(user, logicBuildings.Headquarters.GetRequiredResources(buildings.HeadQuartersLevel));
+                            RestoreResources(user, logicBuildings.Headquarters.GetRequiredResources(buildings.HeadQuartersLevel + 1));
                             break;
                         case CurrentlyBuilding.Barracks:
-                            RestoreResources(user, logicBuildings.Barracks.GetRequiredResources(buildings.BarracksLevel));
+                            RestoreResources(user, logicBuildings.Barracks.GetRequiredResources(buildings.BarracksLevel + 1));
                             break;
                         case CurrentlyBuilding.ResearchCentre:
-                            RestoreResources(user, logicBuildings.ResearchCentre.GetRequiredResources(buildings.ResearchCentreLevel));
+                            RestoreResources(user, logicBuildings.ResearchCentre.GetRequiredResources(buildings.ResearchCentreLevel + 1));
                             break;
                         case CurrentlyBuilding.SolarCollector:
-                            RestoreResources(user, logicBuildings.SolarCollector.GetRequiredResources(buildings.SolarCollectorLevel));
+                            RestoreResources(user, logicBuildings.SolarCollector.GetRequiredResources(buildings.SolarCollectorLevel + 1));
                             break;
                         case CurrentlyBuilding.CrystalExtractor:
-                            RestoreResources(user, logicBuildings.CrystalExtractor.GetRequiredResources(buildings.CrystalExtractorLevel));
+                            RestoreResources(user, logicBuildings.CrystalExtractor.GetRequiredResources(buildings.CrystalExtractorLevel + 1));
                             break;
                         case CurrentlyBuilding.MetalScrapper:
-                            RestoreResources(user, logicBuildings.MetalScrapper.GetRequiredResources(buildings.MetalScrapperLevel));
+                            RestoreResources(user, logicBuildings.MetalScrapper.GetRequiredResources(buildings.MetalScrapperLevel + 1));
                             break;
                         default:
                             throw new InvalidEnumArgumentException("Invalid enum value for CurrentlyBuilding. How did you get here?");
@@ -84,6 +84,8 @@
                     buildings.CurrentlyBuilding = CurrentlyBuilding.None;
                 }
             }
+
+            users.SaveChanges();
         }
 
         private static void RestoreResources(PlayerObject pO, int[] resources)
