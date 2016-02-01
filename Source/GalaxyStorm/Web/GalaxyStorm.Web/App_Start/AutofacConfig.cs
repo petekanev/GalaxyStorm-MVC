@@ -25,7 +25,7 @@
 
             var container = builder.Build();
 
-            //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             GlobalConfiguration.Configuration.UseAutofacActivator(container);
         }

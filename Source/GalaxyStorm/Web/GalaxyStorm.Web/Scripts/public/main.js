@@ -46,7 +46,6 @@ device detect
 site loader
 ==============================================================================*/
   function fn_siteLoader() {
-    $('#home .section-subtitle, #home .section-title span').lettering('words').children('span').lettering();
     $('.char, .col-countdown, .section-divider').css('opacity', 0);
     $('.word').css('display', 'inline-block');
 
@@ -54,7 +53,6 @@ site loader
     var easing = [0.710, 0.100, 0.3, 1.000];
     var titleCount = $('.section-title .char').length;
     var subtitleCount = $('.section-subtitle .char').length;
-    var countdownCount = $('.countdown-section').length;
     var stagger1 = _animationDuration/titleCount;
     var stagger2 = _animationDuration/subtitleCount;
     var stagger3 = _animationDuration;
@@ -162,51 +160,6 @@ site loader
   }
 
 /*==============================================================================
-menu
-==============================================================================*/
-  function fn_menu() {
-    var $menuToggle = $('#menu-toggle');
-    var $form = $('#form');
-
-    $menuToggle.on('click', function(e) {
-      e.preventDefault();
-
-      $body.toggleClass('menu-in');
-
-      if ($body.hasClass('menu-in')) {
-        $('#site-main, .header-brand, #site-footer').velocity('stop').velocity('fadeOut', {
-          duration: 500,
-          easing: 'easeOutQuart',
-          queue: false
-        });
-        $form.velocity('stop').velocity({
-          scale: [1, 0.5],
-          opacity: [0.85, 0]
-        }, {
-          display: 'block',
-          duration: 800,
-          easing: 'easeOutQuart',
-          queue: false
-        });
-      } else {
-        $('#site-main, .header-brand, #site-footer').velocity('stop').velocity('fadeIn', {
-          duration: 800,
-          easing: 'easeInQuart',
-          queue: false
-        });
-        $form.velocity('stop').velocity({
-          scale: 0.5,
-          opacity: 0
-        }, {
-          duration: 800,
-          easing: 'easeOutQuart',
-          queue: false
-        });
-      }
-    });
-  }
-
-/*==============================================================================
 core
 ==============================================================================*/
   function fn_core() {
@@ -243,109 +196,6 @@ effect
     } else if (_effect == 2) {
       fn_star();
     }
-  }
-
-  /* cloud */
-  function fn_cloud() {
-    $('#js-canvas').remove();
-    $('#effect').css('opacity', _cloudOpacity);
-
-    if ($('#effect').length) {
-      $body.addClass('is-cloud');
-      if (_cloudPosition == 1) {
-        $body.addClass('default-cloud');
-      } else if (_cloudPosition == 2) {
-        $body.addClass('bottom-cloud');
-      }
-      fn_cloud1();
-      fn_cloud2();
-      fn_cloud3();
-      fn_cloud4();
-    }
-  }
-
-  function fn_cloud1() {
-    var $cloud = $('#cloud1');
-
-    $cloud.velocity({
-      left: - $cloud.width() + 'px'
-    }, {
-      duration: _cloud1Duration,
-      ease: 'liner',
-      queue: false,
-      complete: function() {
-        $(this).velocity({
-          left: '100%'
-        }, {
-          duration: 0,
-          queue: false,
-          complete: fn_cloud1
-        });
-      }
-    });
-  }
-
-  function fn_cloud2() {
-    var $cloud = $('#cloud2');
-
-    $cloud.velocity({
-      left: - $cloud.width() + 'px'
-    }, {
-      duration: _cloud2Duration,
-      ease: 'liner',
-      queue: false,
-      complete: function() {
-        $(this).velocity({
-          left: '100%'
-        }, {
-          duration: 0,
-          queue: false,
-          complete: fn_cloud2
-        });
-      }
-    });
-  }
-
-  function fn_cloud3() {
-    var $cloud = $('#cloud3');
-
-    $cloud.velocity({
-      left: - $cloud.width() + 'px'
-    }, {
-      duration: _cloud3Duration,
-      ease: 'liner',
-      queue: false,
-      complete: function() {
-        $(this).velocity({
-          left: '100%'
-        }, {
-          duration: 0,
-          queue: false,
-          complete: fn_cloud3
-        });
-      }
-    });
-  }
-
-  function fn_cloud4() {
-    var $cloud = $('#cloud4');
-
-    $cloud.velocity({
-      left: - $cloud.width() + 'px'
-    }, {
-      duration: _cloud4Duration,
-      ease: 'liner',
-      queue: false,
-      complete: function() {
-        $(this).velocity({
-          left: '100%'
-        }, {
-          duration: 0,
-          queue: false,
-          complete: fn_cloud4
-        });
-      }
-    });
   }
 
   function fn_star() {
@@ -564,119 +414,11 @@ scrollbar
   }
 
 /*=================================================
-subscribe form
-=================================================*/
-  function fn_subscribeForm() {
-    var $form = $('#form-subscribe');
-
-    $form.validate({
-      rules: {
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      errorPlacement: function(error, element) {},
-      submitHandler: function(form) {
-        $(form).ajaxSubmit({
-          type: 'POST',
-          url: 'assets/php/subscribe.php',
-          dataType: 'json',
-          cache: false,
-          data: $form.serialize(),
-          beforeSubmit: function() {
-          },
-          success: function(data) {
-            if (data.code == 0) {
-              $form.validate().resetForm();
-              $form.find('.form-control').removeClass('valid error');
-              $form.find('button').blur();
-            }
-            $.amaran({
-              position: 'top right',
-              clearAll: true,
-              content: {
-                themeName: 'bfc-theme',
-                icon: data.code == 0 ? 'ion-checkmark-round' : 'ion-close-round',
-                status: data.code == 0 ? 'valid' : 'error',
-                message: data.message
-              },
-              themeTemplate: function(data) {
-                return '<div class="notify"><p class="notify-message"><i class="notify-icon ' +data.icon+ ' ' +data.status+ '"></i>' +data.message+ '</p></div>';
-              },
-              afterEnd : function() {
-                $('.amaran-wrapper').remove();
-              }
-            });
-          },
-          error: function(data) {
-            $.amaran({
-              position: 'top right',
-              clearAll: true,
-              content: {
-                themeName: 'bfc-theme',
-                icon: 'ion-close-round',
-                message: 'An error occurred. Please try again later'
-              },
-              themeTemplate: function(data) {
-                return '<div class="notify"><p class="notify-message"><i class="notify-icon error ' +data.icon+ '"></i>' +data.message+ '</p></div>';
-              },
-              afterEnd : function() {
-                $('.amaran-wrapper').remove();
-              }
-            });
-          }
-        });
-      },
-      invalidHandler: function(event, validator) {
-        var errors = validator.numberOfInvalids();
-        if (errors) {
-          var message = errors == 1
-            ? 'Please enter a valid email address'
-            : 'Please enter a valid email address';
-          $.amaran({
-            position: 'top right',
-            clearAll: true,
-            content: {
-              themeName: 'bfc-theme',
-              icon: 'ion-close-round',
-              message: message
-            },
-            themeTemplate: function(data) {
-              return '<div class="notify"><p class="notify-message"><i class="notify-icon error ' +data.icon+ '"></i>' +data.message+ '</p></div>';
-            },
-            afterEnd : function() {
-              $('.amaran-wrapper').remove();
-            }
-          });
-        }
-      }
-
-    });
-  }
-
-/*=================================================
 ie9 placeholder
 =================================================*/
   function fn_placeholder() {
     if (isIE9) {
       $('input, textarea').placeholder({customClass: 'placeholder'});
-    }
-  }
-
-/*=================================================
-countdown
-=================================================*/
-  function fn_countdown() {
-    var $countdown = $('#countdown');
-
-    if ($countdown.length && _countdown) {
-      $countdown.downCount({
-        date: _countdownDate,
-        offset: _countdownTimezone
-      });
-    } else {
-      $countdown.remove();
     }
   }
 
@@ -728,168 +470,12 @@ background control
   }
 
 /*=================================================
- * youtube video background
-=================================================*/
-  function fn_ytVideoBg() {
-    var $video = $('#video');
-    var $volume = $('#volume');
-    var $volumeBar = $volume.find('span');
-
-    $body.addClass('is-yt-video');
-    if (!isMobile) {
-      $video.attr('data-property', '{videoURL: _ytUrl, autoPlay: true, loop: _ytLoop, startAt: _ytStart, stopAt: _ytEnd, mute: _ytMute, quality: _ytQuality, realfullscreen: true, optimizeDisplay: true, addRaster: false, showYTLogo: false, showControls: false, stopMovieOnBlur: false, containment: "self"}');
-      $video.YTPlayer();
-
-      if (_ytRemoveVolume) {
-        $volume.remove();
-      }
-      if (_ytMute) {
-        $body.addClass('volume-off');
-      } else {
-        fn_volumeOn();
-        $body.addClass('volume-on');
-      }     
-      $volume.on('click', function() {
-        var video = document.getElementById('video-bg');
-        $body.toggleClass('volume-off volume-on', function() {
-          if ($body.hasClass('volume-off')) {
-            $video.unmuteYTPVolume();
-            fn_volumeOn();
-          } else if ($body.hasClass('volume-on')) {
-            $video.muteYTPVolume();
-            $volumeBar.each(function() {
-              $(this).velocity('stop', true).velocity({
-                height: '5px'
-              });
-            });
-          }
-        }());
-      });
-    }
-  }
-
-/*=================================================
-video background
-=================================================*/
-  function fn_videoBg() {
-    var $video = $('#video');
-    var $volume = $('#volume');
-    var $volumeBar = $volume.find('span');
-
-    $body.addClass('is-video');
-    if (!isMobile) {
-      $video.append('<video id="video-bg" autoplay loop><source src="assets/video/video.mp4" type="video/mp4"></video>');
-      if (_videoMute) {
-        var video = document.getElementById('video-bg');
-        video.muted = true;
-      }
-      if (_removeVolume) {
-        $volume.remove();
-      }
-      if (_videoMute) {
-        $body.addClass('volume-off');
-      } else {
-        fn_volumeOn();
-        $body.addClass('volume-on');
-      }     
-      $volume.on('click', function() {
-        var video = document.getElementById('video-bg');
-        $body.toggleClass('volume-off volume-on', function() {
-          if ($body.hasClass('volume-off')) {
-            video.muted = false;
-            fn_volumeOn();
-          } else if ($body.hasClass('volume-on')) {
-            video.muted = true;
-            $volumeBar.each(function() {
-              $(this).velocity('stop', true).velocity({
-                height: '5px'
-              });
-            });
-          }
-        }());
-      });
-    }
-  }
-
-/*==============================================================================
-volume
-==============================================================================*/
-  function fn_audio() {
-    var $volume = $('#volume');
-    var $volumeBar = $volume.find('span');
-
-    if (_audio) {
-      if (_bgStyle == 1 || _bgStyle == 2) {
-        var $audioPlayer = document.getElementById('audio-player');
-
-        if (isMobile) {
-          $body.addClass('volume-off');
-          $audioPlayer.pause();
-        } else {
-          $body.addClass('volume-on');
-          fn_volumeOn();
-          $audioPlayer.play();
-        }
-
-        $volume.on('click', function(e) {
-          e.preventDefault();
-
-          $body.toggleClass('volume-on volume-off');
-          if ($body.hasClass('volume-on')) {
-            fn_volumeOn();
-            $audioPlayer.play();
-          } else if ($body.hasClass('volume-off')) {
-            $audioPlayer.pause();
-            $volumeBar.each(function() {
-              $(this).velocity('stop', true).velocity({
-                height: '5px'
-              });
-            });
-          }
-        });
-      }
-    } else if (_bgStyle == 1 || _bgStyle == 2) {
-      $('#audio-player').add($volume).remove();
-    }
-  }
-
-  function fn_volumeOn() {
-    var $volume = $('#volume');
-    var $volumeBar = $volume.find('span');
-
-    $volumeBar.each(function() {
-      var volumeHeight = Math.random() * 15 + 5;
-      var volumeTiming = volumeHeight * 10;
-
-      $(this).velocity({
-        height: volumeHeight
-      }, {
-        duration: volumeTiming,
-        complete: function() {
-          fn_volumeOn();
-        }
-      });
-    });
-  }
-
-/*=================================================
-window on load
-=================================================*/
-  $(window).on('load', function() {
-
-    fn_audio();
-  });
-
-/*=================================================
 document on ready
 =================================================*/
   $(document).on('ready', function() {
 
     fn_core();
-    fn_menu();
-    fn_countdown();
     fn_siteLoader();
-    fn_subscribeForm();
     fn_scrollbar();
     fn_bgStyle();
     fn_effect();

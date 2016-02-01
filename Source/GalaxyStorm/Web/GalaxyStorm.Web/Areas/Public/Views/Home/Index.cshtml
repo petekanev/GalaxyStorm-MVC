@@ -1,9 +1,47 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Galaxy Storm - <small>the game</small></h2>
+<br />
+<div class="panel">
+    <div class="panel-body">
+        <h2 class="text-center">Join hundreds of players in a race for world domination!</h2>
+        <br />
+        <div class="well">
+            <h4>Active Shards</h4>
+            <div class="text-center">
+                <p>Nebula x15 - 24 players</p>
+                <p>SonjuL - 18 players</p>
+            </div>
+        </div>
+        <br/>
+        <div class="well">
+            <h4>About the game</h4>
+            <div class="text-center">
+                Notice how the header declares the cookies property as an NSArray but the implementation declares the backing instance variable as an NSMutableArray. That’s a common trick when you don’t want users of a class to modify the array; they can only read from it.
+                Also, there is a reason you’re using an array here to store the cookie objects and not an NSSet: It’s convenient to remember the order of the cookie objects so that you know which cookies are at the ends of the chain. This makes it easier to combine multiple chains into a single one to detect those L- or T-shapes.
+                To start putting these new chain objects to good use, open RWTLevel.h and add the following import:
+                #import "RWTChain.h"
+                Next, add a public method declaration:
+                - (NSSet *)removeMatches;
+                Switch over to the implementation in RWTLevel.m. Before you get to removeMatches, you need a couple of helper methods to do the heavy lifting of finding chains.
+            </div>
+        </div>
+        <br/>
+        <div class="well">
+            <h4>Leaderboards</h4>
+            <div class="text-center">
+                
+            </div>
+        </div>
+        <br />
+        <div class="text-center">
+            @Html.ActionLink("Log in", "Login", "Account", null, new {@class = "btn btn-default btn-block"})
+            @Html.ActionLink("Join us!", "Register", "Account", null, new { @class = "btn btn-default btn-block" })
+        </div>
+    </div>
+</div>
 
 @Html.ActionLink("upHQ", "UpgradeHQ");
 

@@ -25,7 +25,8 @@ namespace GalaxyStorm.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.min.css",
+                      // "~/Content/bootstrap.min.css",
+                      "~/Content/theme/bootstrap-theme-dark.min.css",
                 //"~/Content/theme/theme_dark.css",
                       "~/Content/site.css"));
 
@@ -34,13 +35,19 @@ namespace GalaxyStorm.Web
                     "~/Content/public/color.css",
                     "~/Content/public/title-size.css",
                     "~/Content/public/custom.css"
-                //"~/Content/public/vendor.css"
                     ));
 
             bundles.Add(new ScriptBundle("~/bundles/public").Include(
                     "~/Scripts/public/vendor/vendor.js",
                     "~/Scripts/public/variables.js",
                     "~/Scripts/public/main.js"));
+
+            bundles.Add(new StyleBundle("~/Content/common").Include(
+                    "~/Content/public/style.css",
+                    "~/Content/public/color.css",
+                    "~/Content/public/title-size.css",
+                    "~/Content/public/custom.css"
+                    ));
         }
     }
 }
