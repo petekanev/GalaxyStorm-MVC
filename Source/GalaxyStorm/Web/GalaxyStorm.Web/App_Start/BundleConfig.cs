@@ -34,16 +34,21 @@ namespace GalaxyStorm.Web
                     "~/Content/public/custom.css"
                     ));
 
-            bundles.Add(new ScriptBundle("~/bundles/public").Include(
-                    "~/Scripts/public/vendor/vendor.js",
-                    "~/Scripts/public/variables.js",
-                    "~/Scripts/public/main.js"));
-
             bundles.Add(new StyleBundle("~/Content/common").Include(
                     "~/Content/public/style.css",
                     "~/Content/public/color.css",
                     "~/Content/public/title-size.css"
                     ));
+
+            bundles.Add(new ScriptBundle("~/bundles/public").Include(
+                    "~/Scripts/common/vendor/vendor.js",
+                    "~/Scripts/public/variables.js",
+                    "~/Scripts/common/main.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                    "~/Scripts/common/vendor/vendor.js",
+                    "~/Scripts/common/variables.js",
+                    "~/Scripts/common/main.js"));
         }
     }
 }

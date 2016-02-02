@@ -34,9 +34,6 @@ textarea {
     background: transparent; /* optional: just make scrollbar invisible */
 }
 
-span.glyphicon, i.glyphicon {
-}
-
 .size-18 {
     font-size: 18px;
 }

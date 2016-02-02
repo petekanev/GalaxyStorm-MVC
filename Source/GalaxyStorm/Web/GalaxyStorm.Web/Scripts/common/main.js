@@ -414,15 +414,6 @@ scrollbar
   }
 
 /*=================================================
-ie9 placeholder
-=================================================*/
-  function fn_placeholder() {
-    if (isIE9) {
-      $('input, textarea').placeholder({customClass: 'placeholder'});
-    }
-  }
-
-/*=================================================
 background control
 =================================================*/
   function fn_bgStyle() {

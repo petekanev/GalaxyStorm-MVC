@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Account\AccountViewModels.cs" />
     <Compile Include="Account\ManageViewModels.cs" />
+    <Compile Include="Common\ResourcesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

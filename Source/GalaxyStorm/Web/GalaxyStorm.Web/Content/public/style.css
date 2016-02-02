@@ -552,7 +552,7 @@ section {
 }
 .is-img #img {
   display: block;
-  background-image: url(../img/bg/bg.jpg);
+  background-image: url(../backgrounds/public/bg-02.jpg);
 }
 .is-video #img {
   display: block;

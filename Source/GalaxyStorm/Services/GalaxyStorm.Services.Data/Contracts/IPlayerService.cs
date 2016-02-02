@@ -2,6 +2,7 @@
 {
     using System;
     using GalaxyStorm.Data.Models;
+    using GalaxyStorm.Data.Models.PlayerObjects;
 
     public interface IPlayerService
     {
@@ -10,5 +11,7 @@
         void AssignPlayerObject(ApplicationUser user);
 
         void AssignPlayerObjectWithShard(ApplicationUser user, int shardId);
+
+        Resources GetPlayerResources(string userId);
     }
 }

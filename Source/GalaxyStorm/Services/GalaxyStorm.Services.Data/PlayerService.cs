@@ -1,6 +1,7 @@
 ﻿namespace GalaxyStorm.Services.Data
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using Contracts;
     using GalaxyStorm.Data.Models;
@@ -121,6 +122,21 @@
             pO.PlanetId = planet.Id;
 
             user.PlayerObject = pO;
+        }
+
+        public Resources GetPlayerResources(string userId)
+        {
+            var user = this.users
+               .All()
+               .Include(x => x.PlayerObject)
+               .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.PlayerObject.Resources;
         }
     }
 }
