@@ -1,22 +1,22 @@
-﻿using System.Web.Mvc;
-
-namespace GalaxyStorm.Web.Areas.AdmiralsQuarters
+﻿namespace GalaxyStorm.Web.Areas.Admiral
 {
-    public class AdmiralsQuartersAreaRegistration : AreaRegistration 
+    using System.Web.Mvc;
+
+    public class AdmiralAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "AdmiralsQuarters";
+                return "Admiral";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "AdmiralsQuarters_default",
-                "AdmiralsQuarters/{controller}/{action}/{id}",
+                "Admiral_default",
+                "Admiral/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

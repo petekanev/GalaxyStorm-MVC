@@ -3,30 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Galaxy Storm - the Game</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/public")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Galaxy Storm", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                @Html.Partial("_NavLinksPartial")
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-        @Html.Partial("_ResourceHUDPartial")
-    </div>
+    @Html.Partial("_NavbarPartial")
 
     <!-- loader -->
     <div id="site-loader">

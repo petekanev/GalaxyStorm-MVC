@@ -1,4 +1,4 @@
-﻿namespace GalaxyStorm.Web.Areas.AdmiralsQuarters.Controllers
+﻿namespace GalaxyStorm.Web.Areas.Admiral.Controllers
 {
     using System.Web.Mvc;
 

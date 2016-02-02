@@ -1,0 +1,42 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Galaxy Storm", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="dropdown">
+                        <a href="/#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="ion-planet size-18"> </i> Planet <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Planet/Preview"><i class="ion-ios-world size-18"> </i> Preview</a></li>
+                            <li><a href="/Planet/Preview"><i class="ion-hammer size-18"> </i> Build</a></li>
+                            <li><a href="/Planet/Preview"><i class="ion-ios-flask size-18"> </i> Research</a></li>
+                            <li><a href="/Planet/Preview"><i class="ion-jet size-18"> </i> Recruit</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/"><i class="ion-jet size-18"> </i> Fleet</a></li>
+                    <li><a href="/"><i class="ion-ios-ionic-outline size-18"> </i> Shard</a></li>
+                }
+
+                @if (Request.IsAuthenticated && User.IsInRole("Admiral"))
+                {
+                    <li><a href="/AdmiralsQuarters/Home"><i class="ion-settings size-18"> </i> Admiral</a></li>
+                }
+
+                <li><a href="/"><i class="ion-information size-18"> </i> Info</a></li>
+            </ul>
+
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    @Html.Partial("_ResourceHUDPartial")
+</div>

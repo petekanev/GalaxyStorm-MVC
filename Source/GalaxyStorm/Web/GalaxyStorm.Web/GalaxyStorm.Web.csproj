@@ -216,12 +216,12 @@
     <Compile Include="App_Start\IntegrityCheck.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\AdmiralsQuarters\AdmiralsQuartersAreaRegistration.cs" />
-    <Compile Include="Areas\AdmiralsQuarters\Controllers\BroadcastController.cs" />
-    <Compile Include="Areas\AdmiralsQuarters\Controllers\SettingsController.cs" />
-    <Compile Include="Areas\AdmiralsQuarters\Controllers\ShardsController.cs" />
-    <Compile Include="Areas\AdmiralsQuarters\Controllers\SupplementsController.cs" />
-    <Compile Include="Areas\AdmiralsQuarters\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admiral\AdmiralAreaRegistration.cs" />
+    <Compile Include="Areas\Admiral\Controllers\BroadcastController.cs" />
+    <Compile Include="Areas\Admiral\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Admiral\Controllers\ShardsController.cs" />
+    <Compile Include="Areas\Admiral\Controllers\SupplementsController.cs" />
+    <Compile Include="Areas\Admiral\Controllers\UsersController.cs" />
     <Compile Include="Areas\Planet\Controllers\BuildingsController.cs" />
     <Compile Include="Areas\Planet\Controllers\FleetController.cs" />
     <Compile Include="Areas\Planet\Controllers\PreviewController.cs" />
@@ -276,15 +276,15 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\Planet\Views\web.config" />
-    <Content Include="Areas\AdmiralsQuarters\Views\web.config" />
+    <Content Include="Areas\Admiral\Views\web.config" />
     <Content Include="Areas\Public\Views\web.config" />
     <Content Include="Areas\Shard\Views\web.config" />
     <Content Include="Areas\Profile\Views\web.config" />
-    <None Include="Areas\AdmiralsQuarters\Views\Broadcast\Index.cshtml" />
-    <None Include="Areas\AdmiralsQuarters\Views\Settings\Index.cshtml" />
-    <None Include="Areas\AdmiralsQuarters\Views\Shards\Index.cshtml" />
-    <None Include="Areas\AdmiralsQuarters\Views\Supplements\Index.cshtml" />
-    <None Include="Areas\AdmiralsQuarters\Views\Users\Index.cshtml" />
+    <None Include="Areas\Admiral\Views\Broadcast\Index.cshtml" />
+    <None Include="Areas\Admiral\Views\Settings\Index.cshtml" />
+    <None Include="Areas\Admiral\Views\Shards\Index.cshtml" />
+    <None Include="Areas\Admiral\Views\Supplements\Index.cshtml" />
+    <None Include="Areas\Admiral\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\Manage\Index.cshtml" />
     <None Include="Areas\Planet\Views\Buildings\Index.cshtml" />
     <None Include="Areas\Planet\Views\Fleet\Index.cshtml" />
@@ -353,11 +353,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ResourceHUDPartial.cshtml" />
-    <Content Include="Views\Shared\_NavLinksPartial.cshtml" />
+    <Content Include="Views\Shared\_NavbarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\AdmiralsQuarters\Models\" />
-    <Folder Include="Areas\AdmiralsQuarters\Views\Shared\" />
+    <Folder Include="Areas\Admiral\Models\" />
+    <Folder Include="Areas\Admiral\Views\Shared\" />
     <Folder Include="Areas\Planet\Models\" />
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Public\Models\" />
