@@ -24,17 +24,17 @@
                 <ul class="nav navbar-nav">
                     @if (Request.IsAuthenticated)
                     {
-                        <li><a href="/">Planet <b class="caret"></b></a></li>
-                        <li><a href="/">Fleet</a></li>
-                        <li><a href="/">Shard</a></li>
+                        <li><a href="/"><i class="ion-planet size-18"> </i> Planet <b class="caret"></b></a></li>
+                        <li><a href="/"><i class="ion-jet size-18"> </i> Fleet</a></li>
+                        <li><a href="/"><i class="ion-ios-ionic-outline size-18"> </i> Shard</a></li>
 
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Admiral"))
                     {
-                        <li><a href="/AdmiralsQuarters/Home"><span class="glyphicon glyphicon-king"></span> Admiral</a></li>
+                        <li><a href="/AdmiralsQuarters/Home"><i class="ion-settings size-18"> </i> Admiral</a></li>
                     }
 
-                    <li><a href="/"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
+                    <li><a href="/"><i class="ion-ios-information-empty size-18"> </i> Info</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -43,15 +43,15 @@
             <div style="background-color: #333;padding: 5px 0">
                 <button class="btn btn-warning">
                     E:
-                    <span class=""> 250</span>
+                    <i class="ion-ios-sunny-outline size-18"> </i> 250
                 </button>
                 <button class="btn btn-danger">
                     C:
-                    <span class=""> 250</span>
+                    <i class="ion-ios-flower-outline size-18"> </i> 250
                 </button>
                 <button class="btn btn-primary">
                     M:
-                    <span class=""> 250</span>
+                    <i class="ion-ios-cog-outline size-18"> </i> 250
                 </button>
             </div>
         </div>

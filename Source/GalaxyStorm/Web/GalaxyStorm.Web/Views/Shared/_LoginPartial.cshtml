@@ -3,14 +3,14 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="/#"><span class="glyphicon glyphicon-send"></span> Reports <span class="badge">1</span></a>
+                <a href="/#"><i class="ion-ios-bell-outline size-18"> </i> Reports <span class="badge">1</span></a>
             </li>
             <li>
-                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
+                <a href="/#"><i class="ion-wrench size-18"> </i> @User.Identity.GetUserName()</a>
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
