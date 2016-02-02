@@ -18,10 +18,41 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                @Html.ActionLink("Galaxy Storm", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li><a href="/">Planet <b class="caret"></b></a></li>
+                        <li><a href="/">Fleet</a></li>
+                        <li><a href="/">Shard</a></li>
+
+                    }
+                    @if (Request.IsAuthenticated && User.IsInRole("Admiral"))
+                    {
+                        <li><a href="/AdmiralsQuarters/Home"><span class="glyphicon glyphicon-king"></span> Admiral</a></li>
+                    }
+
+                    <li><a href="/"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        <div style="position: absolute; left: 0; right: 0; z-index: 2; width: 100%; margin: 0 auto; text-align: center;">
+            <div style="background-color: #333;padding: 5px 0">
+                <button class="btn btn-warning">
+                    E:
+                    <span class=""> 250</span>
+                </button>
+                <button class="btn btn-danger">
+                    C:
+                    <span class=""> 250</span>
+                </button>
+                <button class="btn btn-primary">
+                    M:
+                    <span class=""> 250</span>
+                </button>
             </div>
         </div>
     </div>
@@ -34,7 +65,6 @@
 
     <div id="site-wrap">
 
-        <!-- background -->
         <div id="bg">
             <div id="img"></div>
             <div id="overlay"></div>
@@ -43,12 +73,12 @@
 
         <div class="container body-content">
             @RenderBody()
-            <hr />
+
             <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                <hr />
+                <p class="text-center">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             </footer>
         </div>
-
     </div>
 
     @Scripts.Render("~/bundles/jquery")

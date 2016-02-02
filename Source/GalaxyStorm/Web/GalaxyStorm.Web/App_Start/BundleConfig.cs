@@ -9,7 +9,6 @@ namespace GalaxyStorm.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        //"~/Scripts/jquery-2.1.4.min.js"));
                         "~/Scripts/jquery-2.2.0.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -25,9 +24,7 @@ namespace GalaxyStorm.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      // "~/Content/bootstrap.min.css",
                       "~/Content/theme/bootstrap-theme-dark.min.css",
-                //"~/Content/theme/theme_dark.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/public").Include(
@@ -45,8 +42,7 @@ namespace GalaxyStorm.Web
             bundles.Add(new StyleBundle("~/Content/common").Include(
                     "~/Content/public/style.css",
                     "~/Content/public/color.css",
-                    "~/Content/public/title-size.css",
-                    "~/Content/public/custom.css"
+                    "~/Content/public/title-size.css"
                     ));
         }
     }

@@ -205,7 +205,7 @@ effect
     $body.addClass('is-star');
 
     function callCanvas (canvas) {
-      var screenpointSplitt = 12000
+      var screenpointSplitt = 14000
       var movingSpeed = 0.2
       var viewportWidth = $(window).width();
       var viewportHeight = $(window).height();

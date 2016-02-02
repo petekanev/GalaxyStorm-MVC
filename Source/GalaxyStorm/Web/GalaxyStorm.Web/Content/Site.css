@@ -1,6 +1,7 @@
 ﻿/* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-top: 80px !important;
+    padding-top: 120px !important;
+    padding-bottom: 20px !important;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -17,4 +18,12 @@ input,
 select,
 textarea {
     max-width: 380px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+span.glyphicon, i.glyphicon {
 }
