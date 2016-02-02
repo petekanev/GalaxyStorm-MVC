@@ -21,8 +21,8 @@ textarea {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
 }
 
 span.glyphicon, i.glyphicon {
@@ -34,4 +34,26 @@ span.glyphicon, i.glyphicon {
 
 .size-28 {
     font-size: 28px;
+}
+
+.border-right-sharp {
+    border-color: #222 transparent transparent #222;
+    border-style: solid;
+    border-width: 38px 23px 17px 22px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    bottom: -2px;
+    right: -15%;
+}
+
+.border-left-sharp {
+    border-color: #222 #222 transparent transparent;
+    border-style: solid;
+    border-width: 38px 23px 17px 22px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    bottom: -2px;
+    right: 100%;
 }
