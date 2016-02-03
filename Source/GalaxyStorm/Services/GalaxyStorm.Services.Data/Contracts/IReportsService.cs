@@ -11,5 +11,9 @@
         IQueryable<Report> AllReports(string userId);
 
         IQueryable<Report> UnreadReports(string userId);
+
+        void Broadcast(Report report);
+
+        void BroadcastToShard(int shardId, Report report);
     }
 }

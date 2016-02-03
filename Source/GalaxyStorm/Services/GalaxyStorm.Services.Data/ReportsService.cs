@@ -71,5 +71,36 @@
             reports.Update(report);
             reports.SaveChanges();
         }
+
+        public void Broadcast(Report report)
+        {
+            var usersToBroadCastTo = this.users
+                .All()
+                .Include(x => x.PlayerObject);
+
+            foreach (var user in usersToBroadCastTo)
+            {
+                user.PlayerObject.Reports.Add(report);
+                this.users.Update(user);
+            }
+
+            this.users.SaveChanges();
+        }
+
+        public void BroadcastToShard(int shardId, Report report)
+        {
+            var usersToBroadCastTo = this.users
+                   .All()
+                   .Include(x => x.PlayerObject)
+                   .Where(x => x.PlayerObject.Planet.ShardId == shardId);
+
+            foreach (var user in usersToBroadCastTo)
+            {
+                user.PlayerObject.Reports.Add(report);
+                this.users.Update(user);
+            }
+
+            this.users.SaveChanges();
+        }
     }
 }
