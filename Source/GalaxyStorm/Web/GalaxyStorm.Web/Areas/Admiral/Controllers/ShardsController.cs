@@ -1,8 +1,9 @@
 ﻿namespace GalaxyStorm.Web.Areas.Admiral.Controllers
 {
     using System.Web.Mvc;
+    using Infrastructure;
 
-    public class ShardsController : Controller
+    public class ShardsController : AdminController
     {
         // GET: AdmiralsQuarters/Shards
         public ActionResult Index()

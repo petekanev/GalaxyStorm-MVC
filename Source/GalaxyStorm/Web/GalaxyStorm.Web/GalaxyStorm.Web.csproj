@@ -242,6 +242,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AdminController.cs" />
+    <Compile Include="Infrastructure\UsersController.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Modules\EfModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -362,6 +364,8 @@
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Shard\Models\" />
     <Folder Include="Areas\Shard\Views\Shared\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

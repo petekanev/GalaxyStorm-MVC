@@ -7,6 +7,8 @@
     using GalaxyStorm.Data.Models;
     using GalaxyStorm.Data.Models.PlayerObjects;
     using GalaxyStorm.Data.Repositories;
+    using Logic.Core;
+    using Logic.Core.Buildings;
 
     public class PlayerService : IPlayerService
     {
@@ -16,11 +18,14 @@
 
         private readonly IRepository<Shard> shards;
 
-        public PlayerService(IRepository<ApplicationUser> users, IRepository<Planet> planets, IRepository<Shard> shards)
+        private readonly ILogicProvider logic;
+
+        public PlayerService(IRepository<ApplicationUser> users, IRepository<Planet> planets, IRepository<Shard> shards, ILogicProvider logic)
         {
             this.users = users;
             this.planets = planets;
             this.shards = shards;
+            this.logic = logic;
         }
 
         public void ReassignPlayerObject(string userId)
@@ -137,6 +142,50 @@
             }
 
             return user.PlayerObject.Resources;
+        }
+
+        public long[] GetHourlyResourceIncome(string userId)
+        {
+            var user = this.users
+                .All()
+                .Include(x => x.PlayerObject)
+                .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var resourcesIncome = new long[3];
+            var moreResourcesTechnology =
+                this.logic.Technologies.MoreResources.Modifier[user.PlayerObject.Technologies.MoreResourcesLevel];
+            var energyIncome =
+                this.logic.Buildings.SolarCollector.ResourceGeneration[user.PlayerObject.Buildings.SolarCollectorLevel];
+            var crystalIncome =
+                this.logic.Buildings.CrystalExtractor.ResourceGeneration[user.PlayerObject.Buildings.CrystalExtractorLevel];
+            var metalIncome =
+                this.logic.Buildings.MetalScrapper.ResourceGeneration[user.PlayerObject.Buildings.MetalScrapperLevel];
+
+            resourcesIncome[0] = (long) (energyIncome + (energyIncome*moreResourcesTechnology));
+            resourcesIncome[1] = (long) (crystalIncome + (crystalIncome*moreResourcesTechnology));
+            resourcesIncome[2] = (long) (metalIncome + (metalIncome*moreResourcesTechnology));
+
+            return resourcesIncome;
+        }
+
+        public PlayerObject GetPlayerInformation(string userId)
+        {
+            var user = this.users
+                .All()
+                .Include(x => x.PlayerObject)
+                .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.PlayerObject;
         }
     }
 }
