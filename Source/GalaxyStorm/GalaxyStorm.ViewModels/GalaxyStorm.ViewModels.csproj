@@ -63,6 +63,7 @@
     <Compile Include="Buildings\ResearchCentreViewModel.cs" />
     <Compile Include="Buildings\SolarCollectorViewModel.cs" />
     <Compile Include="Common\CompletePlayerViewModel.cs" />
+    <Compile Include="Common\PlanetViewModel.cs" />
     <Compile Include="Common\ResourcesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\GalaxyStorm.Common\GalaxyStorm.Common.csproj">
+      <Project>{58EB223D-5336-4BF0-954C-E38FB4DF2F79}</Project>
+      <Name>GalaxyStorm.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj">
       <Project>{55085a4d-ff06-4e40-948b-c40d07452b52}</Project>
       <Name>GalaxyStorm.Data.Models</Name>

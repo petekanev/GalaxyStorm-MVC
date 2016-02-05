@@ -15,19 +15,10 @@
 
         public int Y { get; set; }
 
-        /// <summary>
-        /// A value from 1 to 0 that amplifies energy resource generation
-        /// </summary>
         public double EnergyModifier { get; set; }
 
-        /// <summary>
-        /// A value from 1 to 0 that amplifies crystal resource generation
-        /// </summary>
         public double CrystalModifier { get; set; }
 
-        /// <summary>
-        /// A value from 1 to 0 that amplifies metal resource generation
-        /// </summary>
         public double MetalModifier { get; set; }
 
         public bool IsPopulated { get; set; }

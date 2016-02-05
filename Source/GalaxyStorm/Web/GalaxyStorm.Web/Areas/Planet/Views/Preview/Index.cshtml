@@ -11,6 +11,17 @@
 </div>
 
 <div class="well">
+<h4>Planet <small>Shard: @Model.Planet.ShardTitle</small></h4>
+    <hr />
+    <div class="row">
+        <p class="text-center text-success">@Model.Planet.Title (@Model.Planet.X : @Model.Planet.Y)</p>
+        <p class="text-center">
+            Energy modifier: <span class="text-info">@Model.Planet.EnergyModifier</span>&nbsp;&nbsp;
+            Crystals modifier: <span class="text-danger">@Model.Planet.CrystalModifier</span>&nbsp;&nbsp;
+            Metal modifier: <span class="text-primary">@Model.Planet.MetalModifier</span>&nbsp;
+        </p>
+    </div>
+    <br />
     <h4>Resources</h4>
     <hr />
     <div class="row">
@@ -44,16 +55,16 @@
                     else
                     {
                         if (@Model.Buildings.Headquarters.Level > 0)
-                         {
-                             <p>Level @Model.Buildings.Headquarters.Level</p>
-                         }
-                         else
-                         {
+                        {
+                            <p>Level @Model.Buildings.Headquarters.Level</p>
+                        }
+                        else
+                        {
                             <p>Not built yet! (Requires HQ Level @Model.Buildings.Headquarters.Prerequisites)</p>
-                         }
+                        }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.Headquarters.Level * Model.Buildings.Headquarters.MaxLevel)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.Headquarters.Level*Model.Buildings.Headquarters.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -73,7 +84,7 @@
                     <hr />
                     @if (@Model.Buildings.CurrentlyBuilding == "ResearchCentre")
                     {
-                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Buildings.MinutesLeftToBuild) minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
                                 <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
@@ -92,7 +103,7 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.ResearchCentre.Level * Model.Buildings.ResearchCentre.MaxLevel)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.ResearchCentre.Level*Model.Buildings.ResearchCentre.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -112,7 +123,7 @@
                     <hr />
                     @if (@Model.Buildings.CurrentlyBuilding == "Barracks")
                     {
-                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Buildings.MinutesLeftToBuild) minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
                                 <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
@@ -131,7 +142,7 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.Barracks.Level * Model.Buildings.Barracks.MaxLevel)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.Barracks.Level*Model.Buildings.Barracks.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -151,7 +162,7 @@
                     <hr />
                     @if (@Model.Buildings.CurrentlyBuilding == "SolarCollector")
                     {
-                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Buildings.MinutesLeftToBuild) minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
                                 <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
@@ -163,7 +174,7 @@
                         <p>Level @Model.Buildings.SolarCollector.Level</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.SolarCollector.Level * Model.Buildings.SolarCollector.MaxLevel)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.SolarCollector.Level*Model.Buildings.SolarCollector.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -183,7 +194,7 @@
                     <hr />
                     @if (@Model.Buildings.CurrentlyBuilding == "CrystalExtractor")
                     {
-                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Buildings.MinutesLeftToBuild) minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
                                 <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
@@ -195,7 +206,7 @@
                         <p>Level @Model.Buildings.CrystalExtractor.Level</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.CrystalExtractor.Level * Model.Buildings.CrystalExtractor.MaxLevel)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.CrystalExtractor.Level*Model.Buildings.CrystalExtractor.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -215,7 +226,7 @@
                     <hr />
                     @if (@Model.Buildings.CurrentlyBuilding == "Barracks")
                     {
-                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Buildings.MinutesLeftToBuild) minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
                                 <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
@@ -227,7 +238,7 @@
                         <p>Level @Model.Buildings.MetalScrapper.Level</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.MetalScrapper.Level * @Model.Buildings.MetalScrapper.MaxLevel)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.MetalScrapper.Level*@Model.Buildings.MetalScrapper.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }

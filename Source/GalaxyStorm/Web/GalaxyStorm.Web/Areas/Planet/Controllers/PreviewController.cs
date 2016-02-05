@@ -2,12 +2,14 @@
 {
     using System;
     using System.Web.Mvc;
+    using AutoMapper;
     using Infrastructure;
     using Logic.Core;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.Buildings;
     using ViewModels.Common;
+    using Data.Models;
 
     public class PreviewController : UsersController
     {
@@ -94,6 +96,10 @@
                 }
             };
 
+            // Automapper mapping
+            info.Planet = Mapper.Map<Planet, PlanetViewModel>(pO.Planet);
+
+            // Manual calculations and mapping
             if (pO.Buildings.EndTime.HasValue)
             {
                 var mins = pO.Buildings.EndTime.Value - DateTime.Now;
