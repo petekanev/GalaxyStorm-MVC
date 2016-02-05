@@ -52,10 +52,33 @@ body {
 
 @media screen and (min-height: 1050px) {
     .body-content {
-        height: 1050px;
+        height: 1080px;
     }
 }
 
+@media screen and (min-height: 1100px) {
+    .body-content {
+        height: 1215px;
+    }
+}
+
+@media screen and (min-height: 1215px) {
+    .body-content {
+        height: 1330px;
+    }
+}
+
+@media screen and (min-height: 1330px) {
+    .body-content {
+        height: 1445px;
+    }
+}
+
+@media screen and (min-height: 1445px) {
+    .body-content {
+        height: 1560px;
+    }
+}
 .panel {
     background: transparent;
 }

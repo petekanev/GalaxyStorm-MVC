@@ -1,5 +1,6 @@
 ﻿namespace GalaxyStorm.Web.Areas.Planet.Controllers
 {
+    using System;
     using System.Web.Mvc;
     using Infrastructure;
     using Microsoft.AspNet.Identity;
@@ -18,7 +19,35 @@
         // GET: Planet/Index
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+
+            var pO = this.playerService.GetPlayerInformation(userId);
+            var hourlyRes = this.playerService.GetHourlyResourceIncome(userId);
+
+            var info = new CompletePlayerViewModel
+            {
+                Energy = pO.Resources.Energy,
+                Crystal = pO.Resources.Crystal,
+                Metal = pO.Resources.Metal,
+                EnergyPerHour = hourlyRes[0],
+                CrystalPerHour = hourlyRes[1],
+                MetalPerHour = hourlyRes[2],
+                CurrentlyBuilding = pO.Buildings.CurrentlyBuilding.ToString(),
+                HeadquartersLevel = pO.Buildings.HeadQuartersLevel,
+                ResearchCentreLevel = pO.Buildings.ResearchCentreLevel,
+                BarracksLevel = pO.Buildings.BarracksLevel,
+                SolarCollectorLevel = pO.Buildings.SolarCollectorLevel,
+                CrystalExtractorLevel = pO.Buildings.CrystalExtractorLevel,
+                MetalScrapperLevel = pO.Buildings.MetalScrapperLevel
+            };
+
+            if (pO.Buildings.EndTime.HasValue)
+            {
+                var mins = pO.Buildings.EndTime.Value - DateTime.Now;
+                info.MinutesToBuild = mins.TotalMinutes;
+            }
+
+            return View(info);
         }
 
         public ActionResult Resources()

@@ -251,3 +251,8 @@ textarea {
 }
 
 /* End of Sidebar */
+
+img.small-img-200 {
+    height: 200px;
+    margin: 0 auto;
+}

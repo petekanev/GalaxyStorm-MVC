@@ -305,6 +305,24 @@
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Images\300xX\barracks.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\300xX\crystal-extractor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\300xX\headquarters.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\300xX\metal-scrapper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\300xX\research-centre.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\300xX\solar-collector.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\common\variables.js" />
@@ -340,9 +358,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_PublicLayout.cshtml" />
-    <Content Include="Views\DHome\About.cshtml" />
-    <Content Include="Views\DHome\Contact.cshtml" />
-    <Content Include="Views\DHome\Index.cshtml" />
     <Content Include="Areas\Public\Views\Account\Login.cshtml" />
     <Content Include="Areas\Public\Views\Account\Register.cshtml" />
     <Content Include="Areas\Public\Views\Account\ResetPassword.cshtml" />
@@ -359,13 +374,10 @@
   <ItemGroup>
     <Folder Include="Areas\Admiral\Models\" />
     <Folder Include="Areas\Admiral\Views\Shared\" />
-    <Folder Include="Areas\Planet\Models\" />
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Shard\Models\" />
     <Folder Include="Areas\Shard\Views\Shared\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
