@@ -49,8 +49,10 @@
                 MetalScrapperLevel = pO.Buildings.MetalScrapperLevel
             };
 
-            info.Buildings.Headquarters = new HeadquartersViewModel();
-            info.Buildings.Headquarters.HeadquartersLevel = pO.Buildings.HeadQuartersLevel;
+            info.Buildings.Headquarters = new HeadquartersViewModel
+            {
+                HeadquartersLevel = pO.Buildings.HeadQuartersLevel
+            };
 
             if (pO.Buildings.EndTime.HasValue)
             {
@@ -74,7 +76,15 @@
             var res = this.playerService.GetPlayerResources(userId);
             var hourlyRes = this.playerService.GetHourlyResourceIncome(userId);
 
-            var resVM = new ResourcesViewModel { Energy = res.Energy, Crystal = res.Crystal, Metal = res.Metal, EnergyPerHour = hourlyRes[0], CrystalPerHour = hourlyRes[1], MetalPerHour = hourlyRes[2] };
+            var resVM = new ResourcesViewModel
+            {
+                Energy = res.Energy, 
+                Crystal = res.Crystal, 
+                Metal = res.Metal, 
+                EnergyPerHour = hourlyRes[0], 
+                CrystalPerHour = hourlyRes[1], 
+                MetalPerHour = hourlyRes[2]
+            };
 
             return View(resVM);
         }

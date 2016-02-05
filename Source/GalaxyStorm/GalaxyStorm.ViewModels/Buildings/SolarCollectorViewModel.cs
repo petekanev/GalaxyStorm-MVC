@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class SolarCollectorViewModel
+    public class SolarCollectorViewModel : AbstractBuildingViewModel
     {
     }
 }

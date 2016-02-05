@@ -2,7 +2,6 @@
     ViewBag.Title = "Planet Overview";
 }
 
-@using GalaxyStorm.Data.Models.PlayerObjects
 @model GalaxyStorm.ViewModels.Common.CompletePlayerViewModel
 
 <div class="row">
@@ -27,7 +26,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink("Headquarters", "Headquarters", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Headquarters.HeadquartersLevel</small>
+                        @Html.ActionLink(@Model.Buildings.Headquarters.Title, "Headquarters", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Headquarters.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -44,17 +43,17 @@
                     }
                     else
                     {
-                        if (@Model.Buildings.Headquarters.HeadquartersLevel > 0)
+                        if (@Model.Buildings.Headquarters.Level > 0)
                          {
-                             <p>Level @Model.Buildings.Headquarters.HeadquartersLevel</p>
+                             <p>Level @Model.Buildings.Headquarters.Level</p>
                          }
                          else
                          {
-                            <p>Not built yet!</p>
+                            <p>Not built yet! (Requires HQ Level @Model.Buildings.Headquarters.Prerequisites)</p>
                          }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.Headquarters.HeadquartersLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.Headquarters.Level * 10)%;"></div>
                             </div>
                         </p>
                     }

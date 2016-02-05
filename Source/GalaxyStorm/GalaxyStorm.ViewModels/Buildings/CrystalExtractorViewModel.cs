@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class CrystalExtractorViewModel
+    public class CrystalExtractorViewModel : AbstractBuildingViewModel
     {
     }
 }

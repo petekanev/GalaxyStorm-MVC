@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class ResearchCentreViewModel
+    public class ResearchCentreViewModel : AbstractBuildingViewModel
     {
     }
 }

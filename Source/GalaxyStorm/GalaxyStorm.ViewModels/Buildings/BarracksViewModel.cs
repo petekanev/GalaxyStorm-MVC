@@ -2,7 +2,8 @@
 {
     using System;
 
-    public class BarracksViewModel
+    public class BarracksViewModel : AbstractBuildingViewModel
     {
+
     }
 }

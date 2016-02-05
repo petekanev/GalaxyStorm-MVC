@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class MetalScrapperViewModel
+    public class MetalScrapperViewModel : AbstractBuildingViewModel
     {
     }
 }

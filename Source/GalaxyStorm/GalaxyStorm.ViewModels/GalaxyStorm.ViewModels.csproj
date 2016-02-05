@@ -56,6 +56,7 @@
     <Compile Include="Account\ManageViewModels.cs" />
     <Compile Include="Buildings\BarracksViewModel.cs" />
     <Compile Include="Buildings\BuildingsViewModel.cs" />
+    <Compile Include="Buildings\AbstractBuildingViewModel.cs" />
     <Compile Include="Buildings\CrystalExtractorViewModel.cs" />
     <Compile Include="Buildings\HeadquartersViewModel.cs" />
     <Compile Include="Buildings\MetalScrapperViewModel.cs" />

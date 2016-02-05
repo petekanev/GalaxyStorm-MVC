@@ -25,6 +25,5 @@
         public DateTime? EndTime { get; set; }
 
         public string CurrentlyBuilding { get; set; }
-
     }
 }
