@@ -34,7 +34,7 @@
     <hr />
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
                     <h6 class="text-center">
                         @Html.ActionLink(@Model.Buildings.Headquarters.Name, "Headquarters", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Headquarters.Level</small>
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
                     <h6 class="text-center">
                         @Html.ActionLink(@Model.Buildings.ResearchCentre.Name, "ResearchCentre", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.ResearchCentre.Level</small>
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
                     <h6 class="text-center">
                         @Html.ActionLink(@Model.Buildings.Barracks.Name, "Barracks", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Barracks.Level</small>
@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
                     <h6 class="text-center">
                         @Html.ActionLink(@Model.Buildings.SolarCollector.Name, "SolarCollector", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.SolarCollector.Level</small>
@@ -183,7 +183,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
                     <h6 class="text-center">
                         @Html.ActionLink(@Model.Buildings.CrystalExtractor.Name, "CrystalExtractor", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.CrystalExtractor.Level</small>
@@ -215,7 +215,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
                     <h6 class="text-center">
                         @Html.ActionLink(@Model.Buildings.MetalScrapper.Name, "MetalScrapper", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.MetalScrapper.Level</small>
@@ -224,7 +224,7 @@
                 <div class="panel-body text-center">
                     <img src="~/Images/300xX/metal-scrapper.png" alt="Resource Building" class="small-img-200" />
                     <hr />
-                    @if (@Model.Buildings.CurrentlyBuilding == "Barracks")
+                    @if (@Model.Buildings.CurrentlyBuilding == "MetalScrapper")
                     {
                         <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Buildings.MinutesLeftToBuild) minutes!</p>
                         <p>
@@ -251,7 +251,117 @@
     <h4>Technologies</h4>
     <hr />
     <div class="row">
-
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Technologies.ArmoredFleet.Name, "ArmoredFleet", "Technologies", new {area = "Planet"}, null) - <small>Level @Model.Technologies.ArmoredFleet.Level</small>
+                    </h6>
+                </div>
+                <div class="panel-body text-center">
+                    @if (@Model.Technologies.CurrentlyResearching == "ArmoredFleet")
+                    {
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Technologies.MinutesLeftToResearch) minutes!</p>
+                        <p>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-warning" style="width: @Model.Technologies.PercentsResearched%"></div>
+                            </div>
+                        </p>
+                    }
+                    else
+                    {
+                        if (@Model.Technologies.ArmoredFleet.Level > 0)
+                        {
+                            <p>Level @Model.Technologies.ArmoredFleet.Level</p>
+                        }
+                        else
+                        {
+                            <p>Requires @Model.Buildings.ResearchCentre.Name @Model.Technologies.ArmoredFleet.Prerequisite</p>
+                        }
+                        <p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.ArmoredFleet.Level*Model.Technologies.ArmoredFleet.MaxLevel)%;"></div>
+                            </div>
+                        </p>
+                    }
+                    @Html.ActionLink("Details", "ArmoredFleet", "Technologies", new {area = "Planet"}, new {@class = "btn btn-default"})
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Technologies.CheaperFleet.Name, "CheaperFleet", "Technologies", new {area = "Planet"}, null) - <small>Level @Model.Technologies.CheaperFleet.Level</small>
+                    </h6>
+                </div>
+                <div class="panel-body text-center">
+                    @if (@Model.Technologies.CurrentlyResearching == "CheaperFleet")
+                    {
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Technologies.MinutesLeftToResearch) minutes!</p>
+                        <p>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-warning" style="width: @Model.Technologies.PercentsResearched%"></div>
+                            </div>
+                        </p>
+                    }
+                    else
+                    {
+                        if (@Model.Technologies.CheaperFleet.Level > 0)
+                        {
+                            <p>Level @Model.Technologies.CheaperFleet.Level</p>
+                        }
+                        else
+                        {
+                            <p>Requires @Model.Buildings.ResearchCentre.Name @Model.Technologies.CheaperFleet.Prerequisite</p>
+                        }
+                        <p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.CheaperFleet.Level*Model.Technologies.CheaperFleet.MaxLevel)%;"></div>
+                            </div>
+                        </p>
+                    }
+                    @Html.ActionLink("Details", "CheaperFleet", "Technologies", new {area = "Planet"}, new {@class = "btn btn-default"})
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Technologies.LargerFleet.Name, "LargerFleet", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.Technologies.LargerFleet.Level</small>
+                    </h6>
+                </div>
+                <div class="panel-body text-center">
+                    @if (@Model.Technologies.CurrentlyResearching == "LargerFleet")
+                    {
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Technologies.MinutesLeftToResearch) minutes!</p>
+                        <p>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-warning" style="width: @Model.Technologies.PercentsResearched%"></div>
+                            </div>
+                        </p>
+                    }
+                    else
+                    {
+                        if (@Model.Technologies.LargerFleet.Level > 0)
+                        {
+                            <p>Level @Model.Technologies.LargerFleet.Level</p>
+                        }
+                        else
+                        {
+                            <p>Requires @Model.Buildings.ResearchCentre.Name @Model.Technologies.LargerFleet.Prerequisite</p>
+                        }
+                        <p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.LargerFleet.Level * Model.Technologies.LargerFleet.MaxLevel)%;"></div>
+                            </div>
+                        </p>
+                    }
+                    @Html.ActionLink("Details", "LargerFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
     </div>
     <br />
     <h4>Fleet</h4>

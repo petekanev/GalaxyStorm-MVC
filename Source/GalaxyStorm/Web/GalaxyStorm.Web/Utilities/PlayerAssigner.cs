@@ -54,7 +54,7 @@
             pO.Resources.Metal = 350;
 
             pO.Technologies = new Technologies();
-            pO.Technologies.ArmorFleetLevel = 0;
+            pO.Technologies.ArmoredFleetLevel = 0;
             pO.Technologies.CheaperFleetLevel = 0;
             pO.Technologies.FasterConstructionLevel = 0;
             pO.Technologies.LargerFleetLevel = 0;

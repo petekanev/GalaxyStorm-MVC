@@ -10,6 +10,7 @@
     using ViewModels.Buildings;
     using ViewModels.Common;
     using Data.Models;
+    using ViewModels.Technologies;
 
     public class PreviewController : UsersController
     {
@@ -93,6 +94,33 @@
                         Description = this.logic.Buildings.MetalScrapper.Description,
                         Prerequisites = this.logic.Buildings.MetalScrapper.Prerequisite
                     }
+                },
+                Technologies = new TechnologiesViewModel
+                {
+                    ArmoredFleet = new ArmoredFleetViewModel
+                    {
+                        Level = pO.Technologies.ArmoredFleetLevel,
+                        Name = this.logic.Technologies.ArmoredFleet.Name,
+                        MaxLevel = this.logic.Technologies.ArmoredFleet.MaxLevel,
+                        Description = this.logic.Technologies.ArmoredFleet.Description,
+                        Prerequisite = this.logic.Technologies.ArmoredFleet.Prerequisite
+                    },
+                    CheaperFleet = new CheaperFleetViewModel
+                    {
+                        Level = pO.Technologies.CheaperFleetLevel,
+                        Name = this.logic.Technologies.CheaperFleet.Name,
+                        MaxLevel = this.logic.Technologies.CheaperFleet.MaxLevel,
+                        Description = this.logic.Technologies.CheaperFleet.Description,
+                        Prerequisite = this.logic.Technologies.CheaperFleet.Prerequisite
+                    },
+                    LargerFleet = new LargerFleetViewModel
+                    {
+                        Level = pO.Technologies.LargerFleetLevel,
+                        Name = this.logic.Technologies.LargerFleet.Name,
+                        MaxLevel = this.logic.Technologies.LargerFleet.MaxLevel,
+                        Description = this.logic.Technologies.LargerFleet.Description,
+                        Prerequisite = this.logic.Technologies.LargerFleet.Prerequisite
+                    }
                 }
             };
 
@@ -112,6 +140,7 @@
                 info.Buildings.PercentsBuilt = percents;
             }
 
+            // TODO: Extract in service
             #region Specific Buildings Params
             // Headquarters
             info.Buildings.Headquarters.RequiredBuildTime = info.Buildings.Headquarters.Level <

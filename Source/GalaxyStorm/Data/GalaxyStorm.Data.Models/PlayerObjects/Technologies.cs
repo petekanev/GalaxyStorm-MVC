@@ -8,7 +8,7 @@
         [Key]
         public int Id { get; set; }
 
-        public int ArmorFleetLevel { get; set; }
+        public int ArmoredFleetLevel { get; set; }
 
         public int FasterConstructionLevel { get; set; }
 
@@ -28,7 +28,7 @@
     public enum CurrentlyResearching
     {
         None = 0,
-        ArmorFleet = 1,
+        ArmoredFleet = 1,
         FasterConstruction = 2,
         CheaperFleet = 3,
         LargerFleet = 4,

@@ -8,7 +8,6 @@
     using GalaxyStorm.Data.Models.PlayerObjects;
     using GalaxyStorm.Data.Repositories;
     using Logic.Core;
-    using Logic.Core.Buildings;
 
     public class PlayerService : IPlayerService
     {
@@ -91,7 +90,7 @@
             pO.Resources.Metal = 350;
 
             pO.Technologies = new Technologies();
-            pO.Technologies.ArmorFleetLevel = 0;
+            pO.Technologies.ArmoredFleetLevel = 0;
             pO.Technologies.CheaperFleetLevel = 0;
             pO.Technologies.FasterConstructionLevel = 0;
             pO.Technologies.LargerFleetLevel = 0;
