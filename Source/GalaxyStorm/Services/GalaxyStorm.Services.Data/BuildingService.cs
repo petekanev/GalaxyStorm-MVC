@@ -404,5 +404,20 @@
             pO.Resources.Crystal -= resources[1];
             pO.Resources.Metal -= resources[2];
         }
+
+        public Buildings GetPlayerBuildings(string userId)
+        {
+            var user = this.users
+                      .All()
+                      .Include(x => x.PlayerObject)
+                      .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.PlayerObject.Buildings;
+        }
     }
 }

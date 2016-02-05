@@ -6,15 +6,15 @@
     {
         public HeadquartersViewModel Headquarters { get; set; }
 
-        public int BarracksLevel { get; set; }
+        public ResearchCentreViewModel ResearchCentre { get; set; }
 
-        public int ResearchCentreLevel { get; set; }
+        public BarracksViewModel Barracks { get; set; }
 
-        public int SolarCollectorLevel { get; set; }
+        public SolarCollectorViewModel SolarCollector { get; set; }
 
-        public int CrystalExtractorLevel { get; set; }
+        public CrystalExtractorViewModel CrystalExtractor { get; set; }
 
-        public int MetalScrapperLevel { get; set; }
+        public MetalScrapperViewModel MetalScrapper { get; set; }
 
         public double MinutesLeftToBuild { get; set; }
 

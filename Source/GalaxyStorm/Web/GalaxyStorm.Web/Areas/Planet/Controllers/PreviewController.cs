@@ -28,30 +28,70 @@
             var pO = this.playerService.GetPlayerInformation(userId);
             var hourlyRes = this.playerService.GetHourlyResourceIncome(userId);
 
-            var info = new CompletePlayerViewModel();
-            info.Resources = new ResourcesViewModel
+            var info = new CompletePlayerViewModel
             {
-                Energy = pO.Resources.Energy,
-                Crystal = pO.Resources.Crystal,
-                Metal = pO.Resources.Metal,
-                EnergyPerHour = hourlyRes[0],
-                CrystalPerHour = hourlyRes[1],
-                MetalPerHour = hourlyRes[2]
-            };
-
-            info.Buildings = new BuildingsViewModel
-            {
-                CurrentlyBuilding = pO.Buildings.CurrentlyBuilding.ToString(),
-                ResearchCentreLevel = pO.Buildings.ResearchCentreLevel,
-                BarracksLevel = pO.Buildings.BarracksLevel,
-                SolarCollectorLevel = pO.Buildings.SolarCollectorLevel,
-                CrystalExtractorLevel = pO.Buildings.CrystalExtractorLevel,
-                MetalScrapperLevel = pO.Buildings.MetalScrapperLevel
-            };
-
-            info.Buildings.Headquarters = new HeadquartersViewModel
-            {
-                HeadquartersLevel = pO.Buildings.HeadQuartersLevel
+                Resources = new ResourcesViewModel
+                {
+                    Energy = pO.Resources.Energy,
+                    Crystal = pO.Resources.Crystal,
+                    Metal = pO.Resources.Metal,
+                    EnergyPerHour = hourlyRes[0],
+                    CrystalPerHour = hourlyRes[1],
+                    MetalPerHour = hourlyRes[2]
+                },
+                Buildings = new BuildingsViewModel
+                {
+                    CurrentlyBuilding = pO.Buildings.CurrentlyBuilding.ToString(),
+                    EndTime = pO.Buildings.EndTime,
+                    StartTime = pO.Buildings.StartTime,
+                    Headquarters = new HeadquartersViewModel
+                    {
+                        Level = pO.Buildings.HeadQuartersLevel,
+                        Name = this.logic.Buildings.Headquarters.Name,
+                        MaxLevel = this.logic.Buildings.Headquarters.MaxLevel,
+                        Description = this.logic.Buildings.Headquarters.Description
+                    },
+                    ResearchCentre = new ResearchCentreViewModel
+                    {
+                        Level = pO.Buildings.ResearchCentreLevel,
+                        Name = this.logic.Buildings.ResearchCentre.Name,
+                        MaxLevel = this.logic.Buildings.ResearchCentre.MaxLevel,
+                        Description = this.logic.Buildings.ResearchCentre.Description,
+                        Prerequisites = this.logic.Buildings.ResearchCentre.Prerequisite
+                    },
+                    Barracks = new BarracksViewModel
+                    {
+                        Level = pO.Buildings.BarracksLevel,
+                        Name = this.logic.Buildings.Barracks.Name,
+                        MaxLevel = this.logic.Buildings.Barracks.MaxLevel,
+                        Description = this.logic.Buildings.Barracks.Description,
+                        Prerequisites = this.logic.Buildings.Barracks.Prerequisite
+                    },
+                    SolarCollector = new SolarCollectorViewModel
+                    {
+                        Level = pO.Buildings.SolarCollectorLevel,
+                        Name = this.logic.Buildings.SolarCollector.Name,
+                        MaxLevel = this.logic.Buildings.SolarCollector.MaxLevel,
+                        Description = this.logic.Buildings.SolarCollector.Description,
+                        Prerequisites = this.logic.Buildings.SolarCollector.Prerequisite 
+                    },
+                    CrystalExtractor = new CrystalExtractorViewModel
+                    {
+                        Level = pO.Buildings.CrystalExtractorLevel,
+                        Name = this.logic.Buildings.CrystalExtractor.Name,
+                        MaxLevel = this.logic.Buildings.CrystalExtractor.MaxLevel,
+                        Description = this.logic.Buildings.CrystalExtractor.Description,
+                        Prerequisites = this.logic.Buildings.CrystalExtractor.Prerequisite
+                    },
+                    MetalScrapper = new MetalScrapperViewModel
+                    {
+                        Level = pO.Buildings.MetalScrapperLevel,
+                        Name = this.logic.Buildings.MetalScrapper.Name,
+                        MaxLevel = this.logic.Buildings.MetalScrapper.MaxLevel,
+                        Description = this.logic.Buildings.MetalScrapper.Description,
+                        Prerequisites = this.logic.Buildings.MetalScrapper.Prerequisite
+                    }
+                }
             };
 
             if (pO.Buildings.EndTime.HasValue)
@@ -66,6 +106,57 @@
                 info.Buildings.PercentsBuilt = percents;
             }
 
+            #region Specific Buildings Params
+            // Headquarters
+            info.Buildings.Headquarters.RequiredBuildTime = info.Buildings.Headquarters.Level <
+                                                            info.Buildings.Headquarters.MaxLevel
+                ? this.logic.Buildings.Headquarters.BuildTime[info.Buildings.Headquarters.Level+1].TotalMinutes
+                : 0;
+
+            if (info.Buildings.Headquarters.Level < info.Buildings.Headquarters.MaxLevel)
+            {
+                var requiredResources =
+                    this.logic.Buildings.Headquarters.GetRequiredResources(info.Buildings.Headquarters.Level + 1);
+
+                info.Buildings.Headquarters.RequiredEnergy = requiredResources[0];
+                info.Buildings.Headquarters.RequiredCrystals = requiredResources[1];
+                info.Buildings.Headquarters.RequiredMetal = requiredResources[2];
+            }
+
+            // Research Centre
+            info.Buildings.ResearchCentre.RequiredBuildTime = info.Buildings.ResearchCentre.Level <
+                                                            info.Buildings.ResearchCentre.MaxLevel
+                ? this.logic.Buildings.ResearchCentre.BuildTime[info.Buildings.ResearchCentre.Level + 1].TotalMinutes
+                : 0;
+
+            if (info.Buildings.Headquarters.Level < info.Buildings.Headquarters.MaxLevel)
+            {
+                var requiredResources =
+                    this.logic.Buildings.ResearchCentre.GetRequiredResources(info.Buildings.ResearchCentre.Level + 1);
+
+                info.Buildings.ResearchCentre.RequiredEnergy = requiredResources[0];
+                info.Buildings.ResearchCentre.RequiredCrystals = requiredResources[1];
+                info.Buildings.ResearchCentre.RequiredMetal = requiredResources[2];
+            }
+
+            // Barracks
+            info.Buildings.Barracks.RequiredBuildTime = info.Buildings.Barracks.Level <
+                                                            info.Buildings.Barracks.MaxLevel
+                ? this.logic.Buildings.Barracks.BuildTime[info.Buildings.Barracks.Level + 1].TotalMinutes
+                : 0;
+
+            if (info.Buildings.Barracks.Level < info.Buildings.Barracks.MaxLevel)
+            {
+                var requiredResources =
+                    this.logic.Buildings.Barracks.GetRequiredResources(info.Buildings.Barracks.Level + 1);
+
+                info.Buildings.Barracks.RequiredEnergy = requiredResources[0];
+                info.Buildings.Barracks.RequiredCrystals = requiredResources[1];
+                info.Buildings.Barracks.RequiredMetal = requiredResources[2];
+            }
+
+            #endregion
+
             return View(info);
         }
 
@@ -78,11 +169,11 @@
 
             var resVM = new ResourcesViewModel
             {
-                Energy = res.Energy, 
-                Crystal = res.Crystal, 
-                Metal = res.Metal, 
-                EnergyPerHour = hourlyRes[0], 
-                CrystalPerHour = hourlyRes[1], 
+                Energy = res.Energy,
+                Crystal = res.Crystal,
+                Metal = res.Metal,
+                EnergyPerHour = hourlyRes[0],
+                CrystalPerHour = hourlyRes[1],
                 MetalPerHour = hourlyRes[2]
             };
 

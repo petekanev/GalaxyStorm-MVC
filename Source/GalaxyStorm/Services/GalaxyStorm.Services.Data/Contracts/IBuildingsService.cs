@@ -1,6 +1,7 @@
 ﻿namespace GalaxyStorm.Services.Data.Contracts
 {
     using System;
+    using GalaxyStorm.Data.Models.PlayerObjects;
 
     public interface IBuildingsService
     {
@@ -17,5 +18,7 @@
         TimeSpan? ScheduleMetalScrapper(string userId);
 
         void CompleteBuilding(string userId);
+
+        Buildings GetPlayerBuildings(string userId);
     }
 }

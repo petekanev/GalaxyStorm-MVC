@@ -15,7 +15,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
         public override string Description
         {
-            get { throw new NotImplementedException(); }
+            get { return "Retrieves metal from floating space debris"; }
         }
 
         public override int[] GetRequiredResources(int level)

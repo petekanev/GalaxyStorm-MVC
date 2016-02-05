@@ -15,7 +15,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
         public override string Description
         {
-            get { throw new NotImplementedException(); }
+            get { return "Mines crystal from the planet depths"; }
         }
 
         public override int[] GetRequiredResources(int level)

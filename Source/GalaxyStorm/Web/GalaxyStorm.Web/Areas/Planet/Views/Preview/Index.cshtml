@@ -26,7 +26,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink(@Model.Buildings.Headquarters.Title, "Headquarters", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Headquarters.Level</small>
+                        @Html.ActionLink(@Model.Buildings.Headquarters.Name, "Headquarters", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Headquarters.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -53,7 +53,7 @@
                          }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.Headquarters.Level * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.Headquarters.Level * Model.Buildings.Headquarters.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -65,7 +65,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink("Research Centre", "ResearchCentre", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.ResearchCentreLevel</small>
+                        @Html.ActionLink(@Model.Buildings.ResearchCentre.Name, "ResearchCentre", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.ResearchCentre.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -82,17 +82,17 @@
                     }
                     else
                     {
-                        if (@Model.Buildings.ResearchCentreLevel > 0)
+                        if (@Model.Buildings.ResearchCentre.Level > 0)
                         {
-                            <p>Level @Model.Buildings.ResearchCentreLevel</p>
+                            <p>Level @Model.Buildings.ResearchCentre.Level</p>
                         }
                         else
                         {
-                            <p>Not built yet!</p>
+                            <p>Not built yet! (Requires HQ Level @Model.Buildings.ResearchCentre.Prerequisites)</p>
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.ResearchCentreLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.ResearchCentre.Level * Model.Buildings.ResearchCentre.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -104,7 +104,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink("Barracks", "Barracks", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.BarracksLevel</small>
+                        @Html.ActionLink(@Model.Buildings.Barracks.Name, "Barracks", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Barracks.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -115,23 +115,23 @@
                         <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings..PercentsBuilt%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
                             </div>
                         </p>
                     }
                     else
                     {
-                        if (@Model.Buildings.BarracksLevel > 0)
+                        if (@Model.Buildings.Barracks.Level > 0)
                         {
-                            <p>Level @Model.Buildings.BarracksLevel</p>
+                            <p>Level @Model.Buildings.Barracks.Level</p>
                         }
                         else
                         {
-                            <p>Not built yet!</p>
+                            <p>Not built yet! (Requires HQ Level @Model.Buildings.Barracks.Prerequisites)</p>
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.BarracksLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.Barracks.Level * Model.Buildings.Barracks.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -143,7 +143,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink("Solar Collector", "SolarCollector", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.SolarCollectorLevel</small>
+                        @Html.ActionLink(@Model.Buildings.SolarCollector.Name, "SolarCollector", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.SolarCollector.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -160,10 +160,10 @@
                     }
                     else
                     {
-                        <p>Level @Model.Buildings.SolarCollectorLevel</p>
+                        <p>Level @Model.Buildings.SolarCollector.Level</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.SolarCollectorLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.SolarCollector.Level * Model.Buildings.SolarCollector.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -175,7 +175,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink("Crystal Extractor", "CrystalExtractor", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.CrystalExtractorLevel</small>
+                        @Html.ActionLink(@Model.Buildings.CrystalExtractor.Name, "CrystalExtractor", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.CrystalExtractor.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -186,16 +186,16 @@
                         <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
                             </div>
                         </p>
                     }
                     else
                     {
-                        <p>Level @Model.Buildings.CrystalExtractorLevel</p>
+                        <p>Level @Model.Buildings.CrystalExtractor.Level</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.CrystalExtractorLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.CrystalExtractor.Level * Model.Buildings.CrystalExtractor.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
@@ -207,7 +207,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink("Metal Scrapper", "MetalScrapper", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.MetalScrapperLevel</small>
+                        @Html.ActionLink(@Model.Buildings.MetalScrapper.Name, "MetalScrapper", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.MetalScrapper.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -224,10 +224,10 @@
                     }
                     else
                     {
-                        <p>Level @Model.Buildings.MetalScrapperLevel</p>
+                        <p>Level @Model.Buildings.MetalScrapper.Level</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.MetalScrapperLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.MetalScrapper.Level * @Model.Buildings.MetalScrapper.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
