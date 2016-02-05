@@ -15,9 +15,9 @@
     <h4>Resources</h4>
     <hr />
     <div class="row">
-        <p class="text-center">Available Energy: <i class="ion-ios-sunny-outline size-28"> </i> @Model.Energy <span class="text-success">(+@Model.EnergyPerHour/h)</span></p>
-        <p class="text-center">Available Crystals: <i class="ion-ios-flower-outline size-28"> </i> @Model.Crystal <span class="text-success">(+@Model.CrystalPerHour/h)</span></p>
-        <p class="text-center">Available Metal: <i class="ion-ios-cog-outline size-28"> </i> @Model.Metal <span class="text-success">(+@Model.MetalPerHour/h)</span></p>
+        <p class="text-center">Available Energy: <i class="ion-ios-sunny-outline size-28"> </i> @Model.Resources.Energy <span class="text-success">(+@Model.Resources.EnergyPerHour/h)</span></p>
+        <p class="text-center">Available Crystals: <i class="ion-ios-flower-outline size-28"> </i> @Model.Resources.Crystal <span class="text-success">(+@Model.Resources.CrystalPerHour/h)</span></p>
+        <p class="text-center">Available Metal: <i class="ion-ios-cog-outline size-28"> </i> @Model.Resources.Metal <span class="text-success">(+@Model.Resources.MetalPerHour/h)</span></p>
     </div>
     <br />
     <h4>Buildings</h4>
@@ -27,26 +27,26 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        <a href="/#">Headquarters</a> - <small>Level @Model.HeadquartersLevel</small>
+                        @Html.ActionLink("Headquarters", "Headquarters", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.Headquarters.HeadquartersLevel</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
                     <img src="~/Images/300xX/headquarters.png" alt="HQ" class="small-img-200" />
                     <hr />
-                    @if (@Model.CurrentlyBuilding == "Headquarters")
+                    @if (@Model.Buildings.CurrentlyBuilding == "Headquarters")
                     {
-                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesToBuild) minutes!</p>
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Buildings.MinutesLeftToBuild) minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
                             </div>
                         </p>
                     }
                     else
                     {
-                         if (@Model.HeadquartersLevel > 0)
+                        if (@Model.Buildings.Headquarters.HeadquartersLevel > 0)
                          {
-                             <p>Level @Model.HeadquartersLevel</p>
+                             <p>Level @Model.Buildings.Headquarters.HeadquartersLevel</p>
                          }
                          else
                          {
@@ -54,11 +54,11 @@
                          }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.HeadquartersLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.Headquarters.HeadquartersLevel * 10)%;"></div>
                             </div>
                         </p>
                     }
-                    @Html.ActionLink("Detals", "Headquarters", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "Headquarters", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
@@ -66,26 +66,26 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        <a href="/#">Research Centre</a> - <small>Level @Model.ResearchCentreLevel</small>
+                        @Html.ActionLink("Research Centre", "ResearchCentre", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.ResearchCentreLevel</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
                     <img src="~/Images/300xX/research-centre.png" alt="RC" class="small-img-200" />
                     <hr />
-                    @if (@Model.CurrentlyBuilding == "ResearchCentre")
+                    @if (@Model.Buildings.CurrentlyBuilding == "ResearchCentre")
                     {
-                        <p class="text-center">Ready in: @Model.MinutesToBuild minutes!</p>
+                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
                             </div>
                         </p>
                     }
                     else
                     {
-                        if (@Model.ResearchCentreLevel > 0)
+                        if (@Model.Buildings.ResearchCentreLevel > 0)
                         {
-                            <p>Level @Model.ResearchCentreLevel</p>
+                            <p>Level @Model.Buildings.ResearchCentreLevel</p>
                         }
                         else
                         {
@@ -93,11 +93,11 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.ResearchCentreLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.ResearchCentreLevel * 10)%;"></div>
                             </div>
                         </p>
                     }
-                    @Html.ActionLink("Detals", "ResearchCentre", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "ResearchCentre", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
@@ -105,26 +105,26 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        <a href="/#">Barracks</a> - <small>Level @Model.BarracksLevel</small>
+                        @Html.ActionLink("Barracks", "Barracks", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.BarracksLevel</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
                     <img src="~/Images/300xX/barracks.png" alt="Barracks" class="small-img-200" />
                     <hr />
-                    @if (@Model.CurrentlyBuilding == "Barracks")
+                    @if (@Model.Buildings.CurrentlyBuilding == "Barracks")
                     {
-                        <p class="text-center">Ready in: @Model.MinutesToBuild minutes!</p>
+                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings..PercentsBuilt%"></div>
                             </div>
                         </p>
                     }
                     else
                     {
-                        if (@Model.BarracksLevel > 0)
+                        if (@Model.Buildings.BarracksLevel > 0)
                         {
-                            <p>Level @Model.BarracksLevel</p>
+                            <p>Level @Model.Buildings.BarracksLevel</p>
                         }
                         else
                         {
@@ -132,11 +132,11 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.BarracksLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.BarracksLevel * 10)%;"></div>
                             </div>
                         </p>
                     }
-                    @Html.ActionLink("Detals", "Barracks", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "Barracks", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
@@ -144,31 +144,31 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        <a href="/#">Solar Collector</a> - <small>Level @Model.SolarCollectorLevel</small>
+                        @Html.ActionLink("Solar Collector", "SolarCollector", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.SolarCollectorLevel</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
                     <img src="~/Images/300xX/solar-collector.png" alt="Resource Building" class="small-img-200" />
                     <hr />
-                    @if (@Model.CurrentlyBuilding == "SolarCollector")
+                    @if (@Model.Buildings.CurrentlyBuilding == "SolarCollector")
                     {
-                        <p class="text-center">Ready in: @Model.MinutesToBuild minutes!</p>
+                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
                             </div>
                         </p>
                     }
                     else
                     {
-                        <p>Level @Model.SolarCollectorLevel</p>
+                        <p>Level @Model.Buildings.SolarCollectorLevel</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.SolarCollectorLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.SolarCollectorLevel * 10)%;"></div>
                             </div>
                         </p>
                     }
-                    @Html.ActionLink("Detals", "SolarCollector", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "SolarCollector", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
@@ -176,15 +176,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        <a href="/#">Crystal Extractor</a> - <small>Level @Model.CrystalExtractorLevel</small>
+                        @Html.ActionLink("Crystal Extractor", "CrystalExtractor", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.CrystalExtractorLevel</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
                     <img src="~/Images/300xX/crystal-extractor.png" alt="Resource Building" class="small-img-200" />
                     <hr />
-                    @if (@Model.CurrentlyBuilding == "CrystalExtractor")
+                    @if (@Model.Buildings.CurrentlyBuilding == "CrystalExtractor")
                     {
-                        <p class="text-center">Ready in: @Model.MinutesToBuild minutes!</p>
+                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
                                 <div class="progress-bar progress-bar-danger" style="width: 75%"></div>
@@ -193,14 +193,14 @@
                     }
                     else
                     {
-                        <p>Level @Model.CrystalExtractorLevel</p>
+                        <p>Level @Model.Buildings.CrystalExtractorLevel</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.CrystalExtractorLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.CrystalExtractorLevel * 10)%;"></div>
                             </div>
                         </p>
                     }
-                    @Html.ActionLink("Detals", "CrystalExtractor", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "CrystalExtractor", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
@@ -208,31 +208,31 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        <a href="/#">Metal Scrapper</a> - <small>Level @Model.MetalScrapperLevel</small>
+                        @Html.ActionLink("Metal Scrapper", "MetalScrapper", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Buildings.MetalScrapperLevel</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
                     <img src="~/Images/300xX/metal-scrapper.png" alt="Resource Building" class="small-img-200" />
                     <hr />
-                    @if (@Model.CurrentlyBuilding == "Barracks")
+                    @if (@Model.Buildings.CurrentlyBuilding == "Barracks")
                     {
-                        <p class="text-center">Ready in: @Model.MinutesToBuild minutes!</p>
+                        <p class="text-center">Ready in: @Model.Buildings.MinutesLeftToBuild minutes!</p>
                         <p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: @Model.Buildings.PercentsBuilt%"></div>
                             </div>
                         </p>
                     }
                     else
                     {
-                        <p>Level @Model.MetalScrapperLevel</p>
+                        <p>Level @Model.Buildings.MetalScrapperLevel</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.MetalScrapperLevel * 10)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.MetalScrapperLevel * 10)%;"></div>
                             </div>
                         </p>
                     }
-                    @Html.ActionLink("Detals", "MetalScrapper", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "MetalScrapper", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>

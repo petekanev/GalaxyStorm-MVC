@@ -54,6 +54,13 @@
   <ItemGroup>
     <Compile Include="Account\AccountViewModels.cs" />
     <Compile Include="Account\ManageViewModels.cs" />
+    <Compile Include="Buildings\BarracksViewModel.cs" />
+    <Compile Include="Buildings\BuildingsViewModel.cs" />
+    <Compile Include="Buildings\CrystalExtractorViewModel.cs" />
+    <Compile Include="Buildings\HeadquartersViewModel.cs" />
+    <Compile Include="Buildings\MetalScrapperViewModel.cs" />
+    <Compile Include="Buildings\ResearchCentreViewModel.cs" />
+    <Compile Include="Buildings\SolarCollectorViewModel.cs" />
     <Compile Include="Common\CompletePlayerViewModel.cs" />
     <Compile Include="Common\ResourcesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +74,7 @@
       <Name>GalaxyStorm.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

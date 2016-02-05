@@ -3,17 +3,21 @@
     using System;
     using System.Web.Mvc;
     using Infrastructure;
+    using Logic.Core;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
+    using ViewModels.Buildings;
     using ViewModels.Common;
 
     public class PreviewController : UsersController
     {
         private readonly IPlayerService playerService;
+        private readonly ILogicProvider logic;
 
-        public PreviewController(IPlayerService playerService)
+        public PreviewController(IPlayerService playerService, ILogicProvider logic)
         {
             this.playerService = playerService;
+            this.logic = logic;
         }
 
         // GET: Planet/Index
@@ -24,16 +28,20 @@
             var pO = this.playerService.GetPlayerInformation(userId);
             var hourlyRes = this.playerService.GetHourlyResourceIncome(userId);
 
-            var info = new CompletePlayerViewModel
+            var info = new CompletePlayerViewModel();
+            info.Resources = new ResourcesViewModel
             {
                 Energy = pO.Resources.Energy,
                 Crystal = pO.Resources.Crystal,
                 Metal = pO.Resources.Metal,
                 EnergyPerHour = hourlyRes[0],
                 CrystalPerHour = hourlyRes[1],
-                MetalPerHour = hourlyRes[2],
+                MetalPerHour = hourlyRes[2]
+            };
+
+            info.Buildings = new BuildingsViewModel
+            {
                 CurrentlyBuilding = pO.Buildings.CurrentlyBuilding.ToString(),
-                HeadquartersLevel = pO.Buildings.HeadQuartersLevel,
                 ResearchCentreLevel = pO.Buildings.ResearchCentreLevel,
                 BarracksLevel = pO.Buildings.BarracksLevel,
                 SolarCollectorLevel = pO.Buildings.SolarCollectorLevel,
@@ -41,10 +49,19 @@
                 MetalScrapperLevel = pO.Buildings.MetalScrapperLevel
             };
 
+            info.Buildings.Headquarters = new HeadquartersViewModel();
+            info.Buildings.Headquarters.HeadquartersLevel = pO.Buildings.HeadQuartersLevel;
+
             if (pO.Buildings.EndTime.HasValue)
             {
                 var mins = pO.Buildings.EndTime.Value - DateTime.Now;
-                info.MinutesToBuild = mins.TotalMinutes;
+                info.Buildings.MinutesLeftToBuild = mins.TotalMinutes;
+
+                var totalTime = pO.Buildings.EndTime.Value - pO.Buildings.StartTime.Value;
+                var totalSegments = totalTime.TotalMinutes / 100;
+
+                var percents = 100 - (info.Buildings.MinutesLeftToBuild / totalSegments);
+                info.Buildings.PercentsBuilt = percents;
             }
 
             return View(info);
@@ -57,7 +74,7 @@
             var res = this.playerService.GetPlayerResources(userId);
             var hourlyRes = this.playerService.GetHourlyResourceIncome(userId);
 
-            var resVM = new ResourcesViewModel { Energy = res.Energy, Crystal = res.Crystal, Metal = res.Metal, EnergyPerHour = hourlyRes[0], CrystalPerHour = hourlyRes[1], MetalPerHour = hourlyRes[2]};
+            var resVM = new ResourcesViewModel { Energy = res.Energy, Crystal = res.Crystal, Metal = res.Metal, EnergyPerHour = hourlyRes[0], CrystalPerHour = hourlyRes[1], MetalPerHour = hourlyRes[2] };
 
             return View(resVM);
         }

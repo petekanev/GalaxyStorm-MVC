@@ -13,32 +13,32 @@
 
         public ActionResult Headquarters()
         {
-            return null;
+            return View();
         }
 
         public ActionResult ResearchCentre()
         {
-            return null;
+            return View();
         }
 
         public ActionResult Barracks()
         {
-            return null;
+            return View();
         }
 
         public ActionResult SolarCollector()
         {
-            return null;
+            return View();
         }
 
         public ActionResult CrystalExtractor()
         {
-            return null;
+            return View();
         }
 
         public ActionResult MetalScrapper()
         {
-            return null;
+            return View();
         }
     }
 }
