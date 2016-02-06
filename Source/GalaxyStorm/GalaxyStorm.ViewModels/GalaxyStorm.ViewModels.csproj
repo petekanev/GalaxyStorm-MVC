@@ -54,25 +54,14 @@
   <ItemGroup>
     <Compile Include="Account\AccountViewModels.cs" />
     <Compile Include="Account\ManageViewModels.cs" />
-    <Compile Include="Buildings\BarracksViewModel.cs" />
     <Compile Include="Buildings\BuildingsViewModel.cs" />
-    <Compile Include="Buildings\AbstractBuildingViewModel.cs" />
-    <Compile Include="Buildings\CrystalExtractorViewModel.cs" />
-    <Compile Include="Buildings\HeadquartersViewModel.cs" />
-    <Compile Include="Buildings\MetalScrapperViewModel.cs" />
-    <Compile Include="Buildings\ResearchCentreViewModel.cs" />
-    <Compile Include="Buildings\SolarCollectorViewModel.cs" />
+    <Compile Include="Buildings\BuildingViewModel.cs" />
     <Compile Include="Common\CompletePlayerViewModel.cs" />
     <Compile Include="Common\PlanetViewModel.cs" />
     <Compile Include="Common\ResourcesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Technologies\ArmoredFleetViewModel.cs" />
-    <Compile Include="Technologies\CheaperFleetViewModel.cs" />
-    <Compile Include="Technologies\FasterConstructionViewModel.cs" />
-    <Compile Include="Technologies\LargerFleetViewModel.cs" />
-    <Compile Include="Technologies\MoreResourcesViewModel.cs" />
     <Compile Include="Technologies\TechnologiesViewModel.cs" />
-    <Compile Include="Technologies\AbstractTechnologyViewModel.cs" />
+    <Compile Include="Technologies\TechnologyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

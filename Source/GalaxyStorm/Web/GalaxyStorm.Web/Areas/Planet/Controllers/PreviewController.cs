@@ -10,9 +10,6 @@
     using ViewModels.Buildings;
     using ViewModels.Common;
     using Data.Models;
-    using Data.Models.PlayerObjects;
-    using Logic.Core.Technologies;
-    using Utilities;
     using ViewModels.Technologies;
 
     public class PreviewController : UsersController
@@ -50,102 +47,25 @@
                     CurrentlyBuilding = pO.Buildings.CurrentlyBuilding.ToString(),
                     EndTime = pO.Buildings.EndTime,
                     StartTime = pO.Buildings.StartTime,
-                    Headquarters = new HeadquartersViewModel
-                    {
-                        Level = pO.Buildings.HeadQuartersLevel,
-                        Name = this.logic.Buildings.Headquarters.Name,
-                        MaxLevel = this.logic.Buildings.Headquarters.MaxLevel,
-                        Description = this.logic.Buildings.Headquarters.Description
-                    },
-                    ResearchCentre = new ResearchCentreViewModel
-                    {
-                        Level = pO.Buildings.ResearchCentreLevel,
-                        Name = this.logic.Buildings.ResearchCentre.Name,
-                        MaxLevel = this.logic.Buildings.ResearchCentre.MaxLevel,
-                        Description = this.logic.Buildings.ResearchCentre.Description,
-                        Prerequisites = this.logic.Buildings.ResearchCentre.Prerequisite
-                    },
-                    Barracks = new BarracksViewModel
-                    {
-                        Level = pO.Buildings.BarracksLevel,
-                        Name = this.logic.Buildings.Barracks.Name,
-                        MaxLevel = this.logic.Buildings.Barracks.MaxLevel,
-                        Description = this.logic.Buildings.Barracks.Description,
-                        Prerequisites = this.logic.Buildings.Barracks.Prerequisite
-                    },
-                    SolarCollector = new SolarCollectorViewModel
-                    {
-                        Level = pO.Buildings.SolarCollectorLevel,
-                        Name = this.logic.Buildings.SolarCollector.Name,
-                        MaxLevel = this.logic.Buildings.SolarCollector.MaxLevel,
-                        Description = this.logic.Buildings.SolarCollector.Description,
-                        Prerequisites = this.logic.Buildings.SolarCollector.Prerequisite
-                    },
-                    CrystalExtractor = new CrystalExtractorViewModel
-                    {
-                        Level = pO.Buildings.CrystalExtractorLevel,
-                        Name = this.logic.Buildings.CrystalExtractor.Name,
-                        MaxLevel = this.logic.Buildings.CrystalExtractor.MaxLevel,
-                        Description = this.logic.Buildings.CrystalExtractor.Description,
-                        Prerequisites = this.logic.Buildings.CrystalExtractor.Prerequisite
-                    },
-                    MetalScrapper = new MetalScrapperViewModel
-                    {
-                        Level = pO.Buildings.MetalScrapperLevel,
-                        Name = this.logic.Buildings.MetalScrapper.Name,
-                        MaxLevel = this.logic.Buildings.MetalScrapper.MaxLevel,
-                        Description = this.logic.Buildings.MetalScrapper.Description,
-                        Prerequisites = this.logic.Buildings.MetalScrapper.Prerequisite
-                    }
+                    Headquarters = new BuildingViewModel(pO.Buildings.HeadQuartersLevel, this.logic.Buildings.Headquarters),
+                    ResearchCentre = new BuildingViewModel(pO.Buildings.ResearchCentreLevel, this.logic.Buildings.ResearchCentre),
+                    Barracks = new BuildingViewModel(pO.Buildings.BarracksLevel, this.logic.Buildings.Barracks),
+                    SolarCollector = new BuildingViewModel(pO.Buildings.SolarCollectorLevel, this.logic.Buildings.SolarCollector),
+                    CrystalExtractor = new BuildingViewModel(pO.Buildings.CrystalExtractorLevel, this.logic.Buildings.CrystalExtractor),
+                    MetalScrapper = new BuildingViewModel(pO.Buildings.MetalScrapperLevel, this.logic.Buildings.MetalScrapper),
                 },
                 Technologies = new TechnologiesViewModel
                 {
-                    ArmoredFleet = new ArmoredFleetViewModel
-                    {
-                        Level = pO.Technologies.ArmoredFleetLevel,
-                        Name = this.logic.Technologies.ArmoredFleet.Name,
-                        MaxLevel = this.logic.Technologies.ArmoredFleet.MaxLevel,
-                        Description = this.logic.Technologies.ArmoredFleet.Description,
-                        Prerequisite = this.logic.Technologies.ArmoredFleet.Prerequisite
-                    },
-                    CheaperFleet = new CheaperFleetViewModel
-                    {
-                        Level = pO.Technologies.CheaperFleetLevel,
-                        Name = this.logic.Technologies.CheaperFleet.Name,
-                        MaxLevel = this.logic.Technologies.CheaperFleet.MaxLevel,
-                        Description = this.logic.Technologies.CheaperFleet.Description,
-                        Prerequisite = this.logic.Technologies.CheaperFleet.Prerequisite
-                    },
-                    LargerFleet = new LargerFleetViewModel
-                    {
-                        Level = pO.Technologies.LargerFleetLevel,
-                        Name = this.logic.Technologies.LargerFleet.Name,
-                        MaxLevel = this.logic.Technologies.LargerFleet.MaxLevel,
-                        Description = this.logic.Technologies.LargerFleet.Description,
-                        Prerequisite = this.logic.Technologies.LargerFleet.Prerequisite
-                    },
-                    FasterConstruction = new FasterConstructionViewModel
-                    {
-                        Level = pO.Technologies.FasterConstructionLevel,
-                        Name = this.logic.Technologies.FasterConstruction.Name,
-                        MaxLevel = this.logic.Technologies.FasterConstruction.MaxLevel,
-                        Description = this.logic.Technologies.FasterConstruction.Description,
-                        Prerequisite = this.logic.Technologies.FasterConstruction.Prerequisite
-                    }
-                    //new MoreResourcesViewModel
-                    //{
-                    //    Level = pO.Technologies.MoreResourcesLevel,
-                    //    Name = this.logic.Technologies.MoreResources.Name,
-                    //    MaxLevel = this.logic.Technologies.MoreResources.MaxLevel,
-                    //    Description = this.logic.Technologies.MoreResources.Description,
-                    //    Prerequisite = this.logic.Technologies.MoreResources.Prerequisite
-                    //}
+                    CurrentlyResearching = pO.Technologies.CurrentlyResearching.ToString(),
+                    StartTime = pO.Technologies.StartTime,
+                    EndTime = pO.Technologies.EndTime,
+                    FasterConstruction = new TechnologyViewModel(pO.Technologies.FasterConstructionLevel, this.logic.Technologies.FasterConstruction),
+                    MoreResources = new TechnologyViewModel(pO.Technologies.MoreResourcesLevel, this.logic.Technologies.MoreResources),
+                    ArmoredFleet = new TechnologyViewModel(pO.Technologies.ArmoredFleetLevel, this.logic.Technologies.ArmoredFleet),
+                    CheaperFleet = new TechnologyViewModel(pO.Technologies.CheaperFleetLevel, this.logic.Technologies.CheaperFleet),
+                    LargerFleet = new TechnologyViewModel(pO.Technologies.LargerFleetLevel, this.logic.Technologies.LargerFleet)
                 }
             };
-
-            info.Technologies.MoreResources = Mapper.Map<Technologies, MoreResourcesViewModel>(pO.Technologies);
-            Mapper.Map<MoreResources, MoreResourcesViewModel>(this.logic.Technologies.MoreResources, info.Technologies.MoreResources);
-            //.Map(this.logic.Technologies.MoreResources);
 
             // Automapper mapping
             info.Planet = Mapper.Map<Planet, PlanetViewModel>(pO.Planet);

@@ -4,12 +4,17 @@
 
     public class FasterConstruction : ITechnology
     {
+        private const double EnergyCoeff = 14.2;
+        private const double CrystalCoeff = 14.4;
+        private const double MetalCoeff = 14;
+        private const double ResearchTimeCoeff = 1;
+
         public string Name
         {
             get { return "Nimble Workers"; }
         }
 
-        public string Description { get { return "Buildings you build are completed faster."; } }
+        public string Description { get { return "Buildings you upgrade are completed faster."; } }
 
         public int MaxLevel
         {
@@ -20,7 +25,7 @@
         {
             get
             {
-                return new[] { 0, 0.1, 0.25, 0.33 };
+                return new[] { 0, 0.1, 0.25, 0.33, 0 };
             }
         }
 
@@ -29,13 +34,34 @@
             get { return 1; }
         }
 
-        // TODO:
-        public TimeSpan[] ResearchTime { get; private set; }
+        public TimeSpan[] ResearchTime
+        {
+            get
+            {
+                return new[]
+                {
+                    TimeSpan.FromMinutes(0),
+                    TimeSpan.FromMinutes(59*ResearchTimeCoeff),
+                    TimeSpan.FromMinutes(88*ResearchTimeCoeff),
+                    TimeSpan.FromMinutes(166*ResearchTimeCoeff),
+                    TimeSpan.FromMinutes(0)
+                };
+            }
+        }
 
-        // TODO:
         public int[] GetRequiredResources(int level)
         {
-            throw new NotImplementedException();
+            if (level <= 0 || level > this.MaxLevel)
+            {
+                return new[] { 0, 0, 0 };
+            }
+
+            return new[]
+            {
+                (int) (100 * EnergyCoeff) * level,
+                (int) (100 * CrystalCoeff) * level,
+                (int) (100 * MetalCoeff) * level
+            };
         }
     }
 }

@@ -28,7 +28,8 @@ namespace GalaxyStorm.Logic.Core.Buildings
             get
             {
                 return new[] { 
-                TimeSpan.FromMinutes(1), 
+                TimeSpan.FromMinutes(0), 
+                TimeSpan.FromMinutes(0),
                 TimeSpan.FromMinutes(2.5 * BuildTimeCoeff), 
                 TimeSpan.FromMinutes(7 * BuildTimeCoeff), 
                 TimeSpan.FromMinutes(14.3 * BuildTimeCoeff),
@@ -37,14 +38,15 @@ namespace GalaxyStorm.Logic.Core.Buildings
                 TimeSpan.FromMinutes(32 * BuildTimeCoeff),
                 TimeSpan.FromMinutes(42 * BuildTimeCoeff),
                 TimeSpan.FromMinutes(60.1 * BuildTimeCoeff),
-                TimeSpan.FromMinutes(72 * BuildTimeCoeff)
+                TimeSpan.FromMinutes(72 * BuildTimeCoeff),
+                TimeSpan.FromMinutes(0)
             };
             }
         }
 
         public int[] ResourceGeneration
         {
-            get { return (new[] { 100, 150, 275, 350, 500, 720, 800, 940, 1100, 1500 }).Select(x => (int)(x * ResourceCoeff)).ToArray(); }
+            get { return (new[] { 100, 150, 275, 350, 500, 720, 800, 940, 1100, 1500, 3000, 0 }).Select(x => (int)(x * ResourceCoeff)).ToArray(); }
         }
 
         public abstract int[] GetRequiredResources(int level);

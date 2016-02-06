@@ -4,9 +4,9 @@
 
     public class MoreResources : ITechnology
     {
-        private const double EnergyCoeff = 5;
-        private const double CrystalCoeff = 5.4;
-        private const double MetalCoeff = 6;
+        private const double EnergyCoeff = 15;
+        private const double CrystalCoeff = 15.4;
+        private const double MetalCoeff = 16;
         private const double ResearchTimeCoeff = 1;
 
         public string Name
@@ -23,7 +23,7 @@
 
         public double[] Modifier
         {
-            get { return new[] { 0, 0.25, 0.50, 1, 0 }; }
+            get { return new[] { 0, 0.25, 0.50, 1}; }
         }
 
         public int Prerequisite
@@ -50,7 +50,6 @@
         {
             if (level <= 0 || level > this.MaxLevel)
             {
-                // throw new ArgumentOutOfRangeException("level", "Technology level should be within the 1 and MaxLevel constant constraints!");
                 return new[] { 0, 0, 0 };
             }
 

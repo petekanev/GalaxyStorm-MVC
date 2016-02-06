@@ -4,15 +4,15 @@
 
     public class TechnologiesViewModel
     {
-        public ArmoredFleetViewModel ArmoredFleet { get; set; }
+        public TechnologyViewModel ArmoredFleet { get; set; }
 
-        public CheaperFleetViewModel CheaperFleet { get; set; }
+        public TechnologyViewModel CheaperFleet { get; set; }
 
-        public LargerFleetViewModel LargerFleet { get; set; }
+        public TechnologyViewModel LargerFleet { get; set; }
 
-        public FasterConstructionViewModel FasterConstruction { get; set; }
+        public TechnologyViewModel FasterConstruction { get; set; }
 
-        public MoreResourcesViewModel MoreResources { get; set; }
+        public TechnologyViewModel MoreResources { get; set; }
 
         public double MinutesLeftToResearch { get; set; }
 

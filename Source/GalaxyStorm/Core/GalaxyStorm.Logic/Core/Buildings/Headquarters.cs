@@ -14,7 +14,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
             get { return "Headquarters"; }
         }
 
-        public string Description { get; private set; }
+        public string Description { get { return "..."; } }
 
         public int MaxLevel
         {
@@ -32,7 +32,8 @@ namespace GalaxyStorm.Logic.Core.Buildings
             {
                 return new[]
                 {
-                    TimeSpan.FromMinutes(1),
+                    TimeSpan.FromMinutes(0),
+                    TimeSpan.FromMinutes(0),
                     TimeSpan.FromMinutes(8.3*BuildTimeCoeff),
                     TimeSpan.FromMinutes(26*BuildTimeCoeff),
                     TimeSpan.FromMinutes(43*BuildTimeCoeff),
@@ -41,7 +42,8 @@ namespace GalaxyStorm.Logic.Core.Buildings
                     TimeSpan.FromMinutes(121*BuildTimeCoeff),
                     TimeSpan.FromMinutes(215*BuildTimeCoeff),
                     TimeSpan.FromMinutes(305*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(465*BuildTimeCoeff)
+                    TimeSpan.FromMinutes(465*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(0),
                 };
             }
         }
@@ -50,7 +52,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
         {
             if (level <= 0 || level > this.MaxLevel)
             {
-                throw new ArgumentOutOfRangeException("level", "Building level should be within the 1 and MaxLevel constant constraints!");
+                return new[] { 0, 0, 0 };
             }
 
             return new[]

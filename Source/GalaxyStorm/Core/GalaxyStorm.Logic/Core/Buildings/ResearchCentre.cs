@@ -32,11 +32,13 @@ namespace GalaxyStorm.Logic.Core.Buildings
             {
                 return new[]
                 {
+                    TimeSpan.FromMinutes(0),
                     TimeSpan.FromMinutes(26*BuildTimeCoeff),
                     TimeSpan.FromMinutes(43*BuildTimeCoeff),
                     TimeSpan.FromMinutes(59*BuildTimeCoeff),
                     TimeSpan.FromMinutes(88*BuildTimeCoeff),
                     TimeSpan.FromMinutes(166*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(0)
                 };
             }
         }
@@ -45,7 +47,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
         {
             if (level <= 0 || level > this.MaxLevel)
             {
-                throw new ArgumentOutOfRangeException("level", "Building level should be within the 1 and MaxLevel constant constraints!");
+                return new[] { 0, 0, 0 };
             }
 
             return new[]

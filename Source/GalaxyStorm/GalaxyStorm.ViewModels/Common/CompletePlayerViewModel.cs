@@ -5,6 +5,10 @@
 
     public class CompletePlayerViewModel
     {
+        public CompletePlayerViewModel()
+        {
+        }
+
         public ResourcesViewModel Resources { get; set; }
 
         public BuildingsViewModel Buildings { get; set; }

@@ -20,9 +20,10 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
         public override int[] GetRequiredResources(int level)
         {
-            if (level <= 0 || level > base.MaxLevel)
+
+            if (level <= 0 || level > this.MaxLevel)
             {
-                throw new ArgumentOutOfRangeException("level", "Building level should be within the 1 and MaxLevel constant constraints!");
+                return new[] { 0, 0, 0 };
             }
 
             return new[]

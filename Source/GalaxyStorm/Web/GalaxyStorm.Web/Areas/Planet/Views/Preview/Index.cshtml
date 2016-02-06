@@ -60,7 +60,7 @@
                         }
                         else
                         {
-                            <p>Not built yet! (Requires HQ Level @Model.Buildings.Headquarters.Prerequisites)</p>
+                            <p>Not built yet! (Requires HQ Level @Model.Buildings.Headquarters.Prerequisite)</p>
                         }
                         <p>
                             <div class="progress">
@@ -99,7 +99,7 @@
                         }
                         else
                         {
-                            <p>Not built yet! (Requires HQ Level @Model.Buildings.ResearchCentre.Prerequisites)</p>
+                            <p>Not built yet! (Requires HQ Level @Model.Buildings.ResearchCentre.Prerequisite)</p>
                         }
                         <p>
                             <div class="progress">
@@ -138,7 +138,7 @@
                         }
                         else
                         {
-                            <p>Not built yet! (Requires HQ Level @Model.Buildings.Barracks.Prerequisites)</p>
+                            <p>Not built yet! (Requires HQ Level @Model.Buildings.Barracks.Prerequisite)</p>
                         }
                         <p>
                             <div class="progress">
@@ -280,7 +280,7 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.ArmoredFleet.Level*Model.Technologies.ArmoredFleet.MaxLevel)%;"></div>
+                                <div class="progress-bar progress-bar-warning" style="width: @((Model.Technologies.ArmoredFleet.Level / (double)Model.Technologies.ArmoredFleet.MaxLevel) * 100)%;"></div>
                             </div>
                         </p>
                     }
@@ -317,7 +317,7 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.CheaperFleet.Level*Model.Technologies.CheaperFleet.MaxLevel)%;"></div>
+                                <div class="progress-bar progress-bar-warning" style="width: @((Model.Technologies.CheaperFleet.Level / (double)Model.Technologies.CheaperFleet.MaxLevel) * 100)%;"></div>
                             </div>
                         </p>
                     }
@@ -354,7 +354,7 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.LargerFleet.Level*Model.Technologies.LargerFleet.MaxLevel)%;"></div>
+                                <div class="progress-bar progress-bar-warning" style="width: @((Model.Technologies.LargerFleet.Level / (double)Model.Technologies.LargerFleet.MaxLevel) * 100)%;"></div>
                             </div>
                         </p>
                     }
@@ -391,7 +391,7 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.FasterConstruction.Level*Model.Technologies.FasterConstruction.MaxLevel)%;"></div>
+                                <div class="progress-bar progress-bar-warning" style="width: @((Model.Technologies.FasterConstruction.Level / (double)Model.Technologies.FasterConstruction.MaxLevel) * 100)%;"></div>
                             </div>
                         </p>
                     }
@@ -428,7 +428,7 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.MoreResources.Level * Model.Technologies.MoreResources.MaxLevel)%;"></div>
+                                <div class="progress-bar progress-bar-warning" style="width: @((Model.Technologies.MoreResources.Level / (double)Model.Technologies.MoreResources.MaxLevel) * 100)%;"></div>
                             </div>
                         </p>
                     }
