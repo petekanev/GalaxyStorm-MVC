@@ -289,18 +289,14 @@
     <None Include="Areas\Admiral\Views\Supplements\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\Manage\Index.cshtml" />
-    <Content Include="Areas\Planet\Views\Buildings\Headquarters.cshtml" />
-    <Content Include="Areas\Planet\Views\Buildings\Barracks.cshtml" />
-    <Content Include="Areas\Planet\Views\Buildings\CrystalExtractor.cshtml" />
+    <Content Include="Areas\Planet\Views\Buildings\Building.cshtml" />
     <None Include="Areas\Planet\Views\Buildings\Index.cshtml" />
-    <Content Include="Areas\Planet\Views\Buildings\ResearchCentre.cshtml" />
-    <Content Include="Areas\Planet\Views\Buildings\SolarCollector.cshtml" />
-    <Content Include="Areas\Planet\Views\Buildings\MetalScrapper.cshtml" />
     <None Include="Areas\Planet\Views\Fleet\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\Index.cshtml" />
-    <None Include="Areas\Planet\Views\Preview\Resources.cshtml" />
+    <None Include="Areas\Planet\Views\Preview\_Resources.cshtml" />
     <None Include="Areas\Planet\Views\Technologies\Index.cshtml" />
     <Content Include="Areas\Planet\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Planet\Views\Technologies\Technology.cshtml" />
     <None Include="Areas\Profile\Views\Reports\Index.cshtml" />
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Profile\Views\Shared\_Layout.cshtml" />
@@ -377,6 +373,9 @@
     <Content Include="Views\Shared\_ResourceHUDPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Shared\_PrivateLayout.cshtml" />
+    <Content Include="Views\DisplayTemplates\ResourceBuilding.cshtml" />
+    <Content Include="Views\DisplayTemplates\Technology.cshtml" />
+    <Content Include="Views\Shared\_BuildingsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admiral\Models\" />
@@ -385,6 +384,8 @@
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Shard\Models\" />
     <Folder Include="Areas\Shard\Views\Shared\" />
+    <Folder Include="Images\150xX\" />
+    <Folder Include="Views\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

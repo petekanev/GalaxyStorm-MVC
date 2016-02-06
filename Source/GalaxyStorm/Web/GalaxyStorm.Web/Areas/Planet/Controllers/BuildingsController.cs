@@ -13,32 +13,44 @@
 
         public ActionResult Headquarters()
         {
-            return View();
+            ViewBag.Title = "Headquarters";
+
+            return View("Building");
         }
 
         public ActionResult ResearchCentre()
         {
-            return View();
+            ViewBag.Title = "Research Centre";
+
+            return View("Building");
         }
 
         public ActionResult Barracks()
         {
-            return View();
+            ViewBag.Title = "Barracks";
+
+            return View("Building");
         }
 
         public ActionResult SolarCollector()
         {
-            return View();
+            ViewBag.Title = "Solar Collector";
+
+            return View("Building");
         }
 
         public ActionResult CrystalExtractor()
         {
-            return View();
+            ViewBag.Title = "Crystal Extractor";
+
+            return View("Building");
         }
 
         public ActionResult MetalScrapper()
         {
-            return View();
+            ViewBag.Title = "Metal Scrapper";
+
+            return View("Building");
         }
     }
 }

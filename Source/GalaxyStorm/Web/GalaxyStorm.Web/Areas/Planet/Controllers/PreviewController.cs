@@ -155,7 +155,7 @@
                 MetalPerHour = hourlyRes[2]
             };
 
-            return View(resVM);
+            return View("_Resources", resVM);
         }
     }
 }
