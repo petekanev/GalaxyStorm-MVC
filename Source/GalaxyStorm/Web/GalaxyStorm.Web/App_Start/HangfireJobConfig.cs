@@ -1,5 +1,6 @@
 ﻿namespace GalaxyStorm.Web.App_Start
 {
+    using System.Data.Entity;
     using System.Linq;
     using Data;
     using Data.Models;
@@ -28,7 +29,7 @@
                 var levelE = pO.Buildings.SolarCollectorLevel;
                 var levelC = pO.Buildings.CrystalExtractorLevel;
                 var levelM = pO.Buildings.MetalScrapperLevel;
-                var modifier = logicProvider.Technologies.MoreResources.Modifier[pO.Technologies.MoreResourcesLevel];
+                var modifier = logicProvider.Technologies.MoreResources.Modifier[pO.Technologies.MoreResourcesLevel]; 
 
                 var energyGeneration = (logicProvider.Buildings.SolarCollector.ResourceGeneration[levelE] * pO.Planet.EnergyModifier) / 60;
                 var crystalGeneration = (logicProvider.Buildings.CrystalExtractor.ResourceGeneration[levelC] * pO.Planet.CrystalModifier) / 60;

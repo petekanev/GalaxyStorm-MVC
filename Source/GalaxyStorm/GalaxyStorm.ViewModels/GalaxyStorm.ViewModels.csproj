@@ -82,6 +82,10 @@
       <Project>{58EB223D-5336-4BF0-954C-E38FB4DF2F79}</Project>
       <Name>GalaxyStorm.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\GalaxyStorm.Logic\GalaxyStorm.Logic.csproj">
+      <Project>{00083C36-31E1-43BA-874F-9DDFCFA486E3}</Project>
+      <Name>GalaxyStorm.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj">
       <Project>{55085a4d-ff06-4e40-948b-c40d07452b52}</Project>
       <Name>GalaxyStorm.Data.Models</Name>

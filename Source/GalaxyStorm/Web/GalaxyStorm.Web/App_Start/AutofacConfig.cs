@@ -21,6 +21,7 @@
             builder.RegisterModule(new EfModule());
             builder.RegisterType(typeof(LogicProvider)).As(typeof(ILogicProvider)).InstancePerLifetimeScope();
 
+            // hangfire requires that this be manually bound
             builder.RegisterType<BuildingService>().InstancePerBackgroundJob();
 
             var container = builder.Build();

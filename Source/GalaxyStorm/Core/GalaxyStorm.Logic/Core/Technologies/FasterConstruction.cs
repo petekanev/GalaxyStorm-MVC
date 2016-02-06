@@ -9,7 +9,7 @@
             get { return "Nimble Workers"; }
         }
 
-        public string Description { get; private set; }
+        public string Description { get { return "Buildings you build are completed faster."; } }
 
         public int MaxLevel
         {

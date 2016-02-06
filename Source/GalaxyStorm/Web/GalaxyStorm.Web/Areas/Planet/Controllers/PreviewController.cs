@@ -10,6 +10,9 @@
     using ViewModels.Buildings;
     using ViewModels.Common;
     using Data.Models;
+    using Data.Models.PlayerObjects;
+    using Logic.Core.Technologies;
+    using Utilities;
     using ViewModels.Technologies;
 
     public class PreviewController : UsersController
@@ -76,7 +79,7 @@
                         Name = this.logic.Buildings.SolarCollector.Name,
                         MaxLevel = this.logic.Buildings.SolarCollector.MaxLevel,
                         Description = this.logic.Buildings.SolarCollector.Description,
-                        Prerequisites = this.logic.Buildings.SolarCollector.Prerequisite 
+                        Prerequisites = this.logic.Buildings.SolarCollector.Prerequisite
                     },
                     CrystalExtractor = new CrystalExtractorViewModel
                     {
@@ -120,9 +123,29 @@
                         MaxLevel = this.logic.Technologies.LargerFleet.MaxLevel,
                         Description = this.logic.Technologies.LargerFleet.Description,
                         Prerequisite = this.logic.Technologies.LargerFleet.Prerequisite
+                    },
+                    FasterConstruction = new FasterConstructionViewModel
+                    {
+                        Level = pO.Technologies.FasterConstructionLevel,
+                        Name = this.logic.Technologies.FasterConstruction.Name,
+                        MaxLevel = this.logic.Technologies.FasterConstruction.MaxLevel,
+                        Description = this.logic.Technologies.FasterConstruction.Description,
+                        Prerequisite = this.logic.Technologies.FasterConstruction.Prerequisite
                     }
+                    //new MoreResourcesViewModel
+                    //{
+                    //    Level = pO.Technologies.MoreResourcesLevel,
+                    //    Name = this.logic.Technologies.MoreResources.Name,
+                    //    MaxLevel = this.logic.Technologies.MoreResources.MaxLevel,
+                    //    Description = this.logic.Technologies.MoreResources.Description,
+                    //    Prerequisite = this.logic.Technologies.MoreResources.Prerequisite
+                    //}
                 }
             };
+
+            info.Technologies.MoreResources = Mapper.Map<Technologies, MoreResourcesViewModel>(pO.Technologies);
+            Mapper.Map<MoreResources, MoreResourcesViewModel>(this.logic.Technologies.MoreResources, info.Technologies.MoreResources);
+            //.Map(this.logic.Technologies.MoreResources);
 
             // Automapper mapping
             info.Planet = Mapper.Map<Planet, PlanetViewModel>(pO.Planet);
@@ -145,7 +168,7 @@
             // Headquarters
             info.Buildings.Headquarters.RequiredBuildTime = info.Buildings.Headquarters.Level <
                                                             info.Buildings.Headquarters.MaxLevel
-                ? this.logic.Buildings.Headquarters.BuildTime[info.Buildings.Headquarters.Level+1].TotalMinutes
+                ? this.logic.Buildings.Headquarters.BuildTime[info.Buildings.Headquarters.Level + 1].TotalMinutes
                 : 0;
 
             if (info.Buildings.Headquarters.Level < info.Buildings.Headquarters.MaxLevel)

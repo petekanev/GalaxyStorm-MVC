@@ -9,7 +9,7 @@
             get { return "Armored Fleet"; }
         }
 
-        public string Description { get; private set; }
+        public string Description { get { return "The ships you build are more resilient in battle"; }}
 
         public int MaxLevel
         {

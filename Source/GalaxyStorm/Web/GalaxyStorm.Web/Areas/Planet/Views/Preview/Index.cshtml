@@ -251,7 +251,7 @@
     <h4>Technologies</h4>
     <hr />
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h6 class="text-center">
@@ -288,7 +288,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h6 class="text-center">
@@ -325,11 +325,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h6 class="text-center">
-                        @Html.ActionLink(@Model.Technologies.LargerFleet.Name, "LargerFleet", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.Technologies.LargerFleet.Level</small>
+                        @Html.ActionLink(@Model.Technologies.LargerFleet.Name, "LargerFleet", "Technologies", new {area = "Planet"}, null) - <small>Level @Model.Technologies.LargerFleet.Level</small>
                     </h6>
                 </div>
                 <div class="panel-body text-center">
@@ -354,11 +354,85 @@
                         }
                         <p>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.LargerFleet.Level * Model.Technologies.LargerFleet.MaxLevel)%;"></div>
+                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.LargerFleet.Level*Model.Technologies.LargerFleet.MaxLevel)%;"></div>
                             </div>
                         </p>
                     }
-                    @Html.ActionLink("Details", "LargerFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "LargerFleet", "Technologies", new {area = "Planet"}, new {@class = "btn btn-default"})
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Technologies.FasterConstruction.Name, "FasterConstruction", "Technologies", new {area = "Planet"}, null) - <small>Level @Model.Technologies.LargerFleet.Level</small>
+                    </h6>
+                </div>
+                <div class="panel-body text-center">
+                    @if (@Model.Technologies.CurrentlyResearching == "FasterConstruction")
+                    {
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Technologies.MinutesLeftToResearch) minutes!</p>
+                        <p>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-warning" style="width: @Model.Technologies.PercentsResearched%"></div>
+                            </div>
+                        </p>
+                    }
+                    else
+                    {
+                        if (@Model.Technologies.FasterConstruction.Level > 0)
+                        {
+                            <p>Level @Model.Technologies.FasterConstruction.Level</p>
+                        }
+                        else
+                        {
+                            <p>Requires @Model.Buildings.ResearchCentre.Name @Model.Technologies.FasterConstruction.Prerequisite</p>
+                        }
+                        <p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.FasterConstruction.Level*Model.Technologies.FasterConstruction.MaxLevel)%;"></div>
+                            </div>
+                        </p>
+                    }
+                    @Html.ActionLink("Details", "FasterConstruction", "Technologies", new {area = "Planet"}, new {@class = "btn btn-default"})
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Technologies.MoreResources.Name, "MoreResources", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.Technologies.MoreResources.Level</small>
+                    </h6>
+                </div>
+                <div class="panel-body text-center">
+                    @if (@Model.Technologies.CurrentlyResearching == "MoreResources")
+                    {
+                        <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.Technologies.MinutesLeftToResearch) minutes!</p>
+                        <p>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-warning" style="width: @Model.Technologies.PercentsResearched%"></div>
+                            </div>
+                        </p>
+                    }
+                    else
+                    {
+                        if (@Model.Technologies.MoreResources.Level > 0)
+                        {
+                            <p>Level @Model.Technologies.MoreResources.Level</p>
+                        }
+                        else
+                        {
+                            <p>Requires @Model.Buildings.ResearchCentre.Name @Model.Technologies.MoreResources.Prerequisite</p>
+                        }
+                        <p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: @(Model.Technologies.MoreResources.Level * Model.Technologies.MoreResources.MaxLevel)%;"></div>
+                            </div>
+                        </p>
+                    }
+                    @Html.ActionLink("Details", "MoreResources", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
