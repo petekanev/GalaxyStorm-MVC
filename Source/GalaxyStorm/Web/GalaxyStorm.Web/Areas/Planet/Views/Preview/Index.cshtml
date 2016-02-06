@@ -238,7 +238,7 @@
                         <p>Level @Model.Buildings.MetalScrapper.Level</p>
                         <p>
                             <div class="progress">
-                                <div class="progress-bar" style="width: @(Model.Buildings.MetalScrapper.Level*@Model.Buildings.MetalScrapper.MaxLevel)%;"></div>
+                                <div class="progress-bar" style="width: @(Model.Buildings.MetalScrapper.Level / (double)Model.Buildings.MetalScrapper.MaxLevel * 100)%;"></div>
                             </div>
                         </p>
                     }
