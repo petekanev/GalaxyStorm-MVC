@@ -57,10 +57,12 @@
     <Compile Include="Contracts\IPlayerService.cs" />
     <Compile Include="Contracts\IReportsService.cs" />
     <Compile Include="Contracts\IResearchService.cs" />
+    <Compile Include="Contracts\ITechnologiesService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportsService.cs" />
     <Compile Include="ResearchService.cs" />
+    <Compile Include="TechnologiesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\GalaxyStorm.Logic\GalaxyStorm.Logic.csproj">

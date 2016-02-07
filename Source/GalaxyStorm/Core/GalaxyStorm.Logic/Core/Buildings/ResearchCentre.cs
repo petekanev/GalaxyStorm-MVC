@@ -5,16 +5,23 @@ namespace GalaxyStorm.Logic.Core.Buildings
     public class ResearchCentre : IBuilding
     {
         private const double BuildTimeCoeff = 1;
-        private const double EnergyCoeff = 2.05;
-        private const double CrystalCoeff = 3.33;
-        private const double MetalCoeff = 2.15;
+        private const double EnergyCoeff = 5.05;
+        private const double CrystalCoeff = 7.33;
+        private const double MetalCoeff = 6.15;
 
         public string Name
         {
             get { return "Research Centre"; }
         }
 
-        public string Description { get; private set; }
+        public string Description
+        {
+            get
+            {
+                return
+                    "Suspendisse enim augue, porttitor vel massa ac, luctus laoreet dolor. Aliquam feugiat orci et orci finibus, id maximus erat rutrum. Integer eget congue urna, ac porta lorem. Phasellus semper risus justo, quis faucibus leo tincidunt ut. Integer at posuere elit, in viverra sem. Integer orci felis, dictum nec purus at, vulputate sodales enim. Curabitur vestibulum, enim ut porttitor viverra, libero quam consectetur justo, eu tempus quam sapien et est. Donec molestie diam tempor, semper augue ut, venenatis sapien. Morbi sit amet facilisis lacus, sed gravida dui.";
+            }
+        }
 
         public int MaxLevel
         {

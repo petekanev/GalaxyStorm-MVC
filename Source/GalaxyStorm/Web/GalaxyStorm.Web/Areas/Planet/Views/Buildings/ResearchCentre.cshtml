@@ -11,7 +11,88 @@
 <div class="well">
     <div class="row">
         <div class="col-md-6">
+            <span>Overview:</span>
+            <hr />
+            <p>@Model.ResearchCentre.Description</p>
+            @if (Model.ResearchCentre.Level > 0)
+            {
+                <p>
+                    Current Level: <span class="text-primary">Can research certain technologies.</span>
+                </p>
+            }
+            @if (@Model.CurrentlyBuilding == "ResearchCentre")
+            {
+                <span>Upgrade:</span>
+                <hr />
+                <p class="text-center"><strong>Level @(Model.ResearchCentre.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                <p>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                    </div>
+                </p>
+            }
+            else
+            {
+                if (@Model.ResearchCentre.Level > 0)
+                {
+                    <p class="text-center">Level @Model.ResearchCentre.Level / @Model.ResearchCentre.MaxLevel</p>
+                }
+                else
+                {
+                    <p class="text-center">Not built yet! (Requires HQ Level @Model.ResearchCentre.Prerequisite)</p>
+                }
+                <p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: @((Model.ResearchCentre.Level / (double)Model.ResearchCentre.MaxLevel) * 100)%"></div>
+                    </div>
+                </p>
+                <span>Upgrade:</span>
+                <hr />
+                if (@Model.ResearchCentre.Level < @Model.ResearchCentre.MaxLevel)
+                {
+                    <p>
+                        Next Level: <span class="text-primary">Can research more advanced technologies.</span>
+                    </p>
+                    if (@Model.Headquarters.Level >= @Model.ResearchCentre.Prerequisite)
+                    {
+                        <div class="text-center">
+                            <p>
+                                Required Resources (Level @(Model.ResearchCentre.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.ResearchCentre.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.ResearchCentre.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.ResearchCentre.RequiredMetal
+                            </p>
+                            @if (@Model.Headquarters.Level <= @Model.ResearchCentre.Level)
+                            {
+                                <p class="text-center text-danger">You need to upgrade your Headquarters further.</p>
+                            }
+                            else
+                            {
+                                if (@Model.CurrentlyBuilding != "None")
+                                {
+                                    <p class="text-center text-danger">The construction of another building is currently in progress ...</p>
+                                }
+                                else
+                                {
+                                    //Todo: Check if available resources
 
+                                    @Html.ActionLink("Upgrade", "UpgradeResearchCentre", null, new { @class = "btn btn-default text-center" })
+                                    <p>Raw build time:  <i class="ion-ios-timer-outline size-18"> </i> @Model.ResearchCentre.RequiredBuildTime min.</p>
+                                }
+
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-center">Not built yet! (Requires HQ Level @Model.ResearchCentre.Prerequisite)</p>
+                    }
+                }
+                else
+                {
+                    <p class="text-center text-success">Max level reached!</p>
+                }
+            }
         </div>
         <div class="col-md-6">
             <img src="~/Images/300xX/research-centre.png" alt="@Model.ResearchCentre.Name" class="small-img-300" />

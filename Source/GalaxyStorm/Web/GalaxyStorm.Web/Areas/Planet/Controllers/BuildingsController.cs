@@ -58,11 +58,31 @@
             var userId = User.Identity.GetUserId();
 
             var buildings = this.buildingsService.GetPlayerBuildings(userId);
-            var vM = new BuildingsViewModel(buildings) { ResearchCentre = new BuildingViewModel(buildings.ResearchCentreLevel, this.logic.Buildings.ResearchCentre) };
+            var vM = new BuildingsViewModel(buildings)
+            {
+                ResearchCentre = new BuildingViewModel(buildings.ResearchCentreLevel, this.logic.Buildings.ResearchCentre),
+                // For prerequisite checks
+                Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel}
+            };
 
             ViewBag.Title = vM.ResearchCentre.Name;
 
             return View(vM);
+        }
+
+        public ActionResult UpgradeResearchCentre()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.buildingsService.ScheduleResearchCentre(userId);
+
+            // TODO: add alerts (in divs with TempData)
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+
+            return RedirectToAction("ResearchCentre");
         }
 
         public ActionResult Barracks()

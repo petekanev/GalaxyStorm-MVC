@@ -76,6 +76,7 @@
         {
             var user = this.users
                 .All()
+                .Include(x => x.PlayerObject)
                 .FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
@@ -124,6 +125,7 @@
         {
             var user = this.users
                 .All()
+                .Include(x => x.PlayerObject)
                 .FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
@@ -172,6 +174,7 @@
         {
             var user = this.users
                 .All()
+                .Include(x => x.PlayerObject)
                 .FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
@@ -220,6 +223,7 @@
         {
             var user = this.users
                 .All()
+                .Include(x => x.PlayerObject)
                 .FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
@@ -268,6 +272,7 @@
         {
             var user = this.users
                 .All()
+                .Include(x => x.PlayerObject)
                 .FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
@@ -376,7 +381,7 @@
                 return false;
             }
 
-            if (toLevel < buildingLogic.Prerequisite)
+            if (pO.Buildings.HeadQuartersLevel < buildingLogic.Prerequisite)
             {
                 return false;
             }
