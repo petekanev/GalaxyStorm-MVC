@@ -1,0 +1,90 @@
+﻿@model GalaxyStorm.ViewModels.Buildings.BuildingsViewModel
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @Model.Headquarters.Name <small>Level @Model.Headquarters.Level</small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+    <div class="row">
+        <div class="col-md-6">
+            <span>Overview:</span>
+            <hr />
+            <p>@Model.Headquarters.Description</p>
+            <p>
+                Current Level: <span class="text-primary">Can upgrade buildings up to level @Model.Headquarters.Level .</span>
+            </p>
+            @if (@Model.CurrentlyBuilding == "Headquarters")
+            {
+                <span>Upgrade:</span>
+                <hr />
+                <p class="text-center"><strong>Level @(Model.Headquarters.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                <p>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                    </div>
+                </p>
+            }
+            else
+            {
+                if (@Model.Headquarters.Level > 0)
+                {
+                    <p class="text-center">Level @Model.Headquarters.Level / @Model.Headquarters.MaxLevel</p>
+                }
+                else
+                {
+                    <p class="text-center">Not built yet! (Requires HQ Level @Model.Headquarters.Prerequisite)</p>
+                }
+                <p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: @((Model.Headquarters.Level/(double) Model.Headquarters.MaxLevel)*100)%"></div>
+                    </div>
+                </p>
+                <span>Upgrade:</span>
+                <hr />
+                if (@Model.Headquarters.Level < @Model.Headquarters.MaxLevel)
+                {
+                    <p>
+                        Next Level: <span class="text-primary">Can upgrade buildings up to level @(Model.Headquarters.Level + 1) .</span>
+                    </p>
+                    if (@Model.Headquarters.Level >= @Model.Headquarters.Prerequisite)
+                    {
+                        <div class="text-center">
+                            <p>
+                                Required Resources (Level @(Model.Headquarters.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.Headquarters.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.Headquarters.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.Headquarters.RequiredMetal
+                            </p>
+                            @if (@Model.CurrentlyBuilding != "None")
+                            {
+                                <p class="text-center text-danger">The construction of another building is currently in progress ...</p>
+                            }
+                            else
+                            {
+                                //Todo: Check if available resources
+
+                                @Html.ActionLink("Upgrade", "UpgradeHeadquarters", null, new { @class = "btn btn-default text-center" })
+                                <p>Raw build time: <i class="ion-ios-timer-outline size-18"> </i> @Model.Headquarters.RequiredBuildTime min.</p>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-center">Not built yet! (Requires HQ Level @Model.Headquarters.Prerequisite)</p>
+                    }
+                }
+                else
+                {
+                    <p class="text-center text-success">Max level reached!</p>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <img src="~/Images/300xX/headquarters.png" alt="@Model.Headquarters.Name" class="small-img-300" />
+        </div>
+    </div>
+</div>

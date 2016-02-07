@@ -256,3 +256,18 @@ img.small-img-200 {
     height: 200px;
     margin: 0 auto;
 }
+
+img.small-img-300 {
+    height: 300px;
+    margin: 0 auto;
+}
+
+.well {
+    background-color: #1e1e1e;
+    background-color: rgba(30, 30, 30, 0.7);
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}

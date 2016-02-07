@@ -14,7 +14,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
             get { return "Headquarters"; }
         }
 
-        public string Description { get { return "..."; } }
+        public string Description { get { return "Integer ornare, eros id sodales ornare, leo purus ultrices justo, sit amet laoreet leo erat eu enim. Quisque odio lacus, semper eget sodales nec, commodo finibus tortor. Vestibulum eu metus a neque gravida faucibus vitae faucibus enim. Nunc orci lacus, malesuada sit amet viverra sit amet, fringilla ut dui. Pellentesque ornare congue ipsum vitae hendrerit. Nam volutpat urna et mi accumsan lacinia. Vivamus at ipsum non nibh cursus commodo ac at risus."; } }
 
         public int MaxLevel
         {

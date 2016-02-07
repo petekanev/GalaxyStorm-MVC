@@ -1,0 +1,217 @@
+﻿@model GalaxyStorm.ViewModels.Buildings.BuildingsViewModel
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Headquarters.Name, "Headquarters", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Headquarters.Level</small>
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/300xX/headquarters.png" alt="HQ" class="small-img-200" />
+                <hr />
+                @if (@Model.CurrentlyBuilding == "Headquarters")
+                {
+                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                    <p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                        </div>
+                    </p>
+                }
+                else
+                {
+                    if (@Model.Headquarters.Level > 0)
+                    {
+                        <p>Level @Model.Headquarters.Level</p>
+                    }
+                    else
+                    {
+                        <p>Not built yet! (Requires HQ Level @Model.Headquarters.Prerequisite)</p>
+                    }
+                    <p>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @((Model.Headquarters.Level / (double) Model.Headquarters.MaxLevel) * 100)%"></div>
+                        </div>
+                    </p>
+                }
+                @Html.ActionLink("Details", "Headquarters", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.ResearchCentre.Name, "ResearchCentre", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.ResearchCentre.Level</small>
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/300xX/research-centre.png" alt="RC" class="small-img-200" />
+                <hr />
+                @if (@Model.CurrentlyBuilding == "ResearchCentre")
+                {
+                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                    <p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                        </div>
+                    </p>
+                }
+                else
+                {
+                    if (@Model.ResearchCentre.Level > 0)
+                    {
+                        <p>Level @Model.ResearchCentre.Level</p>
+                    }
+                    else
+                    {
+                        <p>Not built yet! (Requires HQ Level @Model.ResearchCentre.Prerequisite)</p>
+                    }
+                    <p>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @((Model.ResearchCentre.Level / (double)Model.ResearchCentre.MaxLevel) * 100)%"></div>
+                        </div>
+                    </p>
+                }
+                @Html.ActionLink("Details", "ResearchCentre", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Barracks.Name, "Barracks", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.Barracks.Level</small>
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/300xX/barracks.png" alt="Barracks" class="small-img-200" />
+                <hr />
+                @if (@Model.CurrentlyBuilding == "Barracks")
+                {
+                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                    <p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                        </div>
+                    </p>
+                }
+                else
+                {
+                    if (@Model.Barracks.Level > 0)
+                    {
+                        <p>Level @Model.Barracks.Level</p>
+                    }
+                    else
+                    {
+                        <p>Not built yet! (Requires HQ Level @Model.Barracks.Prerequisite)</p>
+                    }
+                    <p>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @((Model.Barracks.Level / (double)Model.Barracks.MaxLevel) * 100)%"></div>
+                        </div>
+                    </p>
+                }
+                @Html.ActionLink("Details", "Barracks", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.SolarCollector.Name, "SolarCollector", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.SolarCollector.Level</small>
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/300xX/solar-collector.png" alt="Resource Building" class="small-img-200" />
+                <hr />
+                @if (@Model.CurrentlyBuilding == "SolarCollector")
+                {
+                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                    <p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                        </div>
+                    </p>
+                }
+                else
+                {
+                    <p>Level @Model.SolarCollector.Level</p>
+                    <p>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @((Model.SolarCollector.Level / (double)Model.SolarCollector.MaxLevel) * 100)%"></div>
+                        </div>
+                    </p>
+                }
+                @Html.ActionLink("Details", "SolarCollector", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.CrystalExtractor.Name, "CrystalExtractor", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.CrystalExtractor.Level</small>
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/300xX/crystal-extractor.png" alt="Resource Building" class="small-img-200" />
+                <hr />
+                @if (@Model.CurrentlyBuilding == "CrystalExtractor")
+                {
+                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                    <p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                        </div>
+                    </p>
+                }
+                else
+                {
+                    <p>Level @Model.CrystalExtractor.Level</p>
+                    <p>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @((Model.CrystalExtractor.Level / (double)Model.CrystalExtractor.MaxLevel) * 100)%"></div>
+                        </div>
+                    </p>
+                }
+                @Html.ActionLink("Details", "CrystalExtractor", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.MetalScrapper.Name, "MetalScrapper", "Buildings", new { area = "Planet" }, null) - <small>Level @Model.MetalScrapper.Level</small>
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/300xX/metal-scrapper.png" alt="Resource Building" class="small-img-200" />
+                <hr />
+                @if (@Model.CurrentlyBuilding == "MetalScrapper")
+                {
+                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                    <p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                        </div>
+                    </p>
+                }
+                else
+                {
+                    <p>Level @Model.MetalScrapper.Level</p>
+                    <p>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @(Model.MetalScrapper.Level / (double)Model.MetalScrapper.MaxLevel * 100)%;"></div>
+                        </div>
+                    </p>
+                }
+                @Html.ActionLink("Details", "MetalScrapper", "Buildings", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+</div>

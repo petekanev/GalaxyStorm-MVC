@@ -58,19 +58,19 @@ body {
 
 @media screen and (min-height: 1100px) {
     .body-content {
-        height: 1215px;
+        height: 1110px;
     }
 }
 
 @media screen and (min-height: 1215px) {
     .body-content {
-        height: 1330px;
+        height: 1250px;
     }
 }
 
 @media screen and (min-height: 1330px) {
     .body-content {
-        height: 1445px;
+        height: 1400px;
     }
 }
 

@@ -290,7 +290,9 @@
     <None Include="Areas\Admiral\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\Manage\Index.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\Building.cshtml" />
+    <Content Include="Areas\Planet\Views\Buildings\Headquarters.cshtml" />
     <None Include="Areas\Planet\Views\Buildings\Index.cshtml" />
+    <Content Include="Areas\Planet\Views\Buildings\ResearchCentre.cshtml" />
     <None Include="Areas\Planet\Views\Fleet\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\_Resources.cshtml" />
