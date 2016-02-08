@@ -34,11 +34,11 @@
 
         public BuildingViewModel Barracks { get; set; }
 
-        public BuildingViewModel SolarCollector { get; set; }
+        public ResourceBuildingViewModel SolarCollector { get; set; }
 
-        public BuildingViewModel CrystalExtractor { get; set; }
+        public ResourceBuildingViewModel CrystalExtractor { get; set; }
 
-        public BuildingViewModel MetalScrapper { get; set; }
+        public ResourceBuildingViewModel MetalScrapper { get; set; }
 
         public double MinutesLeftToBuild { get; set; }
 

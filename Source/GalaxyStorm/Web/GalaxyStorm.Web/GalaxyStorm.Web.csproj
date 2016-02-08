@@ -291,8 +291,12 @@
     <Content Include="Areas\Profile\Views\Manage\Index.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\Building.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\Headquarters.cshtml" />
+    <Content Include="Areas\Planet\Views\Buildings\Barracks.cshtml" />
+    <Content Include="Areas\Planet\Views\Buildings\CrystalExtractor.cshtml" />
     <None Include="Areas\Planet\Views\Buildings\Index.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\ResearchCentre.cshtml" />
+    <Content Include="Areas\Planet\Views\Buildings\SolarCollector.cshtml" />
+    <Content Include="Areas\Planet\Views\Buildings\MetalScrapper.cshtml" />
     <None Include="Areas\Planet\Views\Fleet\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\_Resources.cshtml" />

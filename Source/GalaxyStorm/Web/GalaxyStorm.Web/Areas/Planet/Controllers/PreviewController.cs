@@ -47,9 +47,9 @@
                     Headquarters = new BuildingViewModel(pO.Buildings.HeadQuartersLevel, this.logic.Buildings.Headquarters),
                     ResearchCentre = new BuildingViewModel(pO.Buildings.ResearchCentreLevel, this.logic.Buildings.ResearchCentre),
                     Barracks = new BuildingViewModel(pO.Buildings.BarracksLevel, this.logic.Buildings.Barracks),
-                    SolarCollector = new BuildingViewModel(pO.Buildings.SolarCollectorLevel, this.logic.Buildings.SolarCollector),
-                    CrystalExtractor = new BuildingViewModel(pO.Buildings.CrystalExtractorLevel, this.logic.Buildings.CrystalExtractor),
-                    MetalScrapper = new BuildingViewModel(pO.Buildings.MetalScrapperLevel, this.logic.Buildings.MetalScrapper),
+                    SolarCollector = new ResourceBuildingViewModel(pO.Buildings.SolarCollectorLevel, this.logic.Buildings.SolarCollector),
+                    CrystalExtractor = new ResourceBuildingViewModel(pO.Buildings.CrystalExtractorLevel, this.logic.Buildings.CrystalExtractor),
+                    MetalScrapper = new ResourceBuildingViewModel(pO.Buildings.MetalScrapperLevel, this.logic.Buildings.MetalScrapper),
                 },
                 Technologies = new TechnologiesViewModel
                 {

@@ -56,6 +56,7 @@
     <Compile Include="Account\ManageViewModels.cs" />
     <Compile Include="Buildings\BuildingsViewModel.cs" />
     <Compile Include="Buildings\BuildingViewModel.cs" />
+    <Compile Include="Buildings\ResourceBuildingViewModel.cs" />
     <Compile Include="Common\CompletePlayerViewModel.cs" />
     <Compile Include="Common\PlanetViewModel.cs" />
     <Compile Include="Common\ResourcesViewModel.cs" />

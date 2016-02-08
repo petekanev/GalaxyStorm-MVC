@@ -94,9 +94,34 @@
 
         public ActionResult SolarCollector()
         {
-            ViewBag.Title = "Solar Collector";
+            var userId = User.Identity.GetUserId();
 
-            return View();
+            var buildings = this.buildingsService.GetPlayerBuildings(userId);
+            var vM = new BuildingsViewModel(buildings)
+            {
+                SolarCollector = new ResourceBuildingViewModel(buildings.SolarCollectorLevel, this.logic.Buildings.SolarCollector),
+                // For prerequisite checks
+                Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel }
+            };
+
+            ViewBag.Title = vM.SolarCollector.Name;
+
+            return View(vM);
+        }
+
+        public ActionResult UpgradeSolarCollector()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.buildingsService.ScheduleSolarCollector(userId);
+
+            // TODO: add alerts (in divs with TempData)
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+
+            return RedirectToAction("SolarCollector");
         }
 
         public ActionResult CrystalExtractor()
