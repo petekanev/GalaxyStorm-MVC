@@ -35,9 +35,32 @@
                 var crystalGeneration = (logicProvider.Buildings.CrystalExtractor.ResourceGeneration[levelC] * pO.Planet.CrystalModifier) / 60;
                 var metalGeneration = (logicProvider.Buildings.MetalScrapper.ResourceGeneration[levelM] * pO.Planet.MetalModifier) / 60;
 
-                pO.Resources.Energy += (int)energyGeneration + (int)(energyGeneration * modifier);
-                pO.Resources.Crystal += (int)crystalGeneration + (int)(crystalGeneration * modifier);
-                pO.Resources.Metal += (int)metalGeneration + (int)(metalGeneration * modifier);
+                if (energyGeneration > (long) energyGeneration)
+                {
+                    pO.Resources.Energy += (long)(energyGeneration + 1) + (long)((energyGeneration + 1) * modifier);
+                }
+                else
+                {
+                    pO.Resources.Energy += (long)energyGeneration + (long)(energyGeneration * modifier);
+                }
+
+                if (crystalGeneration > (long)crystalGeneration)
+                {
+                    pO.Resources.Crystal += (long)(crystalGeneration + 1) + (long)((crystalGeneration + 1) * modifier);
+                }
+                else
+                {
+                    pO.Resources.Crystal += (long)crystalGeneration + (long)(crystalGeneration * modifier);
+                }
+
+                if (metalGeneration > (long)metalGeneration)
+                {
+                    pO.Resources.Metal += (long)(metalGeneration + 1) + (long)((metalGeneration + 1) * modifier);
+                }
+                else
+                {
+                    pO.Resources.Metal += (long)metalGeneration + (long)(metalGeneration * modifier);
+                }
             }
 
             users.SaveChanges();
