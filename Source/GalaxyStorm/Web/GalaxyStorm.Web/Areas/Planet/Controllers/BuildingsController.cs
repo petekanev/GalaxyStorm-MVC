@@ -126,16 +126,66 @@
 
         public ActionResult CrystalExtractor()
         {
-            ViewBag.Title = "Crystal Extractor";
+            var userId = User.Identity.GetUserId();
 
-            return View();
+            var buildings = this.buildingsService.GetPlayerBuildings(userId);
+            var vM = new BuildingsViewModel(buildings)
+            {
+                CrystalExtractor = new ResourceBuildingViewModel(buildings.CrystalExtractorLevel, this.logic.Buildings.CrystalExtractor),
+                // For prerequisite checks
+                Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel }
+            };
+
+            ViewBag.Title = vM.CrystalExtractor.Name;
+
+            return View(vM);
+        }
+
+        public ActionResult UpgradeCrystalExtractor()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.buildingsService.ScheduleCrystalExtractor(userId);
+
+            // TODO: add alerts (in divs with TempData)
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+
+            return RedirectToAction("CrystalExtractor");
         }
 
         public ActionResult MetalScrapper()
         {
-            ViewBag.Title = "Metal Scrapper";
+            var userId = User.Identity.GetUserId();
 
-            return View();
+            var buildings = this.buildingsService.GetPlayerBuildings(userId);
+            var vM = new BuildingsViewModel(buildings)
+            {
+                MetalScrapper = new ResourceBuildingViewModel(buildings.MetalScrapperLevel, this.logic.Buildings.MetalScrapper),
+                // For prerequisite checks
+                Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel }
+            };
+
+            ViewBag.Title = vM.MetalScrapper.Name;
+
+            return View(vM);
+        }
+
+        public ActionResult UpgradeMetalScrapper()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.buildingsService.ScheduleMetalScrapper(userId);
+
+            // TODO: add alerts (in divs with TempData)
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+
+            return RedirectToAction("MetalScrapper");
         }
     }
 }

@@ -1,1 +1,102 @@
-﻿
+﻿@model GalaxyStorm.ViewModels.Buildings.BuildingsViewModel
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @Model.CrystalExtractor.Name <small>Level @Model.CrystalExtractor.Level</small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+    <div class="row">
+        <div class="col-md-6">
+            <span>Overview:</span>
+            <hr />
+            <p>@Model.CrystalExtractor.Description</p>
+            @if (Model.CrystalExtractor.Level > 0)
+            {
+                <p>
+                    Current Level: <span class="text-primary">Generates @(Model.CrystalExtractor.ResourceIncome) crystals every hour.</span>
+                </p>
+            }
+            @if (@Model.CurrentlyBuilding == "CrystalExtractor")
+            {
+                <span>Upgrade:</span>
+                <hr />
+                <p class="text-center"><strong>Level @(Model.CrystalExtractor.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                <p>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                    </div>
+                </p>
+            }
+            else
+            {
+                if (@Model.CrystalExtractor.Level > 0)
+                {
+                    <p class="text-center">Level @Model.CrystalExtractor.Level / @Model.CrystalExtractor.MaxLevel</p>
+                }
+                else
+                {
+                    <p class="text-center">Not built yet! (Requires HQ Level @Model.CrystalExtractor.Prerequisite)</p>
+                }
+                <p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: @((Model.CrystalExtractor.Level / (double)Model.CrystalExtractor.MaxLevel) * 100)%"></div>
+                    </div>
+                </p>
+                <span>Upgrade:</span>
+                <hr />
+                if (@Model.CrystalExtractor.Level < @Model.CrystalExtractor.MaxLevel)
+                {
+                    <p>
+                        Next Level: <span class="text-primary">Generates @(Model.CrystalExtractor.NextResourceIncome) crystals every hour.</span>
+                    </p>
+                    if (@Model.Headquarters.Level >= @Model.CrystalExtractor.Prerequisite)
+                    {
+                        <div class="text-center">
+                            <p>
+                                Required Resources (Level @(Model.CrystalExtractor.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.CrystalExtractor.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.CrystalExtractor.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.CrystalExtractor.RequiredMetal
+                            </p>
+                            @if (@Model.Headquarters.Level <= @Model.CrystalExtractor.Level)
+                            {
+                                <p class="text-center text-danger">You need to upgrade your Headquarters further.</p>
+                            }
+                            else
+                            {
+                                if (@Model.CurrentlyBuilding != "None")
+                                {
+                                    <p class="text-center text-danger">The construction of another building is currently in progress ...</p>
+                                }
+                                else
+                                {
+                                    //Todo: Check if available resources
+
+                                    @Html.ActionLink("Upgrade", "UpgradeCrystalExtractor", null, new { @class = "btn btn-default text-center" })
+                                    <p>Raw build time:  <i class="ion-ios-timer-outline size-18"> </i> @Model.CrystalExtractor.RequiredBuildTime min.</p>
+                                }
+
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-center">Not built yet! (Requires HQ Level @Model.CrystalExtractor.Prerequisite)</p>
+                    }
+                }
+                else
+                {
+                    <p class="text-center text-success">Max level reached!</p>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <img src="~/Images/300xX/crystal-extractor.png" alt="@Model.CrystalExtractor.Name" class="small-img-300" />
+        </div>
+    </div>
+</div>
+
