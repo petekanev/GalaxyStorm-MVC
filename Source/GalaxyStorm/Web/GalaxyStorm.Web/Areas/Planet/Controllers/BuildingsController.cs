@@ -12,18 +12,33 @@
     public class BuildingsController : UsersController
     {
         private readonly IBuildingsService buildingsService;
+        private readonly IPlayerService playerService;
         private readonly ILogicProvider logic;
 
-        public BuildingsController(IBuildingsService buildingsService, ILogicProvider logic)
+        public BuildingsController(IBuildingsService buildingsService, IPlayerService playerService, ILogicProvider logic)
         {
             this.buildingsService = buildingsService;
+            this.playerService = playerService;
             this.logic = logic;
         }
 
         // GET: Planet/Buildings
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+
+            var buildings = this.buildingsService.GetPlayerBuildings(userId);
+            var vM = new BuildingsViewModel(buildings)
+            {
+                Headquarters = new BuildingViewModel(buildings.HeadQuartersLevel, this.logic.Buildings.Headquarters),
+                ResearchCentre = new BuildingViewModel(buildings.ResearchCentreLevel, this.logic.Buildings.ResearchCentre),
+                Barracks = new BuildingViewModel(buildings.BarracksLevel, this.logic.Buildings.Barracks),
+                SolarCollector = new ResourceBuildingViewModel(buildings.SolarCollectorLevel, this.logic.Buildings.SolarCollector),
+                CrystalExtractor = new ResourceBuildingViewModel(buildings.CrystalExtractorLevel, this.logic.Buildings.CrystalExtractor),
+                MetalScrapper = new ResourceBuildingViewModel(buildings.MetalScrapperLevel, this.logic.Buildings.MetalScrapper)
+            };
+
+            return View(vM);
         }
 
         public ActionResult Headquarters()
@@ -32,6 +47,11 @@
 
             var buildings = this.buildingsService.GetPlayerBuildings(userId);
             var vM = new BuildingsViewModel(buildings) { Headquarters = new BuildingViewModel(buildings.HeadQuartersLevel, this.logic.Buildings.Headquarters)};
+
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
 
             ViewBag.Title = vM.Headquarters.Name;
 
@@ -49,6 +69,11 @@
             {
                 BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
+            else
+            {
+                TempData["Error"] =
+                    "You cannot upgrade this building at the moment. You don't meet the requirements, or another building is in progress...";
+            }
 
             return RedirectToAction("Headquarters");
         }
@@ -64,6 +89,11 @@
                 // For prerequisite checks
                 Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel}
             };
+
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
 
             ViewBag.Title = vM.ResearchCentre.Name;
 
@@ -87,7 +117,22 @@
 
         public ActionResult Barracks()
         {
-            ViewBag.Title = "Barracks";
+            var userId = User.Identity.GetUserId();
+
+            var buildings = this.buildingsService.GetPlayerBuildings(userId);
+            var vM = new BuildingsViewModel(buildings)
+            {
+                Barracks = new BuildingViewModel(buildings.BarracksLevel, this.logic.Buildings.Barracks),
+                // For prerequisite checks
+                Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel }
+            };
+
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
+
+            ViewBag.Title = vM.Barracks.Name;
 
             return View();
         }
@@ -103,6 +148,11 @@
                 // For prerequisite checks
                 Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel }
             };
+
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
 
             ViewBag.Title = vM.SolarCollector.Name;
 
@@ -136,6 +186,11 @@
                 Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel }
             };
 
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
+
             ViewBag.Title = vM.CrystalExtractor.Name;
 
             return View(vM);
@@ -167,6 +222,11 @@
                 // For prerequisite checks
                 Headquarters = new BuildingViewModel { Level = buildings.HeadQuartersLevel }
             };
+
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
 
             ViewBag.Title = vM.MetalScrapper.Name;
 

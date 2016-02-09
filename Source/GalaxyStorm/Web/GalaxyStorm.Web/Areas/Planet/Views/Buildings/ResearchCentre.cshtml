@@ -74,9 +74,17 @@
                                 }
                                 else
                                 {
-                                    //Todo: Check if available resources
-
-                                    @Html.ActionLink("Upgrade", "UpgradeResearchCentre", null, new { @class = "btn btn-default text-center" })
+                                    if (ViewBag.Energy < @Model.ResearchCentre.RequiredEnergy
+                                        || ViewBag.Crystal < @Model.ResearchCentre.RequiredCrystals
+                                        || ViewBag.Metal < @Model.ResearchCentre.RequiredMetal)
+                                    {
+                                        <p class="text-center text-danger">Not enough resources to upgrade this building!</p>
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Upgrade", "UpgradeResearchCentre", null, new {@class = "btn btn-default text-center"})
+                                    }
+                                    
                                     <p>Raw build time:  <i class="ion-ios-timer-outline size-18"> </i> @Model.ResearchCentre.RequiredBuildTime min.</p>
                                 }
 

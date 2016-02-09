@@ -94,10 +94,25 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div class="hidden">
-                        <div class="panel-heading panel-danger">@TempData["Error"]</div>
-                        <div class="panel-heading panel-success">@TempData["Success"]</div>
-                        <div class="panel-heading panel-info">@TempData["Info"]</div>
+                    <div>
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="panel panel-danger">
+                                <div class="panel-heading text-center">@TempData["Error"]</div>
+                            </div>
+                        }
+                        @if (TempData["Info"] != null)
+                        {
+                            <div class="panel panel-info">
+                                <div class="panel-heading panel-info">@TempData["Info"]</div>
+                            </div>
+                        }
+                        @if (TempData["Success"] != null)
+                        {
+                            <div class="panel panel-success">
+                                <div class="panel-heading text-center">@TempData["Success"]</div>
+                            </div>
+                        }
                     </div>
                     @RenderBody()
                 </div>

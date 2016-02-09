@@ -74,10 +74,20 @@
                                 }
                                 else
                                 {
-                                    //Todo: Check if available resources
+                                    if (ViewBag.Energy < @Model.CrystalExtractor.RequiredEnergy
+                                        || ViewBag.Crystal < @Model.CrystalExtractor.RequiredCrystals
+                                        || ViewBag.Metal < @Model.CrystalExtractor.RequiredMetal)
+                                    {
+                                        <p class="text-center text-danger">Not enough resources to upgrade this building!</p>
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Upgrade", "UpgradeCrystalExtractor", null, new {@class = "btn btn-default text-center"})
+                                    }
 
-                                    @Html.ActionLink("Upgrade", "UpgradeCrystalExtractor", null, new { @class = "btn btn-default text-center" })
-                                    <p>Raw build time:  <i class="ion-ios-timer-outline size-18"> </i> @Model.CrystalExtractor.RequiredBuildTime min.</p>
+                                    <p>
+                                        Raw build time: <i class="ion-ios-timer-outline size-18"> </i> @Model.CrystalExtractor.RequiredBuildTime min.
+                                    </p>
                                 }
 
                             }
