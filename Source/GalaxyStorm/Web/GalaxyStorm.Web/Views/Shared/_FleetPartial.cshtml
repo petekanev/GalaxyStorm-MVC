@@ -1,0 +1,106 @@
+﻿@model GalaxyStorm.ViewModels.Fleet.FleetViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Scout.Name, "Scout", "Fleet", new { area = "Planet" }, null)
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/150xX/sout.png" alt="scout" class="small-img-100" />
+                <hr />
+                <h4 class="text-center">
+                    @Model.Scout.AmountOnPlanet / @(Model.Scout.AmountOnPlanet + Model.Scout.AmountDispatched)
+                </h4>
+                @Html.ActionLink("Details", "Scout", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Carrier.Name, "Carrier", "Fleet", new { area = "Planet" }, null)
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/150xX/carrier.png" alt="carrier" class="small-img-100" />
+                <hr />
+                <h4 class="text-center">
+                    @Model.Carrier.AmountOnPlanet / @(Model.Carrier.AmountOnPlanet + Model.Carrier.AmountDispatched)
+                </h4>
+                @Html.ActionLink("Details", "Carrier", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Fighter.Name, "Fighter", "Fleet", new { area = "Planet" }, null)
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/150xX/fighter.png" alt="fighter" class="small-img-100" />
+                <hr />
+                <h4 class="text-center">
+                    @Model.Fighter.AmountOnPlanet / @(Model.Fighter.AmountOnPlanet + Model.Fighter.AmountDispatched)
+                </h4>
+                @Html.ActionLink("Details", "Fighter", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Interceptor.Name, "Interceptor", "Fleet", new { area = "Planet" }, null)
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/150xX/interceptor.png" alt="interceptor" class="small-img-100" />
+                <hr />
+                <h4 class="text-center">
+                    @Model.Interceptor.AmountOnPlanet / @(Model.Interceptor.AmountOnPlanet + Model.Interceptor.AmountDispatched)
+                </h4>
+                @Html.ActionLink("Details", "Interceptor", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Bomber.Name, "Bomber", "Fleet", new { area = "Planet" }, null)
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/150xX/bomber.png" alt="bomber" class="small-img-100" />
+                <hr />
+                <h4 class="text-center">
+                    @Model.Bomber.AmountOnPlanet / @(Model.Bomber.AmountOnPlanet + Model.Bomber.AmountDispatched)
+                </h4>
+                @Html.ActionLink("Details", "Bomber", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h6 class="text-center">
+                    @Html.ActionLink(@Model.Juggernaut.Name, "Juggernaut", "Fleet", new { area = "Planet" }, null)
+                </h6>
+            </div>
+            <div class="panel-body text-center">
+                <img src="~/Images/150xX/juggernaut.png" alt="juggernaut" class="small-img-100" />
+                <hr />
+                <h4 class="text-center">
+                    @Model.Juggernaut.AmountOnPlanet / @(Model.Juggernaut.AmountOnPlanet + Model.Juggernaut.AmountDispatched)
+                </h4>
+                @Html.ActionLink("Details", "Juggernaut", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+</div>

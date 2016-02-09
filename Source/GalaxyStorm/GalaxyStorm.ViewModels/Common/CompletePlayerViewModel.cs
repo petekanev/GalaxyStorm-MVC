@@ -1,6 +1,7 @@
 ﻿namespace GalaxyStorm.ViewModels.Common
 {
     using Buildings;
+    using Fleet;
     using Technologies;
 
     public class CompletePlayerViewModel
@@ -16,5 +17,7 @@
         public TechnologiesViewModel Technologies { get; set; }
 
         public PlanetViewModel Planet { get; set; }
+
+        public FleetViewModel Fleet { get; set; }
     }
 }

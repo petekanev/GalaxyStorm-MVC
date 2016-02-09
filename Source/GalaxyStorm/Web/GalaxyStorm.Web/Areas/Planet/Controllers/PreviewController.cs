@@ -10,6 +10,7 @@
     using ViewModels.Buildings;
     using ViewModels.Common;
     using Data.Models;
+    using ViewModels.Fleet;
     using ViewModels.Technologies;
 
     public class PreviewController : UsersController
@@ -51,16 +52,22 @@
                     CrystalExtractor = new ResourceBuildingViewModel(pO.Buildings.CrystalExtractorLevel, this.logic.Buildings.CrystalExtractor),
                     MetalScrapper = new ResourceBuildingViewModel(pO.Buildings.MetalScrapperLevel, this.logic.Buildings.MetalScrapper),
                 },
-                Technologies = new TechnologiesViewModel
+                Technologies = new TechnologiesViewModel(pO.Technologies)
                 {
-                    CurrentlyResearching = pO.Technologies.CurrentlyResearching.ToString(),
-                    StartTime = pO.Technologies.StartTime,
-                    EndTime = pO.Technologies.EndTime,
                     FasterConstruction = new TechnologyViewModel(pO.Technologies.FasterConstructionLevel, this.logic.Technologies.FasterConstruction),
                     MoreResources = new TechnologyViewModel(pO.Technologies.MoreResourcesLevel, this.logic.Technologies.MoreResources),
                     ArmoredFleet = new TechnologyViewModel(pO.Technologies.ArmoredFleetLevel, this.logic.Technologies.ArmoredFleet),
                     CheaperFleet = new TechnologyViewModel(pO.Technologies.CheaperFleetLevel, this.logic.Technologies.CheaperFleet),
                     LargerFleet = new TechnologyViewModel(pO.Technologies.LargerFleetLevel, this.logic.Technologies.LargerFleet)
+                },
+                Fleet = new FleetViewModel
+                {
+                    Scout = new UnitViewModel(pO.Units.ScoutsQuantity, pO.Units.DispatchedScouts, this.logic.Ships.Scout.Name),
+                    Carrier = new UnitViewModel(pO.Units.CarriersQuantity, pO.Units.DispatchedCarriers, this.logic.Ships.Carrier.Name),
+                    Fighter = new UnitViewModel(pO.Units.FighterQuantity, pO.Units.DispatchedFighters, this.logic.Ships.Fighter.Name),
+                    Interceptor = new UnitViewModel(pO.Units.InterceptorQuantiy, pO.Units.DispatchedInterceptors, this.logic.Ships.Interceptor.Name),
+                    Bomber = new UnitViewModel(pO.Units.BomberQuantity, pO.Units.DispatchedBombers, this.logic.Ships.Bomber.Name),
+                    Juggernaut = new UnitViewModel(pO.Units.JuggernautQuantity, pO.Units.DispatchedJuggernauts, this.logic.Ships.Juggernaut.Name)
                 }
             };
 

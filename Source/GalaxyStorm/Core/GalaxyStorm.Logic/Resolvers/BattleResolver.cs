@@ -1,6 +1,6 @@
 ﻿namespace GalaxyStorm.Logic.Resolvers
 {
-    public class CombatResolver
+    public class BattleResolver
     {
     }
 }

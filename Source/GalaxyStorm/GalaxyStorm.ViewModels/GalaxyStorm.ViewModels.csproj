@@ -60,6 +60,8 @@
     <Compile Include="Common\CompletePlayerViewModel.cs" />
     <Compile Include="Common\PlanetViewModel.cs" />
     <Compile Include="Common\ResourcesViewModel.cs" />
+    <Compile Include="Fleet\FleetViewModel.cs" />
+    <Compile Include="Fleet\UnitViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Technologies\TechnologiesViewModel.cs" />
     <Compile Include="Technologies\TechnologyViewModel.cs" />

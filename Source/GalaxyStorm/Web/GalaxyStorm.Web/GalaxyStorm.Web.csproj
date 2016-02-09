@@ -299,9 +299,13 @@
     <None Include="Areas\Planet\Views\Fleet\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\_Resources.cshtml" />
+    <Content Include="Areas\Planet\Views\Technologies\FasterConstruction.cshtml" />
+    <Content Include="Areas\Planet\Views\Technologies\ArmoredFleet.cshtml" />
+    <Content Include="Areas\Planet\Views\Technologies\CheaperFleet.cshtml" />
     <None Include="Areas\Planet\Views\Technologies\Index.cshtml" />
     <Content Include="Areas\Planet\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Planet\Views\Technologies\Technology.cshtml" />
+    <Content Include="Areas\Planet\Views\Technologies\MoreResources.cshtml" />
+    <Content Include="Areas\Planet\Views\Technologies\LargerFleet.cshtml" />
     <None Include="Areas\Profile\Views\Reports\Index.cshtml" />
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Profile\Views\Shared\_Layout.cshtml" />
@@ -381,6 +385,8 @@
     <Content Include="Views\DisplayTemplates\ResourceBuilding.cshtml" />
     <Content Include="Views\DisplayTemplates\Technology.cshtml" />
     <Content Include="Views\Shared\_BuildingsPartial.cshtml" />
+    <Content Include="Views\Shared\_TechnologiesPartial.cshtml" />
+    <Content Include="Views\Shared\_FleetPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admiral\Models\" />
