@@ -317,6 +317,12 @@
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Images\100xX\bomber.png" />
+    <Content Include="Images\100xX\carrier.png" />
+    <Content Include="Images\100xX\fighter.png" />
+    <Content Include="Images\100xX\interceptor.png" />
+    <Content Include="Images\100xX\juggernaut.png" />
+    <Content Include="Images\100xX\scout.png" />
     <Content Include="Images\300xX\barracks.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -395,7 +401,6 @@
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Shard\Models\" />
     <Folder Include="Areas\Shard\Views\Shared\" />
-    <Folder Include="Images\150xX\" />
     <Folder Include="Views\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
