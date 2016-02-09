@@ -1,1 +1,109 @@
-﻿
+﻿@model GalaxyStorm.ViewModels.Buildings.BuildingsViewModel
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @Model.Barracks.Name <small>Level @Model.Barracks.Level</small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+    <div class="row">
+        <div class="col-md-6">
+            <span>Overview:</span>
+            <hr />
+            <p>@Model.Barracks.Description</p>
+            @if (Model.Barracks.Level > 0)
+            {
+                <p>
+                    Current Level: <span class="text-primary">Can recruit certain battle units.</span>
+                </p>
+            }
+            @if (@Model.CurrentlyBuilding == "Barracks")
+            {
+                <span>Upgrade:</span>
+                <hr />
+                <p class="text-center"><strong>Level @(Model.Barracks.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToBuild) minutes!</p>
+                <p>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsBuilt%"></div>
+                    </div>
+                </p>
+            }
+            else
+            {
+                if (@Model.Barracks.Level > 0)
+                {
+                    <p class="text-center">Level @Model.Barracks.Level / @Model.Barracks.MaxLevel</p>
+                }
+                else
+                {
+                    <p class="text-center">Not built yet! (Requires HQ Level @Model.Barracks.Prerequisite)</p>
+                }
+                <p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: @((Model.Barracks.Level / (double)Model.Barracks.MaxLevel) * 100)%"></div>
+                    </div>
+                </p>
+                <span>Upgrade:</span>
+                <hr />
+                if (@Model.Barracks.Level < @Model.Barracks.MaxLevel)
+                {
+                    <p>
+                        Next Level: <span class="text-primary">Can recruit more advanced battle units.</span>
+                    </p>
+                    if (@Model.Headquarters.Level >= @Model.Barracks.Prerequisite)
+                    {
+                        <div class="text-center">
+                            <p>
+                                Required Resources (Level @(Model.Barracks.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.Barracks.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.Barracks.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.Barracks.RequiredMetal
+                            </p>
+                            @if (@Model.Headquarters.Level <= @Model.Barracks.Level)
+                            {
+                                <p class="text-center text-danger">You need to upgrade your Headquarters further.</p>
+                            }
+                            else
+                            {
+                                if (@Model.CurrentlyBuilding != "None")
+                                {
+                                    <p class="text-center text-danger">The construction of another building is currently in progress ...</p>
+                                }
+                                else
+                                {
+                                    if (ViewBag.Energy < @Model.Barracks.RequiredEnergy
+                                        || ViewBag.Crystal < @Model.Barracks.RequiredCrystals
+                                        || ViewBag.Metal < @Model.Barracks.RequiredMetal)
+                                    {
+                                        <p class="text-center text-danger">Not enough resources to upgrade this building!</p>
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Upgrade", "UpgradeBarracks", null, new { @class = "btn btn-default text-center" })
+                                    }
+
+                                    <p>Raw build time:  <i class="ion-ios-timer-outline size-18"> </i> @Model.Barracks.RequiredBuildTime min.</p>
+                                }
+
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-center">Not built yet! (Requires HQ Level @Model.Barracks.Prerequisite)</p>
+                    }
+                }
+                else
+                {
+                    <p class="text-center text-success">Max level reached!</p>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <img src="~/Images/300xX/barracks.png" alt="@Model.Barracks.Name" class="small-img-300" />
+        </div>
+    </div>
+</div>

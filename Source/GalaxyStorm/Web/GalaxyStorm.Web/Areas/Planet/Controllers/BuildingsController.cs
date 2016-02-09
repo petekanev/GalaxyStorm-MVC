@@ -64,15 +64,13 @@
 
             var timespan = this.buildingsService.ScheduleBuildHeadQuarters(userId);
 
-            // TODO: add alerts (in divs with TempData)
             if (timespan != null)
             {
                 BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
             else
             {
-                TempData["Error"] =
-                    "You cannot upgrade this building at the moment. You don't meet the requirements, or another building is in progress...";
+                this.SetErrorMessage();
             }
 
             return RedirectToAction("Headquarters");
@@ -106,10 +104,13 @@
 
             var timespan = this.buildingsService.ScheduleResearchCentre(userId);
 
-            // TODO: add alerts (in divs with TempData)
             if (timespan != null)
             {
                 BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
             }
 
             return RedirectToAction("ResearchCentre");
@@ -134,7 +135,25 @@
 
             ViewBag.Title = vM.Barracks.Name;
 
-            return View();
+            return View(vM);
+        }
+
+        public ActionResult UpgradeBarracks()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.buildingsService.ScheduleBuildBarracks(userId);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Barracks");
         }
 
         public ActionResult SolarCollector()
@@ -165,10 +184,13 @@
 
             var timespan = this.buildingsService.ScheduleSolarCollector(userId);
 
-            // TODO: add alerts (in divs with TempData)
             if (timespan != null)
             {
                 BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
             }
 
             return RedirectToAction("SolarCollector");
@@ -202,10 +224,13 @@
 
             var timespan = this.buildingsService.ScheduleCrystalExtractor(userId);
 
-            // TODO: add alerts (in divs with TempData)
             if (timespan != null)
             {
                 BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
             }
 
             return RedirectToAction("CrystalExtractor");
@@ -239,13 +264,22 @@
 
             var timespan = this.buildingsService.ScheduleMetalScrapper(userId);
 
-            // TODO: add alerts (in divs with TempData)
             if (timespan != null)
             {
                 BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
+            else
+            {
+                this.SetErrorMessage();
+            }
 
             return RedirectToAction("MetalScrapper");
+        }
+
+        private void SetErrorMessage()
+        {
+            TempData["Error"] =
+                "You cannot upgrade this building at the moment. You don't meet the requirements, or another building is in progress!";
         }
     }
 }

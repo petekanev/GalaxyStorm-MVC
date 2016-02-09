@@ -39,11 +39,12 @@
                                 </a>
                             </li>
 
-                            <li data-toggle="collapse" data-target="#products" class="collapsed">
+                            <li data-toggle="collapse" data-target="#buildings" class="collapsed">
                                 <a href="#"><i class="ion-settings size-18"> </i> Build <span class="arrow"></span></a>
                             </li>
-                            <ul class="sub-menu collapse" id="products">
-                                <li class="active"><a href="/Planet/Buildings/Headquarters"><i class="ion-home size-18"> </i> Headquarters</a></li>
+                            <ul class="sub-menu collapse" id="buildings">
+                                <li class="active"><a href="/Planet/Buildings"> Overview</a></li>
+                                <li><a href="/Planet/Buildings/Headquarters"><i class="ion-home size-18"> </i> Headquarters</a></li>
                                 <li><a href="/Planet/Buildings/SolarCollector"><i class="ion-ios-sunny-outline size-18"> </i> Solar Collector</a></li>
                                 <li><a href="/Planet/Buildings/CrystalExtractor"><i class="ion-ios-flower-outline size-18"> </i> Crystal Extractor</a></li>
                                 <li><a href="/Planet/Buildings/MetalScrapper"><i class="ion-ios-cog-outline size-18"> </i> Metal Scrapper</a></li>
@@ -51,14 +52,16 @@
                                 <li><a href="/Planet/Buildings/Barracks"><i class="ion-jet size-18"> </i> Barracks</a></li>
                             </ul>
 
-                            <li data-toggle="collapse" data-target="#service" class="collapsed">
+                            <li data-toggle="collapse" data-target="#research" class="collapsed">
                                 <a href="#"><i class="ion-ios-flask size-18"> </i> Research <span class="arrow"></span></a>
                             </li>
-                            <ul class="sub-menu collapse" id="service">
-                                <li><a href="#">Overview</a></li>
-                                <li>New Service 1</li>
-                                <li>New Service 2</li>
-                                <li>New Service 3</li>
+                            <ul class="sub-menu collapse" id="research">
+                                <li class="active"><a href="#">Overview</a></li>
+                                <li><a href="#">More Resources</a></li>
+                                <li><a href="#">Faster Construction</a></li>
+                                <li><a href="#">Armored Fleet</a></li>
+                                <li><a href="#">Larger Fleet</a></li>
+                                <li><a href="#">Cheaper Fleet</a></li>
                             </ul>
 
                             <li data-toggle="collapse" data-target="#new" class="collapsed">
@@ -114,6 +117,7 @@
                             </div>
                         }
                     </div>
+
                     @RenderBody()
                 </div>
             </div>

@@ -5,16 +5,22 @@ namespace GalaxyStorm.Logic.Core.Buildings
     public class Barracks : IBuilding
     {
         private const double BuildTimeCoeff = 1;
-        private const double EnergyCoeff = 1.75;
-        private const double CrystalCoeff = 2.45;
-        private const double MetalCoeff = 2;
+        private const double EnergyCoeff = 5.75;
+        private const double CrystalCoeff = 6.45;
+        private const double MetalCoeff = 6;
 
         public string Name
         {
             get { return "Barracks"; }
         }
 
-        public string Description { get; private set; }
+        public string Description {
+            get
+            {
+                return
+                    "Maecenas volutpat mi tellus, non pellentesque nunc maximus sed. Fusce sed rutrum magna. Nullam vestibulum libero vel iaculis consectetur. Sed ut congue metus. Praesent cursus tortor in mi feugiat, et interdum augue congue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Morbi et ex rutrum, egestas est in, sagittis dui. Maecenas eu nunc ac eros eleifend iaculis.";
+            }
+        }
 
         public int MaxLevel
         {
