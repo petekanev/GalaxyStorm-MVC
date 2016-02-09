@@ -308,7 +308,6 @@
     <Content Include="Areas\Planet\Views\Technologies\LargerFleet.cshtml" />
     <None Include="Areas\Profile\Views\Reports\Index.cshtml" />
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Public\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Public\Views\Home\Index.cshtml" />
     <None Include="Areas\Public\Views\Info\Index.cshtml" />

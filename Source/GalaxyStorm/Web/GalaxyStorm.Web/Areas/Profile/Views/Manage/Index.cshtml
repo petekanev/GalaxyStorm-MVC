@@ -1,7 +1,46 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Profile Stuff";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            Player Information
+        </h2>
+    </div>
+</div>
 
+<div class="well">
+    <div class="row">
+        @*<p class="text-center"><i class="ion-ios-bell-outline size-18"> </i> You have no new reports.</p>*@
+        <p class="text-center"><a href="#"><i class="ion-ios-bell size-18"> </i> You have <span class="badge">13</span> new reports!</a></p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <span>Points</span>
+            <hr />
+            <p data-toggle="tooltip" data-placement="left" title="" data-original-title="Gained by upgrading buildings and researching new technologies.">
+                <i class="ion-planet size-18"> </i> Planet points 3000
+            </p>
+            <p data-toggle="tooltip" data-placement="left" title="" data-original-title="Gained by recruiting new units.">
+                <i class="ion-jet size-18"> </i> Neutral points 250
+            </p>
+            <p data-toggle="tooltip" data-placement="left" title="" data-original-title="Gained by participating in battles.">
+                <i class="ion-nuclear size-18"> </i> Combat points 0
+            </p>
+        </div>
+        <div class="col-md-6">
+            <span>Shard</span>
+            <hr/>
+            <br />
+            <span>Planet</span>
+            <hr/>
+            <p>PName-12 (322 : 452)</p>
+            <p>Modifiers</p>
+            <br />
+            <span>In progress</span>
+            <hr/>
+
+        </div>
+    </div>
+</div>

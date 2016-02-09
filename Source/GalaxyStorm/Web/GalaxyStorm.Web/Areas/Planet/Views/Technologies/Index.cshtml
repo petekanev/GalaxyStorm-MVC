@@ -1,3 +1,18 @@
 ﻿@model GalaxyStorm.ViewModels.Technologies.TechnologiesViewModel
 
-@{ Html.RenderPartial("_TechnologiesPartial"); }
+@{
+    ViewBag.Title = "Technologies Overview";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            Technologies <small>Overview</small>
+        </h2>
+    </div>
+</div>
+
+
+<div class="well">
+    @{ Html.RenderPartial("_TechnologiesPartial"); }
+</div>

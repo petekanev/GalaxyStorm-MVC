@@ -269,10 +269,14 @@ img.small-img-300 {
 
 .well {
     background-color: #1e1e1e;
-    background-color: rgba(30, 30, 30, 0.7);
+    background-color: rgba(40, 40, 40, 0.7);
 }
 
 hr {
     margin-top: 10px;
     margin-bottom: 15px;
+}
+
+small, h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    color: #ccc;
 }
