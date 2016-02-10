@@ -1,4 +1,6 @@
-﻿@{
+﻿@model GalaxyStorm.ViewModels.Common.SimplePlayerViewModel
+
+@{
     ViewBag.Title = "Profile Stuff";
 }
 
@@ -11,36 +13,51 @@
 </div>
 
 <div class="well">
-    <div class="row">
-        @*<p class="text-center"><i class="ion-ios-bell-outline size-18"> </i> You have no new reports.</p>*@
-        <p class="text-center"><a href="#"><i class="ion-ios-bell size-18"> </i> You have <span class="badge">13</span> new reports!</a></p>
+    <div class="row text-center">
+        @if (Model.NumberOfReports > 0)
+        {
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <span><a href="#"><i class="ion-ios-bell size-18"> </i> You have <span class="badge">@Model.NumberOfReports</span> new reports!</a></span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span><i class="ion-ios-bell-outline size-18"> </i> You have no new reports.</span>
+                </div>
+            </div>
+        }
     </div>
-    <div class="row">
+    <div class="row text-center">
         <div class="col-md-6">
-            <span>Points</span>
+            <h4>Points</h4>
             <hr />
-            <p data-toggle="tooltip" data-placement="left" title="" data-original-title="Gained by upgrading buildings and researching new technologies.">
-                <i class="ion-planet size-18"> </i> Planet points 3000
+            <p data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Gained by upgrading buildings and researching new technologies.">
+                <i class="ion-planet size-18"> </i>  @Model.PlanetPoints Planet points
             </p>
-            <p data-toggle="tooltip" data-placement="left" title="" data-original-title="Gained by recruiting new units.">
-                <i class="ion-jet size-18"> </i> Neutral points 250
+            <p data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Gained by recruiting new units.">
+                <i class="ion-jet size-18"> </i> @Model.NeutralPoints Neutral points
             </p>
-            <p data-toggle="tooltip" data-placement="left" title="" data-original-title="Gained by participating in battles.">
-                <i class="ion-nuclear size-18"> </i> Combat points 0
+            <p data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Gained by participating in battles.">
+                <i class="ion-nuclear size-18"> </i> @Model.CombatPoints Combat points
             </p>
         </div>
         <div class="col-md-6">
-            <span>Shard</span>
+            <h4>Your Planet</h4>
             <hr/>
-            <br />
-            <span>Planet</span>
-            <hr/>
-            <p>PName-12 (322 : 452)</p>
+            <p><a href="#">@Model.Planet.Title (@Model.Planet.X : @Model.Planet.Y) - @Model.Planet.ShardTitle</a></p>
             <p>Modifiers</p>
+            <div class="row text-center">
+                <div class="col-md-4">@string.Format("{0:0.00}", Model.Planet.EnergyModifier)</div>
+                <div class="col-md-4">@string.Format("{0:0.00}", Model.Planet.CrystalModifier)</div>
+                <div class="col-md-4">@string.Format("{0:0.00}", Model.Planet.MetalModifier)</div>
+            </div>
             <br />
-            <span>In progress</span>
+            <h4>In progress</h4>
             <hr/>
-
         </div>
     </div>
 </div>
