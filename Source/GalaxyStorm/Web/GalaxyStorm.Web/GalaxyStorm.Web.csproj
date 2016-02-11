@@ -236,8 +236,7 @@
     <Compile Include="Areas\Shard\Controllers\PreviewController.cs" />
     <Compile Include="Areas\Shard\ShardAreaRegistration.cs" />
     <Compile Include="Areas\Public\Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DHomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Areas\Profile\Controllers\AccountController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -379,9 +378,9 @@
     <Content Include="Areas\Public\Views\Account\Register.cshtml" />
     <Content Include="Areas\Public\Views\Account\ResetPassword.cshtml" />
     <Content Include="Areas\Public\Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Areas\Profile\Views\Account\ChangePassword.cshtml" />
+    <Content Include="Areas\Profile\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Profile\Views\Account\SetPassword.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ResourceHUDPartial.cshtml" />
@@ -400,6 +399,7 @@
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Shard\Models\" />
     <Folder Include="Areas\Shard\Views\Shared\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Views\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,26 +1,24 @@
-﻿namespace GalaxyStorm.Web.Controllers
+﻿namespace GalaxyStorm.Web.Areas.Profile.Controllers
 {
-    using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-    using Areas.Public.Controllers;
+    using Infrastructure;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using ViewModels.Account;
 
-    [Authorize]
-    public class ManageController : Controller
+    public class AccountController : UsersController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
+        public AccountController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -50,8 +48,6 @@
             }
         }
 
-        //
-        // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -69,18 +65,15 @@
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+
             return View(model);
         }
 
-        //
-        // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -105,15 +98,11 @@
             return View(model);
         }
 
-        //
-        // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
