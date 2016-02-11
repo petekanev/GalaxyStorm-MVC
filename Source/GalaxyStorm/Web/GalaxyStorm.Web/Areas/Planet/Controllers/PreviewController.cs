@@ -76,7 +76,7 @@
 
             return View(info);
         }
-
+        
         public ActionResult Resources()
         {
             var userId = User.Identity.GetUserId();
