@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - Galaxy Storm - the Game</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/public")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     @Html.Partial("_NavbarPartial")
@@ -26,70 +25,7 @@
 
         <div class="container body-content">
             <div class="row">
-                <div class="col-md-3 nav-side-menu">
-                    <div class="brand">Galaxy Storm (logo)</div>
-                    <i class="ion-navicon toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-
-                    <div class="menu-list">
-
-                        <ul id="menu-content" class="menu-content collapse out">
-                            <li class="active">
-                                <a href="/Planet/Preview">
-                                    <i class="ion-ios-world size-18"></i> Overview
-                                </a>
-                            </li>
-
-                            <li data-toggle="collapse" data-target="#buildings" class="collapsed">
-                                <a href="#"><i class="ion-hammer size-18"> </i> Build <span class="arrow"></span></a>
-                            </li>
-                            <ul class="sub-menu collapse" id="buildings">
-                                <li class="active"><a href="/Planet/Buildings"> Overview</a></li>
-                                <li><a href="/Planet/Buildings/Headquarters"><i class="ion-home size-18"> </i> Headquarters</a></li>
-                                <li><a href="/Planet/Buildings/SolarCollector"><i class="ion-ios-sunny-outline size-18"> </i> Solar Collector</a></li>
-                                <li><a href="/Planet/Buildings/CrystalExtractor"><i class="ion-ios-flower-outline size-18"> </i> Crystal Extractor</a></li>
-                                <li><a href="/Planet/Buildings/MetalScrapper"><i class="ion-ios-cog-outline size-18"> </i> Metal Scrapper</a></li>
-                                <li><a href="/Planet/Buildings/ResearchCentre"><i class="ion-ios-flask size-18"> </i> Research Centre</a></li>
-                                <li><a href="/Planet/Buildings/Barracks"><i class="ion-jet size-18"> </i> Barracks</a></li>
-                            </ul>
-
-                            <li data-toggle="collapse" data-target="#research" class="collapsed">
-                                <a href="#"><i class="ion-ios-flask size-18"> </i> Research <span class="arrow"></span></a>
-                            </li>
-                            <ul class="sub-menu collapse" id="research">
-                                <li class="active"><a href="/Planet/Technologies">Overview</a></li>
-                            </ul>
-
-                            <li data-toggle="collapse" data-target="#new" class="collapsed">
-                                <a href="#"><i class="ion-jet size-18"></i> Recruit <span class="arrow"></span></a>
-                            </li>
-                            <ul class="sub-menu collapse" id="new">
-                                <li class="active"><a href="/Planet/Fleet">Overview</a></li>
-                                <li><a href="#">Dispatched Units</a></li>
-                                <li><a href="#">Stationed Units</a></li>
-                            </ul>
-
-                            <li>
-                                <a href="#">
-                                    <i class="ion-wrench size-18"> </i> Profile
-                                </a>
-                            </li>
-
-                            @if (User.IsInRole("Admiral"))
-                            {
-                                <li data-toggle="collapse" data-target="#admiral" class="collapsed">
-                                    <a href="#"><i class="ion-settings size-18"> </i> Admiral's Quarters <span class="arrow"></span></a>
-                                </li>
-                                <ul class="sub-menu collapse" id="admiral">
-                                    <li><a href="#"><i class="ion-settings size-18"> </i> Quarters</a></li>
-                                    <li><a href="#"><i class="ion-ios-people size-18"> </i> Manage Users</a></li>
-                                    <li><a href="#"><i class="ion-ionic size-18"> </i> Manage Shards</a></li>
-                                    <li><a href="#"><i class="ion-speakerphone size-18"> </i> Broadcast</a></li>
-                                    <li><a href="#"><i class="ion-paper-airplane size-18"> </i> Send Supplements</a></li>
-                                </ul>
-                            }
-                        </ul>
-                    </div>
-                </div>
+                @{ Html.RenderPartial("_SideMenuPartial");}
                 <div class="col-md-9">
                     <div>
                         @if (TempData["Error"] != null)
