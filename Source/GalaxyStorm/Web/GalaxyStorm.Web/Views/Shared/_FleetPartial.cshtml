@@ -14,7 +14,10 @@
                 <h4 class="text-center">
                     @Model.Scout.AmountOnPlanet / @(Model.Scout.AmountOnPlanet + Model.Scout.AmountDispatched)
                 </h4>
-
+                <div class="col-md-12">
+                    <div id="slider1"></div>
+                </div>
+                <br />
                 @Html.ActionLink("Details", "Scout", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
@@ -105,3 +108,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    function repositionTooltip(e, ui) {
+        // If you're on Bootstrap 3.x change "tooltip" to "bs.tooltip"
+        // Props to fd_tl in the comments for the tip!
+        var div = $(ui.handle).data("bs.tooltip").$tip[0];
+        var pos = $.extend({}, $(ui.handle).offset(), {
+            width: $(ui.handle).get(0).offsetWidth,
+            height: $(ui.handle).get(0).offsetHeight
+        });
+
+        var actualWidth = div.offsetWidth;
+
+        tp = { left: pos.left + pos.width / 2 - actualWidth / 2 }
+        $(div).offset(tp);
+
+        $(div).find(".tooltip-inner").text(ui.value);
+    }
+
+    $("#slider1").slider({
+        min: 0,
+        max: 512,
+        slide: repositionTooltip,
+        stop: repositionTooltip
+        });
+    $("#slider .ui-slider-handle:first").tooltip({ title: $("#slider").slider("value") || "0", trigger: "manual" }).tooltip("show");
+
+
+</script>

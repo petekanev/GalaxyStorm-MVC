@@ -34,6 +34,10 @@ namespace GalaxyStorm.Web
                     "~/Content/public/title-size.css"
                     ));
 
+            bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
+                "~/Content/jqueryui/jquery-ui.min.css",
+                "~/Content/jqueryui/jquery-ui.structure.min.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/public").Include(
                     "~/Scripts/common/vendor/vendor.js",
                     "~/Scripts/public/variables.js",
@@ -43,6 +47,9 @@ namespace GalaxyStorm.Web
                     "~/Scripts/common/vendor/vendor.js",
                     "~/Scripts/common/variables.js",
                     "~/Scripts/common/main.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                "~/Scripts/jqueryui/jquery-ui.min.js"));
         }
     }
 }

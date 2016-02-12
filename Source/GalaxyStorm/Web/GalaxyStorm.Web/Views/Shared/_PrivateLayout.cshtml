@@ -6,6 +6,11 @@
     <title>@ViewBag.Title - Galaxy Storm - the Game</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/public")
+    @Styles.Render("~/Content/jqueryui")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
 </head>
 <body>
     @Html.Partial("_NavbarPartial")
@@ -59,13 +64,11 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/common")
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
