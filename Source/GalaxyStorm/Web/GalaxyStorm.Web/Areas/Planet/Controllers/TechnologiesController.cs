@@ -1,9 +1,11 @@
 ﻿namespace GalaxyStorm.Web.Areas.Planet.Controllers
 {
     using System.Web.Mvc;
+    using Hangfire;
     using Infrastructure;
     using Logic.Core;
     using Microsoft.AspNet.Identity;
+    using Services.Data;
     using Services.Data.Contracts;
     using ViewModels.Technologies;
 
@@ -11,12 +13,14 @@
     {
         private readonly IBuildingsService buildingsService;
         private readonly ITechnologiesService techService;
+        private readonly IPlayerService playerService;
         private readonly ILogicProvider logic;
 
-        public TechnologiesController(IBuildingsService buildingsService, ITechnologiesService techService, ILogicProvider logic)
+        public TechnologiesController(IBuildingsService buildingsService, ITechnologiesService techService, IPlayerService playerService, ILogicProvider logic)
         {
             this.buildingsService = buildingsService;
             this.techService = techService;
+            this.playerService = playerService;
             this.logic = logic;
         }
 
@@ -28,7 +32,7 @@
             var rCLevel = this.buildingsService.GetPlayerBuildings(userId).ResearchCentreLevel;
             var technologies = this.techService.GetPlayerTechnologies(userId);
 
-            var vM = new TechnologiesViewModel(technologies)
+            var vM = new TechnologiesViewModel(rCLevel, technologies)
             {
                 FasterConstruction = new TechnologyViewModel(technologies.FasterConstructionLevel, this.logic.Technologies.FasterConstruction),
                 MoreResources = new TechnologyViewModel(technologies.MoreResourcesLevel, this.logic.Technologies.MoreResources),
@@ -37,92 +41,108 @@
                 LargerFleet = new TechnologyViewModel(technologies.LargerFleetLevel, this.logic.Technologies.LargerFleet)
             };
 
-            return View(vM);
-        }
-
-        public ActionResult ArmoredFleet()
-        {
-            var userId = User.Identity.GetUserId();
-
-            var rCLevel = this.buildingsService.GetPlayerBuildings(userId).ResearchCentreLevel;
-            var technologies = this.techService.GetPlayerTechnologies(userId);
-
-            var vM = new TechnologiesViewModel(rCLevel, technologies)
-            {
-                ArmoredFleet = new TechnologyViewModel(technologies.ArmoredFleetLevel, this.logic.Technologies.ArmoredFleet)
-            };
-
-            ViewBag.Title = vM.ArmoredFleet.Name;
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
 
             return View(vM);
         }
 
-        public ActionResult LargerFleet()
+        public ActionResult UpgradeArmoredFleet()
         {
             var userId = User.Identity.GetUserId();
 
-            var rCLevel = this.buildingsService.GetPlayerBuildings(userId).ResearchCentreLevel;
-            var technologies = this.techService.GetPlayerTechnologies(userId);
+            var timespan = this.techService.ScheduleResearchArmoredFleet(userId);
 
-            var vM = new TechnologiesViewModel(rCLevel, technologies)
+            if (timespan != null)
             {
-                LargerFleet = new TechnologyViewModel(technologies.ArmoredFleetLevel, this.logic.Technologies.LargerFleet)
-            };
+                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
 
-            ViewBag.Title = vM.ArmoredFleet.Name;
-
-            return View(vM);
+            return RedirectToAction("Index");
         }
 
-        public ActionResult CheaperFleet()
+        public ActionResult UpgradeCheaperFleet()
         {
             var userId = User.Identity.GetUserId();
 
-            var rCLevel = this.buildingsService.GetPlayerBuildings(userId).ResearchCentreLevel;
-            var technologies = this.techService.GetPlayerTechnologies(userId);
+            var timespan = this.techService.ScheduleResearchCheaperFleet(userId);
 
-            var vM = new TechnologiesViewModel(rCLevel, technologies)
+            if (timespan != null)
             {
-                CheaperFleet = new TechnologyViewModel(technologies.CheaperFleetLevel, this.logic.Technologies.CheaperFleet)
-            };
+                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
 
-            ViewBag.Title = vM.CheaperFleet.Name;
-
-            return View(vM);
+            return RedirectToAction("Index");
         }
 
-        public ActionResult MoreResources()
+        public ActionResult UpgradeLargerFleet()
         {
             var userId = User.Identity.GetUserId();
 
-            var rCLevel = this.buildingsService.GetPlayerBuildings(userId).ResearchCentreLevel;
-            var technologies = this.techService.GetPlayerTechnologies(userId);
+            var timespan = this.techService.ScheduleResearchLargerFleet(userId);
 
-            var vM = new TechnologiesViewModel(rCLevel, technologies)
+            if (timespan != null)
             {
-                MoreResources = new TechnologyViewModel(technologies.MoreResourcesLevel, this.logic.Technologies.MoreResources)
-            };
+                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
 
-            ViewBag.Title = vM.MoreResources.Name;
-
-            return View(vM);
+            return RedirectToAction("Index");
         }
 
-        public ActionResult FasterConstruction()
+        public ActionResult UpgradeFasterConstruction()
         {
             var userId = User.Identity.GetUserId();
 
-            var rCLevel = this.buildingsService.GetPlayerBuildings(userId).ResearchCentreLevel;
-            var technologies = this.techService.GetPlayerTechnologies(userId);
+            var timespan = this.techService.ScheduleResearchFasterConstruction(userId);
 
-            var vM = new TechnologiesViewModel(rCLevel, technologies)
+            if (timespan != null)
             {
-                FasterConstruction = new TechnologyViewModel(technologies.FasterConstructionLevel, this.logic.Technologies.FasterConstruction)
-            };
+                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
 
-            ViewBag.Title = vM.FasterConstruction.Name;
+            return RedirectToAction("Index");
+        }
 
-            return View(vM);
+        public ActionResult UpgradeMoreResources()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.techService.ScheduleResearchMoreResources(userId);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        private void SetErrorMessage()
+        {
+            TempData["Error"] =
+                "You cannot research this technology at the moment. You don't meet the requirements, or another research is in progress!";
         }
     }
 }

@@ -1,190 +1,544 @@
 ﻿@model GalaxyStorm.ViewModels.Technologies.TechnologiesViewModel
-           
+
 <div class="row">
-    <div class="col-lg-4 col-md-6">
+    <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h6 class="text-center">
-                    @Html.ActionLink(@Model.ArmoredFleet.Name, "ArmoredFleet", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.ArmoredFleet.Level</small>
+                    @Html.ActionLink(@Model.ArmoredFleet.Name, "Index", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.ArmoredFleet.Level</small>
                 </h6>
             </div>
-            <div class="panel-body text-center">
-                @if (@Model.CurrentlyResearching == "ArmoredFleet")
+            <div class="panel-body text-center tech-panel">
+                @if (@Model.ResearchCentreLevel < @Model.ArmoredFleet.Prerequisite)
                 {
-                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!</p>
-                    <p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" style="width: @Model.PercentsResearched%"></div>
-                        </div>
-                    </p>
+                    <p>Requires Research Centre Level @Model.ArmoredFleet.Prerequisite</p>
                 }
                 else
                 {
-                    if (@Model.ArmoredFleet.Level > 0)
+                    if (Model.ArmoredFleet.Level != Model.ArmoredFleet.MaxLevel)
                     {
-                        <p>Level @Model.ArmoredFleet.Level</p>
+                        <div class="row">
+                            @for (int i = 0; i < Model.ArmoredFleet.MaxLevel; i++)
+                            {
+                                if (i == Model.ArmoredFleet.Level)
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-success">
+                                            <h5>
+                                                <i class="ion-jet"> </i>
+                                                <br />
+                                                + @Model.ArmoredFleet.Modifiers[i]%
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-default disabled">
+                                            <h5>
+                                                <i class="ion-jet"> </i>
+                                                <br />
+                                                + @Model.ArmoredFleet.Modifiers[i]%
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <br />
+                        if (Model.CurrentlyResearching == "ArmoredFleet")
+                        {
+                            <span>Researching:</span>
+                            <hr />
+                            <p class="text-center">
+                                <strong>Level @(Model.ArmoredFleet.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!
+                            </p>
+                            <p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsResearched%"></div>
+                                </div>
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                Required Resources (Level @(Model.ArmoredFleet.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.ArmoredFleet.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.ArmoredFleet.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.ArmoredFleet.RequiredMetal
+                            </p>
+                            if (Model.CurrentlyResearching != "None")
+                            {
+                                <p class="text-center text-danger">Another research is in progress ...</p>
+                            }
+                            else
+                            {
+                                if (ViewBag.Energy < @Model.ArmoredFleet.RequiredEnergy
+                                    || ViewBag.Crystal < @Model.ArmoredFleet.RequiredCrystals
+                                    || ViewBag.Metal < @Model.ArmoredFleet.RequiredMetal)
+                                {
+                                    <p class="text-center text-danger">Not enough resources to research this tech!</p>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Research", "UpgradeArmoredFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                }
+
+                                <p>
+                                    Raw research time: <i class="ion-ios-timer-outline size-18"> </i> @Model.ArmoredFleet.RequiredResearchTime min.
+                                </p>
+                            }
+                        }
                     }
                     else
                     {
-                        <p>Requires Research Centre Level @Model.ArmoredFleet.Prerequisite</p>
-                    }
-                    <p>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning" style="width: @((Model.ArmoredFleet.Level / (double)Model.ArmoredFleet.MaxLevel) * 100)%;"></div>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 tech-level-button">
+                                <button class="btn btn-block btn-success">
+                                    <h5>
+                                        <i class="ion-jet"> </i>
+                                        <br />
+                                        + @Model.ArmoredFleet.Modifiers[Model.ArmoredFleet.Level]%
+                                    </h5>
+                                </button>
+                            </div>
                         </div>
-                    </p>
+                    }
                 }
-                @Html.ActionLink("Details", "ArmoredFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h6 class="text-center">
-                    @Html.ActionLink(@Model.CheaperFleet.Name, "CheaperFleet", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.CheaperFleet.Level</small>
+                    @Html.ActionLink(@Model.CheaperFleet.Name, "Index", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.CheaperFleet.Level</small>
                 </h6>
             </div>
-            <div class="panel-body text-center">
-                @if (@Model.CurrentlyResearching == "CheaperFleet")
+            <div class="panel-body text-center tech-panel">
+                @if (@Model.ResearchCentreLevel < @Model.CheaperFleet.Prerequisite)
                 {
-                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!</p>
-                    <p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" style="width: @Model.PercentsResearched%"></div>
-                        </div>
-                    </p>
+                    <p>Requires Research Centre Level @Model.CheaperFleet.Prerequisite</p>
                 }
                 else
                 {
-                    if (@Model.CheaperFleet.Level > 0)
+                    if (Model.CheaperFleet.Level != Model.CheaperFleet.MaxLevel)
                     {
-                        <p>Level @Model.CheaperFleet.Level</p>
+                        <div class="row">
+                            @for (int i = 0; i < Model.CheaperFleet.MaxLevel; i++)
+                            {
+                                if (i == Model.CheaperFleet.Level)
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-success">
+                                            <h5>
+                                                <i class="ion-cash"> </i>
+                                                <br />
+                                                - @Model.CheaperFleet.Modifiers[i]%
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-default disabled">
+                                            <h5>
+                                                <i class="ion-cash"> </i>
+                                                <br />
+                                                - @Model.CheaperFleet.Modifiers[i]%
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <br />
+                        if (Model.CurrentlyResearching == "CheaperFleet")
+                        {
+                            <span>Researching:</span>
+                            <hr />
+                            <p class="text-center">
+                                <strong>Level @(Model.CheaperFleet.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!
+                            </p>
+                            <p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsResearched%"></div>
+                                </div>
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                Required Resources (Level @(Model.CheaperFleet.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.CheaperFleet.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.CheaperFleet.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.CheaperFleet.RequiredMetal
+                            </p>
+                            if (Model.CurrentlyResearching != "None")
+                            {
+                                <p class="text-center text-danger">Another research is in progress ...</p>
+                            }
+                            else
+                            {
+                                if (ViewBag.Energy < @Model.CheaperFleet.RequiredEnergy
+                                    || ViewBag.Crystal < @Model.CheaperFleet.RequiredCrystals
+                                    || ViewBag.Metal < @Model.CheaperFleet.RequiredMetal)
+                                {
+                                    <p class="text-center text-danger">Not enough resources to research this tech!</p>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Research", "UpgradeCheaperFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                }
+
+                                <p>
+                                    Raw research time: <i class="ion-ios-timer-outline size-18"> </i> @Model.CheaperFleet.RequiredResearchTime min.
+                                </p>
+                            }
+                        }
                     }
                     else
                     {
-                        <p>Requires Research Centre Level @Model.CheaperFleet.Prerequisite</p>
-                    }
-                    <p>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning" style="width: @((Model.CheaperFleet.Level / (double)Model.CheaperFleet.MaxLevel) * 100)%;"></div>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 tech-level-button">
+                                <button class="btn btn-block btn-success">
+                                    <h5>
+                                        <i class="ion-cash"> </i>
+                                        <br />
+                                        + @Model.CheaperFleet.Modifiers[Model.CheaperFleet.Level]%
+                                    </h5>
+                                </button>
+                            </div>
                         </div>
-                    </p>
+                    }
                 }
-                @Html.ActionLink("Details", "CheaperFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h6 class="text-center">
-                    @Html.ActionLink(@Model.LargerFleet.Name, "LargerFleet", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.LargerFleet.Level</small>
+                    @Html.ActionLink(@Model.LargerFleet.Name, "Index", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.LargerFleet.Level</small>
                 </h6>
             </div>
-            <div class="panel-body text-center">
-                @if (@Model.CurrentlyResearching == "LargerFleet")
+            <div class="panel-body text-center tech-panel">
+                @if (@Model.ResearchCentreLevel < @Model.LargerFleet.Prerequisite)
                 {
-                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!</p>
-                    <p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" style="width: @Model.PercentsResearched%"></div>
-                        </div>
-                    </p>
+                    <p>Requires Research Centre Level @Model.LargerFleet.Prerequisite</p>
                 }
                 else
                 {
-                    if (@Model.LargerFleet.Level > 0)
+                    if (Model.LargerFleet.Level != Model.LargerFleet.MaxLevel)
                     {
-                        <p>Level @Model.LargerFleet.Level</p>
+                        <div class="row">
+                            @for (int i = 0; i < Model.LargerFleet.MaxLevel; i++)
+                            {
+                                if (i == Model.LargerFleet.Level)
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-success">
+                                            <h5>
+                                                <i class="ion-speedometer"> </i>
+                                                <br />
+                                                + @Model.LargerFleet.Modifiers[i]
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-default disabled">
+                                            <h5>
+                                                <i class="ion-speedometer"> </i>
+                                                <br />
+                                                + @Model.LargerFleet.Modifiers[i]
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <br />
+                        if (Model.CurrentlyResearching == "LargerFleet")
+                        {
+                            <span>Researching:</span>
+                            <hr />
+                            <p class="text-center">
+                                <strong>Level @(Model.LargerFleet.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!
+                            </p>
+                            <p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsResearched%"></div>
+                                </div>
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                Required Resources (Level @(Model.LargerFleet.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.LargerFleet.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.LargerFleet.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.LargerFleet.RequiredMetal
+                            </p>
+                            if (Model.CurrentlyResearching != "None")
+                            {
+                                <p class="text-center text-danger">Another research is in progress ...</p>
+                            }
+                            else
+                            {
+                                if (ViewBag.Energy < @Model.LargerFleet.RequiredEnergy
+                                    || ViewBag.Crystal < @Model.LargerFleet.RequiredCrystals
+                                    || ViewBag.Metal < @Model.LargerFleet.RequiredMetal)
+                                {
+                                    <p class="text-center text-danger">Not enough resources to research this tech!</p>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Research", "UpgradeLargerFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                }
+
+                                <p>
+                                    Raw research time: <i class="ion-ios-timer-outline size-18"> </i> @Model.LargerFleet.RequiredResearchTime min.
+                                </p>
+                            }
+                        }
                     }
                     else
                     {
-                        <p>Requires Requires Centre Level @Model.LargerFleet.Prerequisite</p>
-                    }
-                    <p>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning" style="width: @((Model.LargerFleet.Level / (double)Model.LargerFleet.MaxLevel) * 100)%;"></div>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 tech-level-button">
+                                <button class="btn btn-block btn-success">
+                                    <h5>
+                                        <i class="ion-speedometer"> </i>
+                                        <br />
+                                        @Model.LargerFleet.Modifiers[Model.LargerFleet.Level]
+                                    </h5>
+                                </button>
+                            </div>
                         </div>
-                    </p>
+                    }
                 }
-                @Html.ActionLink("Details", "LargerFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h6 class="text-center">
-                    @Html.ActionLink(@Model.FasterConstruction.Name, "FasterConstruction", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.LargerFleet.Level</small>
+                    @Html.ActionLink(@Model.FasterConstruction.Name, "Index", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.FasterConstruction.Level</small>
                 </h6>
             </div>
-            <div class="panel-body text-center">
-                @if (@Model.CurrentlyResearching == "FasterConstruction")
+            <div class="panel-body text-center tech-panel">
+                @if (@Model.ResearchCentreLevel < @Model.FasterConstruction.Prerequisite)
                 {
-                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!</p>
-                    <p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" style="width: @Model.PercentsResearched%"></div>
-                        </div>
-                    </p>
+                    <p>Requires Research Centre Level @Model.FasterConstruction.Prerequisite</p>
                 }
                 else
                 {
-                    if (@Model.FasterConstruction.Level > 0)
+                    if (Model.FasterConstruction.Level != Model.FasterConstruction.MaxLevel)
                     {
-                        <p>Level @Model.FasterConstruction.Level</p>
+                        <div class="row">
+                            @for (int i = 0; i < Model.FasterConstruction.MaxLevel; i++)
+                            {
+                                if (i == Model.FasterConstruction.Level)
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-success">
+                                            <h5>
+                                                <i class="ion-ios-timer-outline"> </i>
+                                                <br />
+                                                - @Model.FasterConstruction.Modifiers[i]%
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-default disabled">
+                                            <h5>
+                                                <i class="ion-ios-timer-outline"> </i>
+                                                <br />
+                                                - @Model.FasterConstruction.Modifiers[i]%
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <br />
+                        if (Model.CurrentlyResearching == "FasterConstruction")
+                        {
+                            <span>Researching:</span>
+                            <hr />
+                            <p class="text-center">
+                                <strong>Level @(Model.FasterConstruction.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!
+                            </p>
+                            <p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsResearched%"></div>
+                                </div>
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                Required Resources (Level @(Model.FasterConstruction.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.FasterConstruction.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.FasterConstruction.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.FasterConstruction.RequiredMetal
+                            </p>
+                            if (Model.CurrentlyResearching != "None")
+                            {
+                                <p class="text-center text-danger">Another research is in progress ...</p>
+                            }
+                            else
+                            {
+                                if (ViewBag.Energy < @Model.FasterConstruction.RequiredEnergy
+                                    || ViewBag.Crystal < @Model.FasterConstruction.RequiredCrystals
+                                    || ViewBag.Metal < @Model.FasterConstruction.RequiredMetal)
+                                {
+                                    <p class="text-center text-danger">Not enough resources to research this tech!</p>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Research", "UpgradeFasterConstruction", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                }
+
+                                <p>
+                                    Raw research time: <i class="ion-ios-timer-outline size-18"> </i> @Model.FasterConstruction.RequiredResearchTime min.
+                                </p>
+                            }
+                        }
                     }
                     else
                     {
-                        <p>Requires Research Centre Level @Model.FasterConstruction.Prerequisite</p>
-                    }
-                    <p>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning" style="width: @((Model.FasterConstruction.Level / (double)Model.FasterConstruction.MaxLevel) * 100)%;"></div>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 tech-level-button">
+                                <button class="btn btn-block btn-success">
+                                    <h5>
+                                        <i class="ion-ios-timer-outline"> </i>
+                                        <br />
+                                        - @Model.FasterConstruction.Modifiers[Model.FasterConstruction.Level]%
+                                    </h5>
+                                </button>
+                            </div>
                         </div>
-                    </p>
+                    }
                 }
-                @Html.ActionLink("Details", "FasterConstruction", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h6 class="text-center">
-                    @Html.ActionLink(@Model.MoreResources.Name, "MoreResources", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.MoreResources.Level</small>
+                    @Html.ActionLink(@Model.MoreResources.Name, "Index", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.MoreResources.Level</small>
                 </h6>
             </div>
-            <div class="panel-body text-center">
-                @if (@Model.CurrentlyResearching == "MoreResources")
+            <div class="panel-body text-center tech-panel">
+                @if (@Model.ResearchCentreLevel < @Model.MoreResources.Prerequisite)
                 {
-                    <p class="text-center">Ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!</p>
-                    <p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" style="width: @Model.PercentsResearched%"></div>
-                        </div>
-                    </p>
+                    <p>Requires Research Centre Level @Model.MoreResources.Prerequisite</p>
                 }
                 else
                 {
-                    if (@Model.MoreResources.Level > 0)
+                    if (Model.MoreResources.Level != Model.MoreResources.MaxLevel)
                     {
-                        <p>Level @Model.MoreResources.Level</p>
+                        <div class="row">
+                            @for (int i = 0; i < Model.MoreResources.MaxLevel; i++)
+                            {
+                                if (i == Model.MoreResources.Level)
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-success">
+                                            <h5>
+                                                <i class="ion-arrow-graph-up-right"> </i>
+                                                <br />
+                                                + @Model.MoreResources.Modifiers[i]x
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-4 tech-level-button">
+                                        <button class="btn btn-block btn-default disabled">
+                                            <h5>
+                                                <i class="ion-arrow-graph-up-right"> </i>
+                                                <br />
+                                                + @Model.MoreResources.Modifiers[i]x
+                                            </h5>
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <br />
+                        if (Model.CurrentlyResearching == "MoreResources")
+                        {
+                            <span>Researching:</span>
+                            <hr />
+                            <p class="text-center">
+                                <strong>Level @(Model.MoreResources.Level + 1)</strong> ready in: @string.Format("{0:0.00}", Model.MinutesLeftToResearch) minutes!
+                            </p>
+                            <p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsResearched%"></div>
+                                </div>
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                Required Resources (Level @(Model.MoreResources.Level + 1)):
+                                <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.MoreResources.RequiredEnergy&nbsp;
+                                <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.MoreResources.RequiredCrystals&nbsp;
+                                <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.MoreResources.RequiredMetal
+                            </p>
+                            if (Model.CurrentlyResearching != "None")
+                            {
+                                <p class="text-center text-danger">Another research is in progress ...</p>
+                            }
+                            else
+                            {
+                                if (ViewBag.Energy < @Model.MoreResources.RequiredEnergy
+                                    || ViewBag.Crystal < @Model.MoreResources.RequiredCrystals
+                                    || ViewBag.Metal < @Model.MoreResources.RequiredMetal)
+                                {
+                                    <p class="text-center text-danger">Not enough resources to research this tech!</p>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Research", "UpgradeMoreResources", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                }
+
+                                <p>
+                                    Raw research time: <i class="ion-ios-timer-outline size-18"> </i> @Model.MoreResources.RequiredResearchTime min.
+                                </p>
+                            }
+                        }
                     }
                     else
                     {
-                        <p>Requires Research Centre Level @Model.MoreResources.Prerequisite</p>
-                    }
-                    <p>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning" style="width: @((Model.MoreResources.Level / (double)Model.MoreResources.MaxLevel) * 100)%;"></div>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 tech-level-button">
+                                <button class="btn btn-block btn-success">
+                                    <h5>
+                                        <i class="ion-arrow-graph-up-right"> </i>
+                                        <br />
+                                        + @Model.MoreResources.Modifiers[Model.MoreResources.Level]x
+                                    </h5>
+                                </button>
+                            </div>
                         </div>
-                    </p>
+                    }
                 }
-                @Html.ActionLink("Details", "MoreResources", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 </div>
-

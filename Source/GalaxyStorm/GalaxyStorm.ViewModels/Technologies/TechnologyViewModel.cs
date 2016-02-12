@@ -15,9 +15,9 @@
             this.Description = res.Description;
             this.MaxLevel = res.MaxLevel;
             this.Prerequisite = res.Prerequisite;
-            this.Modifier = this.Level < this.MaxLevel ? res.Modifier[this.Level] : 0;
-            this.NextModifier = this.Level < this.MaxLevel ? res.Modifier[this.Level + 1] : 0;
             this.RequiredResearchTime = this.Level < this.MaxLevel ? res.ResearchTime[this.Level + 1].TotalMinutes : 0;
+
+            this.Modifiers = res.Modifier;
 
             var requiredResources = res.GetRequiredResources(this.Level + 1);
             this.RequiredEnergy = requiredResources[0];
@@ -31,9 +31,7 @@
 
         public string Description { get; set; }
 
-        public double Modifier { get; set; }
-
-        public double NextModifier { get; set; }
+        public double[] Modifiers { get; set; }
 
         public int MaxLevel { get; set; }
 

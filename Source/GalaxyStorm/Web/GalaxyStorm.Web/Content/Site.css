@@ -280,3 +280,11 @@ hr {
 small, h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: #ccc;
 }
+
+.tech-level-button {
+    margin-top: 5px;
+}
+
+.tech-panel {
+    min-height: 340px;
+}

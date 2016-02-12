@@ -52,7 +52,7 @@
                     CrystalExtractor = new ResourceBuildingViewModel(pO.Buildings.CrystalExtractorLevel, this.logic.Buildings.CrystalExtractor),
                     MetalScrapper = new ResourceBuildingViewModel(pO.Buildings.MetalScrapperLevel, this.logic.Buildings.MetalScrapper),
                 },
-                Technologies = new TechnologiesViewModel(pO.Technologies)
+                Technologies = new TechnologiesViewModel(pO.Buildings.ResearchCentreLevel, pO.Technologies)
                 {
                     FasterConstruction = new TechnologyViewModel(pO.Technologies.FasterConstructionLevel, this.logic.Technologies.FasterConstruction),
                     MoreResources = new TechnologyViewModel(pO.Technologies.MoreResourcesLevel, this.logic.Technologies.MoreResources),
@@ -73,6 +73,11 @@
 
             // Automapper mapping
             info.Planet = Mapper.Map<Planet, PlanetViewModel>(pO.Planet);
+
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
 
             return View(info);
         }
