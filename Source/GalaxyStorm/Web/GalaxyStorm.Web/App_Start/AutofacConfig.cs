@@ -23,6 +23,7 @@
 
             // hangfire requires that this be manually bound
             builder.RegisterType<BuildingService>().InstancePerBackgroundJob();
+            builder.RegisterType<TechnologiesService>().InstancePerBackgroundJob();
 
             var container = builder.Build();
 
