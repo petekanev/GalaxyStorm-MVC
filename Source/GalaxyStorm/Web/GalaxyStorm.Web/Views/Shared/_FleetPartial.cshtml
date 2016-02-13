@@ -12,104 +12,21 @@
                 <img src="~/Images/100xX/scout.png" alt="scout" class="small-img-100" />
                 <hr />
                 <div class="required-resources">
-                    <span class="required-energy" data-req="@Model.Scout.RequiredEnergy">@Model.Scout.RequiredEnergy</span>&nbsp;
-
-                    <span class="required-crystals" data-req="@Model.Scout.RequiredCrystals">@Model.Scout.RequiredCrystals</span>&nbsp;
-
-                    <span class="required-metal" data-req="@Model.Scout.RequiredMetal">@Model.Scout.RequiredMetal</span>
-
-                    <br />
+                    <br/>
                     <div class="col-md-12">
                         <div id="slider1"></div>
                     </div>
+                    <br/>
+                    <i class="ion-ios-sunny-outline text-info"> </i> <span class="required-energy" data-req="@Model.Scout.RequiredEnergy">@Model.Scout.RequiredEnergy</span>&nbsp;
+
+                    <i class="ion-ios-flower-outline text-warning"> </i> <span class="required-crystals" data-req="@Model.Scout.RequiredCrystals">@Model.Scout.RequiredCrystals</span>&nbsp;
+
+                    <i class="ion-ios-cog-outline text-primary"> </i> <span class="required-metal" data-req="@Model.Scout.RequiredMetal">@Model.Scout.RequiredMetal</span>
+                    <br/>
+                    <i class="ion-ios-timer-outline"> </i> <span class="required-time" data-req="@Model.Scout.BuildTime">@Model.Scout.BuildTime</span> mins.
                 </div>
-                <br />
-                @Html.ActionLink("Details", "Scout", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h6 class="text-center">
-                    @Html.ActionLink(@Model.Carrier.Name, "Carrier", "Fleet", new { area = "Planet" }, null)
-                </h6>
-            </div>
-            <div class="panel-body text-center">
-                <img src="~/Images/100xX/carrier.png" alt="carrier" class="small-img-100" />
                 <hr />
-                <h4 class="text-center">
-                    @Model.Carrier.AmountOnPlanet / @(Model.Carrier.AmountOnPlanet + Model.Carrier.AmountDispatched)
-                </h4>
-                @Html.ActionLink("Details", "Carrier", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h6 class="text-center">
-                    @Html.ActionLink(@Model.Fighter.Name, "Fighter", "Fleet", new { area = "Planet" }, null)
-                </h6>
-            </div>
-            <div class="panel-body text-center">
-                <img src="~/Images/100xX/fighter.png" alt="fighter" class="small-img-100" />
-                <hr />
-                <h4 class="text-center">
-                    @Model.Fighter.AmountOnPlanet / @(Model.Fighter.AmountOnPlanet + Model.Fighter.AmountDispatched)
-                </h4>
-                @Html.ActionLink("Details", "Fighter", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h6 class="text-center">
-                    @Html.ActionLink(@Model.Interceptor.Name, "Interceptor", "Fleet", new { area = "Planet" }, null)
-                </h6>
-            </div>
-            <div class="panel-body text-center">
-                <img src="~/Images/100xX/interceptor.png" alt="interceptor" class="small-img-100" />
-                <hr />
-                <h4 class="text-center">
-                    @Model.Interceptor.AmountOnPlanet / @(Model.Interceptor.AmountOnPlanet + Model.Interceptor.AmountDispatched)
-                </h4>
-                @Html.ActionLink("Details", "Interceptor", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-md-offset-3">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h6 class="text-center">
-                    @Html.ActionLink(@Model.Bomber.Name, "Bomber", "Fleet", new { area = "Planet" }, null)
-                </h6>
-            </div>
-            <div class="panel-body text-center">
-                <img src="~/Images/100xX/bomber.png" alt="bomber" class="small-img-100" />
-                <hr />
-                <h4 class="text-center">
-                    @Model.Bomber.AmountOnPlanet / @(Model.Bomber.AmountOnPlanet + Model.Bomber.AmountDispatched)
-                </h4>
-                @Html.ActionLink("Details", "Bomber", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h6 class="text-center">
-                    @Html.ActionLink(@Model.Juggernaut.Name, "Juggernaut", "Fleet", new { area = "Planet" }, null)
-                </h6>
-            </div>
-            <div class="panel-body text-center">
-                <img src="~/Images/100xX/juggernaut.png" alt="juggernaut" class="small-img-100" />
-                <hr />
-                <h4 class="text-center">
-                    @Model.Juggernaut.AmountOnPlanet / @(Model.Juggernaut.AmountOnPlanet + Model.Juggernaut.AmountDispatched)
-                </h4>
-                @Html.ActionLink("Details", "Juggernaut", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Recruit", "Scout", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
@@ -118,8 +35,6 @@
 <script>
     $(function () {
         function repositionTooltip(e, ui) {
-            // If you're on Bootstrap 3.x change "tooltip" to "bs.tooltip"
-            // Props to fd_tl in the comments for the tip!
             var div = $(ui.handle).data("bs.tooltip").$tip[0];
             var pos = $.extend({}, $(ui.handle).offset(), {
                 width: $(ui.handle).get(0).offsetWidth,
@@ -140,15 +55,25 @@
             var reqEnergy = $(div.find('.required-energy')[0]);
             var reqCrystals = $(div.find('.required-crystals')[0]);
             var reqMetal = $(div.find('.required-metal')[0]);
+            var reqTime = $(div.find('.required-time')[0]);
 
             reqEnergy.text(+reqEnergy.attr("data-req") * value);
             reqCrystals.text(+reqCrystals.attr("data-req") * value);
             reqMetal.text(+reqMetal.attr("data-req") * value);
+            reqTime.text((+reqTime.attr("data-req") * value).toFixed(2));
         }
 
+        @{
+            var timesEnergy = (int) (ViewBag.Energy/Model.Scout.RequiredEnergy);
+            var timesCrystals = (int) (ViewBag.Crystal/Model.Scout.RequiredCrystals);
+            var timesMetal = (int) (ViewBag.Metal/Model.Scout.RequiredMetal);
+
+            var mostScouts = timesEnergy < timesCrystals && timesEnergy < timesMetal ? timesEnergy
+                : timesCrystals < timesEnergy && timesCrystals < timesMetal ? timesCrystals : timesMetal;
+        }
         $("#slider1").slider({
             min: 0,
-            max: 512,
+            max: @mostScouts || 0,
             slide: function (e, ui) {
                 repositionTooltip(e, ui);
                 // recalculateRequiredResources(e, ui);

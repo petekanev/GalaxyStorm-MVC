@@ -20,6 +20,7 @@
             this.playerService = playerService;
             this.buildingsService = buildingsService;
             this.fleetService = fleetService;
+            this.techService = techService;
             this.logic = logic;
         }
 
@@ -43,6 +44,11 @@
                 Bomber = new UnitViewModel(fleet.BomberQuantity, fleet.DispatchedBombers, this.logic.Ships.Bomber, cheaperFleetModifier),
                 Juggernaut = new UnitViewModel(fleet.JuggernautQuantity, fleet.DispatchedJuggernauts, this.logic.Ships.Juggernaut, cheaperFleetModifier)
             };
+
+            var reqRes = this.playerService.GetPlayerResources(userId);
+            ViewBag.Energy = reqRes.Energy;
+            ViewBag.Crystal = reqRes.Crystal;
+            ViewBag.Metal = reqRes.Metal;
 
             return View(vM);
         }

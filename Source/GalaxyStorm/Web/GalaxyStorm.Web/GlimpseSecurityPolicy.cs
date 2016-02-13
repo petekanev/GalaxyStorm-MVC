@@ -19,7 +19,7 @@ namespace GalaxyStorm.Web
                 return RuntimePolicy.Off;
             }
 
-            return RuntimePolicy.Off;
+            return RuntimePolicy.On;
         }
 
         public RuntimeEvent ExecuteOn
