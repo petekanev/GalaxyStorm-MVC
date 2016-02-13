@@ -61,7 +61,7 @@
                 DispatchedJuggernauts = 0,
                 DispatchedScouts = 0,
                 FighterQuantity = 0,
-                InterceptorQuantiy = 0,
+                InterceptorQuantity = 0,
                 JuggernautQuantity = 0,
                 ScoutsQuantity = 0
             };

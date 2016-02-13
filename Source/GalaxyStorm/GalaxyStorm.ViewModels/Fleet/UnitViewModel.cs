@@ -8,7 +8,22 @@
         {
         }
 
-        public UnitViewModel(int onPlanet, int dispatched, IShip ship)
+        public UnitViewModel(int onPlanet, int dispatched, string shipName)
+        {
+            this.Name = shipName;
+
+            this.AmountDispatched = dispatched;
+            this.AmountOnPlanet = onPlanet;
+        }
+
+        public UnitViewModel(int onPlanet, int dispatched, IShip ship, double cheaperFleetModifier = 0)
+            : this(ship, cheaperFleetModifier)
+        {
+            this.AmountDispatched = dispatched;
+            this.AmountOnPlanet = onPlanet;
+        }
+
+        public UnitViewModel(IShip ship, double cheaperFleetModifier = 0)
         {
             this.Name = ship.Name;
             this.Description = ship.Description;
@@ -18,20 +33,9 @@
             this.CargoCapacity = ship.CargoCapacity;
 
             var requiredResources = ship.RequiredResourcesToBuild;
-            this.RequiredEnergy = requiredResources[0];
-            this.RequiredCrystals = requiredResources[1];
-            this.RequiredMetal = requiredResources[2];
-
-            this.AmountDispatched = dispatched;
-            this.AmountOnPlanet = onPlanet;
-        }
-
-        public UnitViewModel(int onPlanet, int dispatched, string shipName)
-        {
-            this.Name = shipName;
-
-            this.AmountDispatched = dispatched;
-            this.AmountOnPlanet = onPlanet;
+            this.RequiredEnergy = requiredResources[0] - (int)(cheaperFleetModifier * requiredResources[0]);
+            this.RequiredCrystals = requiredResources[1] - (int)(cheaperFleetModifier * requiredResources[1]);
+            this.RequiredMetal = requiredResources[2] - (int)(cheaperFleetModifier * requiredResources[2]);
         }
 
         public string Name { get; set; }

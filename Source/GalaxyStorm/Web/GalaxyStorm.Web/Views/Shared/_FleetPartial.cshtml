@@ -1,7 +1,7 @@
 ﻿@model GalaxyStorm.ViewModels.Fleet.FleetViewModel
 
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h6 class="text-center">
@@ -11,18 +11,24 @@
             <div class="panel-body text-center">
                 <img src="~/Images/100xX/scout.png" alt="scout" class="small-img-100" />
                 <hr />
-                <h4 class="text-center">
-                    @Model.Scout.AmountOnPlanet / @(Model.Scout.AmountOnPlanet + Model.Scout.AmountDispatched)
-                </h4>
-                <div class="col-md-12">
-                    <div id="slider1"></div>
+                <div class="required-resources">
+                    <span class="required-energy" data-req="@Model.Scout.RequiredEnergy">@Model.Scout.RequiredEnergy</span>&nbsp;
+
+                    <span class="required-crystals" data-req="@Model.Scout.RequiredCrystals">@Model.Scout.RequiredCrystals</span>&nbsp;
+
+                    <span class="required-metal" data-req="@Model.Scout.RequiredMetal">@Model.Scout.RequiredMetal</span>
+
+                    <br />
+                    <div class="col-md-12">
+                        <div id="slider1"></div>
+                    </div>
                 </div>
                 <br />
                 @Html.ActionLink("Details", "Scout", "Fleet", new { area = "Planet" }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h6 class="text-center">
@@ -39,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h6 class="text-center">
@@ -56,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h6 class="text-center">
@@ -73,7 +79,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-md-offset-3">
+    <div class="col-md-4 col-md-offset-3">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h6 class="text-center">
@@ -90,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h6 class="text-center">
@@ -110,30 +116,50 @@
 </div>
 
 <script>
-    function repositionTooltip(e, ui) {
-        // If you're on Bootstrap 3.x change "tooltip" to "bs.tooltip"
-        // Props to fd_tl in the comments for the tip!
-        var div = $(ui.handle).data("bs.tooltip").$tip[0];
-        var pos = $.extend({}, $(ui.handle).offset(), {
-            width: $(ui.handle).get(0).offsetWidth,
-            height: $(ui.handle).get(0).offsetHeight
+    $(function () {
+        function repositionTooltip(e, ui) {
+            // If you're on Bootstrap 3.x change "tooltip" to "bs.tooltip"
+            // Props to fd_tl in the comments for the tip!
+            var div = $(ui.handle).data("bs.tooltip").$tip[0];
+            var pos = $.extend({}, $(ui.handle).offset(), {
+                width: $(ui.handle).get(0).offsetWidth,
+                height: $(ui.handle).get(0).offsetHeight
+            });
+
+            var actualWidth = div.offsetWidth;
+
+            tp = { left: pos.left + pos.width / 2 - actualWidth / 2 }
+            $(div).offset(tp);
+
+            $(div).find(".tooltip-inner").text(ui.value);
+        }
+
+        function recalculateRequiredResources(e, ui) {
+            var value = +ui.value || 0;
+            var div = $(ui.handle).closest('.required-resources');
+            var reqEnergy = $(div.find('.required-energy')[0]);
+            var reqCrystals = $(div.find('.required-crystals')[0]);
+            var reqMetal = $(div.find('.required-metal')[0]);
+
+            reqEnergy.text(+reqEnergy.attr("data-req") * value);
+            reqCrystals.text(+reqCrystals.attr("data-req") * value);
+            reqMetal.text(+reqMetal.attr("data-req") * value);
+        }
+
+        $("#slider1").slider({
+            min: 0,
+            max: 512,
+            slide: function (e, ui) {
+                repositionTooltip(e, ui);
+                // recalculateRequiredResources(e, ui);
+            },
+            stop: function (e, ui) {
+                repositionTooltip(e, ui);
+                recalculateRequiredResources(e, ui);
+            }
         });
+        $("#slider1 .ui-slider-handle:first").tooltip({ title: $("#slider1").slider("value") || "0", trigger: "manual" }).tooltip("show");
 
-        var actualWidth = div.offsetWidth;
-
-        tp = { left: pos.left + pos.width / 2 - actualWidth / 2 }
-        $(div).offset(tp);
-
-        $(div).find(".tooltip-inner").text(ui.value);
-    }
-
-    $("#slider1").slider({
-        min: 0,
-        max: 512,
-        slide: repositionTooltip,
-        stop: repositionTooltip
-        });
-    $("#slider .ui-slider-handle:first").tooltip({ title: $("#slider").slider("value") || "0", trigger: "manual" }).tooltip("show");
-
+    });
 
 </script>

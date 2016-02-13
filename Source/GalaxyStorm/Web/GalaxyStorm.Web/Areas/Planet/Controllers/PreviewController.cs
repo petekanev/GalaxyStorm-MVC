@@ -65,7 +65,7 @@
                     Scout = new UnitViewModel(pO.Units.ScoutsQuantity, pO.Units.DispatchedScouts, this.logic.Ships.Scout.Name),
                     Carrier = new UnitViewModel(pO.Units.CarriersQuantity, pO.Units.DispatchedCarriers, this.logic.Ships.Carrier.Name),
                     Fighter = new UnitViewModel(pO.Units.FighterQuantity, pO.Units.DispatchedFighters, this.logic.Ships.Fighter.Name),
-                    Interceptor = new UnitViewModel(pO.Units.InterceptorQuantiy, pO.Units.DispatchedInterceptors, this.logic.Ships.Interceptor.Name),
+                    Interceptor = new UnitViewModel(pO.Units.InterceptorQuantity, pO.Units.DispatchedInterceptors, this.logic.Ships.Interceptor.Name),
                     Bomber = new UnitViewModel(pO.Units.BomberQuantity, pO.Units.DispatchedBombers, this.logic.Ships.Bomber.Name),
                     Juggernaut = new UnitViewModel(pO.Units.JuggernautQuantity, pO.Units.DispatchedJuggernauts, this.logic.Ships.Juggernaut.Name)
                 }
@@ -74,10 +74,9 @@
             // Automapper mapping
             info.Planet = Mapper.Map<Planet, PlanetViewModel>(pO.Planet);
 
-            var reqRes = this.playerService.GetPlayerResources(userId);
-            ViewBag.Energy = reqRes.Energy;
-            ViewBag.Crystal = reqRes.Crystal;
-            ViewBag.Metal = reqRes.Metal;
+            ViewBag.Energy = info.Resources.Energy;
+            ViewBag.Crystal = info.Resources.Crystal;
+            ViewBag.Metal = info.Resources.Metal;
 
             return View(info);
         }

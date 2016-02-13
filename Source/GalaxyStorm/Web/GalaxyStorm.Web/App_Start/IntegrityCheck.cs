@@ -45,6 +45,7 @@
 
             users.SaveChanges();
 
+            /* TODO: Uncomment if incomplete buildings continue causing problems
             var playerObjects = users.All().Select(x => x.PlayerObject).ToList();
 
             // check if a building was in building state, refund resources and reverse state
@@ -86,6 +87,7 @@
             }
 
             users.SaveChanges();
+            */
         }
 
         private static void RestoreResources(PlayerObject pO, int[] resources)

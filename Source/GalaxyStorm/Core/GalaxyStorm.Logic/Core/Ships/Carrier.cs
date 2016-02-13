@@ -8,6 +8,12 @@
         private const double ArmorCoeff = 2.5;
         private const double CargoCoeff = 150;
 
+        private const double EnergyCoeff = 1;
+        private const double CrystalCoeff = 1;
+        private const double MetalCoeff = 1;
+
+        private const double BuildTimeMinutes = 10;
+
         public string Name
         {
             get { return "Carrier"; }
@@ -38,8 +44,25 @@
             get { return 1; }
         }
 
-        public TimeSpan BuildTime { get; private set; }
-        
-        public int[] RequiredResourcesToBuild { get; private set; }
+        public TimeSpan BuildTime
+        {
+            get
+            {
+                return TimeSpan.FromMinutes(BuildTimeMinutes);
+            }
+        }
+
+        public int[] RequiredResourcesToBuild
+        {
+            get
+            {
+                return new[]
+                {
+                    (int)(100 * EnergyCoeff), 
+                    (int)(100 * CrystalCoeff), 
+                    (int)(100 * MetalCoeff)
+                };
+            }
+        }
     }
 }

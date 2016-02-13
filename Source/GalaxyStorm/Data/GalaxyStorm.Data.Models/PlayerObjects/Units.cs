@@ -20,7 +20,7 @@
 
         public int DispatchedFighters { get; set; }
 
-        public int InterceptorQuantiy { get; set; }
+        public int InterceptorQuantity { get; set; }
 
         public int DispatchedInterceptors { get; set; }
 
@@ -31,5 +31,24 @@
         public int JuggernautQuantity { get; set; }
 
         public int DispatchedJuggernauts { get; set; }
+
+        public CurrentlyRecruiting CurrentlyRecruiting { get; set; }
+
+        public DateTime? StartTime { get; set; }
+
+        public DateTime? EndTime { get; set; }
+
+        public int AmountRecruiting { get; set; }
+    }
+
+    public enum CurrentlyRecruiting
+    {
+        None = 0,
+        Scouts = 1,
+        Carriers = 2,
+        Fighters = 3,
+        Interceptors = 4,
+        Bombers = 5,
+        Juggernauts = 6
     }
 }

@@ -8,6 +8,12 @@
         private const double ArmorCoeff = 1;
         private const double CargoCoeff = 10;
 
+        private const double EnergyCoeff = 0.6;
+        private const double CrystalCoeff = 1;
+        private const double MetalCoeff = 0.75;
+
+        private const double BuildTimeMinutes = 5.23;
+
         public string Name
         {
             get { return "Scout"; }
@@ -15,7 +21,7 @@
 
         public string Description
         {
-            get { return "Tiny fragile ship. The ship is ideal for recon and spying."; }
+            get { return "Tiny fragile ship. The vessel is ideal for recon missions and spying. Not durable in combat."; }
         }
 
         public int Attack
@@ -38,8 +44,25 @@
             get { return 1; }
         }
 
-        public TimeSpan BuildTime { get; private set; }
+        public TimeSpan BuildTime
+        {
+            get
+            {
+                return TimeSpan.FromMinutes(BuildTimeMinutes);
+            }
+        }
 
-        public int[] RequiredResourcesToBuild { get; private set; }
+        public int[] RequiredResourcesToBuild
+        {
+            get
+            {
+                return new[]
+                {
+                    (int)(100 * EnergyCoeff), 
+                    (int)(100 * CrystalCoeff), 
+                    (int)(100 * MetalCoeff)
+                };
+            }
+        }
     }
 }
