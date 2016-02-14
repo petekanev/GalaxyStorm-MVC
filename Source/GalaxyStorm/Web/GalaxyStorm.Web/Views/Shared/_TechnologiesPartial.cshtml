@@ -82,7 +82,13 @@
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Research", "UpgradeArmoredFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                    using (Html.BeginForm("UpgradeArmoredFleet", "Technologies", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button class="btn btn-default text-center">
+                                            Research
+                                        </button>
+                                    }
                                 }
 
                                 <p>
@@ -190,7 +196,13 @@
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Research", "UpgradeCheaperFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                    using (Html.BeginForm("UpgradeCheaperFleet", "Technologies", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button class="btn btn-default text-center">
+                                            Research
+                                        </button>
+                                    }
                                 }
 
                                 <p>
@@ -298,7 +310,13 @@
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Research", "UpgradeLargerFleet", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                    using (Html.BeginForm("UpgradeLargerFleet", "Technologies", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button class="btn btn-default text-center">
+                                            Research
+                                        </button>
+                                    }
                                 }
 
                                 <p>
@@ -406,7 +424,13 @@
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Research", "UpgradeFasterConstruction", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                    using (Html.BeginForm("UpgradeFasterConstruction", "Technologies", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button class="btn btn-default text-center">
+                                            Research
+                                        </button>
+                                    }
                                 }
 
                                 <p>
@@ -514,7 +538,13 @@
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Research", "UpgradeMoreResources", "Technologies", new { area = "Planet" }, new { @class = "btn btn-default" })
+                                    using (Html.BeginForm("UpgradeMoreResources", "Technologies", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button class="btn btn-default text-center">
+                                            Research
+                                        </button>
+                                    }
                                 }
 
                                 <p>

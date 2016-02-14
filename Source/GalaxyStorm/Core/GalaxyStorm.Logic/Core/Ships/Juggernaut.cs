@@ -8,9 +8,9 @@
         private const double ArmorCoeff = 40;
         private const double CargoCoeff = 70;
 
-        private const double EnergyCoeff = 13;
-        private const double CrystalCoeff = 17;
-        private const double MetalCoeff = 15.5;
+        private const double EnergyCoeff = 16;
+        private const double CrystalCoeff = 22;
+        private const double MetalCoeff = 19.5;
 
         private const double BuildTimeMinutes = 30;
 

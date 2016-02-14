@@ -12,7 +12,7 @@
         private const double CrystalCoeff = 3.2;
         private const double MetalCoeff = 4;
 
-        private const double BuildTimeMinutes = 13.5;
+        private const double BuildTimeMinutes = 12.5;
 
         public string Name
         {

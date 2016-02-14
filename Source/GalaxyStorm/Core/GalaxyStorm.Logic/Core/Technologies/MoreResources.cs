@@ -4,10 +4,10 @@
 
     public class MoreResources : ITechnology
     {
-        private const double EnergyCoeff = 15;
-        private const double CrystalCoeff = 15.4;
-        private const double MetalCoeff = 16;
-        private const double ResearchTimeCoeff = 1;
+        private const double EnergyCoeff = 25;
+        private const double CrystalCoeff = 28.4;
+        private const double MetalCoeff = 23;
+        private const double ResearchTimeCoeff = 1.25;
 
         public string Name
         {

@@ -14,7 +14,7 @@
             get { return "Nimble Workers"; }
         }
 
-        public string Description { get { return "Buildings you upgrade are completed faster."; } }
+        public string Description { get { return "Buildings you upgrade are completed faster. Units you recruit become available sooner."; } }
 
         public int MaxLevel
         {

@@ -49,6 +49,8 @@
             return View(vM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeArmoredFleet()
         {
             var userId = User.Identity.GetUserId();
@@ -67,6 +69,8 @@
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeCheaperFleet()
         {
             var userId = User.Identity.GetUserId();
@@ -85,6 +89,8 @@
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeLargerFleet()
         {
             var userId = User.Identity.GetUserId();
@@ -103,6 +109,8 @@
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeFasterConstruction()
         {
             var userId = User.Identity.GetUserId();
@@ -121,6 +129,8 @@
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeMoreResources()
         {
             var userId = User.Identity.GetUserId();
