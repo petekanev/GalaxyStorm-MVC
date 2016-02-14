@@ -41,7 +41,7 @@
 
         public int Prerequisite
         {
-            get { return 1; }
+            get { return 5; }
         }
 
         public TimeSpan BuildTime
