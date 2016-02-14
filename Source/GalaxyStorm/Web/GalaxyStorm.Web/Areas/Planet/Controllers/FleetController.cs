@@ -75,6 +75,86 @@
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecruitFighters(int amount)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.fleetService.ScheduleRecruitFighter(userId, amount);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecruitCarriers(int amount)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.fleetService.ScheduleRecruitCarrier(userId, amount);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecruitInterceptors(int amount)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.fleetService.ScheduleRecruitInterceptor(userId, amount);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecruitJuggernauts(int amount)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.fleetService.ScheduleRecruitJuggernaut(userId, amount);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Index");
+        }
+
         private void SetErrorMessage()
         {
             TempData["Error"] =

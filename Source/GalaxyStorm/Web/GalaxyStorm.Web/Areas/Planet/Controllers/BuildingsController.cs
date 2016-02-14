@@ -58,6 +58,8 @@
             return View(vM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeHeadquarters()
         {
             var userId = User.Identity.GetUserId();
@@ -98,6 +100,8 @@
             return View(vM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeResearchCentre()
         {
             var userId = User.Identity.GetUserId();
@@ -138,6 +142,8 @@
             return View(vM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeBarracks()
         {
             var userId = User.Identity.GetUserId();
@@ -178,6 +184,8 @@
             return View(vM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeSolarCollector()
         {
             var userId = User.Identity.GetUserId();
@@ -218,6 +226,8 @@
             return View(vM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeCrystalExtractor()
         {
             var userId = User.Identity.GetUserId();
@@ -258,6 +268,8 @@
             return View(vM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpgradeMetalScrapper()
         {
             var userId = User.Identity.GetUserId();

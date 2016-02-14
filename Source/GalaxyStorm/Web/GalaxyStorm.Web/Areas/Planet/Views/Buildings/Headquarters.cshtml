@@ -73,7 +73,13 @@
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Upgrade", "UpgradeHeadquarters", null, new { @class = "btn btn-default text-center" })
+                                    using (Html.BeginForm("UpgradeHeadquarters", "Buildings", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button class="btn btn-default text-center">
+                                            Upgrade
+                                        </button>
+                                    }
                                 }
 
                                 <p>Raw build time:  <i class="ion-ios-timer-outline size-18"> </i> @Model.Headquarters.RequiredBuildTime min.</p>
