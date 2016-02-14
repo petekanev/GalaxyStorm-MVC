@@ -464,7 +464,7 @@
                     @Html.ActionLink(@Model.MoreResources.Name, "Index", "Technologies", new { area = "Planet" }, null) - <small>Level @Model.MoreResources.Level</small>
                 </h6>
             </div>
-            <div class="panel-body text-center tech-panel">
+            <div class="panel-body text-center tech-panel parent-vertical-middle">
                 @if (@Model.ResearchCentreLevel < @Model.MoreResources.Prerequisite)
                 {
                     <p>Requires Research Centre Level @Model.MoreResources.Prerequisite</p>
@@ -555,7 +555,7 @@
                     }
                     else
                     {
-                        <div class="row">
+                        <div class="row vertical-middle">
                             <div class="col-md-4 col-md-offset-4 tech-level-button">
                                 <button class="btn btn-block btn-success">
                                     <h5>
@@ -566,6 +566,9 @@
                                 </button>
                             </div>
                         </div>
+                        <br />
+                        <p><strong class="text-success">Max Level Reached!</strong></p>
+                        <span>@Model.MoreResources.Description</span>
                     }
                 }
             </div>

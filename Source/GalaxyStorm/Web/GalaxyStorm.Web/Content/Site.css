@@ -292,3 +292,21 @@ small, h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 .fleet-panel {
     min-height: 375px;
 }
+
+/*.vertical-middle {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.parent-vertical-middle {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}*/
