@@ -44,11 +44,11 @@
     public enum CurrentlyRecruiting
     {
         None = 0,
-        Scouts = 1,
-        Carriers = 2,
-        Fighters = 3,
-        Interceptors = 4,
-        Bombers = 5,
-        Juggernauts = 6
+        Scout = 1,
+        Carrier = 2,
+        Fighter = 3,
+        Interceptor = 4,
+        Bomber = 5,
+        Juggernaut = 6
     }
 }

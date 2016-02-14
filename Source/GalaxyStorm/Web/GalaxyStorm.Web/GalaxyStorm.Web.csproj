@@ -397,7 +397,7 @@
     <Content Include="Views\DisplayTemplates\Technology.cshtml" />
     <Content Include="Views\Shared\_BuildingsPartial.cshtml" />
     <Content Include="Views\Shared\_TechnologiesPartial.cshtml" />
-    <Content Include="Views\Shared\_FleetPartial.cshtml" />
+    <Content Include="Views\Shared\_RecruitableFleetPartial.cshtml" />
     <Content Include="Views\Shared\_SideMenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

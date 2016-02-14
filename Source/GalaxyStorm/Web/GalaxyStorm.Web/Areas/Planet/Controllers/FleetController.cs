@@ -1,9 +1,11 @@
 ﻿namespace GalaxyStorm.Web.Areas.Planet.Controllers
 {
     using System.Web.Mvc;
+    using Hangfire;
     using Infrastructure;
     using Logic.Core;
     using Microsoft.AspNet.Identity;
+    using Services.Data;
     using Services.Data.Contracts;
     using ViewModels.Fleet;
 
@@ -51,6 +53,32 @@
             ViewBag.Metal = reqRes.Metal;
 
             return View(vM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecruitScouts(int amount)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.fleetService.ScheduleRecruitScout(userId, amount);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        private void SetErrorMessage()
+        {
+            TempData["Error"] =
+                "You cannot recruit that many ships at the moment. You don't meet the requirements, or another batch of ships is being recruited!";
         }
     }
 }

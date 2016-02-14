@@ -31,6 +31,7 @@
             this.Armor = ship.Armor;
             this.BuildTime = ship.BuildTime.TotalMinutes;
             this.CargoCapacity = ship.CargoCapacity;
+            this.Prerequisite = ship.Prerequisite;
 
             var requiredResources = ship.RequiredResourcesToBuild;
             this.RequiredEnergy = requiredResources[0] - (int)(cheaperFleetModifier * requiredResources[0]);

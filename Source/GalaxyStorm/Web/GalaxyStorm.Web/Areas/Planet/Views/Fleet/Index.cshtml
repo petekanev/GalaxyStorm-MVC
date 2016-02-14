@@ -1,7 +1,7 @@
 ﻿@model GalaxyStorm.ViewModels.Fleet.FleetViewModel
 
 @{
-    ViewBag.Title = "Fleet stuff";
+    ViewBag.Title = "Fleet Overview";
 }
 
 <div class="row">
@@ -13,5 +13,633 @@
 </div>
 
 <div class="well">
-     @{ Html.RenderPartial("_FleetPartial"); }
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Scout.Name, "Scout", "Fleet", new { area = "Planet" }, null)
+                    </h6>
+                </div>
+                <div class="panel-body text-center fleet-panel">
+                    <img src="~/Images/100xX/scout.png" alt="scout" class="small-img-100" />
+                    <hr />
+                    @if (Model.Scout.Prerequisite > Model.BarracksLevel)
+                    {
+                        <p>Requires Barracks Level @Model.Scout.Prerequisite</p>
+                    }
+                    else
+                    {
+                        <span>Total: @(Model.Scout.AmountOnPlanet + Model.Scout.AmountDispatched)</span>
+                        using (Html.BeginForm("RecruitScouts", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model.CurrentlyRecruiting == "Scout")
+                            {
+                                <span>Recruiting:</span>
+                                <hr />
+                                <p class="text-center">
+                                    <strong>@Model.AmountRecruiting</strong> arriving in: @string.Format("{0:0.00}", Model.MinutesLeftToRecruit) minutes!
+                                </p>
+                                <p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsRecruited%"></div>
+                                    </div>
+                                </p>
+                            }
+                            else
+                            {
+                                <div class="required-resources">
+                                    <br />
+                                    @if (Model.CurrentlyRecruiting != "None")
+                                    {
+                                        <p class="text-center text-danger">Busy ...</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12">
+                                            <div id="slider1">@Html.Hidden("amount", 0, new { @class = "amount" })</div>
+                                        </div>
+                                        <br />
+                                    }
+                                    <i class="ion-ios-sunny-outline text-info"> </i> <span class="required-energy" data-req="@Model.Scout.RequiredEnergy">@Model.Scout.RequiredEnergy</span>&nbsp;
+
+                                    <i class="ion-ios-flower-outline text-warning"> </i> <span class="required-crystals" data-req="@Model.Scout.RequiredCrystals">@Model.Scout.RequiredCrystals</span>&nbsp;
+
+                                    <i class="ion-ios-cog-outline text-primary"> </i> <span class="required-metal" data-req="@Model.Scout.RequiredMetal">@Model.Scout.RequiredMetal</span>
+                                    <br />
+                                    <i class="ion-ios-timer-outline"> </i> <span class="required-time" data-req="@Model.Scout.BuildTime">@Model.Scout.BuildTime</span> mins.
+                                </div>
+                                if (Model.CurrentlyRecruiting == "None")
+                                {
+                                    <hr />
+                                    <button class="text-center btn btn-default">Recruit</button>
+                                }
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Carrier.Name, "Carrier", "Fleet", new { area = "Planet" }, null)
+                    </h6>
+                </div>
+                <div class="panel-body text-center fleet-panel">
+                    <img src="~/Images/100xX/carrier.png" alt="carrier" class="small-img-100" />
+                    <hr />
+                    @if (Model.Carrier.Prerequisite > Model.BarracksLevel)
+                    {
+                        <p>Requires Barracks Level @Model.Carrier.Prerequisite</p>
+                    }
+                    else
+                    {
+                        <span>Total: @(Model.Carrier.AmountOnPlanet + Model.Carrier.AmountDispatched)</span>
+                        using (Html.BeginForm("RecruitCarriers", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model.CurrentlyRecruiting == "Carrier")
+                            {
+                                <span>Recruiting:</span>
+                                <hr />
+                                <p class="text-center">
+                                    <strong>@Model.AmountRecruiting</strong> arriving in: @string.Format("{0:0.00}", Model.MinutesLeftToRecruit) minutes!
+                                </p>
+                                <p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsRecruited%"></div>
+                                    </div>
+                                </p>
+                            }
+                            else
+                            {
+                                <div class="required-resources">
+                                    <br />
+                                    @if (Model.CurrentlyRecruiting != "None")
+                                    {
+                                        <p class="text-center text-danger">Busy ...</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12">
+                                            <div id="slider2">@Html.Hidden("amount", 0, new { @class = "amount" })</div>
+                                        </div>
+                                        <br />
+                                    }
+                                    <i class="ion-ios-sunny-outline text-info"> </i> <span class="required-energy" data-req="@Model.Carrier.RequiredEnergy">@Model.Carrier.RequiredEnergy</span>&nbsp;
+
+                                    <i class="ion-ios-flower-outline text-warning"> </i> <span class="required-crystals" data-req="@Model.Carrier.RequiredCrystals">@Model.Carrier.RequiredCrystals</span>&nbsp;
+
+                                    <i class="ion-ios-cog-outline text-primary"> </i> <span class="required-metal" data-req="@Model.Carrier.RequiredMetal">@Model.Carrier.RequiredMetal</span>
+                                    <br />
+                                    <i class="ion-ios-timer-outline"> </i> <span class="required-time" data-req="@Model.Carrier.BuildTime">@Model.Carrier.BuildTime</span> mins.
+                                </div>
+                                if (Model.CurrentlyRecruiting == "None")
+                                {
+                                    <hr />
+                                    <button class="text-center btn btn-default">Recruit</button>
+                                }
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Fighter.Name, "Fighter", "Fleet", new { area = "Planet" }, null)
+                    </h6>
+                </div>
+                <div class="panel-body text-center fleet-panel">
+                    <img src="~/Images/100xX/fighter.png" alt="fighter" class="small-img-100" />
+                    <hr />
+                    @if (Model.Fighter.Prerequisite > Model.BarracksLevel)
+                    {
+                        <p>Requires Barracks Level @Model.Fighter.Prerequisite</p>
+                    }
+                    else
+                    {
+                        <span>Total: @(Model.Fighter.AmountOnPlanet + Model.Fighter.AmountDispatched)</span>
+                        using (Html.BeginForm("RecruitFighters", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model.CurrentlyRecruiting == "Fighter")
+                            {
+                                <span>Recruiting:</span>
+                                <hr />
+                                <p class="text-center">
+                                    <strong>@Model.AmountRecruiting</strong> arriving in: @string.Format("{0:0.00}", Model.MinutesLeftToRecruit) minutes!
+                                </p>
+                                <p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsRecruited%"></div>
+                                    </div>
+                                </p>
+                            }
+                            else
+                            {
+                                <div class="required-resources">
+                                    <br />
+                                    @if (Model.CurrentlyRecruiting != "None")
+                                    {
+                                        <p class="text-center text-danger">Busy ...</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12">
+                                            <div id="slider3">@Html.Hidden("amount", 0, new { @class = "amount" })</div>
+                                        </div>
+                                        <br />
+                                    }
+                                    <i class="ion-ios-sunny-outline text-info"> </i> <span class="required-energy" data-req="@Model.Fighter.RequiredEnergy">@Model.Fighter.RequiredEnergy</span>&nbsp;
+
+                                    <i class="ion-ios-flower-outline text-warning"> </i> <span class="required-crystals" data-req="@Model.Fighter.RequiredCrystals">@Model.Fighter.RequiredCrystals</span>&nbsp;
+
+                                    <i class="ion-ios-cog-outline text-primary"> </i> <span class="required-metal" data-req="@Model.Fighter.RequiredMetal">@Model.Fighter.RequiredMetal</span>
+                                    <br />
+                                    <i class="ion-ios-timer-outline"> </i> <span class="required-time" data-req="@Model.Fighter.BuildTime">@Model.Fighter.BuildTime</span> mins.
+                                </div>
+                                if (Model.CurrentlyRecruiting == "None")
+                                {
+                                    <hr />
+                                    <button class="text-center btn btn-default">Recruit</button>
+                                }
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Interceptor.Name, "Interceptor", "Fleet", new { area = "Planet" }, null)
+                    </h6>
+                </div>
+                <div class="panel-body text-center fleet-panel">
+                    <img src="~/Images/100xX/interceptor.png" alt="interceptor" class="small-img-100" />
+                    <hr />
+                    @if (Model.Interceptor.Prerequisite > Model.BarracksLevel)
+                    {
+                        <p>Requires Barracks Level @Model.Interceptor.Prerequisite</p>
+                    }
+                    else
+                    {
+                        <span>Total: @(Model.Interceptor.AmountOnPlanet + Model.Interceptor.AmountDispatched)</span>
+                        using (Html.BeginForm("RecruitInterceptors", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model.CurrentlyRecruiting == "Interceptor")
+                            {
+                                <span>Recruiting:</span>
+                                <hr />
+                                <p class="text-center">
+                                    <strong>@Model.AmountRecruiting</strong> arriving in: @string.Format("{0:0.00}", Model.MinutesLeftToRecruit) minutes!
+                                </p>
+                                <p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsRecruited%"></div>
+                                    </div>
+                                </p>
+                            }
+                            else
+                            {
+                                <div class="required-resources">
+                                    <br />
+                                    @if (Model.CurrentlyRecruiting != "None")
+                                    {
+                                        <p class="text-center text-danger">Busy ...</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12">
+                                            <div id="slider4">@Html.Hidden("amount", 0, new { @class = "amount" })</div>
+                                        </div>
+                                        <br />
+                                    }
+                                    <i class="ion-ios-sunny-outline text-info"> </i> <span class="required-energy" data-req="@Model.Interceptor.RequiredEnergy">@Model.Interceptor.RequiredEnergy</span>&nbsp;
+
+                                    <i class="ion-ios-flower-outline text-warning"> </i> <span class="required-crystals" data-req="@Model.Interceptor.RequiredCrystals">@Model.Interceptor.RequiredCrystals</span>&nbsp;
+
+                                    <i class="ion-ios-cog-outline text-primary"> </i> <span class="required-metal" data-req="@Model.Interceptor.RequiredMetal">@Model.Interceptor.RequiredMetal</span>
+                                    <br />
+                                    <i class="ion-ios-timer-outline"> </i> <span class="required-time" data-req="@Model.Interceptor.BuildTime">@Model.Interceptor.BuildTime</span> mins.
+                                </div>
+                                if (Model.CurrentlyRecruiting == "None")
+                                {
+                                    <hr />
+                                    <button class="text-center btn btn-default">Recruit</button>
+                                }
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Bomber.Name, "Bomber", "Fleet", new { area = "Planet" }, null)
+                    </h6>
+                </div>
+                <div class="panel-body text-center fleet-panel">
+                    <img src="~/Images/100xX/bomber.png" alt="bomber" class="small-img-100" />
+                    <hr />
+                    @if (Model.Bomber.Prerequisite > Model.BarracksLevel)
+                    {
+                        <p>Requires Barracks Level @Model.Bomber.Prerequisite</p>
+                    }
+                    else
+                    {
+                        <span>Total: @(Model.Bomber.AmountOnPlanet + Model.Bomber.AmountDispatched)</span>
+                        using (Html.BeginForm("RecruitBombers", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model.CurrentlyRecruiting == "Bomber")
+                            {
+                                <span>Recruiting:</span>
+                                <hr />
+                                <p class="text-center">
+                                    <strong>@Model.AmountRecruiting</strong> arriving in: @string.Format("{0:0.00}", Model.MinutesLeftToRecruit) minutes!
+                                </p>
+                                <p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsRecruited%"></div>
+                                    </div>
+                                </p>
+                            }
+                            else
+                            {
+                                <div class="required-resources">
+                                    <br />
+                                    @if (Model.CurrentlyRecruiting != "None")
+                                    {
+                                        <p class="text-center text-danger">Busy ...</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12">
+                                            <div id="slider5">@Html.Hidden("amount", 0, new { @class = "amount" })</div>
+                                        </div>
+                                        <br />
+                                    }
+                                    <i class="ion-ios-sunny-outline text-info"> </i> <span class="required-energy" data-req="@Model.Bomber.RequiredEnergy">@Model.Bomber.RequiredEnergy</span>&nbsp;
+
+                                    <i class="ion-ios-flower-outline text-warning"> </i> <span class="required-crystals" data-req="@Model.Bomber.RequiredCrystals">@Model.Bomber.RequiredCrystals</span>&nbsp;
+
+                                    <i class="ion-ios-cog-outline text-primary"> </i> <span class="required-metal" data-req="@Model.Bomber.RequiredMetal">@Model.Bomber.RequiredMetal</span>
+                                    <br />
+                                    <i class="ion-ios-timer-outline"> </i> <span class="required-time" data-req="@Model.Bomber.BuildTime">@Model.Bomber.BuildTime</span> mins.
+                                </div>
+                                if (Model.CurrentlyRecruiting == "None")
+                                {
+                                    <hr />
+                                    <button class="text-center btn btn-default">Recruit</button>
+                                }
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h6 class="text-center">
+                        @Html.ActionLink(@Model.Juggernaut.Name, "Juggernaut", "Fleet", new { area = "Planet" }, null)
+                    </h6>
+                </div>
+                <div class="panel-body text-center fleet-panel">
+                    <img src="~/Images/100xX/juggernaut.png" alt="juggernaut" class="small-img-100" />
+                    <hr />
+                    @if (Model.Juggernaut.Prerequisite > Model.BarracksLevel)
+                    {
+                        <p>Requires Barracks Level @Model.Juggernaut.Prerequisite</p>
+                    }
+                    else
+                    {
+                        <span>Total: @(Model.Juggernaut.AmountOnPlanet + Model.Juggernaut.AmountDispatched)</span>
+                        using (Html.BeginForm("RecruitJuggernauts", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model.CurrentlyRecruiting == "Juggernaut")
+                            {
+                                <span>Recruiting:</span>
+                                <hr />
+                                <p class="text-center">
+                                    <strong>@Model.AmountRecruiting</strong> arriving in: @string.Format("{0:0.00}", Model.MinutesLeftToRecruit) minutes!
+                                </p>
+                                <p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" style="width: @Model.PercentsRecruited%"></div>
+                                    </div>
+                                </p>
+                            }
+                            else
+                            {
+                                <div class="required-resources">
+                                    <br />
+                                    @if (Model.CurrentlyRecruiting != "None")
+                                    {
+                                        <p class="text-center text-danger">Busy ...</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12">
+                                            <div id="slider6">@Html.Hidden("amount", 0, new { @class = "amount" })</div>
+                                        </div>
+                                        <br />
+                                    }
+                                    <i class="ion-ios-sunny-outline text-info"> </i> <span class="required-energy" data-req="@Model.Juggernaut.RequiredEnergy">@Model.Juggernaut.RequiredEnergy</span>&nbsp;
+
+                                    <i class="ion-ios-flower-outline text-warning"> </i> <span class="required-crystals" data-req="@Model.Juggernaut.RequiredCrystals">@Model.Juggernaut.RequiredCrystals</span>&nbsp;
+
+                                    <i class="ion-ios-cog-outline text-primary"> </i> <span class="required-metal" data-req="@Model.Juggernaut.RequiredMetal">@Model.Juggernaut.RequiredMetal</span>
+                                    <br />
+                                    <i class="ion-ios-timer-outline"> </i> <span class="required-time" data-req="@Model.Juggernaut.BuildTime">@Model.Juggernaut.BuildTime</span> mins.
+                                </div>
+                                if (Model.CurrentlyRecruiting == "None")
+                                {
+                                    <hr />
+                                    <button class="text-center btn btn-default">Recruit</button>
+                                }
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section scripts
+{
+
+    <script>
+        var helpers = {};
+
+        (function() {
+            helpers["repositionTooltip"] = function(e, ui) {
+                var div = $(ui.handle).data("bs.tooltip").$tip[0];
+                var pos = $.extend({}, $(ui.handle).offset(), {
+                    width: $(ui.handle).get(0).offsetWidth,
+                    height: $(ui.handle).get(0).offsetHeight
+                });
+
+                var actualWidth = div.offsetWidth;
+
+                tp = { left: pos.left + pos.width / 2 - actualWidth / 2 }
+                $(div).offset(tp);
+
+                $(div).find(".tooltip-inner").text(ui.value);
+            }
+
+            helpers["recalculateRequiredResources"] = function(e, ui) {
+                var value = +ui.value || 0;
+                var div = $(ui.handle).closest('.required-resources');
+                var reqEnergy = $(div.find('.required-energy')[0]);
+                var reqCrystals = $(div.find('.required-crystals')[0]);
+                var reqMetal = $(div.find('.required-metal')[0]);
+                var reqTime = $(div.find('.required-time')[0]);
+
+                reqEnergy.text(+reqEnergy.attr("data-req") * value);
+                reqCrystals.text(+reqCrystals.attr("data-req") * value);
+                reqMetal.text(+reqMetal.attr("data-req") * value);
+                reqTime.text((+reqTime.attr("data-req") * value).toFixed(2));
+
+                $(div.find('.amount')[0]).attr('value', value);
+            }
+
+        }());
+    </script>
+
+    @if (Model.BarracksLevel >= Model.Scout.Prerequisite)
+    {
+        var timesEnergySc = (int)(ViewBag.Energy / Model.Scout.RequiredEnergy);
+        var timesCrystalsSc = (int)(ViewBag.Crystal / Model.Scout.RequiredCrystals);
+        var timesMetalSc = (int)(ViewBag.Metal / Model.Scout.RequiredMetal);
+
+        var mostScouts = timesEnergySc < timesCrystalsSc && timesEnergySc < timesMetalSc ? timesEnergySc
+            : timesCrystalsSc < timesEnergySc && timesCrystalsSc < timesMetalSc ? timesCrystalsSc : timesMetalSc;
+
+        <script>
+            $(function() {
+                $("#slider1").slider({
+                    min: 0,
+                    max: @mostScouts || 0,
+                    slide: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        // recalculateRequiredResources(e, ui);
+                    },
+                    stop: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        helpers.recalculateRequiredResources(e, ui);
+                    }
+                });
+                $("#slider1 .ui-slider-handle:first").tooltip({ title: $("#slider1").slider("value") || "0", trigger: "manual" }).tooltip("show");
+            });
+        </script>
+    }
+
+    @if (Model.BarracksLevel >= Model.Carrier.Prerequisite)
+    {
+        var timesEnergyCr = (int)(ViewBag.Energy / Model.Carrier.RequiredEnergy);
+        var timesCrystalsCr = (int)(ViewBag.Crystal / Model.Carrier.RequiredCrystals);
+        var timesMetalCr = (int)(ViewBag.Metal / Model.Carrier.RequiredMetal);
+
+        var mostCarriers = timesEnergyCr < timesCrystalsCr && timesEnergyCr < timesMetalCr ? timesEnergyCr
+            : timesCrystalsCr < timesEnergyCr && timesCrystalsCr < timesMetalCr ? timesCrystalsCr : timesMetalCr;
+
+        <script>
+            $(function() {
+
+                $("#slider2").slider({
+                    min: 0,
+                    max: @mostCarriers || 0,
+                    slide: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        // recalculateRequiredResources(e, ui);
+                    },
+                    stop: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        helpers.recalculateRequiredResources(e, ui);
+                    }
+                });
+                $("#slider2 .ui-slider-handle:first").tooltip({ title: $("#slider2").slider("value") || "0", trigger: "manual" }).tooltip("show");
+            });
+        </script>
+    }
+
+    @if (Model.BarracksLevel >= Model.Fighter.Prerequisite)
+    {
+        var timesEnergyFt = (int)(ViewBag.Energy / Model.Fighter.RequiredEnergy);
+        var timesCrystalsFt = (int)(ViewBag.Crystal / Model.Fighter.RequiredCrystals);
+        var timesMetalFt = (int)(ViewBag.Metal / Model.Fighter.RequiredMetal);
+
+        var mostFighters = timesEnergyFt < timesCrystalsFt && timesEnergyFt < timesMetalFt ? timesEnergyFt
+            : timesCrystalsFt < timesEnergyFt && timesCrystalsFt < timesMetalFt ? timesCrystalsFt : timesMetalFt;
+
+        <script>
+            $(function() {
+                $("#slider3").slider({
+                    min: 0,
+                    max: @mostFighters || 0,
+                    slide: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        // recalculateRequiredResources(e, ui);
+                    },
+                    stop: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        helpers.recalculateRequiredResources(e, ui);
+                    }
+                });
+                $("#slider3 .ui-slider-handle:first").tooltip({ title: $("#slider3").slider("value") || "0", trigger: "manual" }).tooltip("show");
+            });
+        </script>
+    }
+
+    @if (Model.BarracksLevel >= Model.Interceptor.Prerequisite)
+    {
+        var timesEnergyIt = (int)(ViewBag.Energy / Model.Interceptor.RequiredEnergy);
+        var timesCrystalsIt = (int)(ViewBag.Crystal / Model.Interceptor.RequiredCrystals);
+        var timesMetalIt = (int)(ViewBag.Metal / Model.Interceptor.RequiredMetal);
+
+        var mostInterceptors = timesEnergyIt < timesCrystalsIt && timesEnergyIt < timesMetalIt ? timesEnergyIt
+            : timesCrystalsIt < timesEnergyIt && timesCrystalsIt < timesMetalIt ? timesCrystalsIt : timesMetalIt;
+
+        <script>
+            $(function() {
+                $("#slider4").slider({
+                    min: 0,
+                    max: @mostInterceptors || 0,
+                    slide: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        // recalculateRequiredResources(e, ui);
+                    },
+                    stop: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        helpers.recalculateRequiredResources(e, ui);
+                    }
+                });
+                $("#slider4 .ui-slider-handle:first").tooltip({ title: $("#slider4").slider("value") || "0", trigger: "manual" }).tooltip("show");
+            });
+        </script>
+    }
+
+    @if (Model.BarracksLevel >= Model.Bomber.Prerequisite)
+    {
+        var timesEnergyBb = (int)(ViewBag.Energy / Model.Bomber.RequiredEnergy);
+        var timesCrystalsBb = (int)(ViewBag.Crystal / Model.Bomber.RequiredCrystals);
+        var timesMetalBb = (int)(ViewBag.Metal / Model.Bomber.RequiredMetal);
+
+        var mostBombers = timesEnergyBb < timesCrystalsBb && timesEnergyBb < timesMetalBb ? timesEnergyBb
+            : timesCrystalsBb < timesEnergyBb && timesCrystalsBb < timesMetalBb ? timesCrystalsBb : timesMetalBb;
+
+        <script>
+            $(function() {
+                $("#slider5").slider({
+                    min: 0,
+                    max: @mostBombers || 0,
+                    slide: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        // recalculateRequiredResources(e, ui);
+                    },
+                    stop: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        helpers.recalculateRequiredResources(e, ui);
+                    }
+                });
+                $("#slider5 .ui-slider-handle:first").tooltip({ title: $("#slider5").slider("value") || "0", trigger: "manual" }).tooltip("show");
+            });
+        </script>
+    }
+
+    @if (Model.BarracksLevel >= Model.Juggernaut.Prerequisite)
+    {
+        var timesEnergyJg = (int)(ViewBag.Energy / Model.Juggernaut.RequiredEnergy);
+        var timesCrystalsJg = (int)(ViewBag.Crystal / Model.Juggernaut.RequiredCrystals);
+        var timesMetalJg = (int)(ViewBag.Metal / Model.Juggernaut.RequiredMetal);
+
+        var mostJuggernauts = timesEnergyJg < timesCrystalsJg && timesEnergyJg < timesMetalJg ? timesEnergyJg
+            : timesCrystalsJg < timesEnergyJg && timesCrystalsJg < timesMetalJg ? timesCrystalsJg : timesMetalJg;
+
+        <script>
+            $(function() {
+                $("#slider6").slider({
+                    min: 0,
+                    max: @mostJuggernauts || 0,
+                    slide: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        // recalculateRequiredResources(e, ui);
+                    },
+                    stop: function(e, ui) {
+                        helpers.repositionTooltip(e, ui);
+                        helpers.recalculateRequiredResources(e, ui);
+                    }
+                });
+                $("#slider6 .ui-slider-handle:first").tooltip({ title: $("#slider6").slider("value") || "0", trigger: "manual" }).tooltip("show");
+            });
+        </script>
+    }
+
+}

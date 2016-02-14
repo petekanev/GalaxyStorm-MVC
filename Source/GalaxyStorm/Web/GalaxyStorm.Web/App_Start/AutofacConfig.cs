@@ -21,9 +21,10 @@
             builder.RegisterModule(new EfModule());
             builder.RegisterType(typeof(LogicProvider)).As(typeof(ILogicProvider)).InstancePerLifetimeScope();
 
-            // hangfire requires that this be manually bound
+            // hangfire requires that these be manually bound
             builder.RegisterType<BuildingService>().InstancePerBackgroundJob();
             builder.RegisterType<TechnologiesService>().InstancePerBackgroundJob();
+            builder.RegisterType<FleetService>().InstancePerBackgroundJob();
 
             var container = builder.Build();
 

@@ -289,4 +289,6 @@ small, h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     min-height: 360px;
 }
 
-/* Slider */
+.fleet-panel {
+    min-height: 375px;
+}

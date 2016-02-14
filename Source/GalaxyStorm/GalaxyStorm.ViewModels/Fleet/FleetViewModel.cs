@@ -14,6 +14,7 @@
             this.CurrentlyRecruiting = model.CurrentlyRecruiting.ToString();
             this.EndTime = model.EndTime;
             this.StartTime = model.StartTime;
+            this.AmountRecruiting = model.AmountRecruiting;
 
             if (model.EndTime.HasValue)
             {
