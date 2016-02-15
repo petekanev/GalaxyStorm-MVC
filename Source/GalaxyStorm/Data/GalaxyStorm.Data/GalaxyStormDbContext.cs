@@ -34,7 +34,17 @@
             modelBuilder.Entity<Planet>()
                 .HasRequired(x => x.Shard)
                 .WithMany(x => x.Planets)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(false); 
+            
+            modelBuilder.Entity<ApplicationUser>()
+                .HasKey(u => u.Id);
+
+            modelBuilder.Entity<PlayerObject>()
+                .HasOptional(a => a.ApplicationUser)
+                .WithMany()
+                .HasForeignKey(u => u.ApplicationUserId)
+                .WillCascadeOnDelete(true);
+
 
             base.OnModelCreating(modelBuilder);
         }

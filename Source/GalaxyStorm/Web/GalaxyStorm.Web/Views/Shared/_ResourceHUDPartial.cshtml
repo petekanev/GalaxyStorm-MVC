@@ -1,9 +1,13 @@
-﻿<div class="hud">
-    <div class="resources">
-        <div class="border-left-sharp"></div>
-        @{
-            Html.RenderAction("Resources", "Preview", new { Area = "Planet" });
-        }
-        <div class="border-right-sharp"></div>
+﻿@if(User.Identity.IsAuthenticated){
+
+    <div class="hud">
+        <div class="resources">
+            <div class="border-left-sharp"></div>
+            @{
+                Html.RenderAction("Resources", "Preview", new {Area = "Planet"});
+            }
+            <div class="border-right-sharp"></div>
+        </div>
     </div>
-</div>
+
+}

@@ -43,5 +43,9 @@
 
         [ForeignKey("PlanetId")]
         public virtual Planet Planet { get; set; }
+
+        public string ApplicationUserId { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

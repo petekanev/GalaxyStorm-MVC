@@ -61,7 +61,6 @@
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -84,7 +83,6 @@
             {
                 case SignInStatus.Success:
                     return RedirectToAction("Index", "Preview", new {Area = "Planet"});
-                    //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:

@@ -21,21 +21,5 @@
 
             return View();
         }
-
-        public ActionResult UpgradeHQ()
-        {
-            var service = new BuildingService(new Repository<ApplicationUser>(new GalaxyStormDbContext()), new LogicProvider());
-
-            var userId = HttpContext.User.Identity.GetUserId();
-
-            var buildTime = service.ScheduleBuildHeadQuarters(userId);
-
-            if (buildTime != null)
-            {
-                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), buildTime.Value);
-            }
-
-            return Redirect("/Public/Index");
-        }
     }
 }
