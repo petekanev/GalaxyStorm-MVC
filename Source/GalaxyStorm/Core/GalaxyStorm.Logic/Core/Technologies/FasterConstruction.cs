@@ -4,7 +4,7 @@
 
     public class FasterConstruction : ITechnology
     {
-        private const double EnergyCoeff = 14.2;
+        private const double EnergyCoeff = 20.2;
         private const double CrystalCoeff = 14.4;
         private const double MetalCoeff = 14;
         private const double ResearchTimeCoeff = 1;

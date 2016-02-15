@@ -4,7 +4,7 @@
 
     public class ArmoredFleet : ITechnology
     {
-        private const double EnergyCoeff = 10.2;
+        private const double EnergyCoeff = 15.2;
         private const double CrystalCoeff = 12.4;
         private const double MetalCoeff = 20;
         private const double ResearchTimeCoeff = 1;
@@ -14,7 +14,7 @@
             get { return "Armored Fleet"; }
         }
 
-        public string Description { get { return "The ships you build are more resilient in battle"; }}
+        public string Description { get { return "The ships you build are more resilient in battle."; }}
 
         public int MaxLevel
         {

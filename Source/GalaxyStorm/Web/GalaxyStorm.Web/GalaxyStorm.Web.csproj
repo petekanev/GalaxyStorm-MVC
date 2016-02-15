@@ -263,6 +263,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\hex\custom-hex.css" />
+    <Content Include="Content\hex\hexagons.css" />
     <Content Include="Content\jqueryui\images\ui-bg_glass_65_ffffff_1x400.png" />
     <Content Include="Content\jqueryui\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png" />
     <Content Include="Content\jqueryui\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
@@ -322,9 +324,10 @@
     <None Include="Areas\Planet\Views\Technologies\Index.cshtml" />
     <Content Include="Areas\Planet\Views\_ViewStart.cshtml" />
     <None Include="Areas\Profile\Views\Reports\Index.cshtml" />
-    <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Shard\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Public\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Public\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
     <None Include="Areas\Public\Views\Info\Index.cshtml" />
     <None Include="Areas\Shard\Views\Preview\Index.cshtml" />
     <Content Include="fonts\ionicons.eot" />
@@ -414,7 +417,6 @@
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Shard\Models\" />
-    <Folder Include="Areas\Shard\Views\Shared\" />
     <Folder Include="Controllers\" />
     <Folder Include="Views\EditorTemplates\" />
   </ItemGroup>

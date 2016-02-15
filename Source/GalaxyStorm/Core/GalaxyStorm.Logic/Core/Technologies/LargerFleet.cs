@@ -4,7 +4,7 @@
 
     public class LargerFleet : ITechnology
     {
-        private const double EnergyCoeff = 10.2;
+        private const double EnergyCoeff = 17.2;
         private const double CrystalCoeff = 12.4;
         private const double MetalCoeff = 13;
         private const double ResearchTimeCoeff = 1;

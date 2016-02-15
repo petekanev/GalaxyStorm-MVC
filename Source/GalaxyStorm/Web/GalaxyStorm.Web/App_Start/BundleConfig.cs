@@ -34,6 +34,10 @@ namespace GalaxyStorm.Web
                     "~/Content/public/title-size.css"
                     ));
 
+            bundles.Add(new StyleBundle("~/Content/hex").Include(
+                "~/Content/hex/hexagons.css",
+                "~/Content/hex/custom-hex.css"));
+
             bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
                 "~/Content/jqueryui/jquery-ui.min.css",
                 "~/Content/jqueryui/jquery-ui.structure.min.css"));

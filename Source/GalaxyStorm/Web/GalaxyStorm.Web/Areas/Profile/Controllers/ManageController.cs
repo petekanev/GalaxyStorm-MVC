@@ -1,5 +1,6 @@
 ﻿namespace GalaxyStorm.Web.Areas.Profile.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
     using AutoMapper;
     using Data.Models;
@@ -36,7 +37,7 @@
                 CurrentlyResearching = player.Technologies.CurrentlyResearching.ToString(),
                 CurrentlyRecruiting = "",
 
-                NumberOfReports = player.Reports.Count,
+                NumberOfReports = player.Reports.Count(r => !r.IsRead),
 
                 Planet = Mapper.Map<Planet, PlanetViewModel>(player.Planet)
             };
