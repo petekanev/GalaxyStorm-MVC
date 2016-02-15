@@ -422,7 +422,6 @@
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Shard\Models\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Views\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

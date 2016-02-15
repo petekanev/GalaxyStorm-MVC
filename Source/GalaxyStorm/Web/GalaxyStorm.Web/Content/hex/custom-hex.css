@@ -5,7 +5,7 @@
 @media (min-width: 1401px) {/* <- 6-5  hexagons per row */
     .hex {
         width: 15.83%; /* = (100-5) / 6 */
-        padding-bottom: 19.001%; /* =  width / sin(60deg) */
+        padding-bottom: 18.5%; /* =  width / sin(60deg) */
     }
     .hex:nth-child(11n+7),
     .hex:nth-child(11n+8),
@@ -44,12 +44,20 @@
     .hex:nth-child(11n+9) {
         margin-right: 1%;
     }
-        .hex:nth-child(11n+1),
+     
+    .hex:nth-child(11n+1),
     .hex:nth-child(11n+2),
     .hex:nth-child(11n+3),
     .hex:nth-child(11n+4),
-    .hex:nth-child(11n+5) {
+    .hex:nth-child(11n+5),
+    .hex:nth-child(11n+6) {
         margin-left: 0.4%;
-        margin-right: 0.60%
+        margin-right: 0.40%
+    }
+
+    .hex:nth-child(11n+10),
+    .hex:nth-child(11n+11) {
+        margin-left: -0.3%;
+        margin-right: 0.80%
     }
 }
