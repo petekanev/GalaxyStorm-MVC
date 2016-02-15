@@ -55,6 +55,17 @@
             return View(vM);
         }
 
+        public ActionResult Scout()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var modifier = this.GetCheaperFleetModifier(userId);
+
+            var vM = new UnitViewModel(this.logic.Ships.Scout, modifier);
+
+            return View(vM);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RecruitScouts(int amount)
@@ -159,6 +170,14 @@
         {
             TempData["Error"] =
                 "You cannot recruit that many ships at the moment. You don't meet the requirements, or another batch of ships is being recruited!";
+        }
+
+        private double GetCheaperFleetModifier(string userId)
+        {
+            var cheaperFleet = this.techService.GetPlayerTechnologies(userId).CheaperFleetLevel;
+            var cheaperFleetModifier = this.logic.Technologies.CheaperFleet.Modifier[cheaperFleet];
+
+            return cheaperFleetModifier;
         }
     }
 }

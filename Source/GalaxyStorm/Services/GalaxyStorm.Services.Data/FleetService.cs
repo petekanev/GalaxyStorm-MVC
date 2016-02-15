@@ -111,27 +111,27 @@
             {
                     case CurrentlyRecruiting.Scout:
                     player.Units.ScoutsQuantity += player.Units.AmountRecruiting;
-                    player.Points.PointsNeutral += 5 * player.Units.AmountRecruiting;
+                    player.Points.PointsNeutral += this.logic.Ships.Scout.PointsOnRecruit * player.Units.AmountRecruiting;
                     break;
                     case CurrentlyRecruiting.Carrier:
                     player.Units.CarriersQuantity += player.Units.AmountRecruiting;
-                    player.Points.PointsNeutral += 3 * player.Units.AmountRecruiting;
+                    player.Points.PointsNeutral += this.logic.Ships.Carrier.PointsOnRecruit * player.Units.AmountRecruiting;
                     break;
                     case CurrentlyRecruiting.Fighter:
                     player.Units.FighterQuantity += player.Units.AmountRecruiting;
-                    player.Points.PointsNeutral += 10 * player.Units.AmountRecruiting;
+                    player.Points.PointsNeutral += this.logic.Ships.Fighter.PointsOnRecruit * player.Units.AmountRecruiting;
                     break;
                     case CurrentlyRecruiting.Interceptor:
                     player.Units.InterceptorQuantity += player.Units.AmountRecruiting;
-                    player.Points.PointsNeutral += 12 * player.Units.AmountRecruiting;
+                    player.Points.PointsNeutral += this.logic.Ships.Interceptor.PointsOnRecruit * player.Units.AmountRecruiting;
                     break;
                     case CurrentlyRecruiting.Bomber:
                     player.Units.BomberQuantity += player.Units.AmountRecruiting;
-                    player.Points.PointsNeutral += 20 * player.Units.AmountRecruiting;
+                    player.Points.PointsNeutral += this.logic.Ships.Bomber.PointsOnRecruit * player.Units.AmountRecruiting;
                     break;
                     case CurrentlyRecruiting.Juggernaut:
                     player.Units.JuggernautQuantity += player.Units.AmountRecruiting;
-                    player.Points.PointsNeutral += 50 * player.Units.AmountRecruiting;
+                    player.Points.PointsNeutral += this.logic.Ships.Juggernaut.PointsOnRecruit * player.Units.AmountRecruiting;
                     break;
                 default:
                     break;

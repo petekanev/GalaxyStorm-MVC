@@ -32,6 +32,8 @@
             this.BuildTime = ship.BuildTime.TotalMinutes;
             this.CargoCapacity = ship.CargoCapacity;
             this.Prerequisite = ship.Prerequisite;
+            this.PointsOnRecruit = ship.PointsOnRecruit;
+            this.PointsOnKill = ship.PointsOnKill;
 
             var requiredResources = ship.RequiredResourcesToBuild;
             this.RequiredEnergy = requiredResources[0] - (int)(cheaperFleetModifier * requiredResources[0]);
@@ -62,5 +64,9 @@
         public int AmountOnPlanet { get; set; }
 
         public int AmountDispatched { get; set; }
+
+        public int PointsOnRecruit { get; set; }
+
+        public int PointsOnKill { get; set; }
     }
 }

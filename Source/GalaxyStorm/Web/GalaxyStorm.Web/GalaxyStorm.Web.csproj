@@ -311,6 +311,7 @@
     <Content Include="Areas\Planet\Views\Buildings\SolarCollector.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\MetalScrapper.cshtml" />
     <None Include="Areas\Planet\Views\Fleet\Index.cshtml" />
+    <Content Include="Areas\Planet\Views\Fleet\Scout.cshtml" />
     <None Include="Areas\Planet\Views\Preview\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\_Resources.cshtml" />
     <None Include="Areas\Planet\Views\Technologies\Index.cshtml" />
@@ -399,6 +400,7 @@
     <Content Include="Views\Shared\_TechnologiesPartial.cshtml" />
     <Content Include="Views\Shared\_FleetPartial.cshtml" />
     <Content Include="Views\Shared\_SideMenuPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UnitViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admiral\Models\" />
