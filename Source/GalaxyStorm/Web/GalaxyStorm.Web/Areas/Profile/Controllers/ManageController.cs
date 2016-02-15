@@ -1,48 +1,193 @@
 ﻿namespace GalaxyStorm.Web.Areas.Profile.Controllers
 {
-    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
     using System.Web.Mvc;
-    using AutoMapper;
-    using Data.Models;
+    using Infrastructure;
     using Microsoft.AspNet.Identity;
-    using Services.Data.Contracts;
-    using ViewModels.Common;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using ViewModels.Account;
 
-    public class ManageController : Controller
+    public class ManageController : UsersController
     {
-        private readonly IReportsService reportsService;
-        private readonly IPlayerService playerService;
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
-        public ManageController(IReportsService reportsService, IPlayerService playerService)
+        public ManageController()
         {
-            this.reportsService = reportsService;
-            this.playerService = playerService;
         }
 
-        // GET: Profile/Manage
-        public ActionResult Index()
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
-            var userId = User.Identity.GetUserId();
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
 
-            var player = this.playerService.GetPlayerInformation(userId);
-
-            // TODO: Optimize?
-            var vM = new SimplePlayerViewModel
+        public ApplicationSignInManager SignInManager
+        {
+            get
             {
-                PlanetPoints = player.Points.PointsPlanet,
-                NeutralPoints = player.Points.PointsNeutral,
-                CombatPoints = player.Points.PointsCombat,
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set 
+            { 
+                _signInManager = value; 
+            }
+        }
 
-                CurrentlyBuilding = player.Buildings.CurrentlyBuilding.ToString(),
-                CurrentlyResearching = player.Technologies.CurrentlyResearching.ToString(),
-                CurrentlyRecruiting = "",
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
-                NumberOfReports = player.Reports.Count(r => !r.IsRead),
+        public async Task<ActionResult> Index(ManageMessageId? message)
+        {
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : "";
 
-                Planet = Mapper.Map<Planet, PlanetViewModel>(player.Planet)
+            var userId = User.Identity.GetUserId();
+            var model = new IndexViewModel
+            {
+                HasPassword = HasPassword(),
+                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+                Logins = await UserManager.GetLoginsAsync(userId),
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
 
-            return View(vM);
+            return View(model);
         }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+            }
+
+            AddErrors(result);
+            return View(model);
+        }
+
+        public ActionResult SetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+                if (result.Succeeded)
+                {
+                    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    if (user != null)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    }
+                    return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _userManager != null)
+            {
+                _userManager.Dispose();
+                _userManager = null;
+            }
+
+            base.Dispose(disposing);
+        }
+
+#region Helpers
+        // Used for XSRF protection when adding external logins
+        private const string XsrfKey = "XsrfId";
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
+
+        private bool HasPassword()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                return user.PasswordHash != null;
+            }
+            return false;
+        }
+
+        private bool HasPhoneNumber()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                return user.PhoneNumber != null;
+            }
+            return false;
+        }
+
+        public enum ManageMessageId
+        {
+            AddPhoneSuccess,
+            ChangePasswordSuccess,
+            SetTwoFactorSuccess,
+            SetPasswordSuccess,
+            RemoveLoginSuccess,
+            RemovePhoneSuccess,
+            Error
+        }
+
+#endregion
     }
 }

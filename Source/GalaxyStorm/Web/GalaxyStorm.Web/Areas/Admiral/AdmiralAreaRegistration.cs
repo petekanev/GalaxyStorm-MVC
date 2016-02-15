@@ -17,7 +17,8 @@
             context.MapRoute(
                 "Admiral_default",
                 "Admiral/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "GalaxyStorm.Web.Areas.Admiral.Controllers"}
             );
         }
     }

@@ -17,7 +17,8 @@ namespace GalaxyStorm.Web.Areas.Profile
             context.MapRoute(
                 "Profile_default",
                 "Profile/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "GalaxyStorm.Web.Areas.Profile.Controllers"}
             );
         }
     }

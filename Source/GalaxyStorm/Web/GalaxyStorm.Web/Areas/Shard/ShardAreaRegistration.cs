@@ -17,7 +17,8 @@ namespace GalaxyStorm.Web.Areas.Shard
             context.MapRoute(
                 "Shard_default",
                 "Shard/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "GalaxyStorm.Web.Areas.Shard.Controllers"}
             );
         }
     }

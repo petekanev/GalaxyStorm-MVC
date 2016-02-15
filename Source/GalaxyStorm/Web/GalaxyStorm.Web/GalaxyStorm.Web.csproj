@@ -227,7 +227,7 @@
     <Compile Include="Areas\Planet\Controllers\PreviewController.cs" />
     <Compile Include="Areas\Planet\Controllers\TechnologiesController.cs" />
     <Compile Include="Areas\Planet\PlanetAreaRegistration.cs" />
-    <Compile Include="Areas\Profile\Controllers\ManageController.cs" />
+    <Compile Include="Areas\Profile\Controllers\PreviewController.cs" />
     <Compile Include="Areas\Profile\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
@@ -236,7 +236,7 @@
     <Compile Include="Areas\Shard\Controllers\PreviewController.cs" />
     <Compile Include="Areas\Shard\ShardAreaRegistration.cs" />
     <Compile Include="Areas\Public\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Profile\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Profile\Controllers\ManageController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -304,7 +304,7 @@
     <None Include="Areas\Admiral\Views\Shards\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Supplements\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Users\Index.cshtml" />
-    <Content Include="Areas\Profile\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Profile\Views\Preview\Index.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\Headquarters.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\Barracks.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\CrystalExtractor.cshtml" />
@@ -398,9 +398,9 @@
     <Content Include="Areas\Public\Views\Account\Register.cshtml" />
     <Content Include="Areas\Public\Views\Account\ResetPassword.cshtml" />
     <Content Include="Areas\Public\Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Areas\Profile\Views\Account\ChangePassword.cshtml" />
-    <Content Include="Areas\Profile\Views\Account\Index.cshtml" />
-    <Content Include="Areas\Profile\Views\Account\SetPassword.cshtml" />
+    <Content Include="Areas\Profile\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Areas\Profile\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Profile\Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ResourceHUDPartial.cshtml" />

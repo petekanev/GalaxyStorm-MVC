@@ -1,79 +1,25 @@
-﻿@model GalaxyStorm.ViewModels.Common.SimplePlayerViewModel
-
+﻿@model GalaxyStorm.ViewModels.Account.IndexViewModel
 @{
-    ViewBag.Title = "Profile Stuff";
+    ViewBag.Title = "Manage";
 }
 
-<div class="row">
-    <div class="col-lg-12">
-        <h2 class="page-header">
-            Player Information
-        </h2>
-    </div>
-</div>
-
+<p class="text-success">@ViewBag.StatusMessage</p>
 <div class="well">
-    <div class="row text-center">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>DisplayName</h3>
-            </div>
-        </div>
-        @if (Model.NumberOfReports > 0)
-        {
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <span><a href="#"><i class="ion-ios-bell size-18"> </i> You have <span class="badge">@Model.NumberOfReports</span> new reports!</a></span>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span><i class="ion-ios-bell-outline size-18"> </i> You have no new reports.</span>
-                </div>
-            </div>
-        }
-    </div>
-    <div class="row text-center">
-        <div class="col-md-6">
-            <h4>Points</h4>
-            <hr/>
-            <div class="row">
-                <div class="col-md-4">
-                    <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Gained by upgrading buildings and researching new technologies.">
-                        <i class="ion-planet size-18"> </i>  @Model.PlanetPoints Planet
-                    </span>
-                </div>
-                <div class="col-md-4">
-                    <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Gained by recruiting new units.">
-                        <i class="ion-jet size-18"> </i> @Model.NeutralPoints Neutral
-                    </span>
-                </div>
-                <div class="col-md-4">
-                    <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Gained by participating in battles.">
-                        <i class="ion-nuclear size-18"> </i> @Model.CombatPoints Combat
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <h4>Your Planet</h4>
-            <hr/>
-            <p><a href="#">@Model.Planet.Title (@Model.Planet.X : @Model.Planet.Y) - @Model.Planet.ShardTitle</a>
-            </p>
-            <p>Modifiers</p>
-            <div class="row text-center">
-                <div class="col-md-4 text-info"><span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Energy income is modified by factor of @Model.Planet.EnergyModifier"><i class="ion-ios-sunny-outline size-18"> </i> @string.Format("{0:0.00}", Model.Planet.EnergyModifier)</span></div>
-                <div class="col-md-4 text-danger"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Crystal income is modified by factor of @Model.Planet.CrystalModifier"><i class="ion-ios-flower-outline size-18"> </i> @string.Format("{0:0.00}", Model.Planet.CrystalModifier)</span></div>
-                <div class="col-md-4 text-primary"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Metal income is modified by factor of @Model.Planet.MetalModifier"><i class="ion-ios-cog-outline size-18"> </i> @string.Format("{0:0.00}", Model.Planet.MetalModifier)</span></div>
-            </div>
-            <br />
-        </div>
-    </div>
-    <div class="row text-center">
-        @Html.ActionLink("Change password", "ChangePassword", "Account", null, new { @class = "btn btn-block btn-default" })
-        <a href="#" class="btn btn-block btn-danger ">Lock account</a>
-    </div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
 </div>
