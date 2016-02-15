@@ -414,6 +414,7 @@
     <Content Include="Views\Shared\_SideMenuPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\UnitViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\TechButtons.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MaxTechButtons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admiral\Models\" />
