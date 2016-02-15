@@ -8,9 +8,9 @@
             <div class="col-md-4 tech-level-button">
                 <button class="btn btn-block btn-success">
                     <h5>
-                        <i class="ion-arrow-graph-up-right"> </i>
+                        <i class="@ViewData["glyph"]"> </i>
                         <br />
-                        + @Model.Modifiers[i]x
+                        @ViewData["sign"] @Model.Modifiers[i]@ViewData["mod"]
                     </h5>
                 </button>
             </div>
@@ -20,9 +20,9 @@
             <div class="col-md-4 tech-level-button">
                 <button class="btn btn-block btn-default disabled">
                     <h5>
-                        <i class="ion-arrow-graph-up-right"> </i>
+                        <i class="@ViewData["glyph"]"> </i>
                         <br />
-                        + @Model.Modifiers[i]x
+                        @ViewData["sign"] @Model.Modifiers[i]@ViewData["mod"]
                     </h5>
                 </button>
             </div>

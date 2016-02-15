@@ -18,7 +18,7 @@
                     if (Model.ArmoredFleet.Level != Model.ArmoredFleet.MaxLevel)
                     {
 
-                        @Html.DisplayFor(m => m.ArmoredFleet, "TechButtons")
+                        @Html.DisplayFor(m => m.ArmoredFleet, "TechButtons", new { sign = "+", mod = "%", glyph = "ion-cube" })
                         <br />
                         if (Model.CurrentlyResearching == "ArmoredFleet")
                         {
@@ -105,7 +105,7 @@
                     if (Model.CheaperFleet.Level != Model.CheaperFleet.MaxLevel)
                     {
 
-                        @Html.DisplayFor(m => m.CheaperFleet, "TechButtons")
+                        @Html.DisplayFor(m => m.CheaperFleet, "TechButtons", new { sign = "-", mod = "%", glyph = "ion-cash" })
                         <br />
                         if (Model.CurrentlyResearching == "CheaperFleet")
                         {
@@ -192,7 +192,7 @@
                     if (Model.LargerFleet.Level != Model.LargerFleet.MaxLevel)
                     {
 
-                        @Html.DisplayFor(m => m.LargerFleet, "TechButtons")
+                        @Html.DisplayFor(m => m.LargerFleet, "TechButtons", new { sign = "", mod = "", glyph = "ion-speedometer" })
                         <br />
                         if (Model.CurrentlyResearching == "LargerFleet")
                         {
@@ -279,7 +279,7 @@
                     if (Model.FasterConstruction.Level != Model.FasterConstruction.MaxLevel)
                     {
 
-                        @Html.DisplayFor(m => m.FasterConstruction, "TechButtons")
+                        @Html.DisplayFor(m => m.FasterConstruction, "TechButtons", new { sign = "-", mod = "%", glyph = "ion-ios-timer-outline" })
                         <br />
                         if (Model.CurrentlyResearching == "FasterConstruction")
                         {
@@ -365,7 +365,7 @@
                 {
                     if (Model.MoreResources.Level != Model.MoreResources.MaxLevel)
                     {
-                        @Html.DisplayFor(m => m.MoreResources, "TechButtons")
+                        @Html.DisplayFor(m => m.MoreResources, "TechButtons", new { sign = "+", mod = "x", glyph = "ion-arrow-graph-up-right" })
                         <br />
                         if (Model.CurrentlyResearching == "MoreResources")
                         {
