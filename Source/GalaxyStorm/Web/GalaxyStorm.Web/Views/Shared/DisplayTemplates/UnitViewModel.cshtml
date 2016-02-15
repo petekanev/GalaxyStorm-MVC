@@ -1,0 +1,38 @@
+﻿@model GalaxyStorm.ViewModels.Fleet.UnitViewModel
+
+<span class="text-muted">Overview:</span>
+<hr />
+<p>@Model.Description</p>
+<span class="text-muted">Unit Statistics:</span>
+<hr />
+<div class="text-center">
+    <p>
+        <strong>
+            <i class="ion-android-locate size-18"> </i> Attack: @Model.Attack &nbsp;
+            <i class="ion-cube size-18"> </i> Armor: @Model.Armor &nbsp;
+            <i class="ion-ios-filing size-18"> </i> Cargo: @Model.CargoCapacity
+        </strong>
+    </p>
+</div>
+<br />
+<span class="text-muted">Points:</span>
+<hr />
+<div>
+    <p>
+        <span class="text-success" data="bs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Points earned per unit recruited"> <i class="ion-hammer size-18"> </i>  @Model.PointsOnRecruit</span>&nbsp;&nbsp;<span class="text-info" data="bs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Points earned per unit killed of this type"> <i class="ion-trophy size-18"> </i> @Model.PointsOnKill</span>
+    </p>
+</div>
+<br />
+<span class="text-muted">Requirements:</span>
+<hr />
+<span>Barracks Level @Model.Prerequisite</span>
+<div class="text-center">
+    <p>
+        Required Resources:
+        <i class="ion-ios-sunny-outline size-18 text-info"> </i> @Model.RequiredEnergy&nbsp;
+        <i class="ion-ios-flower-outline size-18 text-warning"> </i> @Model.RequiredCrystals&nbsp;
+        <i class="ion-ios-cog-outline size-18 text-primary"> </i> @Model.RequiredMetal
+        <br />
+        Raw build time: <i class="ion-ios-timer-outline size-18"> </i> @Model.BuildTime min.
+    </p>
+</div>
