@@ -18,7 +18,7 @@ var _darkFormOverlayColor = 'rgba(62, 68, 89, 0.8)'; // [rgba format] - form ove
 /*==============================================================================
 site loader
 ==============================================================================*/
-var _siteLoaderDuration = 750; // duration
+var _siteLoaderDuration = 500; // duration
 var _siteLoaderDelay = 500; // delay
 
 /*==============================================================================

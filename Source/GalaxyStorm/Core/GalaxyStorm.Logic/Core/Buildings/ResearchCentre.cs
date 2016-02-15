@@ -4,10 +4,10 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
     public class ResearchCentre : IBuilding
     {
-        private const double BuildTimeCoeff = 1;
-        private const double EnergyCoeff = 5.05;
-        private const double CrystalCoeff = 7.33;
-        private const double MetalCoeff = 6.15;
+        private const double BuildTimeCoeff = 1.2;
+        private const double EnergyCoeff = 7.05;
+        private const double CrystalCoeff = 9.33;
+        private const double MetalCoeff = 8.15;
 
         public string Name
         {

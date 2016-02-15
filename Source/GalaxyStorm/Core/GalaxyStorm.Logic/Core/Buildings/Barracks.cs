@@ -5,9 +5,9 @@ namespace GalaxyStorm.Logic.Core.Buildings
     public class Barracks : IBuilding
     {
         private const double BuildTimeCoeff = 1;
-        private const double EnergyCoeff = 5.75;
-        private const double CrystalCoeff = 6.45;
-        private const double MetalCoeff = 6;
+        private const double EnergyCoeff = 7.75;
+        private const double CrystalCoeff = 8.45;
+        private const double MetalCoeff = 8;
 
         public string Name
         {

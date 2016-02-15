@@ -12,13 +12,13 @@ var _lightOverlayColor = 'rgba(255, 255, 255, 0.4)'; // [rgba format] - overlay 
 var _lightFormOverlayColor = 'rgba(62, 68, 89, 0.8)'; // [rgba format] - form overlay color
 
 /* dark overlay */
-var _darkOverlayColor = 'rgba(62, 68, 89, 0.6)'; // [rgba format] - overlay color
+var _darkOverlayColor = 'rgba(62, 68, 89, 0.3)'; // [rgba format] - overlay color
 var _darkFormOverlayColor = 'rgba(62, 68, 89, 0.8)'; // [rgba format] - form overlay color
 
 /*==============================================================================
 site loader
 ==============================================================================*/
-var _siteLoaderDuration = 1250; // duration
+var _siteLoaderDuration = 500; // duration
 var _siteLoaderDelay = 500; // delay
 
 /*==============================================================================

@@ -59,6 +59,8 @@
     <Compile Include="Buildings\ResourceBuildingViewModel.cs" />
     <Compile Include="Common\CompletePlayerViewModel.cs" />
     <Compile Include="Common\PlanetViewModel.cs" />
+    <Compile Include="Common\PublicPlanetViewModel.cs" />
+    <Compile Include="Common\PublicShardViewModel.cs" />
     <Compile Include="Common\ResourcesViewModel.cs" />
     <Compile Include="Common\SimplePlayerViewModel.cs" />
     <Compile Include="Fleet\FleetViewModel.cs" />

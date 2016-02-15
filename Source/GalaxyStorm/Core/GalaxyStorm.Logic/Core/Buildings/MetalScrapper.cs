@@ -4,9 +4,9 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
     public class MetalScrapper : ResourceBuilding
     {
-        private const double EnergyCoeff = 2;
-        private const double CrystalCoeff = 1.4;
-        private const double MetalCoeff = 1;
+        private const double EnergyCoeff = 3;
+        private const double CrystalCoeff = 2.4;
+        private const double MetalCoeff = 2;
 
         public override string Name
         {
