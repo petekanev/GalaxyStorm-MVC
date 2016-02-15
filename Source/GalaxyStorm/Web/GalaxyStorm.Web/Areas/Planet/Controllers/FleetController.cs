@@ -66,6 +66,61 @@
             return View(vM);
         }
 
+        public ActionResult Carrier()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var modifier = this.GetCheaperFleetModifier(userId);
+
+            var vM = new UnitViewModel(this.logic.Ships.Carrier, modifier);
+
+            return View(vM);
+        }
+
+        public ActionResult Fighter()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var modifier = this.GetCheaperFleetModifier(userId);
+
+            var vM = new UnitViewModel(this.logic.Ships.Fighter, modifier);
+
+            return View(vM);
+        }
+
+        public ActionResult Bomber()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var modifier = this.GetCheaperFleetModifier(userId);
+
+            var vM = new UnitViewModel(this.logic.Ships.Bomber, modifier);
+
+            return View(vM);
+        }
+
+        public ActionResult Interceptor()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var modifier = this.GetCheaperFleetModifier(userId);
+
+            var vM = new UnitViewModel(this.logic.Ships.Interceptor, modifier);
+
+            return View(vM);
+        }
+
+        public ActionResult Juggernaut()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var modifier = this.GetCheaperFleetModifier(userId);
+
+            var vM = new UnitViewModel(this.logic.Ships.Juggernaut, modifier);
+
+            return View(vM);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RecruitScouts(int amount)

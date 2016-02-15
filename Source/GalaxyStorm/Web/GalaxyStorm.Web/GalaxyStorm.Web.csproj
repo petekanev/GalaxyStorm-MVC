@@ -310,8 +310,13 @@
     <Content Include="Areas\Planet\Views\Buildings\ResearchCentre.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\SolarCollector.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\MetalScrapper.cshtml" />
+    <Content Include="Areas\Planet\Views\Fleet\Carrier.cshtml" />
+    <Content Include="Areas\Planet\Views\Fleet\Fighter.cshtml" />
+    <Content Include="Areas\Planet\Views\Fleet\Bomber.cshtml" />
     <None Include="Areas\Planet\Views\Fleet\Index.cshtml" />
     <Content Include="Areas\Planet\Views\Fleet\Scout.cshtml" />
+    <Content Include="Areas\Planet\Views\Fleet\Interceptor.cshtml" />
+    <Content Include="Areas\Planet\Views\Fleet\Juggernaut.cshtml" />
     <None Include="Areas\Planet\Views\Preview\Index.cshtml" />
     <None Include="Areas\Planet\Views\Preview\_Resources.cshtml" />
     <None Include="Areas\Planet\Views\Technologies\Index.cshtml" />

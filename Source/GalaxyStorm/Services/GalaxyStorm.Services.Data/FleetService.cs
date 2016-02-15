@@ -70,27 +70,227 @@
 
         public TimeSpan? ScheduleRecruitCarrier(string userId, int amount)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                  .All()
+                  .Include(x => x.PlayerObject)
+                  .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var player = user.PlayerObject;
+
+            if (!this.CanRecruit(player, amount, this.logic.Ships.Carrier, this.logic.Technologies.CheaperFleet))
+            {
+                return null;
+            }
+            else
+            {
+                var requiredResources = this.logic.Ships.Carrier.RequiredResourcesToBuild;
+
+                this.SubstractResources(player, requiredResources, amount, this.logic.Technologies.CheaperFleet);
+
+                var fasterConstructionLevel = player.Technologies.FasterConstructionLevel;
+                var fasterConstructionModifier =
+                    this.logic.Technologies.FasterConstruction.Modifier[fasterConstructionLevel];
+
+                var timespanToRecruitBeforeTech = TimeSpan.FromTicks((long)(this.logic.Ships.Carrier.BuildTime.Ticks * amount * player.Planet.Shard.BuildSpeed));
+
+                var timespan = timespanToRecruitBeforeTech -
+                               TimeSpan.FromTicks((long)(timespanToRecruitBeforeTech.Ticks * fasterConstructionModifier));
+
+                player.Units.CurrentlyRecruiting = CurrentlyRecruiting.Carrier;
+                player.Units.StartTime = DateTime.Now;
+                player.Units.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Units.AmountRecruiting = amount;
+
+                this.users.Update(user);
+                this.users.SaveChanges();
+
+                return timespan;
+            }
         }
 
         public TimeSpan? ScheduleRecruitFighter(string userId, int amount)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                  .All()
+                  .Include(x => x.PlayerObject)
+                  .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var player = user.PlayerObject;
+
+            if (!this.CanRecruit(player, amount, this.logic.Ships.Fighter, this.logic.Technologies.CheaperFleet))
+            {
+                return null;
+            }
+            else
+            {
+                var requiredResources = this.logic.Ships.Fighter.RequiredResourcesToBuild;
+
+                this.SubstractResources(player, requiredResources, amount, this.logic.Technologies.CheaperFleet);
+
+                var fasterConstructionLevel = player.Technologies.FasterConstructionLevel;
+                var fasterConstructionModifier =
+                    this.logic.Technologies.FasterConstruction.Modifier[fasterConstructionLevel];
+
+                var timespanToRecruitBeforeTech = TimeSpan.FromTicks((long)(this.logic.Ships.Fighter.BuildTime.Ticks * amount * player.Planet.Shard.BuildSpeed));
+
+                var timespan = timespanToRecruitBeforeTech -
+                               TimeSpan.FromTicks((long)(timespanToRecruitBeforeTech.Ticks * fasterConstructionModifier));
+
+                player.Units.CurrentlyRecruiting = CurrentlyRecruiting.Fighter;
+                player.Units.StartTime = DateTime.Now;
+                player.Units.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Units.AmountRecruiting = amount;
+
+                this.users.Update(user);
+                this.users.SaveChanges();
+
+                return timespan;
+            }
         }
 
         public TimeSpan? ScheduleRecruitInterceptor(string userId, int amount)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                  .All()
+                  .Include(x => x.PlayerObject)
+                  .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var player = user.PlayerObject;
+
+            if (!this.CanRecruit(player, amount, this.logic.Ships.Interceptor, this.logic.Technologies.CheaperFleet))
+            {
+                return null;
+            }
+            else
+            {
+                var requiredResources = this.logic.Ships.Interceptor.RequiredResourcesToBuild;
+
+                this.SubstractResources(player, requiredResources, amount, this.logic.Technologies.CheaperFleet);
+
+                var fasterConstructionLevel = player.Technologies.FasterConstructionLevel;
+                var fasterConstructionModifier =
+                    this.logic.Technologies.FasterConstruction.Modifier[fasterConstructionLevel];
+
+                var timespanToRecruitBeforeTech = TimeSpan.FromTicks((long)(this.logic.Ships.Interceptor.BuildTime.Ticks * amount * player.Planet.Shard.BuildSpeed));
+
+                var timespan = timespanToRecruitBeforeTech -
+                               TimeSpan.FromTicks((long)(timespanToRecruitBeforeTech.Ticks * fasterConstructionModifier));
+
+                player.Units.CurrentlyRecruiting = CurrentlyRecruiting.Interceptor;
+                player.Units.StartTime = DateTime.Now;
+                player.Units.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Units.AmountRecruiting = amount;
+
+                this.users.Update(user);
+                this.users.SaveChanges();
+
+                return timespan;
+            }
         }
 
         public TimeSpan? ScheduleRecruitBomber(string userId, int amount)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                  .All()
+                  .Include(x => x.PlayerObject)
+                  .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var player = user.PlayerObject;
+
+            if (!this.CanRecruit(player, amount, this.logic.Ships.Bomber, this.logic.Technologies.CheaperFleet))
+            {
+                return null;
+            }
+            else
+            {
+                var requiredResources = this.logic.Ships.Bomber.RequiredResourcesToBuild;
+
+                this.SubstractResources(player, requiredResources, amount, this.logic.Technologies.CheaperFleet);
+
+                var fasterConstructionLevel = player.Technologies.FasterConstructionLevel;
+                var fasterConstructionModifier =
+                    this.logic.Technologies.FasterConstruction.Modifier[fasterConstructionLevel];
+
+                var timespanToRecruitBeforeTech = TimeSpan.FromTicks((long)(this.logic.Ships.Bomber.BuildTime.Ticks * amount * player.Planet.Shard.BuildSpeed));
+
+                var timespan = timespanToRecruitBeforeTech -
+                               TimeSpan.FromTicks((long)(timespanToRecruitBeforeTech.Ticks * fasterConstructionModifier));
+
+                player.Units.CurrentlyRecruiting = CurrentlyRecruiting.Bomber;
+                player.Units.StartTime = DateTime.Now;
+                player.Units.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Units.AmountRecruiting = amount;
+
+                this.users.Update(user);
+                this.users.SaveChanges();
+
+                return timespan;
+            }
         }
 
         public TimeSpan? ScheduleRecruitJuggernaut(string userId, int amount)
         {
-            throw new NotImplementedException();
+            var user = this.users
+                  .All()
+                  .Include(x => x.PlayerObject)
+                  .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var player = user.PlayerObject;
+
+            if (!this.CanRecruit(player, amount, this.logic.Ships.Juggernaut, this.logic.Technologies.CheaperFleet))
+            {
+                return null;
+            }
+            else
+            {
+                var requiredResources = this.logic.Ships.Juggernaut.RequiredResourcesToBuild;
+
+                this.SubstractResources(player, requiredResources, amount, this.logic.Technologies.CheaperFleet);
+
+                var fasterConstructionLevel = player.Technologies.FasterConstructionLevel;
+                var fasterConstructionModifier =
+                    this.logic.Technologies.FasterConstruction.Modifier[fasterConstructionLevel];
+
+                var timespanToRecruitBeforeTech = TimeSpan.FromTicks((long)(this.logic.Ships.Juggernaut.BuildTime.Ticks * amount * player.Planet.Shard.BuildSpeed));
+
+                var timespan = timespanToRecruitBeforeTech -
+                               TimeSpan.FromTicks((long)(timespanToRecruitBeforeTech.Ticks * fasterConstructionModifier));
+
+                player.Units.CurrentlyRecruiting = CurrentlyRecruiting.Juggernaut;
+                player.Units.StartTime = DateTime.Now;
+                player.Units.EndTime = DateTime.Now.AddTicks(timespan.Ticks);
+                player.Units.AmountRecruiting = amount;
+
+                this.users.Update(user);
+                this.users.SaveChanges();
+
+                return timespan;
+            }
         }
 
         public void CompleteRecruiting(string userId)

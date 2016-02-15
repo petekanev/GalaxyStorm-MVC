@@ -1,0 +1,26 @@
+﻿@model GalaxyStorm.ViewModels.Fleet.UnitViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @Model.Name <small>Details</small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            @Html.DisplayFor(m => m)
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="~/Images/100xX/carrier.png" alt="@Model.Name" class="small-img-150" />
+            <hr />
+            @Html.ActionLink("Recruit", "Index", "Fleet", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
