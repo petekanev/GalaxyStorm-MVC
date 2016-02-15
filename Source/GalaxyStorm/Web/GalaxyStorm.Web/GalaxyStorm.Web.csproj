@@ -358,6 +358,10 @@
     <Content Include="Images\300xX\solar-collector.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\planets\starfield-1.png" />
+    <Content Include="Images\planets\starfield-2.png" />
+    <Content Include="Images\planets\starfield-planet-1.png" />
+    <Content Include="Images\planets\starfield-planet-2.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\common\variables.js" />

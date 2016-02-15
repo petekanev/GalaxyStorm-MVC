@@ -101,7 +101,7 @@ body {
 }
 
 /*** SPACING AND SIZING *****************************************************************/
-@media (min-width:1201px) { /* <- 5-4  hexagons per row */
+@media (min-width:1201px) and (max-width: 1400px) { /* <- 5-4  hexagons per row */
     .hex {
         width: 19.2%; /* = (100-4) / 5 */
         padding-bottom: 22.170%; /* =  width / sin(60deg) */
