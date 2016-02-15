@@ -1,0 +1,32 @@
+﻿@model GalaxyStorm.ViewModels.Technologies.TechnologyViewModel
+
+<div class="row">
+    @for (int i = 0; i <= Model.MaxLevel; i++)
+    {
+        if (i == Model.Level)
+        {
+            <div class="col-md-4 tech-level-button">
+                <button class="btn btn-block btn-success">
+                    <h5>
+                        <i class="ion-arrow-graph-up-right"> </i>
+                        <br />
+                        + @Model.Modifiers[i]x
+                    </h5>
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4 tech-level-button">
+                <button class="btn btn-block btn-default disabled">
+                    <h5>
+                        <i class="ion-arrow-graph-up-right"> </i>
+                        <br />
+                        + @Model.Modifiers[i]x
+                    </h5>
+                </button>
+            </div>
+        }
+    }
+</div>
+

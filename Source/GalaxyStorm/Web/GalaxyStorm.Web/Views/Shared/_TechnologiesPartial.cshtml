@@ -17,35 +17,8 @@
                 {
                     if (Model.ArmoredFleet.Level != Model.ArmoredFleet.MaxLevel)
                     {
-                        <div class="row">
-                            @for (int i = 0; i <= Model.ArmoredFleet.MaxLevel; i++)
-                            {
-                                if (i == Model.ArmoredFleet.Level)
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-success">
-                                            <h5>
-                                                <i class="ion-jet"> </i>
-                                                <br />
-                                                + @Model.ArmoredFleet.Modifiers[i]%
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-default disabled">
-                                            <h5>
-                                                <i class="ion-jet"> </i>
-                                                <br />
-                                                + @Model.ArmoredFleet.Modifiers[i]%
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                            }
-                        </div>
+
+                        @Html.DisplayFor(m => m.ArmoredFleet, "TechButtons")
                         <br />
                         if (Model.CurrentlyResearching == "ArmoredFleet")
                         {
@@ -131,35 +104,8 @@
                 {
                     if (Model.CheaperFleet.Level != Model.CheaperFleet.MaxLevel)
                     {
-                        <div class="row">
-                            @for (int i = 0; i <= Model.CheaperFleet.MaxLevel; i++)
-                            {
-                                if (i == Model.CheaperFleet.Level)
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-success">
-                                            <h5>
-                                                <i class="ion-cash"> </i>
-                                                <br />
-                                                - @Model.CheaperFleet.Modifiers[i]%
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-default disabled">
-                                            <h5>
-                                                <i class="ion-cash"> </i>
-                                                <br />
-                                                - @Model.CheaperFleet.Modifiers[i]%
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                            }
-                        </div>
+
+                        @Html.DisplayFor(m => m.CheaperFleet, "TechButtons")
                         <br />
                         if (Model.CurrentlyResearching == "CheaperFleet")
                         {
@@ -245,35 +191,8 @@
                 {
                     if (Model.LargerFleet.Level != Model.LargerFleet.MaxLevel)
                     {
-                        <div class="row">
-                            @for (int i = 0; i <= Model.LargerFleet.MaxLevel; i++)
-                            {
-                                if (i == Model.LargerFleet.Level)
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-success">
-                                            <h5>
-                                                <i class="ion-speedometer"> </i>
-                                                <br />
-                                                + @Model.LargerFleet.Modifiers[i]
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-default disabled">
-                                            <h5>
-                                                <i class="ion-speedometer"> </i>
-                                                <br />
-                                                + @Model.LargerFleet.Modifiers[i]
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                            }
-                        </div>
+
+                        @Html.DisplayFor(m => m.LargerFleet, "TechButtons")
                         <br />
                         if (Model.CurrentlyResearching == "LargerFleet")
                         {
@@ -359,35 +278,8 @@
                 {
                     if (Model.FasterConstruction.Level != Model.FasterConstruction.MaxLevel)
                     {
-                        <div class="row">
-                            @for (int i = 0; i <= Model.FasterConstruction.MaxLevel; i++)
-                            {
-                                if (i == Model.FasterConstruction.Level)
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-success">
-                                            <h5>
-                                                <i class="ion-ios-timer-outline"> </i>
-                                                <br />
-                                                - @Model.FasterConstruction.Modifiers[i]%
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-default disabled">
-                                            <h5>
-                                                <i class="ion-ios-timer-outline"> </i>
-                                                <br />
-                                                - @Model.FasterConstruction.Modifiers[i]%
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                            }
-                        </div>
+
+                        @Html.DisplayFor(m => m.FasterConstruction, "TechButtons")
                         <br />
                         if (Model.CurrentlyResearching == "FasterConstruction")
                         {
@@ -473,35 +365,7 @@
                 {
                     if (Model.MoreResources.Level != Model.MoreResources.MaxLevel)
                     {
-                        <div class="row">
-                            @for (int i = 0; i <= Model.MoreResources.MaxLevel; i++)
-                            {
-                                if (i == Model.MoreResources.Level)
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-success">
-                                            <h5>
-                                                <i class="ion-arrow-graph-up-right"> </i>
-                                                <br />
-                                                + @Model.MoreResources.Modifiers[i]x
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="col-md-4 tech-level-button">
-                                        <button class="btn btn-block btn-default disabled">
-                                            <h5>
-                                                <i class="ion-arrow-graph-up-right"> </i>
-                                                <br />
-                                                + @Model.MoreResources.Modifiers[i]x
-                                            </h5>
-                                        </button>
-                                    </div>
-                                }
-                            }
-                        </div>
+                        @Html.DisplayFor(m => m.MoreResources, "TechButtons")
                         <br />
                         if (Model.CurrentlyResearching == "MoreResources")
                         {

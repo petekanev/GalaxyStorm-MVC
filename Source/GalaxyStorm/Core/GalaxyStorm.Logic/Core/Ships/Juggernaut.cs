@@ -4,9 +4,9 @@
 
     public class Juggernaut : IShip
     {
-        private const double AtkCoeff = 75;
+        private const double AtkCoeff = 100;
         private const double ArmorCoeff = 40;
-        private const double CargoCoeff = 70;
+        private const double CargoCoeff = 200;
 
         private const double EnergyCoeff = 16;
         private const double CrystalCoeff = 22;
