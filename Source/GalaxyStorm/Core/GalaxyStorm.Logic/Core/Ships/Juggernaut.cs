@@ -12,6 +12,9 @@
         private const double CrystalCoeff = 22;
         private const double MetalCoeff = 19.5;
 
+        private const int RecruitPoints = 50;
+        private const int KillPoints = 120;
+
         private const double BuildTimeMinutes = 30;
 
         public string Name
@@ -64,5 +67,12 @@
                 };
             }
         }
+
+        public int PointsOnRecruit
+        {
+            get { return RecruitPoints; }
+        }
+
+        public int PointsOnKill { get { return KillPoints; } }
     }
 }

@@ -28,5 +28,9 @@
         /// Required resources in the following order: energy -> crystal -> metal => [e, c, m]
         /// </summary>
         int[] RequiredResourcesToBuild { get; }
+
+        int PointsOnRecruit { get; }
+
+        int PointsOnKill { get; }
     }
 }
