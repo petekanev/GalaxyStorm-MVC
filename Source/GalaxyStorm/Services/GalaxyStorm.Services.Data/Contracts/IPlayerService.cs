@@ -12,6 +12,8 @@
 
         void AssignPlayerObjectWithShard(ApplicationUser user, int shardId);
 
+        void AssignUserToPlayerObject(string userId);
+        
         Resources GetPlayerResources(string userId);
 
         long[] GetHourlyResourceIncome(string userId);

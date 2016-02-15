@@ -1,7 +1,6 @@
 ﻿namespace GalaxyStorm.Data.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
     using Microsoft.AspNet.Identity;
@@ -12,7 +11,6 @@
     {
         public Guid? PlayerObjectId { get; set; }
 
-        [ForeignKey("PlayerObjectId")]
         public PlayerObject PlayerObject { get; set; }
 
         public string DisplayName { get; set; }

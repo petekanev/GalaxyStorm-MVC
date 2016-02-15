@@ -15,7 +15,7 @@
             this.reports = new HashSet<Report>();
         }
 
-        [Key]
+        [Key, ForeignKey("ApplicationUser")]
         public Guid Id { get; set; }
 
         public Points Points { get; set; }

@@ -117,6 +117,8 @@
 
                 if (result.Succeeded)
                 {
+                    this.playerService.AssignUserToPlayerObject(user.Id);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     return RedirectToAction("Index", "Home");

@@ -17,13 +17,16 @@
 
         private readonly IRepository<Shard> shards;
 
+        private readonly IRepository<PlayerObject> players;
+
         private readonly ILogicProvider logic;
 
-        public PlayerService(IRepository<ApplicationUser> users, IRepository<Planet> planets, IRepository<Shard> shards, ILogicProvider logic)
+        public PlayerService(IRepository<ApplicationUser> users, IRepository<Planet> planets, IRepository<Shard> shards, IRepository<PlayerObject> players, ILogicProvider logic)
         {
             this.users = users;
             this.planets = planets;
             this.shards = shards;
+            this.players = players;
             this.logic = logic;
         }
 
@@ -126,6 +129,25 @@
             pO.PlanetId = planet.Id;
 
             user.PlayerObject = pO;
+        }
+
+        public void AssignUserToPlayerObject(string userId)
+        {
+            var user = this.users
+                .All()
+                .Include(x => x.PlayerObject)
+                .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var pO = user.PlayerObject;
+            pO.ApplicationUserId = user.Id;
+
+            this.players.Update(pO);
+            this.players.SaveChanges();
         }
 
         public Resources GetPlayerResources(string userId)
