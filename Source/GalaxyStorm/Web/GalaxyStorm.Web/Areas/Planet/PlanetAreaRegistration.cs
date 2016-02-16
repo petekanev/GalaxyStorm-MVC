@@ -14,6 +14,13 @@ namespace GalaxyStorm.Web.Areas.Planet
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+
+            context.MapRoute(
+                "Planet_Area_Default",
+                "Planet/{controller}/{action}/{id}",
+                new { controller = "Preview", action = "Index", id = UrlParameter.Optional },
+                new[] { "GalaxyStorm.Web.Areas.Planet.Controllers" });
+
             context.MapRoute(
                 "Planet_default",
                 "Planet/{controller}/{action}/{id}",

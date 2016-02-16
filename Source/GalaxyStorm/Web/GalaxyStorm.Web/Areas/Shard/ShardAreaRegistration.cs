@@ -20,11 +20,16 @@ namespace GalaxyStorm.Web.Areas.Shard
                 new { controller = "Planet", action = "Index", shardName = UrlParameter.Optional, planetName = UrlParameter.Optional });
 
             context.MapRoute(
+                "Shard_Area_Default",
+                "Shard/{controller}/{action}/{id}",
+                new { controller = "Preview", action = "Index", id = UrlParameter.Optional },
+                new[] { "GalaxyStorm.Web.Areas.Shard.Controllers" });
+
+            context.MapRoute(
                 "Shard_default",
                 "Shard/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "GalaxyStorm.Web.Areas.Shard.Controllers" }
-            );
+                new[] { "GalaxyStorm.Web.Areas.Shard.Controllers" });
         }
     }
 }

@@ -17,19 +17,19 @@
                             <i class="ion-planet size-18"> </i> Planet <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Planet/Preview"><i class="ion-ios-world size-18"> </i> Preview</a></li>
-                            <li><a href="/Planet/Buildings"><i class="ion-hammer size-18"> </i> Build</a></li>
-                            <li><a href="/Planet/Technologies"><i class="ion-ios-flask size-18"> </i> Research</a></li>
-                            <li><a href="/Planet/Fleet"><i class="ion-jet size-18"> </i> Recruit</a></li>
+                            <li><a href="@Url.Action("Index", "Preview", new { area = "Planet"})"><i class="ion-ios-world size-18"> </i> Preview</a></li>
+                            <li><a href="@Url.Action("Index", "Buildings", new { area = "Planet"})"><i class="ion-hammer size-18"> </i> Build</a></li>
+                            <li><a href="@Url.Action("Index", "Technologies", new { area = "Planet"})"><i class="ion-ios-flask size-18"> </i> Research</a></li>
+                            <li><a href="@Url.Action("Index", "Fleet", new { area = "Planet"})"><i class="ion-jet size-18"> </i> Recruit</a></li>
                         </ul>
                     </li>
-                    <li><a href="/Planet/Fleet"><i class="ion-jet size-18"> </i> Fleet</a></li>
-                    <li><a href="/Shard/Preview"><i class="ion-ios-ionic-outline size-18"> </i> Shard</a></li>
+                    <li><a href="@Url.Action("Index", "Fleet", new { area = "Planet"})"><i class="ion-jet size-18"> </i> Fleet</a></li>
+                    <li><a href="@Url.Action("Index", "Preview", new { area = "Shard"})"><i class="ion-ios-ionic-outline size-18"> </i> Shard</a></li>
                 }
 
                 @if (Request.IsAuthenticated && User.IsInRole("Admiral"))
                 {
-                    <li><a href="/AdmiralsQuarters/Home"><i class="ion-settings size-18"> </i> Admiral</a></li>
+                    <li><a href="/Admiral/Home"><i class="ion-settings size-18"> </i> Admiral</a></li>
                 }
 
                 <li><a href="/"><i class="ion-information size-18"> </i></a></li>
