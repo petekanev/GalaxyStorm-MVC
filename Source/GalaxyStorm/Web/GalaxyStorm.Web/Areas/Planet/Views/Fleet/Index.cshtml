@@ -307,7 +307,7 @@
                     else
                     {
                         <span>Total: @(Model.Bomber.AmountOnPlanet + Model.Bomber.AmountDispatched)</span>
-                        using (Html.BeginForm("RecruitBomber", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        using (Html.BeginForm("RecruitBombers", "Fleet", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
 

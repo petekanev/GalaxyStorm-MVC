@@ -44,6 +44,20 @@
             this.AssignPlayerObject(user);
         }
 
+        public void AssignUnassignedUsers()
+        {
+            var unassignedUsers = this.users.All().Where(x => x.PlayerObject == null).ToList();
+
+            foreach (var user in unassignedUsers)
+            {
+                AssignPlayerObject(user);
+                this.users.Update(user);
+                this.users.SaveChanges();
+
+                AssignUserToPlayerObject(user.Id);
+            }
+        }
+
         public void AssignPlayerObject(ApplicationUser user)
         {
             this.AssignPlayerObjectWithShard(user, -1);
@@ -53,51 +67,38 @@
         {
             var pO = new PlayerObject();
 
-            pO.Units = new Units
+            pO.Units = new Units();
+
+            pO.Buildings = new Buildings
             {
-                BomberQuantity = 0,
-                CarriersQuantity = 0,
-                DispatchedBombers = 0,
-                DispatchedCarriers = 0,
-                DispatchedFighters = 0,
-                DispatchedInterceptors = 0,
-                DispatchedJuggernauts = 0,
-                DispatchedScouts = 0,
-                FighterQuantity = 0,
-                InterceptorQuantity = 0,
-                JuggernautQuantity = 0,
-                ScoutsQuantity = 0
+                HeadQuartersLevel = 1,
+                BarracksLevel = 0,
+                ResearchCentreLevel = 0,
+                SolarCollectorLevel = 1,
+                CrystalExtractorLevel = 1,
+                MetalScrapperLevel = 1
             };
 
-            pO.Buildings = new Buildings();
-            pO.Buildings.HeadQuartersLevel = 1;
-            pO.Buildings.BarracksLevel = 0;
-            pO.Buildings.ResearchCentreLevel = 0;
-            pO.Buildings.SolarCollectorLevel = 1;
-            pO.Buildings.CrystalExtractorLevel = 1;
-            pO.Buildings.MetalScrapperLevel = 1;
+            // TODO: Extract into logic
+            pO.Points = new Points
+            {
+                PointsCombat = 0,
+                PointsNeutral = 0,
+                PointsPlanet = (pO.Buildings.HeadQuartersLevel*100)
+                               + (pO.Buildings.SolarCollectorLevel*10)
+                               + (pO.Buildings.CrystalExtractorLevel*10)
+                               + (pO.Buildings.MetalScrapperLevel*10)
+            };
 
             // TODO: Extract into logic
-            pO.Points = new Points();
-            pO.Points.PointsCombat = 0;
-            pO.Points.PointsNeutral = 0;
-            pO.Points.PointsPlanet = (pO.Buildings.HeadQuartersLevel * 100)
-                + (pO.Buildings.SolarCollectorLevel * 10)
-                + (pO.Buildings.CrystalExtractorLevel * 10)
-                + (pO.Buildings.MetalScrapperLevel * 10);
-
-            // TODO: Extract into logic
-            pO.Resources = new Resources();
-            pO.Resources.Energy = 350;
-            pO.Resources.Crystal = 350;
-            pO.Resources.Metal = 350;
+            pO.Resources = new Resources
+            {
+                Energy = 350,
+                Crystal = 350,
+                Metal = 350
+            };
 
             pO.Technologies = new Technologies();
-            pO.Technologies.ArmoredFleetLevel = 0;
-            pO.Technologies.CheaperFleetLevel = 0;
-            pO.Technologies.FasterConstructionLevel = 0;
-            pO.Technologies.LargerFleetLevel = 0;
-            pO.Technologies.MoreResourcesLevel = 0;
 
             Planet planet;
 

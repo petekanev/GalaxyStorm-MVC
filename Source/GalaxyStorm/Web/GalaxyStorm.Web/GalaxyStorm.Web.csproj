@@ -250,8 +250,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\AutomapperExtensions.cs" />
     <Compile Include="Utilities\HangfireBootstrapper.cs" />
-    <Compile Include="Utilities\PlanetAllocator.cs" />
-    <Compile Include="Utilities\PlayerAssigner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\PlanetNames.txt" />

@@ -183,6 +183,26 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult RecruitBombers(int amount)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var timespan = this.fleetService.ScheduleRecruitBomber(userId, amount);
+
+            if (timespan != null)
+            {
+                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+            }
+            else
+            {
+                this.SetErrorMessage();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult RecruitInterceptors(int amount)
         {
             var userId = User.Identity.GetUserId();

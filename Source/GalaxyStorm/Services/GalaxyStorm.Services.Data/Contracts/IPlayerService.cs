@@ -8,6 +8,8 @@
     {
         void ReassignPlayerObject(string userId);
 
+        void AssignUnassignedUsers();
+
         void AssignPlayerObject(ApplicationUser user);
 
         void AssignPlayerObjectWithShard(ApplicationUser user, int shardId);

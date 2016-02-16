@@ -8,9 +8,9 @@
         private const double ArmorCoeff = 5;
         private const double CargoCoeff = 20;
 
-        private const double EnergyCoeff = 1;
-        private const double CrystalCoeff = 3.2;
-        private const double MetalCoeff = 4;
+        private const double EnergyCoeff = 2;
+        private const double CrystalCoeff = 4.2;
+        private const double MetalCoeff = 5;
 
         private const int RecruitPoints = 20;
         private const int KillPoints = 50;

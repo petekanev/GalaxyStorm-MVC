@@ -53,6 +53,7 @@ namespace GalaxyStorm.Data.Migrations
                 {
                     Email = "pip3r4o@gmail.com",
                     UserName = "pip3r4o",
+                    DisplayName = "Bound Immortality"
                 };
 
                 userManager.Create(user, "123456");
