@@ -4,9 +4,9 @@
 
     public class MoreResources : ITechnology
     {
-        private const double EnergyCoeff = 30;
-        private const double CrystalCoeff = 28.4;
-        private const double MetalCoeff = 23;
+        private const double EnergyCoeff = 50;
+        private const double CrystalCoeff = 45.4;
+        private const double MetalCoeff = 43;
         private const double ResearchTimeCoeff = 1.25;
 
         public string Name
@@ -18,12 +18,12 @@
 
         public int MaxLevel
         {
-            get { return 3; }
+            get { return 4; }
         }
 
         public double[] Modifier
         {
-            get { return new[] { 0, 0.25, 0.50, 1}; }
+            get { return new[] { 0, 0.25, 0.50, 1, 1.25}; }
         }
 
         public int Prerequisite
@@ -41,6 +41,7 @@
                     TimeSpan.FromMinutes(59*ResearchTimeCoeff),
                     TimeSpan.FromMinutes(88*ResearchTimeCoeff),
                     TimeSpan.FromMinutes(166*ResearchTimeCoeff),
+                    TimeSpan.FromMinutes(200*ResearchTimeCoeff),
                     TimeSpan.FromMinutes(0)
                 };
             }
