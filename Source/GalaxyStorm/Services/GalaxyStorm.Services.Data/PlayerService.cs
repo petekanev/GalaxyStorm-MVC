@@ -55,6 +55,7 @@
                 this.users.SaveChanges();
 
                 AssignUserToPlayerObject(user.Id);
+                AssignPlayerObjectToPlanet(user.Id);
             }
         }
 
@@ -149,6 +150,25 @@
 
             this.players.Update(pO);
             this.players.SaveChanges();
+        }
+
+        public void AssignPlayerObjectToPlanet(string userId)
+        {
+            var user = this.users
+                .All()
+                .Include(x => x.PlayerObject)
+                .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var planet = user.PlayerObject.Planet;
+            planet.PlayerObjectId = user.PlayerObjectId;
+
+            this.planets.Update(planet);
+            this.planets.SaveChanges();
         }
 
         public Resources GetPlayerResources(string userId)

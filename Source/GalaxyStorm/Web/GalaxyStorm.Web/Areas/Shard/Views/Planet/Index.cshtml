@@ -1,1 +1,42 @@
-﻿<h2>@ViewBag.Title</h2>
+﻿@model GalaxyStorm.ViewModels.Common.PublicPlanetViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @Model.Title <small>@Model.X : @Model.Y</small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+    <div class="text-center">
+        <h3>Planet @Model.Title (@Model.X : @Model.Y)</h3>
+        <hr />
+        @if (Model.IsPopulated)
+        {
+            <img src="/Images/planets-player/planet-player.png" class="small-img-300" />
+            <br />
+            <h4>Inhabited by <span class="text-primary">@Model.PlayerDisplayName</span></h4>
+            <br/>
+            <h4>Player points <i class="ion-trophy size-18"> </i> @Model.PlayerPoints</h4>
+            <hr/>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <button class="btn btn-success btn-block"><i class="ion-ios-eye size-18"> </i> Spy</button>
+                    <button class="btn btn-danger btn-block"><i class="ion-pinpoint size-18"> </i> Attack</button>
+                    <button class="btn btn-default btn-block"><i class="ion-email size-18"> </i> Message</button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <img src="/Images/planets-player/planet-uncovered-player.png" class="small-img-300"/>
+            <br/>
+            <p class="text-muted">The planet is not yet populated.</p>    
+        }
+    </div>
+</div>

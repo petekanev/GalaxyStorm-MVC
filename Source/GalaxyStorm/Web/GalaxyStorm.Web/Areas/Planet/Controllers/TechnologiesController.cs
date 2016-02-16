@@ -149,7 +149,7 @@
             return RedirectToAction("Index");
         }
 
-        private void SetErrorMessage()
+        protected override void SetErrorMessage()
         {
             TempData["Error"] =
                 "You cannot research this technology at the moment. You don't meet the requirements, or another research is in progress!";

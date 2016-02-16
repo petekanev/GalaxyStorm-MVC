@@ -288,7 +288,7 @@
             return RedirectToAction("MetalScrapper");
         }
 
-        private void SetErrorMessage()
+        protected override void SetErrorMessage()
         {
             TempData["Error"] =
                 "You cannot upgrade this building at the moment. You don't meet the requirements, or another building is in progress!";

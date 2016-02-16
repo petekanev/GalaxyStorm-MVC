@@ -16,8 +16,9 @@ namespace GalaxyStorm.Web.Areas.Shard
         {
             context.MapRoute(
                 "Shard_planets",
-                "Shard/Planet/{shardName}/{planetName}",
-                new { controller = "Planet", action = "Index", shardName = UrlParameter.Optional, planetName = UrlParameter.Optional });
+                "Shard/Planet/{shard}/{planet}",
+                new { controller = "Planet", action = "Index", shardName = UrlParameter.Optional, planetName = UrlParameter.Optional },
+                new[] { "GalaxyStorm.Web.Areas.Shard.Controllers" });
 
             context.MapRoute(
                 "Shard_Area_Default",

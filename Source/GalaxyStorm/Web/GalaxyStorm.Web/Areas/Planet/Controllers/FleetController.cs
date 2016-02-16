@@ -241,7 +241,7 @@
             return RedirectToAction("Index");
         }
 
-        private void SetErrorMessage()
+        protected override void SetErrorMessage()
         {
             TempData["Error"] =
                 "You cannot recruit that many ships at the moment. You don't meet the requirements, or another batch of ships is being recruited!";

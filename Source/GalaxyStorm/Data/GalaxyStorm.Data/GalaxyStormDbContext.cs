@@ -45,6 +45,12 @@
                 .HasForeignKey(u => u.ApplicationUserId)
                 .WillCascadeOnDelete(true);
 
+            modelBuilder.Entity<Planet>()
+                .HasKey(x => x.Id)
+                .HasOptional(a => a.PlayerObject)
+                .WithMany()
+                .HasForeignKey(u => u.PlayerObjectId)
+                .WillCascadeOnDelete(true);
 
             base.OnModelCreating(modelBuilder);
         }

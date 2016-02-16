@@ -39,7 +39,7 @@
         [ForeignKey("UnitsId")]
         public virtual Units Units { get; set; }
 
-        public int PlanetId { get; set; }
+        public int? PlanetId { get; set; }
 
         [ForeignKey("PlanetId")]
         public virtual Planet Planet { get; set; }

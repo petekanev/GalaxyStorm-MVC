@@ -118,6 +118,7 @@
                 if (result.Succeeded)
                 {
                     this.playerService.AssignUserToPlayerObject(user.Id);
+                    this.playerService.AssignPlayerObjectToPlanet(user.Id);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 

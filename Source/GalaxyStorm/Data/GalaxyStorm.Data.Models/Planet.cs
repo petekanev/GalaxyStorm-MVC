@@ -1,11 +1,13 @@
 ﻿namespace GalaxyStorm.Data.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using PlayerObjects;
 
     public class Planet
     {
-        [Key]
+        [Key, ForeignKey("PlayerObject")]
         public int Id { get; set; }
 
         [Required]
@@ -27,5 +29,9 @@
 
         [ForeignKey("ShardId")]
         public virtual Shard Shard { get; set; }
+
+        public Guid? PlayerObjectId { get; set; }
+
+        public virtual PlayerObject PlayerObject { get; set; }
     }
 }

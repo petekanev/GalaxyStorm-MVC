@@ -14,6 +14,16 @@
 </div>
 
 <div class="well">
+    <h4>Shard Status <small class="@Model.IsLocked">@Model.IsLocked</small></h4>
+    <hr/>
+    <div class="text-center">
+        <span>Players - @Model.InhabitedPlanets / @Model.TotalPlanets</span>
+        <br/>
+        <span>Build Speed - x @Model.BuildSpeed</span>
+    </div>
+    <br />
+    <h4>Shard Map</h4>
+    <hr />
     <div>
         <ul id="hexGrid">
             @foreach (var planet in Model.Planets)
@@ -22,20 +32,20 @@
 
                 <li class="hex">
                     @{
-                var hrefPlanet = "#";
-                var srcImage = "/Images/planets/starfield-" + num + ".png";
-                var pText = "";
+                        var hrefPlanet = "#";
+                        var srcImage = "/Images/planets/starfield-" + num + ".png";
+                        var pText = "";
 
-                if (planet.IsPopulated)
-                {
-                    hrefPlanet = Url.Action("Index", "Planet", new { area = "Shard" }) + "/" + Model.Title + "/" + planet.Title;
-                    srcImage = "/Images/planets/starfield-planet-" + num + ".png";
-                    pText = "Populated";
-                }
+                        if (planet.IsPopulated)
+                        {
+                            hrefPlanet = Url.Action("Index", "Planet", new {area = "Shard"}) + "/" + Model.Title + "/" + planet.Title;
+                            srcImage = "/Images/planets/starfield-planet-" + num + ".png";
+                            pText = "Populated";
+                        }
                     }
 
                     <a class="hexIn" href="@hrefPlanet">
-                        <img src="@srcImage" alt="Planet @planet.Title" />
+                        <img src="@srcImage" alt="Planet @planet.Title"/>
                         <h1>@planet.Title (@planet.X : @planet.Y)</h1>
                         <p class="text-left">
                             &nbsp;@pText&nbsp;&nbsp;

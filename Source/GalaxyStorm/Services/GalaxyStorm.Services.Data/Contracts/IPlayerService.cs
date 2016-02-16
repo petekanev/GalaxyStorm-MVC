@@ -15,6 +15,8 @@
         void AssignPlayerObjectWithShard(ApplicationUser user, int shardId);
 
         void AssignUserToPlayerObject(string userId);
+
+        void AssignPlayerObjectToPlanet(string userId);
         
         Resources GetPlayerResources(string userId);
 

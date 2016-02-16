@@ -1,8 +1,10 @@
 ﻿namespace GalaxyStorm.ViewModels.Common
 {
     using System;
+    using Data.Models;
+    using GalaxyStorm.Common.Contracts;
 
-    public class PlayerPlanetViewModel
+    public class PlayerPlanetViewModel : IMapFrom<Planet>
     {
         public int X { get; set; }
 
