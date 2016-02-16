@@ -233,6 +233,7 @@
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
     <Compile Include="Areas\Public\Controllers\InfoController.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
+    <Compile Include="Areas\Shard\Controllers\PlanetController.cs" />
     <Compile Include="Areas\Shard\Controllers\PreviewController.cs" />
     <Compile Include="Areas\Shard\ShardAreaRegistration.cs" />
     <Compile Include="Areas\Public\Controllers\AccountController.cs" />
@@ -329,6 +330,7 @@
     <Content Include="Areas\Public\Views\Home\Index.cshtml" />
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
     <None Include="Areas\Public\Views\Info\Index.cshtml" />
+    <Content Include="Areas\Shard\Views\Planet\Index.cshtml" />
     <None Include="Areas\Shard\Views\Preview\Index.cshtml" />
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />

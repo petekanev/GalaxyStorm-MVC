@@ -64,3 +64,7 @@
 .hex p {
     padding-bottom: 54%;
 }
+
+.hex h1, .hex p {
+    background-color: rgba(0, 128, 128, 0.2);
+}

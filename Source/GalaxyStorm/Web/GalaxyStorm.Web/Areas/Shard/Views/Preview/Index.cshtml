@@ -22,13 +22,13 @@
 
                 <li class="hex">
                     @{
-                var hrefPlanet = "/#";
+                var hrefPlanet = "#";
                 var srcImage = "/Images/planets/starfield-" + num + ".png";
                 var pText = "";
 
                 if (planet.IsPopulated)
                 {
-                    hrefPlanet = "/Shard/" + Model.Title + "/" + planet.Title;
+                    hrefPlanet = Url.Action("Index", "Planet", new { area = "Shard" }) + "/" + Model.Title + "/" + planet.Title;
                     srcImage = "/Images/planets/starfield-planet-" + num + ".png";
                     pText = "Populated";
                 }

@@ -16,7 +16,7 @@
     <div class="row text-center">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3>DisplayName</h3>
+                <h3>@Model.DisplayName</h3>
             </div>
         </div>
         @if (Model.NumberOfReports > 0)
@@ -39,7 +39,7 @@
     <div class="row text-center">
         <div class="col-md-6">
             <h4>Points</h4>
-            <hr/>
+            <hr />
             <div class="row">
                 <div class="col-md-4">
                     <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Gained by upgrading buildings and researching new technologies.">
@@ -60,8 +60,9 @@
         </div>
         <div class="col-md-6">
             <h4>Your Planet</h4>
-            <hr/>
-            <p><a href="#">@Model.Planet.Title (@Model.Planet.X : @Model.Planet.Y) - @Model.Planet.ShardTitle</a>
+            <hr />
+            <p>
+                <a href="@Url.Action("Index", "Planet", new { area = "Shard" })/@Model.Planet.ShardTitle/@Model.Planet.Title">@Model.Planet.Title (@Model.Planet.X : @Model.Planet.Y) - @Model.Planet.ShardTitle</a>
             </p>
             <p>Modifiers</p>
             <div class="row text-center">
@@ -74,6 +75,6 @@
     </div>
     <div class="row text-center">
         @Html.ActionLink("Change password", "ChangePassword", "Manage", null, new { @class = "btn btn-block btn-default" })
-        <a href="#" class="btn btn-block btn-danger ">Lock account</a>
+        <a href="#" class="btn btn-block btn-danger"><i class="ion-key size-18"> </i> Lock account</a>
     </div>
 </div>
