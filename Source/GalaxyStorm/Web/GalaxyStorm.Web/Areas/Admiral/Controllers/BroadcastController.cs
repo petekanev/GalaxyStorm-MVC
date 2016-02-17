@@ -2,8 +2,12 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Data.Models.PlayerObjects;
+    using Hangfire;
     using Infrastructure;
+    using Services.Data;
     using Services.Data.Contracts;
     using ViewModels.Reports;
     using ViewModels.Shards;
@@ -47,6 +51,10 @@
             }
 
             this.SetSuccessMessage();
+
+            var report = Mapper.Map<Report>(model);
+
+            BackgroundJob.Enqueue<IReportsService>(rs => rs.BroadcastToShard(model.ShardId, report));
 
             return RedirectToAction("Index");
         }

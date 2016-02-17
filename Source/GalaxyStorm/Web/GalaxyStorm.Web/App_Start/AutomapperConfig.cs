@@ -6,6 +6,8 @@
     using System.Reflection;
     using AutoMapper;
     using Common.Contracts;
+    using Data.Models.PlayerObjects;
+    using ViewModels.Reports;
 
     public static class AutoMapperConfig
     {
@@ -19,6 +21,8 @@
 
             LoadStandardMappings(types);
             LoadCustomMappings(types);
+
+            Mapper.CreateMap<ReportInputModel, Report>();
         }
 
         private static void LoadStandardMappings(IEnumerable<Type> types)

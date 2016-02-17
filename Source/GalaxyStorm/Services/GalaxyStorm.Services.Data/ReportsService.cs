@@ -12,11 +12,13 @@
     {
         private readonly IRepository<ApplicationUser> users;
         private readonly IRepository<Report> reports;
+        private readonly IRepository<PlayerObject> players;
 
-        public ReportsService(IRepository<ApplicationUser> users, IRepository<Report> reports)
+        public ReportsService(IRepository<ApplicationUser> users, IRepository<Report> reports, IRepository<PlayerObject> players)
         {
             this.users = users;
             this.reports = reports;
+            this.players = players;
         }
 
         public void CreateReport(string userId, Report report)
@@ -89,18 +91,28 @@
 
         public void BroadcastToShard(int shardId, Report report)
         {
-            var usersToBroadCastTo = this.users
+            var usersToBroadCastTo = this.players
                    .All()
-                   .Include(x => x.PlayerObject)
-                   .Where(x => x.PlayerObject.Planet.ShardId == shardId);
+                   .Where(x => x.Planet.ShardId == shardId)
+                   .ToList();
+
+            report.ReceivedOn = DateTime.Now;
 
             foreach (var user in usersToBroadCastTo)
             {
-                user.PlayerObject.Reports.Add(report);
-                this.users.Update(user);
+                var reportToAdd = new Report
+                {
+                    Content = report.Content,
+                    ReceivedOn = report.ReceivedOn,
+                    Title = report.Title,
+                    Type = report.Type
+                };
+
+                user.Reports.Add(reportToAdd);
+                this.players.Update(user);
             }
 
-            this.users.SaveChanges();
+            this.players.SaveChanges();
         }
     }
 }

@@ -29,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.ShardName, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownListFor(x => x.ShardName, new SelectList(ViewBag.Shards, "Id", "Title", 0), new { @class = "form-control" })
+                @Html.DropDownListFor(x => x.ShardId, new SelectList(ViewBag.Shards, "Id", "Title", 0), new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
