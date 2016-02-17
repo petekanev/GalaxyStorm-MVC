@@ -35,19 +35,25 @@
                         var hrefPlanet = "#";
                         var srcImage = "/Images/planets/starfield-" + num + ".png";
                         var pText = "";
-
+                        var hpClass = "";
+                        
                         if (planet.IsPopulated)
                         {
                             hrefPlanet = Url.Action("Index", "Planet", new {area = "Shard"}) + "/" + Model.Title + "/" + planet.Title;
                             srcImage = "/Images/planets/starfield-planet-" + num + ".png";
                             pText = "Populated";
+                            if (ViewData["PlayerPlanet"] == planet.Title)
+                            {
+                                hpClass = "hex-content-player";
+                                pText = "Yours";
+                            }
                         }
                     }
 
                     <a class="hexIn" href="@hrefPlanet">
                         <img src="@srcImage" alt="Planet @planet.Title"/>
-                        <h1>@planet.Title (@planet.X : @planet.Y)</h1>
-                        <p class="text-left">
+                        <h1 class="@hpClass">@planet.Title (@planet.X : @planet.Y)</h1>
+                        <p class="text-left @hpClass">
                             &nbsp;@pText&nbsp;&nbsp;
                             @if (planet.IsPopulated)
                             {

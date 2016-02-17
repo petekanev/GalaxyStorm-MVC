@@ -10,10 +10,12 @@
     public class PreviewController : UsersController
     {
         private readonly IShardService shardService;
+        private readonly IPlanetService planetService;
 
-        public PreviewController(IShardService shardService)
+        public PreviewController(IShardService shardService, IPlanetService planetService)
         {
             this.shardService = shardService;
+            this.planetService = planetService;
         }
 
         // GET: Shard/Preview
@@ -22,6 +24,10 @@
             var userId = User.Identity.GetUserId();
 
             var currentShard = this.shardService.GetShardByPlayerId(userId);
+
+            var currentPlayerPlanet = planetService.GetPlayerPlanet(userId);
+
+            ViewData["PlayerPlanet"] = currentPlayerPlanet.Title;
 
             var vM = Mapper.Map<PublicShardViewModel>(currentShard);
 

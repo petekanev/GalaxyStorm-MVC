@@ -6,7 +6,7 @@
 
         <ul id="menu-content" class="menu-content collapse out">
             <li class="active">
-                <a href="/Planet/Preview">
+                <a href="@Url.Action("Index", "Preview", new {area = "Planet"})">
                     <i class="ion-ios-world size-18"></i> Overview
                 </a>
             </li>
@@ -15,33 +15,33 @@
                 <a href="#"><i class="ion-hammer size-18"> </i> Build <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="buildings">
-                <li class="active"><a href="/Planet/Buildings"> Overview</a></li>
-                <li><a href="/Planet/Buildings/Headquarters"><i class="ion-home size-18"> </i> Headquarters</a></li>
-                <li><a href="/Planet/Buildings/SolarCollector"><i class="ion-ios-sunny-outline size-18"> </i> Solar Collector</a></li>
-                <li><a href="/Planet/Buildings/CrystalExtractor"><i class="ion-ios-flower-outline size-18"> </i> Crystal Extractor</a></li>
-                <li><a href="/Planet/Buildings/MetalScrapper"><i class="ion-ios-cog-outline size-18"> </i> Metal Scrapper</a></li>
-                <li><a href="/Planet/Buildings/ResearchCentre"><i class="ion-ios-flask size-18"> </i> Research Centre</a></li>
-                <li><a href="/Planet/Buildings/Barracks"><i class="ion-jet size-18"> </i> Barracks</a></li>
+                <li class="active"><a href="@Url.Action("Index", "Buildings", new {area = "Planet"})"> Overview</a></li>
+                <li><a href="@Url.Action("Headquarters", "Buildings", new {area = "Planet"})"><i class="ion-home size-18"> </i> Headquarters</a></li>
+                <li><a href="@Url.Action("SolarCollector", "Buildings", new {area = "Planet"})"><i class="ion-ios-sunny-outline size-18"> </i> Solar Collector</a></li>
+                <li><a href="@Url.Action("CrystalExtractor", "Buildings", new {area = "Planet"})"><i class="ion-ios-flower-outline size-18"> </i> Crystal Extractor</a></li>
+                <li><a href="@Url.Action("MetalScrapper", "Buildings", new {area = "Planet"})"><i class="ion-ios-cog-outline size-18"> </i> Metal Scrapper</a></li>
+                <li><a href="@Url.Action("ResearchCentre", "Buildings", new {area = "Planet"})"><i class="ion-ios-flask size-18"> </i> Research Centre</a></li>
+                <li><a href="@Url.Action("Barracks", "Buildings", new {area = "Planet"})"><i class="ion-jet size-18"> </i> Barracks</a></li>
             </ul>
 
             <li data-toggle="collapse" data-target="#research" class="collapsed">
                 <a href="#"><i class="ion-ios-flask size-18"> </i> Research <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="research">
-                <li class="active"><a href="/Planet/Technologies">Overview</a></li>
+                <li class="active"><a href="@Url.Action("Index", "Technologies", new {area = "Planet"})">Overview</a></li>
             </ul>
 
             <li data-toggle="collapse" data-target="#new" class="collapsed">
                 <a href="#"><i class="ion-jet size-18"></i> Recruit <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="new">
-                <li class="active"><a href="/Planet/Fleet">Overview</a></li>
+                <li class="active"><a href="@Url.Action("Index", "Fleet", new {area = "Planet"})">Overview</a></li>
                 <li><a href="#"><i class="ion-jet size-18"> </i> Dispatched Units</a></li>
                 <li><a href="#"><i class="ion-ios-world size-18"> </i> Stationed Units</a></li>
             </ul>
 
             <li>
-                <a href="/Profile/Preview">
+                <a href="@Url.Action("Index", "Preview", new {area = "Profile"})">
                     <i class="ion-wrench size-18"> </i> Profile
                 </a>
             </li>

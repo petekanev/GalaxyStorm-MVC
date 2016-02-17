@@ -24,13 +24,20 @@
             <br/>
             <h4>Player points <i class="ion-trophy size-18"> </i> @Model.PlayerPoints</h4>
             <hr/>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <button class="btn btn-success btn-block"><i class="ion-ios-eye size-18"> </i> Spy</button>
-                    <button class="btn btn-danger btn-block"><i class="ion-pinpoint size-18"> </i> Attack</button>
-                    <button class="btn btn-default btn-block"><i class="ion-email size-18"> </i> Message</button>
+            if ((string) ViewData["PlayerPlanet"] != Model.Title)
+            {
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <button class="btn btn-success btn-block"><i class="ion-ios-eye size-18"> </i> Spy</button>
+                        <button class="btn btn-danger btn-block"><i class="ion-pinpoint size-18"> </i> Attack</button>
+                        <button class="btn btn-default btn-block"><i class="ion-email size-18"> </i> Message</button>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <span class="text-success">You currently inhabit this planet!</span>
+            }
         }
         else
         {

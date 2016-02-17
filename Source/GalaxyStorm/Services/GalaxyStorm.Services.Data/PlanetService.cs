@@ -21,6 +21,21 @@
             this.shards = shards;
         }
 
+        public Planet GetPlayerPlanet(string userId)
+        {
+            var player = this.users
+                .All()
+                .Include(x => x.PlayerObject)
+                .FirstOrDefault(u => u.Id == userId);
+
+            if (player == null)
+            {
+                return null;
+            }
+
+            return player.PlayerObject.Planet;
+        }
+
         public Planet GetPublicPlanet(string userId, string shardName, string planetName)
         {
             var player = this.users

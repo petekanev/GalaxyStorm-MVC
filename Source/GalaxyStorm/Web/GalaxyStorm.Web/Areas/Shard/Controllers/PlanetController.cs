@@ -30,6 +30,10 @@
                 return RedirectToAction("Index", "Preview", new { area = "Shard"});
             }
 
+            var currentPlayerPlanet = planetService.GetPlayerPlanet(userId);
+
+            ViewData["PlayerPlanet"] = currentPlayerPlanet.Title;
+
             var vM = Mapper.Map<Planet, PublicPlanetViewModel>(planetResult);
 
             return View(vM);

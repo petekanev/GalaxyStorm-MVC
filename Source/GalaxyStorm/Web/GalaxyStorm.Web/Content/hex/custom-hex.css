@@ -69,3 +69,8 @@
     background-color: #008080;
     background-color: rgba(0, 128, 128, 0.2);
 }
+
+.hex-content-player {
+    background-color: #ffff00 !important;
+    background-color: rgba(220, 220, 0, 0.5) !important;
+}

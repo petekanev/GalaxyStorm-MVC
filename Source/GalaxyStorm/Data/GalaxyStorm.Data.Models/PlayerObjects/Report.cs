@@ -34,6 +34,7 @@
         Spy = 2,
         Attack = 3,
         Defense = 4,
-        Server = 5
+        Server = 5,
+        Communication = 6
     }
 }

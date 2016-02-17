@@ -12,7 +12,7 @@
             <li class="dropdown">
                 <a href="/#" class="dropdown-toggle" data-toggle="dropdown"><i class="ion-wrench size-18"> </i> @User.Identity.GetUserName() <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/Profile/Preview"><i class="ion-wrench size-18"> </i> Manage</a></li>
+                    <li><a href="@Url.Action("Index", "Preview", new {area = "Profile"})"><i class="ion-wrench size-18"> </i> Manage</a></li>
                     <li class="divider"></li>
                     <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="ion-power size-18"> </i> Log off</a></li>
                 </ul>
