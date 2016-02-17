@@ -15,7 +15,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
         public int MaxLevel
         {
-            get { return 10; }
+            get { return 15; }
         }
 
         public int Prerequisite
@@ -37,8 +37,13 @@ namespace GalaxyStorm.Logic.Core.Buildings
                 TimeSpan.FromMinutes(28 * BuildTimeCoeff),
                 TimeSpan.FromMinutes(32 * BuildTimeCoeff),
                 TimeSpan.FromMinutes(42 * BuildTimeCoeff),
+                TimeSpan.FromMinutes(50 * BuildTimeCoeff),
                 TimeSpan.FromMinutes(60.1 * BuildTimeCoeff),
                 TimeSpan.FromMinutes(72 * BuildTimeCoeff),
+                TimeSpan.FromMinutes(92 * BuildTimeCoeff),
+                TimeSpan.FromMinutes(100 * BuildTimeCoeff),
+                TimeSpan.FromMinutes(110 * BuildTimeCoeff),
+                TimeSpan.FromMinutes(120 * BuildTimeCoeff),
                 TimeSpan.FromMinutes(0)
             };
             }
@@ -46,7 +51,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
         public int[] ResourceGeneration
         {
-            get { return (new[] { 100, 150, 275, 350, 500, 720, 800, 940, 1100, 1500, 3000, 0 }).Select(x => (int)(x * ResourceCoeff)).ToArray(); }
+            get { return (new[] { 100, 150, 275, 350, 450, 550, 650, 720, 800, 940, 1100, 1200, 1400, 1800, 2250, 3000, 0 }).Select(x => (int)(x * ResourceCoeff)).ToArray(); }
         }
 
         public abstract int[] GetRequiredResources(int level);

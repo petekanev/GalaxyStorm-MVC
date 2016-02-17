@@ -15,7 +15,7 @@
         private const int RecruitPoints = 5;
         private const int KillPoints = 5;
 
-        private const double BuildTimeMinutes = 2.5;
+        private const double BuildTimeMinutes = 1.5;
 
         public string Name
         {

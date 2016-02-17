@@ -18,7 +18,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
         public int MaxLevel
         {
-            get { return 10; }
+            get { return 15; }
         }
 
         public int Prerequisite
@@ -35,14 +35,19 @@ namespace GalaxyStorm.Logic.Core.Buildings
                     TimeSpan.FromMinutes(0),
                     TimeSpan.FromMinutes(0),
                     TimeSpan.FromMinutes(8.3*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(17*BuildTimeCoeff),
                     TimeSpan.FromMinutes(26*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(38*BuildTimeCoeff),
                     TimeSpan.FromMinutes(43*BuildTimeCoeff),
                     TimeSpan.FromMinutes(59*BuildTimeCoeff),
                     TimeSpan.FromMinutes(72*BuildTimeCoeff),
                     TimeSpan.FromMinutes(121*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(215*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(305*BuildTimeCoeff),
-                    TimeSpan.FromMinutes(465*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(140*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(183*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(210*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(220*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(220*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(280*BuildTimeCoeff),
                     TimeSpan.FromMinutes(0),
                 };
             }

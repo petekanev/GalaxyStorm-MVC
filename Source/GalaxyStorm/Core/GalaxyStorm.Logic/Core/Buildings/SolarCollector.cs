@@ -4,9 +4,9 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
     public class SolarCollector : ResourceBuilding
     {
-        private const double EnergyCoeff = 2;
-        private const double CrystalCoeff = 3;
-        private const double MetalCoeff = 2.4;
+        private const double EnergyCoeff = 3;
+        private const double CrystalCoeff = 4;
+        private const double MetalCoeff = 3.4;
 
         public override string Name
         {

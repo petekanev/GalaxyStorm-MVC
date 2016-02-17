@@ -15,7 +15,7 @@
         private const int RecruitPoints = 100;
         private const int KillPoints = 120;
 
-        private const double BuildTimeMinutes = 30;
+        private const double BuildTimeMinutes = 22.5;
 
         public string Name
         {
@@ -44,7 +44,7 @@
 
         public int Prerequisite
         {
-            get { return 5; }
+            get { return 10; }
         }
 
         public TimeSpan BuildTime

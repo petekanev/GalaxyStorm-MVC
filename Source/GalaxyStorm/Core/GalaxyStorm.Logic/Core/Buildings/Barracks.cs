@@ -5,9 +5,9 @@ namespace GalaxyStorm.Logic.Core.Buildings
     public class Barracks : IBuilding
     {
         private const double BuildTimeCoeff = 1;
-        private const double EnergyCoeff = 9.75;
-        private const double CrystalCoeff = 10.45;
-        private const double MetalCoeff = 11;
+        private const double EnergyCoeff = 11.75;
+        private const double CrystalCoeff = 13.45;
+        private const double MetalCoeff = 14;
 
         public string Name
         {
@@ -24,7 +24,7 @@ namespace GalaxyStorm.Logic.Core.Buildings
 
         public int MaxLevel
         {
-            get { return 5; }
+            get { return 10; }
         }
 
         public int Prerequisite
@@ -41,8 +41,13 @@ namespace GalaxyStorm.Logic.Core.Buildings
                     TimeSpan.FromMinutes(0),
                     TimeSpan.FromMinutes(7*BuildTimeCoeff),
                     TimeSpan.FromMinutes(19.4*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(30.5*BuildTimeCoeff),
                     TimeSpan.FromMinutes(42*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(60*BuildTimeCoeff),
                     TimeSpan.FromMinutes(83*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(100*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(120*BuildTimeCoeff),
+                    TimeSpan.FromMinutes(150*BuildTimeCoeff),
                     TimeSpan.FromMinutes(172*BuildTimeCoeff),
                     TimeSpan.FromMinutes(0),
                 };

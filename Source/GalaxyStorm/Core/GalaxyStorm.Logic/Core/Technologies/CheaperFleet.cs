@@ -21,12 +21,12 @@
 
         public int MaxLevel
         {
-            get { return 3; }
+            get { return 4; }
         }
 
         public double[] Modifier
         {
-            get { return new[] { 0, 0.05, 0.1, 0.2, 0 }; }
+            get { return new[] { 0, 0.05, 0.1, 0.2, 0.3, 0 }; }
         }
 
         public int Prerequisite
@@ -42,6 +42,7 @@
                 {
                     TimeSpan.FromMinutes(0),
                     TimeSpan.FromMinutes(59*ResearchTimeCoeff),
+                    TimeSpan.FromMinutes(81*ResearchTimeCoeff),
                     TimeSpan.FromMinutes(166*ResearchTimeCoeff),
                     TimeSpan.FromMinutes(201*ResearchTimeCoeff),
                     TimeSpan.FromMinutes(0)
