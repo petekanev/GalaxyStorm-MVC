@@ -100,7 +100,7 @@
             this.shards.SaveChanges();
         }
 
-        public IEnumerable<Shard> GetShards()
+        public IQueryable<Shard> GetShards()
         {
             return this.shards.All();
         }

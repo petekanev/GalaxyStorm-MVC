@@ -60,9 +60,9 @@
             var area4Context = new AreaRegistrationContext(area4Reg.AreaName, RouteTable.Routes);
             area4Reg.RegisterArea(area4Context);
 
-            //var area5Reg = new PublicAreaRegistration();
-            //var area5Context = new AreaRegistrationContext(area5Reg.AreaName, RouteTable.Routes);
-            //area5Reg.RegisterArea(area5Context);
+            var area5Reg = new PublicAreaRegistration();
+            var area5Context = new AreaRegistrationContext(area5Reg.AreaName, RouteTable.Routes);
+            area5Reg.RegisterArea(area5Context);
         }
     }
 }

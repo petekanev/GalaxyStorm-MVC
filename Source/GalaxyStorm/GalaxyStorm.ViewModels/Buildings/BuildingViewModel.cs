@@ -1,6 +1,7 @@
 ﻿namespace GalaxyStorm.ViewModels.Buildings
 {
     using System;
+    using GalaxyStorm.Common.Contracts;
     using Logic.Core.Buildings;
 
     public class BuildingViewModel

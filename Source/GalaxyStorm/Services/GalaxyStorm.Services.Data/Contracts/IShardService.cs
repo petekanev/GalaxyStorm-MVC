@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using GalaxyStorm.Data.Models;
 
     public interface IShardService
@@ -12,6 +13,6 @@
 
         void UpdateShard(Shard shard);
 
-        IEnumerable<Shard> GetShards();
+        IQueryable<Shard> GetShards();
     }
 }

@@ -78,7 +78,9 @@
     <Compile Include="Fleet\FleetViewModel.cs" />
     <Compile Include="Fleet\UnitViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ReportInputModel.cs" />
     <Compile Include="Reports\ReportViewModel.cs" />
+    <Compile Include="Shards\SimpleShardViewModel.cs" />
     <Compile Include="Technologies\TechnologiesViewModel.cs" />
     <Compile Include="Technologies\TechnologyViewModel.cs" />
   </ItemGroup>
