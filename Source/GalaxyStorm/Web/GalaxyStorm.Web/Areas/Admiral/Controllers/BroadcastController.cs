@@ -1,6 +1,8 @@
 ﻿namespace GalaxyStorm.Web.Areas.Admiral.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Cryptography.X509Certificates;
     using System.Web.Mvc;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
@@ -26,9 +28,12 @@
         // GET: AdmiralsQuarters/Broadcast
         public ActionResult Index(ReportInputModel model)
         {
-            var allShards = this.shardService.GetShards()
+            var allShards = this.Cache.Get<IEnumerable<SimpleShardViewModel>>(
+                "AllShards",
+                () => this.shardService.GetShards()
                 .ProjectTo<SimpleShardViewModel>()
-                .ToList();
+                .ToList(),
+                60 * 60);
 
             ViewBag.Shards = allShards;
 
@@ -41,9 +46,12 @@
         {
             if (!ModelState.IsValid)
             {
-                var allShards = this.shardService.GetShards()
+                var allShards = this.Cache.Get<IEnumerable<SimpleShardViewModel>>(
+                    "AllShards",
+                    () => this.shardService.GetShards()
                     .ProjectTo<SimpleShardViewModel>()
-                    .ToList();
+                    .ToList(),
+                    60 * 60);
 
                 ViewBag.Shards = allShards;
 
