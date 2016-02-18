@@ -1,12 +1,13 @@
 ﻿namespace GalaxyStorm.Web.App_Start
 {
+    using System.Reflection;
     using System.Web.Mvc;
     using Autofac;
     using Autofac.Integration.Mvc;
     using Hangfire;
+    using Infrastructure;
     using Logic.Core;
     using Modules;
-    using Services.Data;
 
     public class AutofacConfig
     {
@@ -21,10 +22,8 @@
             builder.RegisterModule(new EfModule());
             builder.RegisterType(typeof(LogicProvider)).As(typeof(ILogicProvider)).InstancePerLifetimeScope();
 
-            // hangfire requires that these be manually bound
-            builder.RegisterType<BuildingService>().InstancePerBackgroundJob();
-            builder.RegisterType<TechnologiesService>().InstancePerBackgroundJob();
-            builder.RegisterType<FleetService>().InstancePerBackgroundJob();
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .AssignableTo<BaseController>().PropertiesAutowired();
 
             var container = builder.Build();
 
