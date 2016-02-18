@@ -3,12 +3,8 @@
     using System.Web.Mvc;
 
     [Authorize]
-    public abstract class UsersController : Controller
+    public abstract class UsersController : BaseController
     {
-        protected virtual void SetErrorMessage()
-        {
-            TempData["Error"] =
-                "The operation could not be completed!";
-        }
+
     }
 }

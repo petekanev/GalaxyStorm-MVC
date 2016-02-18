@@ -12,6 +12,11 @@
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(Assembly.Load("GalaxyStorm.Services.Web"))
+                .Where(t => t.Name.EndsWith("Service"))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
         }
     }
 }

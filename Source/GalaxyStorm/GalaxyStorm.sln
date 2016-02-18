@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shards", "Shards", "{522FC6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Common", "Core\GalaxyStorm.Common\GalaxyStorm.Common.csproj", "{58EB223D-5336-4BF0-954C-E38FB4DF2F79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Services.Web", "Services\GalaxyStorm.Services.Web\GalaxyStorm.Services.Web.csproj", "{13FBAC83-B3D2-4002-A949-EA757771BEC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{58EB223D-5336-4BF0-954C-E38FB4DF2F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58EB223D-5336-4BF0-954C-E38FB4DF2F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58EB223D-5336-4BF0-954C-E38FB4DF2F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FBAC83-B3D2-4002-A949-EA757771BEC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FBAC83-B3D2-4002-A949-EA757771BEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FBAC83-B3D2-4002-A949-EA757771BEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FBAC83-B3D2-4002-A949-EA757771BEC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,5 +110,6 @@ Global
 		{CD8987ED-C11E-45BD-870C-01159047DA9C} = {2D3C1056-1E61-41DC-8346-CDA53F0C8CD0}
 		{522FC6F9-1E20-4C36-94D8-94062B4B0D59} = {2D3C1056-1E61-41DC-8346-CDA53F0C8CD0}
 		{58EB223D-5336-4BF0-954C-E38FB4DF2F79} = {48F2E270-892F-48E3-B76C-FD4CC97AB13A}
+		{13FBAC83-B3D2-4002-A949-EA757771BEC4} = {92F27D3E-F1DC-4273-BD76-A76D57B68E24}
 	EndGlobalSection
 EndGlobal

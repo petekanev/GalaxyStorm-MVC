@@ -3,7 +3,7 @@
     using System.Web.Mvc;
 
     [Authorize(Roles = "Admiral")]
-    public abstract class AdminController : Controller
+    public abstract class AdminController : BaseController
     {
     }
 }

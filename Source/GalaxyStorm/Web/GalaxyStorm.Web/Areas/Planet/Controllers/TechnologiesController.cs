@@ -59,7 +59,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+                BackgroundJob.Schedule<ITechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
             }
             else
             {
@@ -79,7 +79,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+                BackgroundJob.Schedule<ITechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
             }
             else
             {
@@ -99,7 +99,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+                BackgroundJob.Schedule<ITechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
             }
             else
             {
@@ -119,7 +119,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+                BackgroundJob.Schedule<ITechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
             }
             else
             {
@@ -139,7 +139,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<TechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
+                BackgroundJob.Schedule<ITechnologiesService>(x => x.CompleteResearching(userId), timespan.Value);
             }
             else
             {

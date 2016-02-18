@@ -243,6 +243,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AdminController.cs" />
+    <Compile Include="Infrastructure\BaseController.cs" />
     <Compile Include="Infrastructure\UsersController.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Modules\EfModule.cs" />
@@ -422,6 +423,7 @@
     <Folder Include="Areas\Admiral\Views\Shared\" />
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Shard\Models\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +453,10 @@
     <ProjectReference Include="..\..\Services\GalaxyStorm.Services.Data\GalaxyStorm.Services.Data.csproj">
       <Project>{56fb94a5-977d-4a90-8a3a-80bf5007be1f}</Project>
       <Name>GalaxyStorm.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\GalaxyStorm.Services.Web\GalaxyStorm.Services.Web.csproj">
+      <Project>{13FBAC83-B3D2-4002-A949-EA757771BEC4}</Project>
+      <Name>GalaxyStorm.Services.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

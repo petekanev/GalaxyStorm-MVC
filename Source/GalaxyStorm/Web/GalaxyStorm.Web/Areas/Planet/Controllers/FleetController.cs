@@ -131,7 +131,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -151,7 +151,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -171,7 +171,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -191,7 +191,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -211,7 +211,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -231,7 +231,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<FleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {

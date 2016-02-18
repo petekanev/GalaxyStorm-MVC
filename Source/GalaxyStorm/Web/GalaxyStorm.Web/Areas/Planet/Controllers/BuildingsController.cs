@@ -68,7 +68,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+                BackgroundJob.Schedule<IBuildingsService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
             else
             {
@@ -110,7 +110,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+                BackgroundJob.Schedule<IBuildingsService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
             else
             {
@@ -152,7 +152,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+                BackgroundJob.Schedule<IBuildingsService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
             else
             {
@@ -194,7 +194,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+                BackgroundJob.Schedule<IBuildingsService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
             else
             {
@@ -236,7 +236,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+                BackgroundJob.Schedule<IBuildingsService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
             else
             {
@@ -278,7 +278,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<BuildingService>(x => x.CompleteBuilding(userId), timespan.Value);
+                BackgroundJob.Schedule<IBuildingsService>(x => x.CompleteBuilding(userId), timespan.Value);
             }
             else
             {
