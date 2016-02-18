@@ -13,9 +13,19 @@
                 "The operation could not be completed!";
         }
 
-        protected virtual void SetErrorMessage(string message)
+        protected void SetErrorMessage(string message)
         {
             TempData["Error"] = message;
+        }
+
+        protected void SetSuccessMessage(string message)
+        {
+            TempData["Success"] = message;
+        }
+
+        protected void SetInfoMessage(string message)
+        {
+            TempData["Info"] = message;
         }
     }
 }

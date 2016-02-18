@@ -58,18 +58,13 @@
                 return View("Index", model);
             }
 
-            this.SetSuccessMessage();
+            this.SetSuccessMessage("The message will be sent out to all players in the shard.");
 
             var report = Mapper.Map<Report>(model);
 
             BackgroundJob.Enqueue<IReportsService>(rs => rs.BroadcastToShard(model.ShardId, report));
 
             return RedirectToAction("Index");
-        }
-
-        private void SetSuccessMessage()
-        {
-            TempData["Success"] = "The message will be sent out to all players in the shard.";
         }
     }
 }
