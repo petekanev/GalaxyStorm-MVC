@@ -288,6 +288,7 @@
     <Content Include="Content\theme\bootstrap-theme-dark.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\ionicons.svg" />
+    <Content Include="GalaxyStorm.Web.publish.xml" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -335,6 +336,7 @@
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Images\100xX\bomber.png" />
     <Content Include="Images\100xX\carrier.png" />
