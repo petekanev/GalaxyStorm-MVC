@@ -45,13 +45,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Common", "Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Services.Web", "Services\GalaxyStorm.Services.Web\GalaxyStorm.Services.Web.csproj", "{13FBAC83-B3D2-4002-A949-EA757771BEC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Common", "Tests\GalaxyStorm.Common\GalaxyStorm.Common.csproj", "{225ADFAF-3963-4E46-B610-EC80AAC59745}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Services.Tests", "Tests\GalaxyStorm.Services.Tests\GalaxyStorm.Services.Tests.csproj", "{7632F12B-990F-4641-98E5-1699E3ECD7AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.RouteTests", "Tests\GalaxyStorm.RouteTests\GalaxyStorm.RouteTests.csproj", "{94079D72-090A-4DE1-8CEE-1E8D4BFF7314}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Controllers.Tests", "Tests\GalaxyStorm.Controllers.Tests\GalaxyStorm.Controllers.Tests.csproj", "{FC1AE13B-5198-44C6-8E24-2E81CD70E3CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.ControllerTests", "Tests\GalaxyStorm.ControllerTests\GalaxyStorm.ControllerTests.csproj", "{5DF11AE2-138C-482C-AA77-9E1BF05C3F4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Common.Tests", "Tests\GalaxyStorm.Common.Tests\GalaxyStorm.Common.Tests.csproj", "{225ADFAF-3963-4E46-B610-EC80AAC59745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.ServicesTests", "Tests\GalaxyStorm.ServicesTests\GalaxyStorm.ServicesTests.csproj", "{11B7BB1F-F19F-4DFF-88A8-B3D133949896}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyStorm.Web.Routes.Tests", "Tests\GalaxyStorm.Web.Routes.Tests\GalaxyStorm.Web.Routes.Tests.csproj", "{94079D72-090A-4DE1-8CEE-1E8D4BFF7314}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +95,14 @@ Global
 		{13FBAC83-B3D2-4002-A949-EA757771BEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13FBAC83-B3D2-4002-A949-EA757771BEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13FBAC83-B3D2-4002-A949-EA757771BEC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7632F12B-990F-4641-98E5-1699E3ECD7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7632F12B-990F-4641-98E5-1699E3ECD7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7632F12B-990F-4641-98E5-1699E3ECD7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7632F12B-990F-4641-98E5-1699E3ECD7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1AE13B-5198-44C6-8E24-2E81CD70E3CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1AE13B-5198-44C6-8E24-2E81CD70E3CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1AE13B-5198-44C6-8E24-2E81CD70E3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1AE13B-5198-44C6-8E24-2E81CD70E3CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{225ADFAF-3963-4E46-B610-EC80AAC59745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{225ADFAF-3963-4E46-B610-EC80AAC59745}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{225ADFAF-3963-4E46-B610-EC80AAC59745}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -103,14 +111,6 @@ Global
 		{94079D72-090A-4DE1-8CEE-1E8D4BFF7314}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94079D72-090A-4DE1-8CEE-1E8D4BFF7314}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94079D72-090A-4DE1-8CEE-1E8D4BFF7314}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DF11AE2-138C-482C-AA77-9E1BF05C3F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DF11AE2-138C-482C-AA77-9E1BF05C3F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DF11AE2-138C-482C-AA77-9E1BF05C3F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DF11AE2-138C-482C-AA77-9E1BF05C3F4D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11B7BB1F-F19F-4DFF-88A8-B3D133949896}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11B7BB1F-F19F-4DFF-88A8-B3D133949896}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11B7BB1F-F19F-4DFF-88A8-B3D133949896}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11B7BB1F-F19F-4DFF-88A8-B3D133949896}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,9 +128,9 @@ Global
 		{522FC6F9-1E20-4C36-94D8-94062B4B0D59} = {2D3C1056-1E61-41DC-8346-CDA53F0C8CD0}
 		{58EB223D-5336-4BF0-954C-E38FB4DF2F79} = {48F2E270-892F-48E3-B76C-FD4CC97AB13A}
 		{13FBAC83-B3D2-4002-A949-EA757771BEC4} = {92F27D3E-F1DC-4273-BD76-A76D57B68E24}
+		{7632F12B-990F-4641-98E5-1699E3ECD7AE} = {15FD6402-5676-47E0-AE9B-39213A1E5507}
+		{FC1AE13B-5198-44C6-8E24-2E81CD70E3CD} = {15FD6402-5676-47E0-AE9B-39213A1E5507}
 		{225ADFAF-3963-4E46-B610-EC80AAC59745} = {15FD6402-5676-47E0-AE9B-39213A1E5507}
 		{94079D72-090A-4DE1-8CEE-1E8D4BFF7314} = {15FD6402-5676-47E0-AE9B-39213A1E5507}
-		{5DF11AE2-138C-482C-AA77-9E1BF05C3F4D} = {15FD6402-5676-47E0-AE9B-39213A1E5507}
-		{11B7BB1F-F19F-4DFF-88A8-B3D133949896} = {15FD6402-5676-47E0-AE9B-39213A1E5507}
 	EndGlobalSection
 EndGlobal
