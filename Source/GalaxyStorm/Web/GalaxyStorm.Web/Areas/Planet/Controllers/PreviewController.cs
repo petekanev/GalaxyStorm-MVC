@@ -81,6 +81,7 @@
             return View(info);
         }
         
+        [ChildActionOnly]
         public ActionResult Resources()
         {
             var userId = User.Identity.GetUserId();
