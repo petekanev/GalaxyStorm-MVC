@@ -25,6 +25,12 @@
             this.routeCollection = RouteTable.Routes;
         }
 
+        [TestFixtureTearDown]
+        public void RouteCollectionDestroy()
+        {
+            RouteTable.Routes.Clear();
+        }
+
         [Test]
         public void TestDefaultPlanetAreaRoute()
         {
@@ -106,7 +112,7 @@
         }
 
         [Test]
-        public void TestPlanetResourcesPartialRoute()
+        public void TestPlanetResourcesPartialIsChildActionRoute()
         {
             var url = "/Planet/Preview/Resources";
             this.routeCollection.ShouldMap(url).To<PreviewController>(c => c.Resources());
