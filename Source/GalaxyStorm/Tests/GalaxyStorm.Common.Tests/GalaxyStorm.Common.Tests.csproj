@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mocks\MocksFactory.cs" />
+    <Compile Include="Mocks\Repositories\PlayerObjectsRepositoryMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mocks\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj">
+      <Project>{55085A4D-FF06-4E40-948B-C40D07452B52}</Project>
+      <Name>GalaxyStorm.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GalaxyStorm.Data\GalaxyStorm.Data.csproj">
+      <Project>{6D6DD2EA-F3FA-45E4-8959-3DA56889A4C5}</Project>
+      <Name>GalaxyStorm.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
