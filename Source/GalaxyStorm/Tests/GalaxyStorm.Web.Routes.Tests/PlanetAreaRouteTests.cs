@@ -88,5 +88,28 @@
             var amount = 237;
             this.routeCollection.ShouldMap(url).WithJsonBody(string.Format("{{ 'amount': {0} }}", amount)).To<FleetController>(HttpMethod.Post, c => c.RecruitBombers(amount));
         }
+
+        [Test]
+        public void TestPlanetFleetDispatched()
+        {
+            var url = "Planet/Fleet/Dispatched";
+            // this.routeCollection.ShouldMap(url).To<FleetController>(c => c.Dispatched);
+            Assert.Fail("Not implemented yet!");
+        }
+
+        [Test]
+        public void TestPlanetFleetLocal()
+        {
+            var url = "Planet/Fleet/Local";
+            // this.routeCollection.ShouldMap(url).To<FleetController>(c => c.Local);
+            Assert.Fail("Not implemented yet!");
+        }
+
+        [Test]
+        public void TestPlanetResourcesPartialRoute()
+        {
+            var url = "/Planet/Preview/Resources";
+            this.routeCollection.ShouldMap(url).To<PreviewController>(c => c.Resources());
+        }
     }
 }
