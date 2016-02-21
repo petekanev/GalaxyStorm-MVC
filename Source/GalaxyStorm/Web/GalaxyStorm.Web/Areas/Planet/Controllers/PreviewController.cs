@@ -1,6 +1,5 @@
 ﻿namespace GalaxyStorm.Web.Areas.Planet.Controllers
 {
-    using System;
     using System.Web.Mvc;
     using AutoMapper;
     using Infrastructure;
