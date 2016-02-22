@@ -1,6 +1,5 @@
 ﻿namespace GalaxyStorm.Web.Areas.Planet.Controllers
 {
-    using System;
     using System.Web.Mvc;
     using AutoMapper;
     using Infrastructure;
@@ -81,6 +80,7 @@
             return View(info);
         }
         
+        [ChildActionOnly]
         public ActionResult Resources()
         {
             var userId = User.Identity.GetUserId();

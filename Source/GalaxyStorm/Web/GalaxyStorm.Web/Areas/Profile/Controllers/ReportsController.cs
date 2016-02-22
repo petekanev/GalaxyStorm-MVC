@@ -9,5 +9,10 @@
         {
             return View();
         }
+
+        public ActionResult Details(int id)
+        {
+            return null;
+        }
     }
 }
