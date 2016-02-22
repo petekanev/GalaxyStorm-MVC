@@ -86,6 +86,9 @@
     <Reference Include="Hangfire.SqlServer">
       <HintPath>..\..\packages\Hangfire.SqlServer.1.5.3\lib\net45\Hangfire.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\..\libs\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -280,6 +283,59 @@
     <Content Include="Content\jqueryui\jquery-ui.structure.min.css" />
     <Content Include="Content\jqueryui\jquery-ui.theme.css" />
     <Content Include="Content\jqueryui\jquery-ui.theme.min.css" />
+    <Content Include="Content\kendoui\custom-theme\kendo.custom.css" />
+    <Content Include="Content\kendoui\Default\editor.png" />
+    <Content Include="Content\kendoui\Default\imagebrowser.png" />
+    <Content Include="Content\kendoui\Default\indeterminate.gif" />
+    <Content Include="Content\kendoui\Default\loading-image.gif" />
+    <Content Include="Content\kendoui\Default\loading.gif" />
+    <Content Include="Content\kendoui\Default\loading_2x.gif" />
+    <Content Include="Content\kendoui\Default\markers.png" />
+    <Content Include="Content\kendoui\Default\markers_2x.png" />
+    <Content Include="Content\kendoui\Default\slider-h.gif" />
+    <Content Include="Content\kendoui\Default\slider-v.gif" />
+    <Content Include="Content\kendoui\Default\sprite.png" />
+    <Content Include="Content\kendoui\Default\sprite_2x.png" />
+    <Content Include="Content\kendoui\Default\sprite_kpi.png" />
+    <Content Include="Content\kendoui\Default\sprite_kpi_2x.png" />
+    <Content Include="Content\kendoui\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Content\kendoui\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Content\kendoui\images\back.png" />
+    <Content Include="Content\kendoui\images\kendoui.svg" />
+    <Content Include="Content\kendoui\images\wp8_icons.png" />
+    <Content Include="Content\kendoui\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendoui\kendo.common.min.css" />
+    <Content Include="Content\kendoui\kendo.default.min.css" />
+    <Content Include="Content\kendoui\textures\brushed-metal.png" />
+    <Content Include="Content\kendoui\textures\dots1.png" />
+    <Content Include="Content\kendoui\textures\dots10.png" />
+    <Content Include="Content\kendoui\textures\dots11.png" />
+    <Content Include="Content\kendoui\textures\dots12.png" />
+    <Content Include="Content\kendoui\textures\dots13.png" />
+    <Content Include="Content\kendoui\textures\dots2.png" />
+    <Content Include="Content\kendoui\textures\dots3.png" />
+    <Content Include="Content\kendoui\textures\dots4.png" />
+    <Content Include="Content\kendoui\textures\dots5.png" />
+    <Content Include="Content\kendoui\textures\dots6.png" />
+    <Content Include="Content\kendoui\textures\dots7.png" />
+    <Content Include="Content\kendoui\textures\dots8.png" />
+    <Content Include="Content\kendoui\textures\dots9.png" />
+    <Content Include="Content\kendoui\textures\glass-lighter.png" />
+    <Content Include="Content\kendoui\textures\glass.png" />
+    <Content Include="Content\kendoui\textures\highlight.png" />
+    <Content Include="Content\kendoui\textures\hsv-gradient.png" />
+    <Content Include="Content\kendoui\textures\hue.png" />
+    <Content Include="Content\kendoui\textures\leather1.png" />
+    <Content Include="Content\kendoui\textures\leather2.png" />
+    <Content Include="Content\kendoui\textures\noise.png" />
+    <Content Include="Content\kendoui\textures\stripe1.png" />
+    <Content Include="Content\kendoui\textures\stripe2.png" />
+    <Content Include="Content\kendoui\textures\stripe3.png" />
+    <Content Include="Content\kendoui\textures\stripe4.png" />
+    <Content Include="Content\kendoui\textures\stripe5.png" />
+    <Content Include="Content\kendoui\textures\stripe6.png" />
+    <Content Include="Content\kendoui\textures\transparency.png" />
+    <Content Include="Content\kendoui\textures\transtexture.png" />
     <Content Include="Content\public\color.css" />
     <Content Include="Content\public\custom.css" />
     <Content Include="Content\public\style.css" />
@@ -303,6 +359,7 @@
     <None Include="Areas\Admiral\Views\Broadcast\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Settings\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Shards\Index.cshtml" />
+    <Content Include="Areas\Admiral\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\Admiral\Views\Supplements\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\Preview\Index.cshtml" />
@@ -336,6 +393,27 @@
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Content\kendoui\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Content\kendoui\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Content\kendoui\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Content\kendoui\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Content\kendoui\images\kendoui.ttf" />
+    <Content Include="Content\kendoui\images\kendoui.woff" />
+    <Content Include="Content\kendoui\kendo.common.min.css.map" />
+    <Content Include="Content\kendoui\kendo.default.min.css.map" />
+    <Content Include="Content\kendoui\custom-theme\kendo.custom.less" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Images\100xX\bomber.png" />
@@ -384,6 +462,8 @@
     <Content Include="Scripts\common\main.js" />
     <Content Include="Scripts\jqueryui\jquery-ui.js" />
     <Content Include="Scripts\jqueryui\jquery-ui.min.js" />
+    <Content Include="Scripts\kendoui\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\kendoui\kendo.custom.min.js" />
     <Content Include="Scripts\public\variables.js" />
     <Content Include="Scripts\common\vendor\vendor.js" />
     <Content Include="Scripts\_references.js" />
@@ -421,11 +501,10 @@
     <Content Include="Views\Shared\DisplayTemplates\MaxTechButtons.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admiral\Models\" />
-    <Folder Include="Areas\Admiral\Views\Shared\" />
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Shard\Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Shards\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

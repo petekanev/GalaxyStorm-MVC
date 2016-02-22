@@ -34,6 +34,10 @@ namespace GalaxyStorm.Web
                     "~/Content/public/title-size.css"
                     ));
 
+            bundles.Add(new StyleBundle("~/Content/kendo").Include(
+                "~/Content/kendoui/kendo.common.min.css",
+                "~/Content/kendoui/custom-theme/kendo.custom.css"));
+
             bundles.Add(new StyleBundle("~/Content/hex").Include(
                 "~/Content/hex/hexagons.css",
                 "~/Content/hex/custom-hex.css"));
@@ -54,6 +58,10 @@ namespace GalaxyStorm.Web
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                 "~/Scripts/jqueryui/jquery-ui.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                "~/Scripts/kendoui/kendo.custom.min.js",
+                "~/Scripts/kendoui/kendo.aspnetmvc.min.js"));
         }
     }
 }

@@ -1,8 +1,26 @@
-﻿@model dynamic
+﻿@using Kendo.Mvc.UI
 
-@{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
-}
-
-<h2>title</h2>
+@(Html.Kendo().Grid<GalaxyStorm.Data.Models.Shard>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Title);
+        columns.Bound(c => c.ShardSize);
+        columns.Bound(c => c.BuildSpeed);
+        columns.Bound(c => c.IsLocked);
+        columns.Command(command => { command.Edit(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.MultipleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Shards_Read", "Shards"))
+          .Update(update => update.Action("Shards_Update", "Shards"))
+      )
+)
