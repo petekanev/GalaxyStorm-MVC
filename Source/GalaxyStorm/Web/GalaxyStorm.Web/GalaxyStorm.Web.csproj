@@ -222,7 +222,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admiral\AdmiralAreaRegistration.cs" />
     <Compile Include="Areas\Admiral\Controllers\BroadcastController.cs" />
-    <Compile Include="Areas\Admiral\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Admiral\Controllers\ShardsController.cs" />
     <Compile Include="Areas\Admiral\Controllers\SupplementsController.cs" />
     <Compile Include="Areas\Admiral\Controllers\UsersController.cs" />
@@ -344,7 +343,6 @@
     <Content Include="Content\theme\bootstrap-theme-dark.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\ionicons.svg" />
-    <Content Include="GalaxyStorm.Web.publish.xml" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -357,10 +355,9 @@
     <Content Include="Areas\Shard\Views\web.config" />
     <Content Include="Areas\Profile\Views\web.config" />
     <None Include="Areas\Admiral\Views\Broadcast\Index.cshtml" />
-    <None Include="Areas\Admiral\Views\Settings\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Shards\Index.cshtml" />
     <Content Include="Areas\Admiral\Views\Shared\_Layout.cshtml" />
-    <None Include="Areas\Admiral\Views\Supplements\Index.cshtml" />
+    <Content Include="Areas\Admiral\Views\Supplements\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\Preview\Index.cshtml" />
     <Content Include="Areas\Planet\Views\Buildings\Headquarters.cshtml" />
@@ -506,6 +503,7 @@
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Shards\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
+    <Folder Include="Views\Supplements\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

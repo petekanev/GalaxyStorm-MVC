@@ -54,5 +54,7 @@
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<GalaxyStorm.ViewModels.Shards.ShardViewModel> ShardViewModels { get; set; }
     }
 }

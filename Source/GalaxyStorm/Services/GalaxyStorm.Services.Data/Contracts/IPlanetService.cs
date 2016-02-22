@@ -11,6 +11,6 @@
 
         Planet GetPrivatePlanet(string shardName, string planetName);
 
-        IQueryable<Planet> GetPlanetsByShardId(string shardId);
+        IQueryable<Planet> GetPlanetsByShardId(int shardId);
     }
 }

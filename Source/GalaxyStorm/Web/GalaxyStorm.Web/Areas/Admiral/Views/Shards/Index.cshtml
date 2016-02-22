@@ -1,58 +1,84 @@
 ﻿@using GalaxyStorm.ViewModels.Common
 @using Kendo.Mvc.UI
 
-@(Html.Kendo().Grid<GalaxyStorm.Data.Models.Shard>()
-      .Name("grid")
-      .Columns(columns =>
-      {
-        columns.Bound(c => c.Title);
-        columns.Bound(c => c.ShardSize);
-        columns.Bound(c => c.BuildSpeed);
-        columns.Bound(c => c.IsLocked);
-        columns.Command(command => { command.Edit(); }).Width(180);
-      })
-      .ColumnMenu()
-      .Editable(editable => editable.Mode(GridEditMode.PopUp))
-      .Sortable(sortable => {
-          sortable.SortMode(GridSortMode.MultipleColumn);
-      })
-      .Filterable()
-      .ClientDetailTemplateId("planetTemplate")
-      .DataSource(dataSource => dataSource
-          .Ajax()
-          .Model(model => model.Id(p => p.Id))
-          .Read(read => read.Action("Read", "Shards"))
-          .Update(update => update.Action("Update", "Shards"))
-      )
-)
+@model IEnumerable<GalaxyStorm.ViewModels.Shards.SimpleShardViewModel>
+
+@{
+    ViewBag.Title = "Shard Managing";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @ViewBag.Title <small></small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+
+    @(Html.Kendo().Grid(Model)
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Title);
+              columns.Bound(c => c.BuildSpeed);
+              columns.Bound(c => c.IsLocked);
+              columns.Command(command => { command.Edit(); }).Width(180);
+          })
+          .ColumnMenu()
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.MultipleColumn);
+          })
+                   .Pageable(pageable => pageable.Refresh(true))
+                  .Filterable()
+                  .ClientDetailTemplateId("planetTemplate")
+                  .DataSource(dataSource => dataSource
+                      .Ajax()      
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("Read", "Shards"))
+              .Update(update => update.Action("Update", "Shards"))
+          )
+    )
+</div>
 
 <script id="planetTemplate" type="text/kendo-tmpl">
     @(Html.Kendo().TabStrip()
-            .Name("TabStrip#=Id#")
-            .SelectedIndex(0)
-            .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In)))
-            .Items(items =>
-            {
-                items.Add().Text("Planets").Content(@<text>
-                    @(Html.Kendo().Grid<PlayerPlanetViewModel>()
-                        .Name("grid_#=Id#")
-                        .Columns(columns =>
-                        {
-                            columns.Bound(p => p.Title).Width(250);
-                            columns.Bound(p => p.X);
-                            columns.Bound(p => p.Y);
-                            columns.Bound(p => p.IsPopulated);
-                            columns.Command(c => c.Custom("Go to").Click("gotoPlanetPage"));
-                        })
-                        .DataSource(dataSource => dataSource
-                            .Ajax()
-                            .PageSize(5)
-                                    .Read(read => read.Action("ReadPlanets", "Shards", new { shardId = "#=Id#" }))
-                        )
-                        .Pageable()
-                        .Sortable()
-                        .ToClientTemplate())
-                </text>);
-            })
-                                                                                .ToClientTemplate())
+          .Name("planets")
+          .SelectedIndex(0)
+          .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In)))
+          .Items(items =>
+          {
+              items.Add().Text("Planets").Content(@<text>
+                @(Html.Kendo().Grid<PlayerPlanetViewModel>()
+                          .Name("grid_#=Id#")
+                          .Columns(columns =>
+                          {
+                              columns.Bound(p => p.Title).Width(250);
+                              columns.Bound(p => p.X);
+                              columns.Bound(p => p.Y);
+                              columns.Bound(p => p.IsPopulated);
+                              columns.Command(c => c.Custom("Go to").Click("gotoPlanetPage"));
+                          })
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .PageSize(10)
+                              .Read(read => read.Action("ReadPlanets", "Shards", new { shardId = "#=Id#" }))
+                          )
+                          .Pageable()
+                          .Sortable()
+                          .ToClientTemplate())
+            </text>);
+          })
+          .ToClientTemplate())
+</script>
+
+<script>
+    function gotoPlanetPage(e) {
+        e.preventDefault();
+
+        location.href = "/Shard";
+    }
 </script>

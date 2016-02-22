@@ -83,9 +83,9 @@
             return planet;
         }
 
-        public IQueryable<Planet> GetPlanetsByShardId(string shardId)
+        public IQueryable<Planet> GetPlanetsByShardId(int shardId)
         {
-            var shard = this.shards.All().FirstOrDefault();
+            var shard = this.shards.All().FirstOrDefault(x => x.Id == shardId);
 
             if (shard == null)
             {
