@@ -27,7 +27,6 @@
 
             var player = this.playerService.GetPlayerInformation(userId);
 
-            // TODO: Optimize?
             var vM = Mapper.Map<PlayerObject, SimplePlayerViewModel>(player);
 
             return View(vM);

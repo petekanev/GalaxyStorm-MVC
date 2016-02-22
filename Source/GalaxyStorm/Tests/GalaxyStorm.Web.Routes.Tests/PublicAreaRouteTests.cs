@@ -25,6 +25,12 @@
             this.routeCollection = RouteTable.Routes;
         }
 
+        [TestFixtureTearDown]
+        public void RouteCollectionDestroy()
+        {
+            RouteTable.Routes.Clear();
+        }
+
         [Test]
         public void TestDefaultPublicAreaRoute()
         {
