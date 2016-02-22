@@ -6,10 +6,20 @@
     using Data;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using Services.Data.Contracts;
     using Shard = Data.Models.Shard;
 
     public class ShardsController : Controller
     {
+        private readonly IPlanetService planetService;
+        private readonly IShardService shardService;
+
+        public ShardsController(IPlanetService planetService, IShardService shardService)
+        {
+            this.planetService = planetService;
+            this.shardService = shardService;
+        }
+
         private GalaxyStormDbContext db = new GalaxyStormDbContext();
 
         public ActionResult Index()
@@ -17,7 +27,7 @@
             return View();
         }
 
-        public ActionResult Shards_Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
             IQueryable<Shard> shards = db.Shards;
             DataSourceResult result = shards.ToDataSourceResult(request, shard => new {
@@ -31,8 +41,13 @@
             return Json(result);
         }
 
+        public ActionResult ReadPlanets([DataSourceRequest] DataSourceRequest request, int shardId)
+        {
+            
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Shards_Update([DataSourceRequest]DataSourceRequest request, Shard shard)
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, Shard shard)
         {
             if (ModelState.IsValid)
             {

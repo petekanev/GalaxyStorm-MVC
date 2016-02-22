@@ -67,6 +67,34 @@
             return planet;
         }
 
+        public Planet GetPrivatePlanet(string shardName, string planetName)
+        {
+            var shard =
+                this.shards.All().FirstOrDefault(x => x.Title == shardName);
+
+            if (shard == null)
+            {
+                return null;
+            }
+
+            var planet =
+               shard.Planets.FirstOrDefault(x => x.Title == planetName);
+
+            return planet;
+        }
+
+        public IQueryable<Planet> GetPlanetsByShardId(string shardId)
+        {
+            var shard = this.shards.All().FirstOrDefault();
+
+            if (shard == null)
+            {
+                return null;
+            }
+
+            return shard.Planets.AsQueryable();
+        }
+
         private bool IsAllowed(PlayerObject player, Shard shard)
         {
             return player.Planet.ShardId == shard.Id;
