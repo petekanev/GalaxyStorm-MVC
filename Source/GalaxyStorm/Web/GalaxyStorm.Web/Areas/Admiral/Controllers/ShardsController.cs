@@ -1,17 +1,13 @@
-﻿﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
-using GalaxyStorm.Data.Models;
-
-namespace GalaxyStorm.Web.Areas.Admiral.Controllers
+﻿namespace GalaxyStorm.Web.Areas.Admiral.Controllers
 {
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Data;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+    using Shard = Data.Models.Shard;
+
     public class ShardsController : Controller
     {
         private GalaxyStormDbContext db = new GalaxyStormDbContext();

@@ -1,4 +1,5 @@
-﻿
+﻿@using Kendo.Mvc.UI
+
 @(Html.Kendo().Grid<GalaxyStorm.Data.Models.Shard>()
       .Name("grid")
       .Columns(columns =>
@@ -11,10 +12,6 @@
       })
       .ColumnMenu()
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
-      .Selectable(selectable => {
-            selectable.Mode(GridSelectionMode.Single);
-            selectable.Type(GridSelectionType.Row);
-      })
       .Sortable(sortable => {
           sortable.SortMode(GridSortMode.MultipleColumn);
       })
