@@ -1,0 +1,24 @@
+﻿@model GalaxyStorm.ViewModels.Supplements.SupplementsViewModel
+
+@Html.HiddenFor(model => model.Id)
+
+<div class="row">
+    @Html.LabelFor(model => model.Energy, new { @class = "control-label col-md-3 col-md-offset-1 text-right" })
+    @Html.EditorFor(model => model.Energy)
+    @Html.ValidationMessageFor(model => model.Energy)
+
+</div>
+<br />
+<div class="row">
+    @Html.LabelFor(model => model.Crystal, new {@class = "control-label col-md-3 col-md-offset-1 text-right"})
+    @Html.EditorFor(model => model.Crystal)
+    @Html.ValidationMessageFor(model => model.Crystal)
+
+</div>
+<br />
+<div class="row">
+    @Html.LabelFor(model => model.Metal, new { @class = "control-label col-md-3 col-md-offset-1 text-right" })
+    @Html.EditorFor(model => model.Metal)
+    @Html.ValidationMessageFor(model => model.Metal)
+
+</div>

@@ -34,8 +34,8 @@
             modelBuilder.Entity<Planet>()
                 .HasRequired(x => x.Shard)
                 .WithMany(x => x.Planets)
-                .WillCascadeOnDelete(false); 
-            
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ApplicationUser>()
                 .HasKey(u => u.Id);
 

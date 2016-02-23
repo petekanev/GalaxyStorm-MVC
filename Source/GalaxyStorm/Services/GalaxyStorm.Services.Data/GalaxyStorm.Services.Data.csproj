@@ -56,12 +56,14 @@
     <Compile Include="BuildingService.cs" />
     <Compile Include="Contracts\IBuildingsService.cs" />
     <Compile Include="Contracts\IFleetService.cs" />
+    <Compile Include="Contracts\IInfoService.cs" />
     <Compile Include="Contracts\IPlanetService.cs" />
     <Compile Include="Contracts\IPlayerService.cs" />
     <Compile Include="Contracts\IReportsService.cs" />
     <Compile Include="Contracts\IShardService.cs" />
     <Compile Include="Contracts\ITechnologiesService.cs" />
     <Compile Include="FleetService.cs" />
+    <Compile Include="InfoService.cs" />
     <Compile Include="PlanetService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

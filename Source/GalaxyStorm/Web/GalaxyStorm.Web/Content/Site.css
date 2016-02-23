@@ -309,3 +309,11 @@ small, h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 select.form-control option {
     background-color: #333;
 }
+
+input {
+    color: #888;
+}
+
+input.no-max-width, textarea.no-max-width {
+    max-width: none;
+}

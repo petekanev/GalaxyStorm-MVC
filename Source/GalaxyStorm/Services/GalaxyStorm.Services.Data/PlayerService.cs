@@ -229,5 +229,27 @@
 
             return user.PlayerObject;
         }
+
+        public IQueryable<PlayerObject> GetPlayers()
+        {
+            return this.players.All();
+        }
+
+        public void UpdateResources(string poId, long energy, long crystal, long metal)
+        {
+            var pO = this.players.All().FirstOrDefault(x => x.Id.ToString() == poId);
+
+            if (pO == null)
+            {
+                return;
+            }
+
+            pO.Resources.Energy = energy;
+            pO.Resources.Crystal = crystal;
+            pO.Resources.Metal = metal;
+
+            this.players.Update(pO);
+            this.players.SaveChanges();
+        }
     }
 }
