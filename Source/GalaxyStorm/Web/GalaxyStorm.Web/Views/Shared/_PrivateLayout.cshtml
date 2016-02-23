@@ -9,7 +9,10 @@
     @Styles.Render("~/Content/jqueryui")
     @Styles.Render("~/Content/hex")
 
+    @RenderSection("styles", required: false)
+
     @Scripts.Render("~/bundles/jquery")
+    @RenderSection("headscripts", required: false)
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
 </head>

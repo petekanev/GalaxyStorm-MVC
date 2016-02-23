@@ -5,7 +5,6 @@
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using Services.Data.Contracts;
-    using ViewModels.Shards;
     using ViewModels.Supplements;
 
     public class SupplementsController : Controller
@@ -36,7 +35,7 @@
         {
             if (ModelState.IsValid)
             {
-
+                this.playerService.UpdateResources(vM.Id, vM.Energy, vM.Crystal, vM.Metal);
             }
 
             return Json(new[] { vM }.ToDataSourceResult(request, ModelState));

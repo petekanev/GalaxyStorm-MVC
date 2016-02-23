@@ -26,8 +26,8 @@
               columns.Bound(c => c.Metal);
               columns.Command(command => { command.Edit(); }).Width(180);
           })
-                  .ColumnMenu()
-                  .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("SupplementsViewModel"))
+          .ColumnMenu()
+          .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("SupplementsViewModel"))
           .Pageable(p => p.Refresh(true))
           .Sortable(sortable =>
           {
@@ -41,5 +41,13 @@
               .Read(read => read.Action("Read", "Supplements"))
               .Update(update => update.Action("Update", "Supplements"))
           )
-    )
+          )
 </div>
+
+@section styles {
+    @Styles.Render("~/Content/kendo")
+}
+
+@section headscripts {
+    @Scripts.Render("~/bundles/kendo")
+}

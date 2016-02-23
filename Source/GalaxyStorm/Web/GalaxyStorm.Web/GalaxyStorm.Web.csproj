@@ -356,7 +356,6 @@
     <Content Include="Areas\Profile\Views\web.config" />
     <None Include="Areas\Admiral\Views\Broadcast\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Shards\Index.cshtml" />
-    <Content Include="Areas\Admiral\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admiral\Views\Supplements\Index.cshtml" />
     <None Include="Areas\Admiral\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\Preview\Index.cshtml" />
@@ -497,6 +496,7 @@
     <Content Include="Views\Shared\DisplayTemplates\TechButtons.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MaxTechButtons.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SupplementsViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SimpleShardViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Profile\Models\" />
