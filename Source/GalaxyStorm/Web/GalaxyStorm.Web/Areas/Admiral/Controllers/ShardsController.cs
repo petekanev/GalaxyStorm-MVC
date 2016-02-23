@@ -56,5 +56,17 @@
 
             return Json(new[] { shard }.ToDataSourceResult(request, ModelState));
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public ActionResult Create(Shard shard)
+        {
+            return null;
+        }
     }
 }

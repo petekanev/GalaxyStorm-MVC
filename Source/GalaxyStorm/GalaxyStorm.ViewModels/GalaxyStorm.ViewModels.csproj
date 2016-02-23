@@ -75,6 +75,7 @@
     <Compile Include="Common\PublicShardViewModel.cs" />
     <Compile Include="Common\ResourcesViewModel.cs" />
     <Compile Include="Common\SimplePlayerViewModel.cs" />
+    <Compile Include="Common\SimpleResourcesViewModel.cs" />
     <Compile Include="Fleet\FleetViewModel.cs" />
     <Compile Include="Fleet\UnitViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Reports\ReportViewModel.cs" />
     <Compile Include="Shards\ShardViewModel.cs" />
     <Compile Include="Shards\SimpleShardViewModel.cs" />
+    <Compile Include="Supplements\SupplementsViewModel.cs" />
     <Compile Include="Technologies\TechnologiesViewModel.cs" />
     <Compile Include="Technologies\TechnologyViewModel.cs" />
   </ItemGroup>

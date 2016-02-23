@@ -1,6 +1,7 @@
 ﻿namespace GalaxyStorm.Services.Data.Contracts
 {
     using System;
+    using System.Linq;
     using GalaxyStorm.Data.Models;
     using GalaxyStorm.Data.Models.PlayerObjects;
 
@@ -23,5 +24,9 @@
         long[] GetHourlyResourceIncome(string userId);
 
         PlayerObject GetPlayerInformation(string userId);
+
+        IQueryable<PlayerObject> GetPlayers();
+
+        void UpdateResources(string poId, long energy, long crystal, long metal);
     }
 }

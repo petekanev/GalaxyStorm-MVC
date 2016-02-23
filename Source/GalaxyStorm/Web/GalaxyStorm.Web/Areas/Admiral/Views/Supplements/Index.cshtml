@@ -1,26 +1,45 @@
 ﻿@using Kendo.Mvc.UI
 
-@(Html.Kendo().Grid<GalaxyStorm.ViewModels.Shards.ShardViewModel>()
-      .Name("grid")
-      .Columns(columns =>
-      {
-        columns.Bound(c => c.Title);
-        columns.Bound(c => c.IsLocked);
-        columns.Bound(c => c.BuildSpeed);
-        columns.Command(command => { command.Edit(); }).Width(180);
-      })
-      .ColumnMenu()
-      .Editable(editable => editable.Mode(GridEditMode.PopUp))
-      .Pageable()
-      .Sortable(sortable => {
-          sortable.SortMode(GridSortMode.MultipleColumn);
-      })
-      .Filterable()
-      .Scrollable()
-      .DataSource(dataSource => dataSource
-          .Ajax()
-          .Model(model => model.Id(p => p.Id))
-          .Read(read => read.Action("Read", "Supplements"))
-          .Update(update => update.Action("Update", "Supplements"))
-      )
-)
+@model IEnumerable<GalaxyStorm.ViewModels.Supplements.SupplementsViewModel>
+
+@{
+    ViewBag.Title = "Hand out Supplements";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @ViewBag.Title <small></small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+
+    @(Html.Kendo().Grid(Model)
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.PlayerDisplayName);
+              columns.Bound(c => c.Energy);
+              columns.Bound(c => c.Crystal);
+              columns.Bound(c => c.Metal);
+              columns.Command(command => { command.Edit(); }).Width(180);
+          })
+                  .ColumnMenu()
+                  .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("SupplementsViewModel"))
+          .Pageable(p => p.Refresh(true))
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.MultipleColumn);
+          })
+          .Filterable()
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .PageSize(10)
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("Read", "Supplements"))
+              .Update(update => update.Action("Update", "Supplements"))
+          )
+    )
+</div>

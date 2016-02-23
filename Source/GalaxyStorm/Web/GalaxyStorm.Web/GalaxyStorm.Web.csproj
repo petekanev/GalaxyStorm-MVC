@@ -496,14 +496,13 @@
     <Content Include="Views\Shared\DisplayTemplates\UnitViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\TechButtons.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MaxTechButtons.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SupplementsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Shard\Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Shards\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
-    <Folder Include="Views\Supplements\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

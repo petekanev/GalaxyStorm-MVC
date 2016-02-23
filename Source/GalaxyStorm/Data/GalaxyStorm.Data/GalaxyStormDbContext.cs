@@ -34,8 +34,8 @@
             modelBuilder.Entity<Planet>()
                 .HasRequired(x => x.Shard)
                 .WithMany(x => x.Planets)
-                .WillCascadeOnDelete(false); 
-            
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ApplicationUser>()
                 .HasKey(u => u.Id);
 
@@ -54,7 +54,5 @@
 
             base.OnModelCreating(modelBuilder);
         }
-
-        public System.Data.Entity.DbSet<GalaxyStorm.ViewModels.Shards.ShardViewModel> ShardViewModels { get; set; }
     }
 }
