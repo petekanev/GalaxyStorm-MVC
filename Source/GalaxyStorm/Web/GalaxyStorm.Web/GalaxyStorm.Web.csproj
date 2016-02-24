@@ -416,8 +416,11 @@
     <Content Include="Content\kendoui\kendo.common.min.css.map" />
     <Content Include="Content\kendoui\kendo.default.min.css.map" />
     <Content Include="Content\kendoui\custom-theme\kendo.custom.less" />
-    <Content Include="GalaxyStorm.PublishSettings" />
-    <None Include="Properties\PublishProfiles\GalaxyStorm.pubxml" />
+    <None Include="Properties\PublishProfiles\galaxy-storm - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\galaxy-storm - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\galaxy-storm-ta - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\galaxy-storm-ta - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\GalaxyStorm %282%29.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Images\100xX\bomber.png" />
     <Content Include="Images\100xX\carrier.png" />
@@ -470,15 +473,15 @@
     <Content Include="Scripts\public\variables.js" />
     <Content Include="Scripts\common\vendor\vendor.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
+    <None Include="Web.config">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
+    </None>
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
+    </None>
+    <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    </None>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />

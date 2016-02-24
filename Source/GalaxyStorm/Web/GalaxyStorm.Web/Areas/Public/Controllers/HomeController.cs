@@ -9,7 +9,7 @@
         {
             if (HttpContext.Request.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Preview", new { Area = "Planet"});
+                return RedirectToAction("Index", "Preview", new { Area = "Planet" });
             }
 
             return View();
