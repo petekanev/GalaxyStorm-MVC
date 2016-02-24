@@ -60,6 +60,7 @@
     <Compile Include="Contracts\IPlanetService.cs" />
     <Compile Include="Contracts\IPlayerService.cs" />
     <Compile Include="Contracts\IReportsService.cs" />
+    <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\IShardService.cs" />
     <Compile Include="Contracts\ITechnologiesService.cs" />
     <Compile Include="FleetService.cs" />

@@ -8,6 +8,8 @@
     using Infrastructure;
     using Logic.Core;
     using Modules;
+    using Services.Web;
+    using Services.Web.Contracts;
 
     public class AutofacConfig
     {
@@ -21,6 +23,8 @@
             builder.RegisterModule(new ServiceModule());
             builder.RegisterModule(new EfModule());
             builder.RegisterType(typeof(LogicProvider)).As(typeof(ILogicProvider)).InstancePerLifetimeScope();
+
+            builder.RegisterGeneric(typeof(BackgroundWorkerService<>)).As(typeof(IBackgroundWorkerService<>)).InstancePerLifetimeScope();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();

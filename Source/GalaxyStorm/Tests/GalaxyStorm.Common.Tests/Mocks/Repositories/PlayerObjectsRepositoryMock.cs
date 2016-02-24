@@ -16,6 +16,62 @@
         {
             var pOList = new List<PlayerObject>();
 
+            pOList.Add(new PlayerObject
+                {
+                    ApplicationUserId = "app-user-id-" + 100,
+                    Buildings = new Buildings
+                    {
+                        BarracksLevel = 8,
+                        CrystalExtractorLevel = 13,
+                        HeadQuartersLevel = 13,
+                        MetalScrapperLevel = 12,
+                        ResearchCentreLevel = 4,
+                        SolarCollectorLevel = 13,
+                        Id = 100
+                    },
+                    Planet = new Planet
+                    {
+                        CrystalModifier = 5,
+                        MetalModifier = 5,
+                        EnergyModifier = 5,
+                        IsPopulated = true,
+                        X = 2 * 10 + 100 + 3,
+                        Y = 2 * 10 + 2*2 + 1,
+                        Title = "Planet " + 100,
+                        Shard = new Shard
+                        {
+                            Title = "Shard XYZ",
+                            BuildSpeed = 0.2,
+                            ShardSize = ShardSize.Large
+                        }
+                    },
+                    Resources = new Resources
+                    {
+                        Crystal = 1000,
+                        Energy = 1000,
+                        Metal = 1000
+                    },
+                    Units = new Units
+                    {
+                        ScoutsQuantity = 100,
+                        CarriersQuantity = 110,
+                        FighterQuantity = 100
+                    },
+                    Points = new Points
+                    {
+                        PointsCombat = 500,
+                        PointsNeutral = 700,
+                        PointsPlanet = 1000
+                    },
+                    Reports = new List<Report>(),
+                    Technologies = new Technologies
+                    {
+                        ArmoredFleetLevel = 1,
+                        CheaperFleetLevel = 2,
+                        MoreResourcesLevel = 1
+                    }
+                });
+
             for (int i = 0; i < 20; i++)
             {
                 pOList.Add(new PlayerObject

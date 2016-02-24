@@ -4,7 +4,7 @@
     using System.Linq;
     using GalaxyStorm.Data.Models.PlayerObjects;
 
-    public interface IReportsService
+    public interface IReportsService : IService
     {
         void CreateReport(string userId, Report report);
 

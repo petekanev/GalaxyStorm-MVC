@@ -5,7 +5,7 @@
     using System.Linq;
     using GalaxyStorm.Data.Models;
 
-    public interface IShardService
+    public interface IShardService : IService
     {
         Shard GetShardByPlayerId(string userId);
 

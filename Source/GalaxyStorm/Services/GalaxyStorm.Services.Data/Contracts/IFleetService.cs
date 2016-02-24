@@ -3,7 +3,7 @@
     using System;
     using GalaxyStorm.Data.Models.PlayerObjects;
 
-    public interface IFleetService
+    public interface IFleetService : IService
     {
         TimeSpan? ScheduleRecruitScout(string userId, int amount);
 

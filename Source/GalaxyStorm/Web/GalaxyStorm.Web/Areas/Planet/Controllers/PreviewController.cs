@@ -26,7 +26,7 @@
         // GET: Planet/Index
         public ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var pO = this.playerService.GetPlayerInformation(userId);
             var hourlyRes = this.playerService.GetHourlyResourceIncome(userId);
@@ -73,17 +73,13 @@
             // Automapper mapping
             info.Planet = Mapper.Map<Planet, PlanetViewModel>(pO.Planet);
 
-            ViewBag.Energy = info.Resources.Energy;
-            ViewBag.Crystal = info.Resources.Crystal;
-            ViewBag.Metal = info.Resources.Metal;
-
             return View(info);
         }
         
         [ChildActionOnly]
         public ActionResult Resources()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var res = this.playerService.GetPlayerResources(userId);
             var hourlyRes = this.playerService.GetHourlyResourceIncome(userId);

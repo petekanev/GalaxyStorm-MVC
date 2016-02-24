@@ -20,7 +20,7 @@
         // GET: Shard/Planet
         public ActionResult Index(string shard, string planet)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : "";
 
             var planetResult = planetService.GetPublicPlanet(userId, shard, planet);
 
