@@ -21,9 +21,9 @@ is a Bulfleet-like, space-theme game where each citizen strives towards galaxy d
  ![Db Diagram](/Diagram.png)
  - Screenshots
  ![Home](/Screen.png)
- ![Admiral](/admiral.png)
- ![Fleet](/fleet.png)
- ![Tech](/Tech.png)
- ![Shard](/Shard.png)
+ ![Admiral](/admiral.PNG)
+ ![Fleet](/fleet.PNG)
+ ![Tech](/Tech.PNG)
+ ![Shard](/Shard.PNG)
  
  
