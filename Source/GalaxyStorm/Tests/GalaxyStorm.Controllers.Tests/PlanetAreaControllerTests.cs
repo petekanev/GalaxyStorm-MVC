@@ -1,6 +1,7 @@
 ﻿namespace GalaxyStorm.Controllers.Tests
 {
     using System;
+    using System.Web.Mvc;
     using AutoMapper;
     using Common.Tests.Mocks;
     using Data.Models;
@@ -144,7 +145,7 @@
         [Test]
         public void FleetControllerFighterActionShouldRenderCorrectResults()
         {
-            this.fleetController.WithCallTo(c => c.Scout())
+            this.fleetController.WithCallTo(c => c.Fighter())
                 .ShouldRenderDefaultView()
                 .WithModel<UnitViewModel>(
                 vM =>
@@ -165,7 +166,7 @@
         [Test]
         public void FleetControllerBomberActionShouldRenderCorrectResults()
         {
-            this.fleetController.WithCallTo(c => c.Scout())
+            this.fleetController.WithCallTo(c => c.Bomber())
                 .ShouldRenderDefaultView()
                 .WithModel<UnitViewModel>(
                 vM =>
@@ -181,6 +182,61 @@
                     Assert.AreEqual(this.logic.Ships.Bomber.PointsOnRecruit, vM.PointsOnRecruit);
                     Assert.AreEqual(this.logic.Ships.Bomber.Prerequisite, vM.Prerequisite);
                 }).AndNoModelErrors();
+        }
+
+        [Test]
+        public void FleetControllerRecruitBombersActionShouldRedirectToIndexWhenDone()
+        {
+            this.fleetController.WithCallTo(c => c.RecruitBombers(50))
+                .ShouldRedirectTo(c => c.Index());
+        }
+
+        [Test]
+        public void FleetControllerRecruitScoutsActionShouldRedirectToIndexWhenDone()
+        {
+            this.fleetController.WithCallTo(c => c.RecruitScouts(50))
+                .ShouldRedirectTo(c => c.Index());
+        }
+
+        [Test]
+        public void FleetControllerRecruitBombersShouldFailAndSetTempDataWithMessage()
+        {
+            this.fleetController.RecruitBombers(10);
+
+            var followupAction = this.fleetController.Index();
+            var viewResult = followupAction as ViewResult;
+
+            if (viewResult != null)
+            {
+                var tempData = viewResult.TempData;
+
+                Assert.IsTrue(tempData.ContainsKey("Error"));
+                Assert.IsTrue(tempData["Error"].ToString().Contains("You cannot recruit that many ships at the moment"));
+            }
+            else
+            {
+                Assert.Fail("ViewResult was null");
+            }
+        }
+
+        [Test]
+        public void FleetControllerIndexShouldContainViewBagEntries()
+        {
+            var action = this.fleetController.Index();
+            var vR = action as ViewResult;
+
+            if (vR != null)
+            {
+                var vB = vR.ViewBag;
+
+                Assert.IsTrue(vB.Energy != null);
+                Assert.IsTrue(vB.Crystal != null);
+                Assert.IsTrue(vB.Metal != null);
+            }
+            else
+            {
+                Assert.Fail("Empty view result");
+            }
         }
     }
 }
