@@ -7,6 +7,7 @@
     using Microsoft.AspNet.Identity;
     using Services.Data;
     using Services.Data.Contracts;
+    using Services.Web.Contracts;
     using ViewModels.Fleet;
 
     public class FleetController : UsersController
@@ -16,14 +17,16 @@
         private readonly IPlayerService playerService;
         private readonly ITechnologiesService techService;
         private readonly ILogicProvider logic;
+        private readonly IBackgroundWorkerService<IFleetService> worker;
 
-        public FleetController(IPlayerService playerService, IBuildingsService buildingsService, IFleetService fleetService, ITechnologiesService techService, ILogicProvider logic)
+        public FleetController(IPlayerService playerService, IBuildingsService buildingsService, IFleetService fleetService, ITechnologiesService techService, ILogicProvider logic, IBackgroundWorkerService<IFleetService> worker)
         {
             this.playerService = playerService;
             this.buildingsService = buildingsService;
             this.fleetService = fleetService;
             this.techService = techService;
             this.logic = logic;
+            this.worker = worker;
         }
 
         // GET: Planet/Fleet
@@ -125,13 +128,14 @@
         [ValidateAntiForgeryToken]
         public ActionResult RecruitScouts(int amount)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : "";
 
             var timespan = this.fleetService.ScheduleRecruitScout(userId, amount);
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                this.worker.Schedule(x => x.CompleteRecruiting(userId), timespan.Value);
+                // BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -151,7 +155,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                this.worker.Schedule(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -171,7 +175,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                this.worker.Schedule(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -191,7 +195,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                this.worker.Schedule(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -211,7 +215,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                this.worker.Schedule(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -231,7 +235,7 @@
 
             if (timespan != null)
             {
-                BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
+                this.worker.Schedule(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {

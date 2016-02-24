@@ -51,6 +51,27 @@
         }
 
         [Test]
+        public void PreviewIndexShouldWorkCorrectlyWithFleetNumbers()
+        {
+            const int expectedScouts = 100;
+            const int expectedCarriers = 110;
+            const int expectedFighters = 100;
+
+            this.previewController.WithCallTo(x => x.Index())
+                .ShouldRenderDefaultView()
+                .WithModel<CompletePlayerViewModel>(
+                    vM =>
+                    {
+                        Assert.AreEqual(expectedScouts, vM.Fleet.Scout.AmountOnPlanet);
+                        Assert.AreEqual(expectedCarriers, vM.Fleet.Carrier.AmountOnPlanet);
+                        Assert.AreEqual(expectedFighters, vM.Fleet.Fighter.AmountOnPlanet);
+                        Assert.AreEqual(0, vM.Fleet.Bomber.AmountOnPlanet);
+                        Assert.AreEqual(0, vM.Fleet.Interceptor.AmountOnPlanet);
+                        Assert.AreEqual(0, vM.Fleet.Juggernaut.AmountOnPlanet);
+                    }).AndNoModelErrors();
+        }
+
+        [Test]
         public void PreviewResourcesChildActionShouldWorkCorrectly()
         {
             this.previewController.WithCallToChild(x => x.Resources())

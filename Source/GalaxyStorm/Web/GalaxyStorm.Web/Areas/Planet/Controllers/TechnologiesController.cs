@@ -27,7 +27,7 @@
         // GET: Planet/Technologies
         public ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : "";
 
             var rCLevel = this.buildingsService.GetPlayerBuildings(userId).ResearchCentreLevel;
             var technologies = this.techService.GetPlayerTechnologies(userId);
