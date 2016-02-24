@@ -3,7 +3,7 @@
     using System;
     using GalaxyStorm.Data.Models.PlayerObjects;
 
-    public interface IBuildingsService
+    public interface IBuildingsService : IService
     {
         TimeSpan? ScheduleBuildHeadQuarters(string userId);
 

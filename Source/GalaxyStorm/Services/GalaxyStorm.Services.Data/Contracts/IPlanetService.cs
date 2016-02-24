@@ -2,7 +2,7 @@
 {
     using GalaxyStorm.Data.Models;
 
-    public interface IPlanetService
+    public interface IPlanetService : IService
     {
         Planet GetPlayerPlanet(string userId);
 

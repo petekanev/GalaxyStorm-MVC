@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Mocks\MocksFactory.cs" />
     <Compile Include="Mocks\Repositories\PlayerObjectsRepositoryMock.cs" />
+    <Compile Include="Mocks\Services\BackgroundWorkerMock.cs" />
+    <Compile Include="Mocks\Services\FleetServiceMock.cs" />
     <Compile Include="Mocks\Services\LogicProviderMock.cs" />
     <Compile Include="Mocks\Services\PlayerServiceMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +67,10 @@
     <ProjectReference Include="..\..\Services\GalaxyStorm.Services.Data\GalaxyStorm.Services.Data.csproj">
       <Project>{56FB94A5-977D-4A90-8A3A-80BF5007BE1F}</Project>
       <Name>GalaxyStorm.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\GalaxyStorm.Services.Web\GalaxyStorm.Services.Web.csproj">
+      <Project>{13FBAC83-B3D2-4002-A949-EA757771BEC4}</Project>
+      <Name>GalaxyStorm.Services.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

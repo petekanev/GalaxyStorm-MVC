@@ -4,7 +4,7 @@
     using GalaxyStorm.Data.Models;
     using GalaxyStorm.Data.Models.PlayerObjects;
 
-    public interface IPlayerService
+    public interface IPlayerService : IService
     {
         void ReassignPlayerObject(string userId);
 

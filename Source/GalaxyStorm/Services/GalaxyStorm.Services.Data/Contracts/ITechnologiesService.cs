@@ -3,7 +3,7 @@
     using System;
     using GalaxyStorm.Data.Models.PlayerObjects;
 
-    public interface ITechnologiesService
+    public interface ITechnologiesService : IService
     {
         TimeSpan? ScheduleResearchArmoredFleet(string userId);
 
