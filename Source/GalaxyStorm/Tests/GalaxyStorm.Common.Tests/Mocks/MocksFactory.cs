@@ -30,7 +30,17 @@
             get { return FleetServiceMock.Create(); }
         }
 
-        public static IBackgroundWorkerService<IService> BackgroundWorkerService
+        public static ITechnologiesService TechnologiesService
+        {
+            get { return TechnologiesServiceMock.Create(); }
+        }
+
+        public static IBuildingsService BuildingsService
+        {
+            get { return BuildingsServiceMock.Create(); }
+        }
+
+        public static IBackgroundWorkerService<IFleetService> BackgroundWorkerServiceFleet
         {
             get { return BackgroundWorkerMock.Create(); }
         }

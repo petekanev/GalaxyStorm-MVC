@@ -32,7 +32,7 @@
         // GET: Planet/Fleet
         public ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var barracksLevel = this.buildingsService.GetPlayerBuildings(userId).BarracksLevel;
             var fleet = this.fleetService.GetPlayerFleet(userId);
@@ -60,7 +60,7 @@
 
         public ActionResult Scout()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var modifier = this.GetCheaperFleetModifier(userId);
 
@@ -71,7 +71,7 @@
 
         public ActionResult Carrier()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var modifier = this.GetCheaperFleetModifier(userId);
 
@@ -82,7 +82,7 @@
 
         public ActionResult Fighter()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var modifier = this.GetCheaperFleetModifier(userId);
 
@@ -93,7 +93,7 @@
 
         public ActionResult Bomber()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var modifier = this.GetCheaperFleetModifier(userId);
 
@@ -104,7 +104,7 @@
 
         public ActionResult Interceptor()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var modifier = this.GetCheaperFleetModifier(userId);
 
@@ -115,7 +115,7 @@
 
         public ActionResult Juggernaut()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var modifier = this.GetCheaperFleetModifier(userId);
 
@@ -135,7 +135,6 @@
             if (timespan != null)
             {
                 this.worker.Schedule(x => x.CompleteRecruiting(userId), timespan.Value);
-                // BackgroundJob.Schedule<IFleetService>(x => x.CompleteRecruiting(userId), timespan.Value);
             }
             else
             {
@@ -149,7 +148,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult RecruitFighters(int amount)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var timespan = this.fleetService.ScheduleRecruitFighter(userId, amount);
 
@@ -169,7 +168,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult RecruitCarriers(int amount)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var timespan = this.fleetService.ScheduleRecruitCarrier(userId, amount);
 
@@ -189,7 +188,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult RecruitBombers(int amount)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var timespan = this.fleetService.ScheduleRecruitBomber(userId, amount);
 
@@ -209,7 +208,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult RecruitInterceptors(int amount)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var timespan = this.fleetService.ScheduleRecruitInterceptor(userId, amount);
 
@@ -229,7 +228,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult RecruitJuggernauts(int amount)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User != null ? User.Identity.GetUserId() : string.Empty;
 
             var timespan = this.fleetService.ScheduleRecruitJuggernaut(userId, amount);
 

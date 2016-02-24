@@ -8,10 +8,10 @@
 
     public class BackgroundWorkerMock
     {
-        public static IBackgroundWorkerService<IService> Create()
+        public static IBackgroundWorkerService<IFleetService> Create()
         {
-            var service = new Mock<IBackgroundWorkerService<IService>>();
-            service.Setup(s => s.Schedule(It.IsAny<Expression<Action<IService>>>(), It.IsAny<TimeSpan>())).Verifiable();
+            var service = new Mock<IBackgroundWorkerService<IFleetService>>();
+            service.Setup(s => s.Schedule(It.IsAny<Expression<Action<IFleetService>>>(), It.IsAny<TimeSpan>())).Verifiable();
 
             return service.Object;
         }

@@ -45,9 +45,11 @@
     <Compile Include="Mocks\MocksFactory.cs" />
     <Compile Include="Mocks\Repositories\PlayerObjectsRepositoryMock.cs" />
     <Compile Include="Mocks\Services\BackgroundWorkerMock.cs" />
+    <Compile Include="Mocks\Services\BuildingsServiceMock.cs" />
     <Compile Include="Mocks\Services\FleetServiceMock.cs" />
     <Compile Include="Mocks\Services\LogicProviderMock.cs" />
     <Compile Include="Mocks\Services\PlayerServiceMock.cs" />
+    <Compile Include="Mocks\Services\TechnologiesServiceMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
