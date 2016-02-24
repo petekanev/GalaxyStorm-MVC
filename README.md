@@ -6,11 +6,11 @@
  - SQL Server (with EF) - Y
  - OAuth for facebook login (?) - N (Unlikely, ever)
  - HangFire.io background worker - Y
- - AJAX - N (Refreshing resource statistics on demand)
+ - AJAX - Y (Refreshing resource statistics on demand, leaderboards)
  - SignalR - N (Unlikely in the current state)
- - KendoUI ASP.NET MVC Wrappers - N 
+ - KendoUI ASP.NET MVC Wrappers - NY
  - Dependency Injection with Autofac IoC container - Y
  - Automapper object mapping - Y
  - log4Net logger - N (Unlikely in short-term)
- - nUnit and Moq for testing - N
- - Caching and Error Handling () - 1/2
+ - nUnit and Moq for testing - Y
+ - Caching and Error Handling () - Y
