@@ -8,6 +8,7 @@
     public class GalaxyStormDbContext : IdentityDbContext<ApplicationUser>, IGalaxyStormDbContext
     {
         public GalaxyStormDbContext()
+//            : base("RemoteConnection", throwIfV1Schema: false)
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
