@@ -317,3 +317,15 @@ input {
 input.no-max-width, textarea.no-max-width {
     max-width: none;
 }
+
+.lb-pos-0, .lb-pos-1, .lb-pos-2 {
+    font-size: 1.3em;
+}
+
+.lb-pos-3, .lb-pos-4 {
+    font-size: 1.1em;
+}
+
+.lb-pos-5, .lb-pos-6, .lb-pos-7, .lb-pos-8, .lb-pos-9 {
+    font-size: 0.9em;
+}

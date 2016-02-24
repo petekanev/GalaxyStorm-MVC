@@ -1,7 +1,82 @@
-﻿@model dynamic
+﻿@model IList<GalaxyStorm.ViewModels.Info.InfoLeaderboardsViewModel>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Leaderboards";
 }
 
-<h2>title</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            @ViewBag.Title <small>Top players</small>
+        </h2>
+    </div>
+</div>
+
+<div class="well text-center">
+    <h2>Top 10 players across all shards</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-1"># Pos</div>
+        <div class="col-md-3">Name</div>
+        <div class="col-md-1">Planet Pts</div>
+        <div class="col-md-1">Neutral Pts</div>
+        <div class="col-md-1">Combat Pts</div>
+        <div class="col-md-2">Total</div>
+        <div class="col-md-3">Shard</div>
+    </div>
+    <hr />
+    <div class="row">
+        @Html.DisplayFor(m => m, "InfoLeaderboardsViewModel")
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Top 5 by Planet pts</h2>
+            <hr />
+            <div id="lb-planet">
+                <button id="lb-planet-btn" class="btn btn-info">Reveal!</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Top 5 by Neutral pts</h2>
+            <hr />
+            <div id="lb-neutral">
+                <button id="lb-neutral-btn" class="btn btn-info">Reveal!</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Top 5 by Combat pts</h2>
+            <hr />
+            <div id="lb-combat">
+                <button id="lb-combat-btn" class="btn btn-info">Reveal!</button>
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        $("#lb-planet-btn").on("click", function() {
+            $.get('@Url.Action("TopPlanet", "Info", new { area = "Public"})').then(function(res) {
+                $('#lb-planet').html(res);
+            });
+        });
+
+        $("#lb-neutral-btn").on("click", function () {
+            $.get('@Url.Action("TopNeutral", "Info", new { area = "Public"})').then(function (res) {
+                $('#lb-neutral').html(res);
+            });
+        });
+
+        $("#lb-combat-btn").on("click", function () {
+            $.get('@Url.Action("TopCombat", "Info", new { area = "Public"})').then(function (res) {
+                $('#lb-combat').html(res);
+            });
+        });
+    </script>
+}
