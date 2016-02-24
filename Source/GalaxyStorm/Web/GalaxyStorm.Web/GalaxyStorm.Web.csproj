@@ -233,6 +233,7 @@
     <Compile Include="Areas\Profile\Controllers\PreviewController.cs" />
     <Compile Include="Areas\Profile\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
+    <Compile Include="Areas\Public\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
     <Compile Include="Areas\Public\Controllers\InfoController.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
@@ -383,6 +384,8 @@
     <Content Include="Areas\Public\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Public\Views\Home\Index.cshtml" />
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Public\Views\Error\NotFound.cshtml" />
+    <Content Include="Areas\Public\Views\Error\BadRequest.cshtml" />
     <None Include="Areas\Public\Views\Info\Index.cshtml" />
     <Content Include="Areas\Shard\Views\Planet\Index.cshtml" />
     <Content Include="Areas\Public\Views\Info\TopPlanet.cshtml" />
@@ -413,7 +416,8 @@
     <Content Include="Content\kendoui\kendo.common.min.css.map" />
     <Content Include="Content\kendoui\kendo.default.min.css.map" />
     <Content Include="Content\kendoui\custom-theme\kendo.custom.less" />
-    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <Content Include="GalaxyStorm.PublishSettings" />
+    <None Include="Properties\PublishProfiles\GalaxyStorm.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Images\100xX\bomber.png" />
     <Content Include="Images\100xX\carrier.png" />
