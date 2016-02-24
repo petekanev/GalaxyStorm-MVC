@@ -78,6 +78,7 @@
     <Compile Include="Common\SimpleResourcesViewModel.cs" />
     <Compile Include="Fleet\FleetViewModel.cs" />
     <Compile Include="Fleet\UnitViewModel.cs" />
+    <Compile Include="Info\InfoLeaderboardsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\ReportInputModel.cs" />
     <Compile Include="Reports\ReportViewModel.cs" />

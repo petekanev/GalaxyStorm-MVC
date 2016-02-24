@@ -385,6 +385,9 @@
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
     <None Include="Areas\Public\Views\Info\Index.cshtml" />
     <Content Include="Areas\Shard\Views\Planet\Index.cshtml" />
+    <Content Include="Areas\Public\Views\Info\TopPlanet.cshtml" />
+    <Content Include="Areas\Public\Views\Info\TopCombat.cshtml" />
+    <Content Include="Areas\Public\Views\Info\TopNeutral.cshtml" />
     <None Include="Areas\Shard\Views\Preview\Index.cshtml" />
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
@@ -497,6 +500,8 @@
     <Content Include="Views\Shared\DisplayTemplates\MaxTechButtons.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SupplementsViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SimpleShardViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\InfoLeaderboardsViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SimpleInfoLeaderboardsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Profile\Models\" />

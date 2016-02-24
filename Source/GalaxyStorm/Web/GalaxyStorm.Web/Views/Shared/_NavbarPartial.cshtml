@@ -32,7 +32,7 @@
                     <li><a href="/Admiral/Home"><i class="ion-settings size-18"> </i> Admiral</a></li>
                 }
 
-                <li><a href="/"><i class="ion-information size-18"> </i></a></li>
+                <li><a href="@Url.Action("Index", "Info", new {area= "Public"})"><i class="ion-information size-18"> </i></a></li>
             </ul>
 
             @Html.Partial("_LoginPartial")
