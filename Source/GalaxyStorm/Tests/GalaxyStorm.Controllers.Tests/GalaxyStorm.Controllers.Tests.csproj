@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -89,15 +93,24 @@
   <ItemGroup>
     <Compile Include="PlanetAreaControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestInit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\GalaxyStorm.Common\GalaxyStorm.Common.csproj">
+      <Project>{58EB223D-5336-4BF0-954C-E38FB4DF2F79}</Project>
+      <Name>GalaxyStorm.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Core\GalaxyStorm.Logic\GalaxyStorm.Logic.csproj">
       <Project>{00083C36-31E1-43BA-874F-9DDFCFA486E3}</Project>
       <Name>GalaxyStorm.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GalaxyStorm.Data.Models\GalaxyStorm.Data.Models.csproj">
+      <Project>{55085A4D-FF06-4E40-948B-C40D07452B52}</Project>
+      <Name>GalaxyStorm.Data.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\GalaxyStorm.ViewModels\GalaxyStorm.ViewModels.csproj">
       <Project>{9FF2D76A-24CF-422E-A344-F70027D459F9}</Project>
